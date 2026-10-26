@@ -186,6 +186,13 @@ class RiskChat:
         row = next(r for r in scan["metrics"] if r["metric_id"] == metric_id)
         return self.agent.investigate(0, row, "now")
 
+    def _reinvestigate(self, metric_id: str) -> None:
+        """Re-run the investigation live so the answer comes with the agent's full tool trace."""
+        scan = self.tools.call("scan_metrics")
+        row = next((r for r in scan["metrics"] if r["metric_id"] == metric_id), None)
+        if row is not None:
+            self.agent.investigate(0, row, "now")
+
     def _why(self, q: str, metric_id: str) -> ChatAnswer:
         m = catalog.get(metric_id)
         snap = self.tools.call("get_metric", metric_id=metric_id)
@@ -193,6 +200,7 @@ class RiskChat:
             return ChatAnswer(q, "why", metric_id, f"**{m.name}** is {snap['display']} and within appetite; "
                               "nothing needs explaining this week.")
         f = self._finding_for(metric_id)
+        self._reinvestigate(f.metric_id)
         text = f"**{f.headline}.**\n\n" + "\n".join(f"- {d}" for d in f.detail)
         if f.metric_id != metric_id:
             text = f"{m.name} moves with the theme below.\n\n" + text

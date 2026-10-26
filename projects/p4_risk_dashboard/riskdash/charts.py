@@ -100,15 +100,15 @@ def breakdown_chart(bd: pd.DataFrame, metric: Metric) -> alt.Chart:
                        for c in df["contribution"]]
     df["contribution_label"] = df["contribution"].map(lambda v: f"{v:+.2f}" if metric.unit != "count" else f"{v:+.0f}")
     bars = alt.Chart(df).mark_bar(cornerRadius=3, height=16).encode(
-        y=alt.Y("member:N", sort=None, title=None),
+        y=alt.Y("member:N", sort=None, title=None, axis=alt.Axis(labelLimit=160)),
         x=alt.X("contribution:Q", title=f"Contribution to the 7-day change ({metric.unit})"),
         color=alt.Color("direction:N", scale=alt.Scale(domain=["worse", "better"],
                                                         range=[STATUS_COLOR["RED"], "#2a78d6"]),
-                        title="Effect"),
-        tooltip=["member:N", alt.Tooltip("contribution_label:N", title="Contribution"),
+                        legend=None),  # the caption above the chart explains red and blue
+        tooltip=["member:N", "direction:N", alt.Tooltip("contribution_label:N", title="Contribution"),
                  alt.Tooltip("value:Q", format=",.2f", title="Value now"),
                  alt.Tooltip("prior:Q", format=",.2f", title="Value 7 days ago"), "records:Q"])
-    return _base(bars.properties(height=max(120, 26 * len(df))))
+    return _base(bars.properties(height=max(140, 30 * len(df) + 40)))
 
 
 def member_area(store, metric: Metric, dimension: str, start: date, end: date) -> alt.Chart:
@@ -183,7 +183,7 @@ def aging_chart(df: pd.DataFrame, group: str, bucket: str, order: list[str], tit
         color=alt.Color(f"{bucket}:N", sort=order, scale=alt.Scale(domain=order, range=seq), title="Age"),
         order=alt.Order("bucket_order:Q"),
         tooltip=[f"{group}:N", f"{bucket}:N", "count:Q"])
-    return _base(chart.properties(height=max(140, 30 * df[group].nunique())))
+    return _base(chart.properties(height=max(150, 30 * df[group].nunique()) + 60))  # room for the top legend
 
 
 def dq_heatmap(store, end: date, weeks: int = 10) -> alt.Chart:

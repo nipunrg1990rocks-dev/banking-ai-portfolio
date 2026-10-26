@@ -7,8 +7,9 @@ Run locally from the repository root:
 Offline by default: the metric layer runs on DuckDB and the Risk Insights Agent
 runs its deterministic investigation playbook, so the app costs nothing. With
 Databricks connection details in Streamlit secrets it can read live Unity
-Catalog tables instead; with an ANTHROPIC_API_KEY it can let Claude drive the
-agent's tools.
+Catalog tables instead, and let a Databricks foundation model (free on Free
+Edition) drive the agent's tools. Claude is a further option with an
+ANTHROPIC_API_KEY.
 """
 
 from __future__ import annotations
@@ -40,7 +41,12 @@ from riskdash.engine import (  # noqa: E402,E501
     databricks_configured,
     duckdb_sql_for_display,
 )
-from riskdash.llm import ClaudeRiskAgent  # noqa: E402
+from riskdash.llm import (  # noqa: E402,E501
+    ClaudeRiskAgent,
+    RiskLLMAgent,
+    databricks_from_secrets,
+    databricks_llm_configured,
+)
 from riskdash.metrics import MetricStore  # noqa: E402
 from riskdash.report import markdown_to_html  # noqa: E402
 from riskdash.scenarios import SCENARIOS  # noqa: E402
@@ -126,11 +132,17 @@ with st.sidebar:
     as_of = st.select_slider("Reporting date", options=business_days, value=min(AS_OF, business_days[-1]),
                              format_func=lambda d: d.strftime("%a %d %b %Y"),
                              help="Everything on the page, including the agent, recomputes for this date.")
-    live = ClaudeRiskAgent.available()
-    ai_mode = st.radio("AI mode", ["Offline agent (free)"] + (["Claude (live)"] if live else []), index=0,
-                       help="Claude mode appears only when the app owner has added an API key and approved spend.")
-    if not live:
-        st.caption("Claude mode is off: no API key configured. The offline agent uses the same tools.")
+    ai_modes = ["Offline agent (free)"]
+    if databricks_llm_configured():
+        ai_modes.append("Databricks AI (live)")
+    if ClaudeRiskAgent.available():
+        ai_modes.append("Claude (live)")
+    ai_mode = st.radio("AI mode", ai_modes, index=0,
+                       help="Live modes appear only when the app owner has connected a Databricks workspace "
+                            "(foundation models, free on Free Edition) or added an Anthropic key.")
+    if len(ai_modes) == 1:
+        st.caption("Live AI is off: no Databricks workspace or API key connected. The offline agent uses the "
+                   "same tools.")
     st.divider()
     st.caption("All data is synthetic (fictional Ledgerline Bank). Project 02 Gold tables + simulated "
                "operations history with 7 planted incidents.")
@@ -184,6 +196,16 @@ def render_finding(f) -> None:
                 f'{f.headline} {conf}</h5><ul>{items}{rel}</ul></div>', unsafe_allow_html=True)
 
 
+def tidy_dates(df: pd.DataFrame) -> pd.DataFrame:
+    """Show midnight timestamps as plain dates."""
+    out = df.copy()
+    for col in out.columns:
+        values = out[col].dropna()
+        if pd.api.types.is_datetime64_any_dtype(out[col]) and (values.dt.normalize() == values).all():
+            out[col] = out[col].dt.date
+    return out
+
+
 def render_trace(calls, title: str = "How the agent worked it out", expanded: bool = False) -> None:
     with st.expander(f"{title}: {len(calls)} tool call(s)", expanded=expanded):
         for i, c in enumerate(calls, 1):
@@ -214,7 +236,7 @@ with tabs[0]:
                     st.markdown(f"<span class='tool'>{i:>2}. {c.tool}({args})</span>", unsafe_allow_html=True)
                     time.sleep(0.02)
                 status.update(label=f"Done: {len(briefing.trace)} tool calls, {len(briefing.findings)} issues, "
-                                    f"{len(briefing.actions)} actions", state="complete")
+                                    f"{len(briefing.actions)} actions", state="complete", expanded=True)
     with right:
         st.markdown("#### Operations at a glance")
         ops = ["DQ_HEALTH_SCORE", "RECON_OPEN_BREAKS", "EXC_BACKLOG", "EXC_SLA_BREACH_PCT"]
@@ -232,8 +254,9 @@ with tabs[0]:
 # ============================================================ risk agent
 with tabs[1]:
     st.markdown("Ask in plain English. The agent picks its tools, runs them on the metric layer and answers with the "
-                "evidence. " + ("**Claude** is driving the tools; every number is checked against the tool results."
-                                if ai_mode.startswith("Claude") else "**Offline mode**: rule-based routing, free."))
+                "evidence. " + (f"**{ai_mode.split(' (')[0]}** is driving the tools; every number is checked "
+                                "against the tool results." if "live" in ai_mode
+                                else "**Offline mode**: rule-based routing, free."))
     qcols = st.columns(4)
     for i, q in enumerate(EXAMPLES[:8]):
         if qcols[i % 4].button(q, key=f"ex{i}", width="stretch"):
@@ -247,25 +270,30 @@ with tabs[1]:
         offline = chat.ask(question)
         entry = {"q": question, "a": offline.text, "data": offline.data, "calls": tools.trace[offline.trace_from:],
                  "mode": "offline", "note": None}
-        if ai_mode.startswith("Claude"):
+        if "live" in ai_mode:
+            brain = ai_mode.split(" (")[0]
             try:
                 start = len(tools.trace)
-                live_ans = ClaudeRiskAgent(tools).ask(question)
+                if brain == "Claude":
+                    live_ans = ClaudeRiskAgent(tools).ask(question)
+                else:
+                    live_ans = RiskLLMAgent(tools, databricks_from_secrets()).ask(question)
                 if live_ans.text and live_ans.grounded and not live_ans.error:
-                    entry.update({"a": live_ans.text, "mode": f"Claude ({live_ans.model})",
+                    entry.update({"a": live_ans.text, "mode": live_ans.model,
                                   "calls": tools.trace[start:],
                                   "note": f"{live_ans.tool_calls} tool calls · {live_ans.input_tokens:,} in / "
                                           f"{live_ans.output_tokens:,} out tokens · all numbers grounded"})
                 else:
-                    entry["note"] = ("Claude's answer was not shown because "
+                    entry["note"] = (f"The {brain} answer was not shown because "
                                      + (live_ans.error or f"these numbers were not in any tool result: "
                                         f"{', '.join(live_ans.unsupported)}") + ". Showing the offline answer.")
                 S["audit"].record("llm_answer", {"question": question, "grounded": live_ans.grounded,
                                                  "unsupported": live_ans.unsupported, "error": live_ans.error,
                                                  "tokens_in": live_ans.input_tokens,
-                                                 "tokens_out": live_ans.output_tokens}, actor="claude")
-            except Exception as exc:  # network, auth or quota problems never break the page
-                entry["note"] = f"Claude is unavailable ({type(exc).__name__}). Showing the offline answer."
+                                                 "tokens_out": live_ans.output_tokens, "model": live_ans.model},
+                                  actor=brain.lower().replace(" ", "_"))
+            except Exception as exc:  # network, auth, quota or endpoint problems never break the page
+                entry["note"] = f"{brain} is unavailable ({type(exc).__name__}). Showing the offline answer."
         S["audit"].record("question", {"question": question, "intent": offline.intent, "metric": offline.metric_id,
                                        "mode": entry["mode"]}, actor="viewer")
         S["chat"].append(entry)
@@ -309,7 +337,7 @@ with tabs[2]:
         if late.empty:
             st.success("Every feed arrived on time.")
         else:
-            st.dataframe(late, hide_index=True, width="stretch")
+            st.dataframe(tidy_dates(late), hide_index=True, width="stretch")
 
     st.markdown("#### Reconciliations")
     c1, c2, c3, c4 = st.columns(4)
@@ -358,7 +386,8 @@ with tabs[3]:
               delta_color="inverse" if m.direction == "lower_is_better" else "normal")
     h2.metric("Status", RAG_WORD[s.status])
     h3.metric("Early warning / limit", f"{m.fmt(m.early_warning)} / {m.fmt(m.limit)}")
-    h4.metric("Owner", m.owner)
+    h4.markdown(f"<div style='font-size:.875rem'>Owner</div><div style='font-size:1.15rem;font-weight:600;"
+                f"margin-top:.4rem'>{m.owner}</div>", unsafe_allow_html=True)
     span = st.radio("Window", ["6 weeks", "3 months", "All"], index=1, horizontal=True)
     start = {"6 weeks": as_of - timedelta(days=42), "3 months": as_of - timedelta(days=91), "All": None}[span]
     relevant = events[events["change_type"].isin(RELEVANT_CHANGE_TYPES.get(m.domain, set()))]
@@ -370,7 +399,9 @@ with tabs[3]:
         dim = st.radio("Break down by", list(m.dimensions), horizontal=True)
         a, b = st.columns(2)
         bd = store.breakdown(mid, dim, as_of)
-        a.markdown(f"**What moved it in the last 7 days** (by {dim.replace('_', ' ')})")
+        a.markdown(f"**What moved it in the last 7 days** (by {dim.replace('_', ' ')}): "
+                   "<span style='color:#d03b3b'>■ made it worse</span> · "
+                   "<span style='color:#2a78d6'>■ made it better</span>", unsafe_allow_html=True)
         a.altair_chart(charts.breakdown_chart(bd, m), width="stretch")
         b.markdown("**Drill down: pick a row to see its records**")
         show = bd.assign(value=bd["value"].map(m.fmt), prior=bd["prior"].map(m.fmt))
@@ -378,7 +409,7 @@ with tabs[3]:
                             selection_mode="single-row", key=f"bd_{mid}_{dim}")
         rows = event.selection.rows if event and event.selection else []
         member = show.iloc[rows[0]]["member"] if rows else None
-        recs = store.records(mid, as_of, {dim: member} if member else None)
+        recs = tidy_dates(store.records(mid, as_of, {dim: member} if member else None))
         st.markdown(f"**Records behind the number{f' for {member}' if member else ''}** ({len(recs)})")
         st.dataframe(recs, hide_index=True, width="stretch")
     with st.expander("Definition, formula and SQL (transparent calculation logic)"):
@@ -508,7 +539,7 @@ digraph G { rankdir=TB; nodesep=0.3; ranksep=0.35; bgcolor=transparent; node [sh
   cat [label="Metric catalogue\\n20 KPIs/KRIs · thresholds · RAS-004"];
   store [label="MetricStore\\nseries · breakdown · drill-down"];
   tools [label="Agent tools (13)\\nscan · explain · onset · correlate\\nforecast · what-if · policy", fillcolor="#e8e2fb"];
-  agent [label="Risk Insights Agent\\noffline playbook or Claude", fillcolor="#e8e2fb"];
+  agent [label="Risk Insights Agent\\noffline playbook, or an LLM:\\nDatabricks foundation model or Claude", fillcolor="#e8e2fb"];
   ui [label="Control room UI\\nchat · drill-down · what-if · board pack", fillcolor="#d8f3dc"];
   audit [label="Hash-chained audit\\n(portfolio_core)"];
   p2 -> views; mart -> views; views -> eng -> store; cat -> store; store -> tools -> agent -> ui; agent -> audit;
@@ -523,7 +554,8 @@ digraph G { rankdir=TB; nodesep=0.3; ranksep=0.35; bgcolor=transparent; node [sh
 | Metric SQL on DuckDB and on Apache Spark | Identical results checked by automated tests | ✅ Verified |
 | Offline Risk Insights Agent | Finds all 7 planted incidents and their causes in automated tests | ✅ Verified |
 | Databricks SQL live mode | Code path tested with a fake connection; needs the owner's workspace | ⏳ Not yet run |
-| Claude live mode | Tool loop and grounding check tested with a fake client; needs an API key | ⏳ Not yet run |
+| Live AI: Databricks foundation model (free on Free Edition) | Tool loop, endpoint discovery and grounding check tested with a fake workspace; needs the owner's workspace | ⏳ Not yet run |
+| Live AI: Claude (optional, paid) | Tool loop and grounding check tested with a fake client; needs an API key | ⏳ Not yet run |
 """)  # noqa: E501
     backtest = HERE / "docs" / "evaluation" / "backtest_report.md"
     if backtest.exists():

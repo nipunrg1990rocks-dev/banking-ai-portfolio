@@ -17,6 +17,7 @@
 
 dbutils.widgets.text("catalog", "workspace", "Unity Catalog catalog")
 dbutils.widgets.dropdown("gold_source", "unity_catalog", ["unity_catalog", "snapshot"], "Project 02 Gold tables from")
+dbutils.widgets.text("llm_endpoint", "", "Foundation model endpoint (blank = auto)")
 CATALOG = dbutils.widgets.get("catalog")
 GOLD_SOURCE = dbutils.widgets.get("gold_source")
 
@@ -24,8 +25,10 @@ import os
 import sys
 
 PROJECT_DIR = os.path.abspath(os.path.join(os.getcwd(), ".."))
-if PROJECT_DIR not in sys.path:
-    sys.path.insert(0, PROJECT_DIR)
+REPO_ROOT = os.path.abspath(os.path.join(PROJECT_DIR, "..", ".."))  # for the shared portfolio_core package
+for path in (PROJECT_DIR, REPO_ROOT):
+    if path not in sys.path:
+        sys.path.insert(0, path)
 
 from riskdash import lakehouse
 from riskdash.synthetic import AS_OF
@@ -111,6 +114,36 @@ ORDER BY CASE status WHEN 'RED' THEN 0 WHEN 'AMBER' THEN 1 ELSE 2 END, domain
 # COMMAND ----------
 
 print(briefing.markdown())
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## 7. Ask the agent with a Databricks foundation model (free on Free Edition)
+# MAGIC
+# MAGIC The LLM gets the same 13 read-only tools. Every number in its answer must appear in a tool result,
+# MAGIC or the offline answer is kept instead. It uses this notebook's own credentials: no API key, no secret.
+# MAGIC If no endpoint with tool calling is available in this workspace, the cell says so and keeps the offline answers.
+
+# COMMAND ----------
+
+from riskdash.chat import EXAMPLES
+from riskdash.llm import DatabricksFoundationModel
+
+ctx = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
+try:
+    fm = DatabricksFoundationModel.discover(ctx.apiUrl().get(), ctx.apiToken().get(),
+                                            dbutils.widgets.get("llm_endpoint") or None)
+    print("Using endpoint:", fm.endpoint)
+except Exception as exc:
+    fm = None
+    print("No foundation model available, keeping offline answers:", exc)
+
+answers = lakehouse.ask_questions(store, EXAMPLES, fm)
+spark_answers = lakehouse.spark_frame(spark, answers, {"as_of": "DATE"})
+spark_answers.write.mode("overwrite").option("overwriteSchema", "true") \
+    .saveAsTable(f"{CATALOG}.ledgerline_riskmart.agent_llm_answers")
+display(spark_answers.select("question", "shown", "model", "grounded", "unsupported_numbers", "tool_calls",
+                             "tokens_in", "tokens_out", "error", "answer"))
 
 # COMMAND ----------
 

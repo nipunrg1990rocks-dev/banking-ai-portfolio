@@ -116,3 +116,31 @@ def publish_results(spark, catalog_name: str, store: MetricStore, as_of: date = 
         spark_frame(spark, df, date_cols[table]).write.mode("overwrite").option("overwriteSchema", "true") \
             .saveAsTable(names(catalog_name)["mart"].format(table))
     return briefing, snapshot
+
+
+def ask_questions(store: MetricStore, questions: list[str], backend=None, as_of: date = AS_OF) -> pd.DataFrame:
+    """Answer questions with the LLM backend (if any), falling back to the offline answer when it is not grounded."""
+    from .chat import RiskChat
+    from .llm import RiskLLMAgent
+    from .tools import RiskTools
+
+    agent = RiskInsightsAgent(store, as_of)
+    chat = RiskChat(agent, agent.run())
+    rows = []
+    for q in questions:
+        offline = chat.ask(q).text
+        row = {"as_of": as_of, "question": q, "shown": "offline", "model": "offline agent", "grounded": None,
+               "unsupported_numbers": None, "tool_calls": 0, "tokens_in": 0, "tokens_out": 0,
+               "answer": offline, "offline_answer": offline, "error": None}
+        if backend is not None:
+            try:
+                live = RiskLLMAgent(RiskTools(store, as_of), backend).ask(q)
+                row.update({"model": live.model, "grounded": live.grounded, "tool_calls": live.tool_calls,
+                            "unsupported_numbers": ", ".join(live.unsupported) or None, "error": live.error,
+                            "tokens_in": live.input_tokens, "tokens_out": live.output_tokens})
+                if live.text and live.grounded and not live.error:
+                    row.update({"shown": "llm", "answer": live.text})
+            except Exception as exc:  # noqa: BLE001 - an endpoint failure must not stop the notebook
+                row["error"] = f"{type(exc).__name__}: {str(exc)[:200]}"
+        rows.append(row)
+    return pd.DataFrame(rows)

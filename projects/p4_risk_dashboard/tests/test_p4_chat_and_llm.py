@@ -1,11 +1,19 @@
 """Conversational Q&A: the offline router, and Claude live mode with a fake client."""
 
+import json
 from types import SimpleNamespace
 
 import pytest
 
 from riskdash.chat import EXAMPLES, RiskChat, extract_amount
-from riskdash.llm import MAX_TOOL_ROUNDS, ClaudeRiskAgent, grounding_check, tool_definitions
+from riskdash.llm import (
+    MAX_TOOL_ROUNDS,
+    ClaudeRiskAgent,
+    DatabricksFoundationModel,
+    RiskLLMAgent,
+    grounding_check,
+    tool_definitions,
+)
 from riskdash.synthetic import AS_OF
 from riskdash.tools import TOOL_NAMES, RiskTools
 
@@ -144,3 +152,78 @@ def test_claude_refusal_is_not_shown_as_an_answer(store):
     client = FakeClient([_response("refusal", [])])
     answer = ClaudeRiskAgent(RiskTools(store, AS_OF), client=client, model="m").ask("?")
     assert answer.error and answer.text == ""
+
+
+# ------------------------------------------------- Databricks foundation model
+class FakeDatabricks:
+    """Plays a Databricks workspace: the serving-endpoint list and scripted chat completions."""
+
+    def __init__(self, endpoints, replies):
+        self.endpoints = endpoints
+        self.replies = list(replies)
+        self.requests = []
+
+    def __call__(self, method, url, body):
+        self.requests.append((method, url, body))
+        if url.endswith("/api/2.0/serving-endpoints"):
+            return {"endpoints": [{"name": n} for n in self.endpoints]}
+        reply = self.replies.pop(0)
+        if isinstance(reply, Exception):
+            raise reply
+        return reply
+
+
+def _completion(content=None, calls=None):
+    msg = {"role": "assistant", "content": content}
+    if calls:
+        msg["tool_calls"] = [{"id": f"c{i}", "type": "function",
+                              "function": {"name": n, "arguments": json.dumps(a)}} for i, (n, a) in enumerate(calls)]
+    return {"choices": [{"message": msg, "finish_reason": "tool_calls" if calls else "stop"}],
+            "usage": {"prompt_tokens": 50, "completion_tokens": 10}}
+
+
+def test_databricks_discovery_skips_missing_and_failing_endpoints():
+    fake = FakeDatabricks(
+        ["databricks-claude-sonnet-4", "databricks-meta-llama-3-3-70b-instruct", "my-own-model"],
+        [RuntimeError("403 not available on Free Edition"), _completion(calls=[("list_metrics", {})])])
+    fm = DatabricksFoundationModel.discover("adb-123.cloud.databricks.com", "tkn", http=fake)
+    assert fm.endpoint == "databricks-meta-llama-3-3-70b-instruct"
+    probed = [u for m, u, _ in fake.requests if m == "POST"]
+    assert probed[0].endswith("/serving-endpoints/databricks-claude-sonnet-4/invocations")
+
+
+def test_databricks_discovery_reports_when_nothing_works():
+    fake = FakeDatabricks(["my-own-model"], [])
+    with pytest.raises(RuntimeError, match="No foundation-model endpoint"):
+        DatabricksFoundationModel.discover("host", "tkn", http=fake)
+
+
+def test_databricks_backend_runs_the_tool_loop_with_grounding(store):
+    fake = FakeDatabricks([], [
+        _completion(calls=[("get_metric", {"metric_id": "KRI_LCR_PCT"})]),
+        _completion(content="LCR is 117.6%, below the 120% early-warning trigger (RAS-004 s.3)."),
+    ])
+    fm = DatabricksFoundationModel("https://adb-1.cloud.databricks.com/", "tkn", "databricks-gpt-oss-120b", http=fake)
+    answer = RiskLLMAgent(RiskTools(store, AS_OF), fm).ask("How is liquidity?")
+    assert answer.grounded and answer.tool_calls == 1 and answer.model == "Databricks · databricks-gpt-oss-120b"
+    method, url, body = fake.requests[1]
+    assert url == "https://adb-1.cloud.databricks.com/serving-endpoints/databricks-gpt-oss-120b/invocations"
+    assert body["messages"][0]["role"] == "system" and body["temperature"] == 0
+    assert body["messages"][-1]["role"] == "tool" and "117.6" in body["messages"][-1]["content"]
+    assert {t["function"]["name"] for t in body["tools"]} == set(TOOL_NAMES)
+
+
+def test_notebook_answers_fall_back_to_offline_when_not_grounded(store):
+    from riskdash.lakehouse import ask_questions
+
+    fake = FakeDatabricks([], [
+        _completion(calls=[("get_metric", {"metric_id": "KRI_LCR_PCT"})]),
+        _completion(content="LCR is 117.6% today."),
+        _completion(content="LCR will be 101.3% next month."),  # no tool call, invented number
+        RuntimeError("endpoint rate limited"),
+    ])
+    fm = DatabricksFoundationModel("host", "tkn", "databricks-meta-llama-3-3-70b-instruct", http=fake)
+    df = ask_questions(store, ["How is liquidity?", "And next month?", "Top risks?"], fm)
+    assert df["shown"].tolist() == ["llm", "offline", "offline"]
+    assert df.loc[1, "unsupported_numbers"] == "101.3" and df.loc[1, "answer"] == df.loc[1, "offline_answer"]
+    assert "rate limited" in df.loc[2, "error"]

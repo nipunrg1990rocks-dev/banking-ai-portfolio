@@ -1,16 +1,22 @@
-"""Live mode: Claude drives the same tools, and a grounding check guards its numbers.
+"""Live mode: a language model drives the same tools, and a grounding check guards its numbers.
 
-Live mode is off unless the app owner adds an ``ANTHROPIC_API_KEY`` to Streamlit
-secrets (and has approved the spend). When it is on:
+Two backends, both off by default (the offline agent needs neither):
 
-* ``ClaudeRiskAgent.ask`` gives Claude the agent's read-only tools and lets it
-  decide which to call (a standard tool-use loop, capped at ``MAX_TOOL_ROUNDS``).
+* ``DatabricksFoundationModel``: a foundation-model endpoint in the owner's
+  Databricks workspace. On Databricks Free Edition this is free and needs no
+  API key. Used by the notebook (with the notebook's own credentials) and by the
+  app when the Databricks secrets are set.
+* ``AnthropicClaude``: Claude through the Anthropic API, if an
+  ``ANTHROPIC_API_KEY`` is configured and the spend approved.
+
+In both, ``RiskLLMAgent.ask`` gives the model the agent's read-only tools and
+lets it decide which to call (a standard tool-use loop, capped at ``MAX_TOOL_ROUNDS``).
 * Every number in Claude's final answer must appear in a tool result from that
   conversation (``grounding_check``). An answer with an unsupported number is
   not shown as fact: the app falls back to the offline answer and logs why.
 
-The key comes from ``portfolio_core.llm`` (environment or Streamlit secrets) and
-is never displayed or logged.
+Keys and tokens come from the environment, Streamlit secrets or the notebook
+context, and are never displayed or logged.
 """
 
 from __future__ import annotations
@@ -143,6 +149,151 @@ def grounding_check(text: str, tool_results: list) -> tuple[bool, list[str]]:
     return (not unsupported), unsupported
 
 
+# ------------------------------------------------------------ backends
+@dataclass
+class Turn:
+    """One model response, in a provider-neutral shape."""
+
+    stop: str  # "tool", "end" or "refusal"
+    text: str = ""
+    calls: list[tuple[str, str, dict]] = field(default_factory=list)  # (call id, tool name, arguments)
+    input_tokens: int = 0
+    output_tokens: int = 0
+    raw: object = None
+
+
+class DatabricksFoundationModel:
+    """A Databricks Model Serving foundation-model endpoint (OpenAI-style chat completions with tools).
+
+    On Databricks Free Edition these endpoints are part of the workspace, so there is no API key and no bill.
+    Credentials are the workspace host and a token: inside a notebook, the notebook's own context; in the app,
+    the same Streamlit secrets as the SQL warehouse. Which endpoints exist differs by workspace, so ``discover``
+    lists them and keeps the first candidate that completes a one-call tool probe.
+    """
+
+    CANDIDATES = ("databricks-claude-sonnet-4-5", "databricks-claude-sonnet-4",
+                  "databricks-meta-llama-3-3-70b-instruct", "databricks-llama-4-maverick", "databricks-gpt-oss-120b")
+
+    def __init__(self, host: str, token: str, endpoint: str, http=None, timeout: float = 90.0) -> None:
+        self.host = "https://" + host.replace("https://", "").rstrip("/")
+        self._token = token
+        self.endpoint = endpoint
+        self.label = f"Databricks · {endpoint}"
+        self._http = http or self._urllib
+        self.timeout = timeout
+
+    def _urllib(self, method: str, url: str, body: dict | None) -> dict:
+        import urllib.request
+
+        req = urllib.request.Request(url, method=method, data=json.dumps(body).encode() if body else None,
+                                     headers={"Authorization": f"Bearer {self._token}",
+                                              "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=self.timeout) as resp:  # noqa: S310 - fixed https workspace URL
+            return json.loads(resp.read().decode())
+
+    # The conversation is kept in OpenAI chat format.
+    def start(self, system: str, question: str, history: list[dict] | None) -> list[dict]:
+        return [{"role": "system", "content": system}, *(history or []), {"role": "user", "content": question}]
+
+    def step(self, state: list[dict]) -> Turn:
+        tools = [{"type": "function", "function": {"name": t["name"], "description": t["description"],
+                                                   "parameters": t["input_schema"]}} for t in tool_definitions()]
+        out = self._http("POST", f"{self.host}/serving-endpoints/{self.endpoint}/invocations",
+                         {"messages": state, "tools": tools, "max_tokens": 1500, "temperature": 0})
+        choice = out["choices"][0]
+        msg = choice["message"]
+        usage = out.get("usage") or {}
+        calls = []
+        for c in msg.get("tool_calls") or []:
+            try:
+                args = json.loads(c["function"].get("arguments") or "{}")
+            except json.JSONDecodeError:
+                args = {"_unparsed": c["function"].get("arguments")}
+            calls.append((c["id"], c["function"]["name"], args))
+        content = msg.get("content")
+        if isinstance(content, list):  # some endpoints return content blocks
+            content = "".join(b.get("text", "") for b in content if isinstance(b, dict))
+        stop = "tool" if calls else "end"
+        return Turn(stop, (content or "").strip(), calls, usage.get("prompt_tokens", 0),
+                    usage.get("completion_tokens", 0), raw=msg)
+
+    def add_results(self, state: list[dict], turn: Turn, results: list[tuple[str, str, bool]]) -> None:
+        state.append({"role": "assistant", "content": turn.raw.get("content") or "",
+                      "tool_calls": turn.raw.get("tool_calls")})
+        for call_id, content, _ in results:
+            state.append({"role": "tool", "tool_call_id": call_id, "content": content})
+
+    @classmethod
+    def discover(cls, host: str, token: str, preferred: str | None = None, http=None) -> DatabricksFoundationModel:
+        """Pick a working endpoint: the preferred one if set, else the first candidate that passes a tool probe."""
+        probe_client = cls(host, token, preferred or cls.CANDIDATES[0], http=http)
+        if preferred:
+            return probe_client
+        listed = probe_client._http("GET", f"{probe_client.host}/api/2.0/serving-endpoints", None)
+        available = {e.get("name") for e in listed.get("endpoints", [])}
+        errors = []
+        for name in [c for c in cls.CANDIDATES if c in available]:
+            candidate = cls(host, token, name, http=http)
+            try:
+                state = candidate.start("Call the tool asked for.", "Call list_metrics.", None)
+                if candidate.step(state).calls:
+                    return candidate
+                errors.append(f"{name}: no tool call")
+            except Exception as exc:  # noqa: BLE001 - any endpoint failure means "try the next one"
+                errors.append(f"{name}: {type(exc).__name__}")
+        raise RuntimeError("No foundation-model endpoint with tool calling found. Tried: "
+                           + ("; ".join(errors) or f"none of {', '.join(cls.CANDIDATES)} are in this workspace"))
+
+
+class AnthropicClaude:
+    """Claude through the Anthropic API (paid; needs ANTHROPIC_API_KEY)."""
+
+    def __init__(self, client=None, model: str | None = None) -> None:
+        self.model = model or resolve_model()
+        self.label = f"Claude · {self.model}"
+        if client is not None:
+            self._client = client
+        else:
+            import anthropic
+
+            self._client = anthropic.Anthropic(api_key=resolve_api_key(), timeout=90.0, max_retries=2)
+
+    def start(self, system: str, question: str, history: list[dict] | None) -> dict:
+        return {"system": system, "messages": list(history or []) + [{"role": "user", "content": question}]}
+
+    def step(self, state: dict) -> Turn:
+        response = self._client.messages.create(
+            model=self.model, max_tokens=4000, system=state["system"], tools=tool_definitions(),
+            output_config={"effort": "low"}, messages=state["messages"])
+        usage = getattr(response, "usage", None)
+        tin, tout = getattr(usage, "input_tokens", 0) or 0, getattr(usage, "output_tokens", 0) or 0
+        if response.stop_reason == "refusal":
+            return Turn("refusal", input_tokens=tin, output_tokens=tout)
+        text = "".join(b.text for b in response.content if getattr(b, "type", "") == "text").strip()
+        calls = [(b.id, b.name, dict(b.input or {})) for b in response.content if getattr(b, "type", "") == "tool_use"]
+        stop = "tool" if response.stop_reason == "tool_use" else "end"
+        return Turn(stop, text, calls, tin, tout, raw=response)
+
+    def add_results(self, state: dict, turn: Turn, results: list[tuple[str, str, bool]]) -> None:
+        state["messages"].append({"role": "assistant", "content": turn.raw.content})
+        state["messages"].append({"role": "user", "content": [
+            {"type": "tool_result", "tool_use_id": cid, "content": content, "is_error": err}
+            for cid, content, err in results]})
+
+
+def databricks_llm_configured() -> bool:
+    from .engine import databricks_configured
+
+    return databricks_configured()
+
+
+def databricks_from_secrets(http=None) -> DatabricksFoundationModel:
+    from .engine import _secret
+
+    return DatabricksFoundationModel.discover(_secret("DATABRICKS_SERVER_HOSTNAME"), _secret("DATABRICKS_TOKEN"),
+                                              _secret("DATABRICKS_LLM_ENDPOINT"), http=http)
+
+
 # ------------------------------------------------------------- the agent
 @dataclass
 class LiveAnswer:
@@ -157,55 +308,50 @@ class LiveAnswer:
     results: list = field(default_factory=list)
 
 
-class ClaudeRiskAgent:
-    def __init__(self, tools: RiskTools, client=None, model: str | None = None) -> None:
+class RiskLLMAgent:
+    """An LLM drives the read-only tools; the grounding check decides whether its answer may be shown."""
+
+    def __init__(self, tools: RiskTools, backend) -> None:
         self.tools = tools
-        self.model = model or resolve_model()
-        if client is not None:
-            self._client = client
-        else:
-            import anthropic
-
-            self._client = anthropic.Anthropic(api_key=resolve_api_key(), timeout=90.0, max_retries=2)
-
-    @staticmethod
-    def available() -> bool:
-        return live_llm_available()
+        self.backend = backend
 
     def ask(self, question: str, history: list[dict] | None = None) -> LiveAnswer:
-        messages = list(history or []) + [{"role": "user", "content": question}]
-        results, calls, tin, tout = [], 0, 0, 0
         system = SYSTEM_PROMPT + f"\nThe reporting date is {self.tools.as_of.isoformat()}."
+        state = self.backend.start(system, question, history)
+        results, calls, tin, tout = [], 0, 0, 0
+        label = self.backend.label
         for _ in range(MAX_TOOL_ROUNDS + 1):
-            response = self._client.messages.create(
-                model=self.model, max_tokens=4000, system=system, tools=tool_definitions(),
-                output_config={"effort": "low"}, messages=messages)
-            usage = getattr(response, "usage", None)
-            tin += getattr(usage, "input_tokens", 0) or 0
-            tout += getattr(usage, "output_tokens", 0) or 0
-            if response.stop_reason == "refusal":
-                return LiveAnswer("", False, [], calls, tin, tout, self.model, error="The model declined.")
-            if response.stop_reason != "tool_use":
-                text = "".join(b.text for b in response.content if getattr(b, "type", "") == "text").strip()
-                ok, bad = grounding_check(text, results)
-                return LiveAnswer(text, ok, bad, calls, tin, tout, self.model, results=results)
-            messages.append({"role": "assistant", "content": response.content})
-            tool_results = []
-            for block in response.content:
-                if getattr(block, "type", "") != "tool_use":
-                    continue
+            turn = self.backend.step(state)
+            tin, tout = tin + turn.input_tokens, tout + turn.output_tokens
+            if turn.stop == "refusal":
+                return LiveAnswer("", False, [], calls, tin, tout, label, error="The model declined.")
+            if turn.stop != "tool":
+                ok, bad = grounding_check(turn.text, results)
+                return LiveAnswer(turn.text, ok, bad, calls, tin, tout, label, results=results)
+            replies = []
+            for call_id, name, args in turn.calls:
                 calls += 1
-                args = dict(block.input or {})
-                if block.name not in TOOL_NAMES:
-                    out, is_error = {"error": f"unknown tool {block.name}"}, True
+                if name not in TOOL_NAMES:
+                    out, is_error = {"error": f"unknown tool {name}"}, True
                 else:
                     try:
-                        out = self.tools.call(block.name, **args)
+                        out = self.tools.call(name, **args)
                         is_error = "error" in out
                     except TypeError as exc:
                         out, is_error = {"error": f"bad arguments: {exc}"}, True
                 results.append(out)
-                tool_results.append({"type": "tool_result", "tool_use_id": block.id,
-                                     "content": json.dumps(out)[:20000], "is_error": is_error})
-            messages.append({"role": "user", "content": tool_results})
-        return LiveAnswer("", False, [], calls, tin, tout, self.model, error="Stopped after too many tool rounds.")
+                replies.append((call_id, json.dumps(out)[:20000], is_error))
+            self.backend.add_results(state, turn, replies)
+        return LiveAnswer("", False, [], calls, tin, tout, label, error="Stopped after too many tool rounds.")
+
+
+class ClaudeRiskAgent(RiskLLMAgent):
+    """Backwards-compatible shortcut: the agent with the Anthropic backend."""
+
+    def __init__(self, tools: RiskTools, client=None, model: str | None = None) -> None:
+        super().__init__(tools, AnthropicClaude(client, model))
+        self.model = self.backend.model
+
+    @staticmethod
+    def available() -> bool:
+        return live_llm_available()
