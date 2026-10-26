@@ -1,0 +1,688 @@
+{
+  "metrics": {
+    "provisions": 44,
+    "change_accuracy": 1.0,
+    "parameter_delta_accuracy": 1.0,
+    "parameter_deltas": 14,
+    "assessed_provisions": 33,
+    "gap_status_accuracy": 0.9090909090909091,
+    "gap_detection_recall": 1.0,
+    "gap_detection_precision": 1.0,
+    "unsafe_misses": 0,
+    "false_alarms": 0,
+    "citation_accuracy": 0.8214285714285714,
+    "wrong_status_flagged_for_review": 3,
+    "wrong_status": 3
+  },
+  "development": {
+    "provisions": 37,
+    "change_accuracy": 1.0,
+    "parameter_delta_accuracy": null,
+    "parameter_deltas": null,
+    "assessed_provisions": 28,
+    "gap_status_accuracy": 0.8928571428571429,
+    "gap_detection_recall": 1.0,
+    "gap_detection_precision": 1.0,
+    "unsafe_misses": 0,
+    "false_alarms": 0,
+    "citation_accuracy": 0.8695652173913043,
+    "wrong_status_flagged_for_review": 3,
+    "wrong_status": 3
+  },
+  "held_out": {
+    "provisions": 7,
+    "change_accuracy": 1.0,
+    "parameter_delta_accuracy": null,
+    "parameter_deltas": null,
+    "assessed_provisions": 5,
+    "gap_status_accuracy": 1.0,
+    "gap_detection_recall": 1.0,
+    "gap_detection_precision": 1.0,
+    "unsafe_misses": 0,
+    "false_alarms": 0,
+    "citation_accuracy": 0.6,
+    "wrong_status_flagged_for_review": 0,
+    "wrong_status": 0
+  },
+  "held_out_circulars": [
+    "NPCA-FC-2026-22"
+  ],
+  "rows": [
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §1.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "MRM-006 §2"
+      ],
+      "policies_got": [
+        "MRM-006 §2"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §2.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "MISSING",
+      "status_got": "MISSING",
+      "policies_expected": [],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "High"
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §3.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "MRM-006 §5"
+      ],
+      "policies_got": [
+        "MRM-006 §5"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §4.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "MRM-006 §6"
+      ],
+      "policies_got": [
+        "MRM-006 §6"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §4.2",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "MRM-006 §6",
+        "REC-007 §2"
+      ],
+      "policies_got": [
+        "REC-007 §2",
+        "MRM-006 §6"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §5.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "MRM-006 §4"
+      ],
+      "policies_got": [
+        "MRM-006 §4"
+      ],
+      "flagged": true,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §6.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "MISSING",
+      "policies_expected": [
+        "ORM-005 §3"
+      ],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "High",
+      "citation_ok": false
+    },
+    {
+      "circular": "NPCA-AI-2026-03",
+      "pid": "NPCA-AI-2026-03 §7.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "MISSING",
+      "status_got": "MISSING",
+      "policies_expected": [],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "High"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §1.1",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §1.2",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "AML-002 §1"
+      ],
+      "policies_got": [
+        "AML-002 §1"
+      ],
+      "flagged": false,
+      "rating": "Medium",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §2.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "AML-002 §2"
+      ],
+      "policies_got": [
+        "AML-002 §2"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §3.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "AML-002 §3"
+      ],
+      "policies_got": [
+        "AML-002 §3"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §3.2",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §4.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "AML-002 §4"
+      ],
+      "policies_got": [
+        "AML-002 §4"
+      ],
+      "flagged": false,
+      "rating": "Critical",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §4.2",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "AML-002 §4"
+      ],
+      "policies_got": [
+        "AML-002 §4"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §4.3",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §5.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "MISSING",
+      "status_got": "MISSING",
+      "policies_expected": [],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "High"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §5.2",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "MISSING",
+      "status_got": "MISSING",
+      "policies_expected": [],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "Critical"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §6.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "MRM-006 §4"
+      ],
+      "policies_got": [
+        "MRM-006 §4"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2026-14 §7.1",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-14",
+      "pid": "NPCA-FC-2023-06 §4.4",
+      "change_expected": "REMOVED",
+      "change_got": "REMOVED"
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §1.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "KYC-001 §4"
+      ],
+      "policies_got": [
+        "KYC-001 §4"
+      ],
+      "flagged": false,
+      "rating": "Critical",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §1.2",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §2.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "KYC-001 §5"
+      ],
+      "policies_got": [
+        "KYC-001 §5"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §2.2",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "KYC-001 §3",
+        "KYC-001 §5"
+      ],
+      "policies_got": [
+        "KYC-001 §3"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §3.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "KYC-001 §7"
+      ],
+      "policies_got": [
+        "KYC-001 §7"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §3.2",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "KYC-001 §7"
+      ],
+      "policies_got": [
+        "KYC-001 §7"
+      ],
+      "flagged": false,
+      "rating": "Critical",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §4.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "KYC-001 §8"
+      ],
+      "policies_got": [
+        "KYC-001 §8"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §5.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "MISSING",
+      "policies_expected": [
+        "KYC-001 §2"
+      ],
+      "policies_got": [],
+      "flagged": true,
+      "rating": "Critical",
+      "citation_ok": false
+    },
+    {
+      "circular": "NPCA-FC-2026-19",
+      "pid": "NPCA-FC-2026-19 §6.1",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §1.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "SAN-003 §2"
+      ],
+      "policies_got": [
+        "SAN-003 §2"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §2.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "SAN-003 §3"
+      ],
+      "policies_got": [
+        "SAN-003 §3"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §3.1",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §4.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "SAN-003 §9",
+        "SAN-003 §5"
+      ],
+      "policies_got": [
+        "AML-002 §2"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": false
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §5.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "SAN-003 §7"
+      ],
+      "policies_got": [
+        "SAN-003 §7"
+      ],
+      "flagged": false,
+      "rating": "Medium",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2026-22 §6.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "SAN-003 §4"
+      ],
+      "policies_got": [
+        "SAN-003 §8"
+      ],
+      "flagged": false,
+      "rating": "Medium",
+      "citation_ok": false
+    },
+    {
+      "circular": "NPCA-FC-2026-22",
+      "pid": "NPCA-FC-2024-09 §4.1",
+      "change_expected": "REMOVED",
+      "change_got": "REMOVED"
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §1.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "ORM-005 §3"
+      ],
+      "policies_got": [
+        "ORM-005 §3"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §2.1",
+      "change_expected": "NEW",
+      "change_got": "NEW",
+      "status_expected": "MISSING",
+      "status_got": "MISSING",
+      "policies_expected": [],
+      "policies_got": [],
+      "flagged": false,
+      "rating": "High"
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §3.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "COVERED",
+      "status_got": "COVERED",
+      "policies_expected": [
+        "TPR-008 §4"
+      ],
+      "policies_got": [
+        "ORM-005 §3"
+      ],
+      "flagged": false,
+      "rating": "Low",
+      "citation_ok": false
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §3.2",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "PARTIAL",
+      "status_got": "PARTIAL",
+      "policies_expected": [
+        "TPR-008 §6"
+      ],
+      "policies_got": [
+        "TPR-008 §6"
+      ],
+      "flagged": false,
+      "rating": "Medium",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §4.1",
+      "change_expected": "AMENDED",
+      "change_got": "AMENDED",
+      "status_expected": "CONFLICT",
+      "status_got": "CONFLICT",
+      "policies_expected": [
+        "ORM-005 §8"
+      ],
+      "policies_got": [
+        "ORM-005 §8"
+      ],
+      "flagged": false,
+      "rating": "High",
+      "citation_ok": true
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2026-08 §5.1",
+      "change_expected": "UNCHANGED",
+      "change_got": "UNCHANGED"
+    },
+    {
+      "circular": "NPCA-OR-2026-08",
+      "pid": "NPCA-OR-2024-02 §1.2",
+      "change_expected": "REMOVED",
+      "change_got": "REMOVED"
+    }
+  ],
+  "confusion": [
+    {
+      "expected": "CONFLICT",
+      "got": "CONFLICT",
+      "count": 8
+    },
+    {
+      "expected": "COVERED",
+      "got": "COVERED",
+      "count": 11
+    },
+    {
+      "expected": "MISSING",
+      "got": "MISSING",
+      "count": 5
+    },
+    {
+      "expected": "PARTIAL",
+      "got": "CONFLICT",
+      "count": 1
+    },
+    {
+      "expected": "PARTIAL",
+      "got": "MISSING",
+      "count": 2
+    },
+    {
+      "expected": "PARTIAL",
+      "got": "PARTIAL",
+      "count": 6
+    }
+  ],
+  "mode": "offline rules engine",
+  "as_of": "2026-10-26"
+}

@@ -1,0 +1,416 @@
+{
+  "_note": "Expected results written by hand from a compliance analyst's reading of each synthetic circular against Ledgerline's policies. 'policies' lists acceptable policy sections for the finding (empty when nothing in the policy library covers it). Unchanged provisions are listed so change detection is scored on every provision. NPCA-FC-2026-22 is a held-out circular: it and its expected results were written after the thresholds were frozen, and it was not used for tuning.",
+  "NPCA-FC-2026-14": [
+    {
+      "pid": "NPCA-FC-2026-14 §1.1",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §1.2",
+      "change": "AMENDED",
+      "status": "PARTIAL",
+      "policies": [
+        "AML-002 §1"
+      ],
+      "params": []
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §2.1",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "AML-002 §2"
+      ],
+      "params": [
+        [
+          "annually",
+          "six months",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §3.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "AML-002 §3"
+      ],
+      "params": [
+        [
+          "10 business days",
+          "5 business days",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §3.2",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §4.1",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "AML-002 §4"
+      ],
+      "params": [
+        [
+          "30 calendar days",
+          "15 calendar days",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §4.2",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "AML-002 §4"
+      ],
+      "params": [
+        [
+          "60 calendar days",
+          "45 calendar days",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §4.3",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §5.1",
+      "change": "NEW",
+      "status": "MISSING",
+      "policies": []
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §5.2",
+      "change": "NEW",
+      "status": "MISSING",
+      "policies": []
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §6.1",
+      "change": "NEW",
+      "status": "COVERED",
+      "policies": [
+        "MRM-006 §4"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-14 §7.1",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2023-06 §4.4",
+      "change": "REMOVED"
+    }
+  ],
+  "NPCA-FC-2026-19": [
+    {
+      "pid": "NPCA-FC-2026-19 §1.1",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "KYC-001 §4"
+      ],
+      "params": [
+        [
+          "25 percent",
+          "10 percent",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §1.2",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §2.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "KYC-001 §5"
+      ],
+      "params": []
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §2.2",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "KYC-001 §3",
+        "KYC-001 §5"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §3.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "KYC-001 §7"
+      ],
+      "params": [
+        [
+          "36 months",
+          "24 months",
+          "tightened"
+        ],
+        [
+          "60 months",
+          "36 months",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §3.2",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "KYC-001 §7"
+      ],
+      "params": [
+        [
+          "90 days",
+          "30 days",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §4.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "KYC-001 §8"
+      ],
+      "params": [
+        [
+          "30 days",
+          "10 business days",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §5.1",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "KYC-001 §2"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-19 §6.1",
+      "change": "UNCHANGED"
+    }
+  ],
+  "NPCA-AI-2026-03": [
+    {
+      "pid": "NPCA-AI-2026-03 §1.1",
+      "change": "NEW",
+      "status": "COVERED",
+      "policies": [
+        "MRM-006 §2"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §2.1",
+      "change": "NEW",
+      "status": "MISSING",
+      "policies": []
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §3.1",
+      "change": "NEW",
+      "status": "COVERED",
+      "policies": [
+        "MRM-006 §5"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §4.1",
+      "change": "NEW",
+      "status": "COVERED",
+      "policies": [
+        "MRM-006 §6"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §4.2",
+      "change": "NEW",
+      "status": "CONFLICT",
+      "policies": [
+        "MRM-006 §6",
+        "REC-007 §2"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §5.1",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "MRM-006 §4"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §6.1",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "ORM-005 §3"
+      ]
+    },
+    {
+      "pid": "NPCA-AI-2026-03 §7.1",
+      "change": "NEW",
+      "status": "MISSING",
+      "policies": []
+    }
+  ],
+  "NPCA-OR-2026-08": [
+    {
+      "pid": "NPCA-OR-2026-08 §1.1",
+      "change": "AMENDED",
+      "status": "PARTIAL",
+      "policies": [
+        "ORM-005 §3"
+      ],
+      "params": [
+        [
+          "24 hours",
+          "4 hours",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-OR-2026-08 §2.1",
+      "change": "NEW",
+      "status": "MISSING",
+      "policies": []
+    },
+    {
+      "pid": "NPCA-OR-2026-08 §3.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "TPR-008 §4"
+      ],
+      "params": [
+        [
+          "72 hours",
+          "24 hours",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-OR-2026-08 §3.2",
+      "change": "AMENDED",
+      "status": "PARTIAL",
+      "policies": [
+        "TPR-008 §6"
+      ],
+      "params": []
+    },
+    {
+      "pid": "NPCA-OR-2026-08 §4.1",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "ORM-005 §8"
+      ],
+      "params": [
+        [
+          "10,000 US dollars",
+          "5,000 US dollars",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-OR-2026-08 §5.1",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-OR-2024-02 §1.2",
+      "change": "REMOVED"
+    }
+  ],
+  "_held_out": [
+    "NPCA-FC-2026-22"
+  ],
+  "NPCA-FC-2026-22": [
+    {
+      "pid": "NPCA-FC-2026-22 §1.1",
+      "change": "AMENDED",
+      "status": "CONFLICT",
+      "policies": [
+        "SAN-003 §2"
+      ],
+      "params": [
+        [
+          "48 hours",
+          "4 hours",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-22 §2.1",
+      "change": "AMENDED",
+      "status": "COVERED",
+      "policies": [
+        "SAN-003 §3"
+      ],
+      "params": [
+        [
+          "three months",
+          "monthly",
+          "tightened"
+        ]
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-22 §3.1",
+      "change": "UNCHANGED"
+    },
+    {
+      "pid": "NPCA-FC-2026-22 §4.1",
+      "change": "NEW",
+      "status": "COVERED",
+      "policies": [
+        "SAN-003 §9",
+        "SAN-003 §5"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-22 §5.1",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "SAN-003 §7"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2026-22 §6.1",
+      "change": "NEW",
+      "status": "PARTIAL",
+      "policies": [
+        "SAN-003 §4"
+      ]
+    },
+    {
+      "pid": "NPCA-FC-2024-09 §4.1",
+      "change": "REMOVED"
+    }
+  ]
+}

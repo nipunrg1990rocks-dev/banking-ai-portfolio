@@ -16,11 +16,13 @@ line-length = 120
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["portfolio_core", "copilot", "lakehouse", "explorer"]
+known-first-party = ["portfolio_core", "copilot", "lakehouse", "explorer", "regradar"]
 
 [tool.ruff.lint.per-file-ignores]
 # Databricks notebooks: spark, dbutils and display are injected by the runtime.
 "projects/p2_lakehouse/databricks/*" = ["F821", "E402", "E501", "I001"]
+"projects/p5_reg_change/databricks/*" = ["F821", "E402", "E501", "I001"]
 # Agent prompts and on-page explanations are prose; wrapping them mid-sentence would change what the model reads.
 "projects/p2_lakehouse/agents/specs.py" = ["E501"]
 "projects/p2_lakehouse/agent_ui.py" = ["E501"]
+"projects/p5_reg_change/regradar/llm.py" = ["E501"]

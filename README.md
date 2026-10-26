@@ -8,7 +8,7 @@ Five independent, AI-assisted portfolio projects that apply GenAI and data engin
 | 02 | [Banking Data Engineering Lakehouse](projects/p2_lakehouse/) | PySpark, Spark SQL, Delta Lake (MERGE, SCD2, CDF, time travel), Databricks Unity Catalog and Jobs, Streamlit, DuckDB | Built and tested locally, in CI and on Databricks Free Edition; app deploy pending |
 | 03 | Agentic AI Operations Exception Manager | LangGraph, human-in-the-loop, audit trail | Planned |
 | 04 | AI-Powered Risk & Data Quality Dashboard | Databricks SQL, Streamlit | Planned |
-| 05 | GenAI Regulatory Change Impact Analyzer | Document intelligence, RAG, control mapping | Planned |
+| 05 | [RegRadar: GenAI Regulatory Change Impact Analyzer](projects/p5_reg_change/) | 7-agent crew, document intelligence, hybrid RAG, gap and control mapping, Databricks foundation models + `ai_query`, Delta, Streamlit | Built and tested locally and in CI; Databricks run and app deploy pending |
 
 ## Shared building blocks (`portfolio_core/`)
 
@@ -27,4 +27,4 @@ pip install -r requirements-dev.txt
 ruff check . && pytest
 ```
 
-CI (GitHub Actions) runs lint, tests, the Project 01 evaluation and the Project 02 Spark pipeline on every push. Project 02's pipeline needs Java 17+ locally. See [PORTFOLIO_TRACKER.md](PORTFOLIO_TRACKER.md) for live status and [docs/deployment.md](docs/deployment.md) for hosting.
+CI (GitHub Actions) runs lint, tests, the Project 01 and 05 evaluations and the Project 02 Spark pipeline on every push. Project 02's pipeline needs Java 17+ locally. See [PORTFOLIO_TRACKER.md](PORTFOLIO_TRACKER.md) for live status and [docs/deployment.md](docs/deployment.md) for hosting.
