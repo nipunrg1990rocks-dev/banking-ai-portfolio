@@ -1,0 +1,14 @@
+change_id,event_date,system,change_type,description
+CHG-2026-0955,2026-08-17,OnboardIQ,RELEASE,Digital onboarding form v3: address fields moved to an optional step
+INC-2026-0815,2026-09-22,PayFlow,INCIDENT,Outbound payment batch PB-0922-07 released twice; USD 1.85m not recovered
+BUS-2026-0012,2026-09-28,PayFlow,BUSINESS_CHANGE,Launch of EUR instant-payments corridor for SME clients
+CHG-2026-1043,2026-10-05,LedgerCore,RELEASE,Core banking release R26.10 (posting engine and value-date logic)
+BUS-2026-0019,2026-10-06,Treasury,BUSINESS_CHANGE,Two corporate clients move USD 410m of operational deposits to a competitor
+INC-2026-0871,2026-10-07,MarketData,INCIDENT,"FX rate vendor outage: end-of-day rate file missing, partial re-delivery next day"
+CHG-2026-1061,2026-10-08,LedgerCore,RELEASE,Hotfix R26.10.1: corrects value-date mapping for EUR nostro postings
+CHG-2026-0731,2026-07-09,GeneralLedger,RELEASE,Quarter-end close automation scripts
+CHG-2026-0842,2026-08-03,CardHub,RELEASE,Card scheme fee table update
+CHG-2026-0918,2026-09-03,CardHub,RELEASE,Tokenisation service patch
+CHG-2026-0977,2026-09-14,GeneralLedger,RELEASE,Cost-centre hierarchy refresh
+CHG-2026-1002,2026-10-01,PayFlow,RELEASE,SWIFT certificate renewal
+CHG-2026-1019,2026-10-02,HR Systems,RELEASE,Workforce management tool upgrade

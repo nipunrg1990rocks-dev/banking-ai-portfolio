@@ -1,0 +1,7 @@
+recon_id,description,owner_team
+NOSTRO_USD,"USD nostro: Harbor Trust Company, New York vs core ledger",Cash Reconciliations
+NOSTRO_EUR,"EUR nostro: Nordbank AG, Frankfurt vs core ledger",Cash Reconciliations
+NOSTRO_GBP,"GBP nostro: Castle & Moor Bank, London vs core ledger",Cash Reconciliations
+GL_SUBLEDGER,Loans sub-ledger vs general ledger,Finance Reconciliations
+CARD_SCHEME,Card scheme settlement vs card ledger,Cards Operations
+SWIFT_PAYMENTS,SWIFT messages vs payment engine,Payments Operations

@@ -30,3 +30,5 @@ jobs:
           python projects/p2_lakehouse/run_pipeline.py --workdir /tmp/lakehouse --no-snapshot 2>/dev/null \
             | tee -a "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Risk Insights Agent back-test (Project 04)
+        run: python projects/p4_risk_dashboard/evaluate.py >> "$GITHUB_STEP_SUMMARY"
