@@ -5,7 +5,7 @@ Five independent, AI-assisted portfolio projects that apply GenAI and data engin
 | # | Project | Stack | Status |
 |---|---|---|---|
 | 01 | [Enterprise Banking Risk & Compliance AI Copilot](projects/p1_compliance_copilot/) | Python, RAG (BM25 + vectors), Claude (optional), Streamlit, SQLite audit chain, MLflow | Built, tested, [live demo](https://abv2xygrggmaucidx5hjbg.streamlit.app) |
-| 02 | [Banking Data Engineering Lakehouse](projects/p2_lakehouse/) | PySpark, Spark SQL, Delta Lake (MERGE, SCD2, CDF, time travel), Databricks Unity Catalog and Jobs, Streamlit, DuckDB | Built and tested locally and in CI; Databricks run pending |
+| 02 | [Banking Data Engineering Lakehouse](projects/p2_lakehouse/) | PySpark, Spark SQL, Delta Lake (MERGE, SCD2, CDF, time travel), Databricks Unity Catalog and Jobs, Streamlit, DuckDB | Built and tested locally, in CI and on Databricks Free Edition; app deploy pending |
 | 03 | Agentic AI Operations Exception Manager | LangGraph, human-in-the-loop, audit trail | Planned |
 | 04 | AI-Powered Risk & Data Quality Dashboard | Databricks SQL, Streamlit | Planned |
 | 05 | GenAI Regulatory Change Impact Analyzer | Document intelligence, RAG, control mapping | Planned |
