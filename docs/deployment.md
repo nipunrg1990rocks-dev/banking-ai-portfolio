@@ -7,6 +7,7 @@
 | App | Main file path |
 |---|---|
 | 01 Compliance Copilot | `projects/p1_compliance_copilot/app.py` |
+| 02 Banking Lakehouse | `projects/p2_lakehouse/app.py` (reads the committed run snapshot; no Spark or Java needed) |
 
 Python version: 3.12 (choose it under Advanced settings).
 

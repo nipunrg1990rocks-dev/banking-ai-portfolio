@@ -1,0 +1,33 @@
+run_id,layer,table_name,rule_name,action,description,rows_checked,rows_failed,pass_rate_pct,status
+run_20261026T141724Z,silver,silver.transactions,not_future_dated,drop,Transaction cannot be dated after the batch business date,16676,2,99.988,QUARANTINED
+run_20261026T141724Z,silver,silver.transactions,fx_rate_available,drop,A USD FX rate must exist for the currency and date (otherwise amount_usd would be wrong),16676,0,100.0,PASS
+run_20261026T141724Z,silver,silver.transactions,valid_currency,drop,Currency must be supported,16676,3,99.982,QUARANTINED
+run_20261026T141724Z,silver,silver.transactions,known_account,drop,Transaction must post to a known account,16676,5,99.97,QUARANTINED
+run_20261026T141724Z,silver,silver.transactions,valid_timestamp,drop,Timestamp must parse as ISO-8601 UTC,16676,2,99.988,QUARANTINED
+run_20261026T141724Z,silver,silver.customers,customer_id_present,drop,Every customer must have an identifier,671,1,99.851,QUARANTINED
+run_20261026T141724Z,silver,silver.customers,valid_email,warn,"E-mail should be well formed (kept, flagged for data steward)",671,3,99.553,WARN
+run_20261026T141724Z,silver,silver.customers,dob_present,warn,Date of birth should be present (needed for KYC refresh),671,2,99.702,WARN
+run_20261026T141724Z,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20260930: bronze 13537 = duplicates 25 + quarantined 19 + inserted 13493 + already loaded 0,13537,0,100.0,PASS
+run_20261026T141724Z,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20261007: bronze 3169 = duplicates 5 + quarantined 3 + inserted 3151 + already loaded 10,3169,0,100.0,PASS
+run_20261026T141724Z,silver,silver.customers,valid_risk_rating,warn,"KYC risk rating should be LOW, MEDIUM or HIGH; an invalid rating is defaulted to HIGH (fail-safe)",671,1,99.851,WARN
+run_20261026T141724Z,silver,silver.customers,valid_segment,drop,Customer segment must be a known value,671,0,100.0,PASS
+run_20261026T141724Z,silver,silver.accounts,known_customer,drop,Account must belong to a known customer (referential integrity),1133,2,99.823,QUARANTINED
+run_20261026T141724Z,silver,silver.accounts,valid_currency,drop,Account currency must be supported,1133,0,100.0,PASS
+run_20261026T141724Z,silver,silver.accounts,valid_status,drop,Account status must be a known value,1133,0,100.0,PASS
+run_20261026T141724Z,silver,silver.customers,known_country,warn,Country of residence should exist in the country reference table,671,2,99.702,WARN
+run_20261026T141724Z,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20260930: bronze 603 = duplicates 2 + quarantined 1 + valid 600,603,0,100.0,PASS
+run_20261026T141724Z,silver,silver.accounts,account_id_present,drop,Every account needs an id,1133,0,100.0,PASS
+run_20261026T141724Z,silver,silver.transactions,amount_positive,drop,Amount must be positive (direction comes from the transaction type),16676,3,99.982,QUARANTINED
+run_20261026T141724Z,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20261007: bronze 57 = duplicates 0 + quarantined 0 + valid 57,57,0,100.0,PASS
+run_20261026T141724Z,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20261007: bronze 70 = duplicates 0 + quarantined 0 + valid 70,70,0,100.0,PASS
+run_20261026T141724Z,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20260930: bronze 1077 = duplicates 1 + quarantined 2 + valid 1074,1077,0,100.0,PASS
+run_20261026T141724Z,silver,silver.transactions,txn_id_present,drop,Every transaction needs an id,16676,1,99.994,QUARANTINED
+run_20261026T141724Z,silver,silver.transactions,amount_present,drop,Amount must be present and numeric,16676,6,99.964,QUARANTINED
+run_20261026T141724Z,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 3169 rows, source manifest says 3169",3169,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 13537 rows, source manifest says 13537",13537,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20260930: landed amount total 45,633,618.88 vs manifest 45,633,618.88",1,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20261007: landed amount total 17,192,687.84 vs manifest 17,192,687.84",1,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 1077 rows, source manifest says 1077",1077,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 603 rows, source manifest says 603",603,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 57 rows, source manifest says 57",57,0,100.0,PASS
+run_20261026T141724Z,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 70 rows, source manifest says 70",70,0,100.0,PASS

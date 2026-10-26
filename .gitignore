@@ -8,3 +8,7 @@ mlruns/
 mlartifacts/
 .streamlit/secrets.toml
 .env
+.lakehouse_work/
+spark-warehouse/
+metastore_db/
+derby.log

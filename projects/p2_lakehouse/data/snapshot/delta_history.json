@@ -1,0 +1,85 @@
+{
+  "silver.transactions": [
+    {
+      "version": 0,
+      "timestamp": "2026-10-26 14:18:04.550000",
+      "operation": "WRITE",
+      "rows_at_version": 13493,
+      "metrics": {
+        "numOutputRows": "13493"
+      }
+    },
+    {
+      "version": 1,
+      "timestamp": "2026-10-26 14:18:27.609000",
+      "operation": "MERGE",
+      "rows_at_version": 16644,
+      "metrics": {
+        "numOutputRows": "3151",
+        "numTargetRowsInserted": "3151",
+        "numTargetRowsUpdated": "0",
+        "numTargetRowsDeleted": "0"
+      }
+    },
+    {
+      "version": 2,
+      "timestamp": "2026-10-26 14:18:42.550000",
+      "operation": "OPTIMIZE",
+      "rows_at_version": 16644,
+      "metrics": {}
+    }
+  ],
+  "silver.customers": [
+    {
+      "version": 0,
+      "timestamp": "2026-10-26 14:17:54.270000",
+      "operation": "WRITE",
+      "rows_at_version": 600,
+      "metrics": {
+        "numOutputRows": "600"
+      }
+    },
+    {
+      "version": 1,
+      "timestamp": "2026-10-26 14:18:16.430000",
+      "operation": "MERGE",
+      "rows_at_version": 665,
+      "metrics": {
+        "numOutputRows": "665",
+        "numTargetRowsInserted": "65",
+        "numTargetRowsUpdated": "40",
+        "numTargetRowsDeleted": "0"
+      }
+    },
+    {
+      "version": 2,
+      "timestamp": "2026-10-26 14:18:43.346000",
+      "operation": "OPTIMIZE",
+      "rows_at_version": 665,
+      "metrics": {}
+    }
+  ],
+  "silver.accounts": [
+    {
+      "version": 0,
+      "timestamp": "2026-10-26 14:17:58.486000",
+      "operation": "WRITE",
+      "rows_at_version": 1074,
+      "metrics": {
+        "numOutputRows": "1074"
+      }
+    },
+    {
+      "version": 1,
+      "timestamp": "2026-10-26 14:18:21.070000",
+      "operation": "MERGE",
+      "rows_at_version": 1121,
+      "metrics": {
+        "numOutputRows": "1121",
+        "numTargetRowsInserted": "47",
+        "numTargetRowsUpdated": "10",
+        "numTargetRowsDeleted": "0"
+      }
+    }
+  ]
+}

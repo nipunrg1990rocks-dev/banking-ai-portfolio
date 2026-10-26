@@ -1,0 +1,4 @@
+# Needed only to run the Spark pipeline locally or in CI (Java 17+ also required).
+# Databricks already provides Spark and Delta Lake, so nothing here is installed there.
+pyspark==4.1.3
+delta-spark==4.4.1

@@ -16,4 +16,8 @@ line-length = 120
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["portfolio_core", "copilot"]
+known-first-party = ["portfolio_core", "copilot", "lakehouse", "explorer"]
+
+[tool.ruff.lint.per-file-ignores]
+# Databricks notebooks: spark, dbutils and display are injected by the runtime.
+"projects/p2_lakehouse/databricks/*" = ["F821", "E402", "E501", "I001"]

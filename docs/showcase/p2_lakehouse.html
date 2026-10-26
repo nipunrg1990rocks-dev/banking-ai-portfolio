@@ -1,0 +1,243 @@
+<title>Ledgerline Banking Lakehouse</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: same reading column as Project 01, with a medallion strip (bronze/silver/gold) and a reconciliation "ledger line" as motifs */
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #121c26;
+    --muted: #56626e;
+    --rule: #d8dee4;
+    --accent: #1d4f91;
+    --accent-soft: #e3ecf8;
+    --bronze: #9a6324; --bronze-soft: #f4e7d6;
+    --silver: #5b6875; --silver-soft: #e9edf1;
+    --gold: #8a6a00; --gold-soft: #f8efcf;
+    --ok: #1f7a4d; --ok-soft: #dff2e7;
+    --bad: #a8322a; --bad-soft: #f8e1df;
+    --tag-bg: #eaeff4;
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e141b; --surface: #151f29; --ink: #e5ebf1; --muted: #9aa9b7; --rule: #283746;
+      --accent: #7fb0f0; --accent-soft: #172a42;
+      --bronze: #e0a467; --bronze-soft: #3a2a18; --silver: #b7c3cf; --silver-soft: #222e3a;
+      --gold: #e8c75a; --gold-soft: #3a3214; --ok: #6fd3a0; --ok-soft: #133526; --bad: #f08f86; --bad-soft: #3d1d1a;
+      --tag-bg: #1e2b38; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e141b; --surface: #151f29; --ink: #e5ebf1; --muted: #9aa9b7; --rule: #283746;
+    --accent: #7fb0f0; --accent-soft: #172a42;
+    --bronze: #e0a467; --bronze-soft: #3a2a18; --silver: #b7c3cf; --silver-soft: #222e3a;
+    --gold: #e8c75a; --gold-soft: #3a3214; --ok: #6fd3a0; --ok-soft: #133526; --bad: #f08f86; --bad-soft: #3d1d1a;
+    --tag-bg: #1e2b38; color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .wrap {
+    max-width: 920px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 56px;
+    display: grid; gap: 44px;
+  }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 1.55rem; font-weight: 600; }
+  h3 { font-size: 1.1rem; font-weight: 600; }
+  p { margin: 0; max-width: 65ch; }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .tag { font-family: var(--mono); font-size: .8rem; background: var(--tag-bg); color: var(--ink); padding: .1rem .45rem; border-radius: 4px; white-space: nowrap; }
+  section { display: grid; gap: 16px; }
+
+  .hero { display: grid; gap: 18px; border-bottom: 1px solid var(--rule); padding-bottom: 36px; }
+  .lede { font-size: 1.15rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; padding: .7rem 1.1rem; border-radius: 8px; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.secondary { color: var(--accent); background: transparent; }
+  .disclose { font-size: .9rem; color: var(--muted); }
+
+  /* Medallion strip: the real layers in order, with real row counts */
+  .medallion { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .layer { border-radius: 10px; padding: 14px; display: grid; gap: 6px; min-width: 0; border: 1px solid var(--rule); }
+  .layer .count { font-family: var(--display); font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .layer p { font-size: .88rem; color: var(--muted); }
+  .layer.src { background: var(--accent-soft); } .layer.src .eyebrow { color: var(--accent); }
+  .layer.br { background: var(--bronze-soft); } .layer.br .eyebrow { color: var(--bronze); }
+  .layer.sv { background: var(--silver-soft); } .layer.sv .eyebrow { color: var(--silver); }
+  .layer.gd { background: var(--gold-soft); } .layer.gd .eyebrow { color: var(--gold); }
+
+  /* Reconciliation ledger line */
+  .sample { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 14px; }
+  .ledger { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+  .cell { border-radius: 8px; padding: 8px 12px; display: grid; text-align: center; min-width: 0; }
+  .cell b { font-family: var(--display); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+  .cell span { font-size: .78rem; color: var(--muted); }
+  .op { align-self: center; font-weight: 700; color: var(--muted); }
+  .c-br { background: var(--bronze-soft); } .c-dup { background: var(--tag-bg); } .c-q { background: var(--bad-soft); }
+  .c-re { background: var(--accent-soft); } .c-ok { background: var(--ok-soft); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: .78rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.review { background: var(--gold-soft); color: var(--gold); }
+  .alert { border-left: 3px solid var(--bad); padding-left: 12px; display: grid; gap: 6px; }
+  .alert ul { margin: 0; padding-left: 1.1rem; font-family: var(--mono); font-size: .85rem; font-variant-numeric: tabular-nums; }
+  .note { font-size: .88rem; color: var(--muted); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 4px; align-content: start; }
+  .stat b { font-family: var(--display); font-size: 1.9rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat span { font-size: .85rem; color: var(--muted); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cols > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .list li { padding-left: 18px; position: relative; }
+  .list li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; background: var(--accent); border-radius: 2px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack .tag { font-size: .85rem; padding: .25rem .6rem; }
+
+  .status { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  .status th, .status td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .status th { font-weight: 600; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+  .table-wrap { overflow-x: auto; }
+
+  .role { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 10px; }
+  footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: .88rem; color: var(--muted); display: grid; gap: 6px; }
+
+  @media (max-width: 760px) {
+    .stats, .medallion { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition: transform .15s ease; }
+    .btn:hover { transform: translateY(-1px); }
+  }
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Portfolio project 02 · Data engineering · Databricks &amp; Delta Lake</span>
+    <h1>Ledgerline Banking Lakehouse</h1>
+    <p class="lede">A Bronze, Silver and Gold data pipeline for a bank, built on Apache Spark and Delta Lake. It checks every source record, quarantines bad data with the reason, keeps the full history of customer risk ratings, and refuses to publish numbers that don't reconcile.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p2_lakehouse" target="_blank" rel="noopener">View the code on GitHub ↗</a>
+      <a class="btn secondary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/blob/main/projects/p2_lakehouse/docs/Ledgerline_Banking_Lakehouse_Interview_Pack.pdf" target="_blank" rel="noopener">Read the project pack (PDF) ↗</a>
+    </div>
+    <p class="disclose">Independent project built by Nipun Gupta with AI-assisted development tools. All customers, accounts and transactions are synthetic and describe a fictional bank. It is not affiliated with any employer.</p>
+  </header>
+
+  <section aria-labelledby="why">
+    <span class="eyebrow">The banking problem</span>
+    <h2 id="why">Bad data becomes a misstated report</h2>
+    <p>Source systems send files with missing amounts, duplicates and late re-sends. Customer risk ratings change, and overwriting them destroys the history auditors ask for. Reports built on that data can double-count a payment or miss an AML pattern, and nobody notices until a reconciliation breaks. This lakehouse treats data the way a bank treats its books: every record is accounted for, and a run that doesn't balance stops.</p>
+  </section>
+
+  <section aria-labelledby="layers">
+    <span class="eyebrow">The medallion, with real row counts</span>
+    <h2 id="layers">Raw files in, trusted tables out</h2>
+    <div class="medallion">
+      <div class="layer src"><span class="eyebrow">Landing</span><span class="count">18,513</span><p>Source records in two daily batches, plus a manifest with control totals</p></div>
+      <div class="layer br"><span class="eyebrow">Bronze</span><span class="count">16,706</span><p>Transactions kept exactly as delivered, tagged with source file and load time</p></div>
+      <div class="layer sv"><span class="eyebrow">Silver</span><span class="count">16,644</span><p>Validated, de-duplicated, converted to USD, merged without double-counting</p></div>
+      <div class="layer gd"><span class="eyebrow">Gold</span><span class="count">5 tables</span><p>AML alert candidates, customer 360, KPIs and a data-quality scorecard</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sample">
+    <span class="eyebrow">What the pipeline proves</span>
+    <h2 id="sample">Every transaction is accounted for</h2>
+    <div class="sample">
+      <div class="pills"><span class="pill ok">Batch 7 Oct · balanced</span></div>
+      <div class="ledger" role="group" aria-label="Reconciliation for the 7 October batch">
+        <div class="cell c-br"><b>3,169</b><span>landed in Bronze</span></div><span class="op">=</span>
+        <div class="cell c-dup"><b>5</b><span>duplicates</span></div><span class="op">+</span>
+        <div class="cell c-q"><b>3</b><span>quarantined</span></div><span class="op">+</span>
+        <div class="cell c-re"><b>10</b><span>re-sent, already loaded</span></div><span class="op">+</span>
+        <div class="cell c-ok"><b>3,151</b><span>inserted to Silver</span></div>
+      </div>
+      <p class="note">Ten September payments were re-sent a week later. A Delta MERGE recognised them and did not insert them again. If the equation didn't balance, the run would stop before Gold was refreshed.</p>
+      <div class="alert">
+        <div class="pills"><span class="pill review">AML candidate · pending human review</span></div>
+        <p><b>Structuring:</b> 4 cash deposits between 9,000 and 9,999.99 USD on 9 September, total 38,425.64 USD</p>
+        <ul><li>T000013501 · 9,252.73</li><li>T000013504 · 9,535.66</li><li>T000013503 · 9,857.84</li><li>T000013502 · 9,779.41</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="results">
+    <span class="eyebrow">Measured, not claimed</span>
+    <h2 id="results">Results from automated testing</h2>
+    <div class="stats">
+      <div class="stat"><b>16 / 16</b><span>Blocking reconciliation controls passed</span></div>
+      <div class="stat"><b>7 / 7</b><span>Planted AML scenarios found, with no false alerts</span></div>
+      <div class="stat"><b>22 / 22</b><span>Planted transaction defects quarantined, each with its rule</span></div>
+      <div class="stat"><b>44</b><span>Automated tests running the real Spark pipeline on every change</span></div>
+    </div>
+    <p class="note">The synthetic data generator keeps an answer key of every defect, duplicate, re-send, risk-rating change and suspicious pattern it plants. The tests require an exact match. These checks confirm the design works as intended; they are not an independent benchmark.</p>
+  </section>
+
+  <section aria-labelledby="controls">
+    <div class="cols">
+      <div>
+        <span class="eyebrow">Banking controls built in</span>
+        <h2 id="controls">Controls a reviewer would expect</h2>
+        <ul class="list">
+          <li>Bronze must match the source manifest's record count and amount total</li>
+          <li>18 data-quality rules: warn, quarantine with reason, or stop the run</li>
+          <li>Customer risk-rating history kept as SCD Type 2, never overwritten</li>
+          <li>An unreadable KYC rating defaults to HIGH, so no customer drops out of monitoring</li>
+          <li>Personal data hashed or masked in Silver and absent from Gold</li>
+          <li>AML alerts are candidates for an investigator, never decisions</li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">Technology</span>
+        <h2>Stack</h2>
+        <div class="stack">
+          <span class="tag">Apache Spark 4</span><span class="tag">PySpark</span><span class="tag">Spark SQL</span>
+          <span class="tag">Delta Lake</span><span class="tag">MERGE / SCD2</span><span class="tag">Change Data Feed</span>
+          <span class="tag">Time travel</span><span class="tag">OPTIMIZE · Z-ORDER</span><span class="tag">Databricks</span>
+          <span class="tag">Unity Catalog</span><span class="tag">Lakeflow Jobs</span><span class="tag">Streamlit</span>
+          <span class="tag">DuckDB</span><span class="tag">pytest</span><span class="tag">Playwright</span><span class="tag">GitHub Actions CI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="status">
+    <span class="eyebrow">Status, stated plainly</span>
+    <h2 id="status">What is verified</h2>
+    <div class="table-wrap">
+      <table class="status">
+        <thead><tr><th>Item</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Full pipeline on Spark 4.1 and Delta Lake 4.4</td><td><span class="pill ok">Verified</span> 18,513 records in about 80 seconds</td></tr>
+          <tr><td>Automated tests and browser test of the explorer app</td><td><span class="pill ok">Verified</span> 44 tests; 8 browser steps</td></tr>
+          <tr><td>Run on Databricks Free Edition with Unity Catalog and a job DAG</td><td><span class="pill review">Ready, not yet run</span></td></tr>
+          <tr><td>Hosted explorer app</td><td><span class="pill review">Not yet deployed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="role" aria-labelledby="role">
+    <span class="eyebrow">My role</span>
+    <h2 id="role">Banking judgement, directed AI delivery</h2>
+    <p>I drew on 12 years in banking risk, controls, operations and UAT. I defined the data, the defects worth testing, the reconciliation controls and the fail-safe rules. I directed AI coding tools to build the pipeline, reviewed the design, set the acceptance test that every planted issue must be found exactly, and validated the results.</p>
+  </section>
+
+  <footer>
+    <span>Nipun Gupta · AI Transformation · Risk &amp; Controls · Business Analysis · PMO</span>
+    <span>Project 2 of 5 in a Banking AI &amp; Databricks portfolio, 2026.</span>
+  </footer>
+</main>
