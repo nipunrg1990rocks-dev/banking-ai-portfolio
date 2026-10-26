@@ -29,7 +29,7 @@ A retrieval-augmented (RAG) policy assistant for a **fictional bank (Ledgerline 
 | End-to-end browser test (Playwright, 10 steps against the running app) | All passed, with screenshots in `docs/screenshots/` |
 | MLflow logging of evaluation metrics | Verified locally (`--mlflow`) |
 | Live Claude mode | Implemented and unit-tested with a mocked client. **Not yet run against the real API** (needs an approved key). |
-| Public hosted URL | Deployed: https://abv2xygrggmaucidx5hjbg.streamlit.app (smoke check pending) |
+| Public hosted URL | Live: https://abv2xygrggmaucidx5hjbg.streamlit.app. Manual smoke check by the project owner on 2026-10-26 passed. The automated browser test has only been run locally (the build environment cannot reach streamlit.app). |
 
 ## Run it
 

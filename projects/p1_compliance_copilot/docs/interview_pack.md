@@ -119,7 +119,7 @@ See [architecture.md](architecture.md) for the component diagram, the request se
 
 32. **How is it tested?** 48 pytest tests cover parsing, retrieval rankings, guardrails, routing, maker-checker, audit tamper detection, the mocked LLM path and an evaluation quality gate. A Playwright browser test clicks through 10 steps of the real app and saves screenshots.
 33. **What is the quality gate?** CI fails if Recall@3 drops below 0.95, answer-fact accuracy below 0.90, routing accuracy below 1.0, or citation validity below 1.0.
-34. **How is it deployed?** GitHub repository → Streamlit Community Cloud (free), with GitHub Actions running lint, tests and the evaluation on every push.
+34. **How is it deployed?** Public GitHub repository → Streamlit Community Cloud (free), which redeploys automatically on every push to main. GitHub Actions runs lint, tests and the evaluation on every push. Each browser session gets its own in-memory index, review queue and audit log, so demo users never see each other's activity.
 35. **What are the limitations?** A small synthetic corpus, an evaluation set written in the same process, simple LSA embeddings, per-session storage in the demo, rule-based flags that can miss unusual phrasing, and live LLM mode not yet run against the real API.
 36. **How would you productionise it?** Single sign-on and role-based access, a managed database or Delta table for audit, Databricks Vector Search, approved document pipelines with effective dates, MLflow-tracked evaluations, monitoring dashboards, an independent validation per MRM, and a red-team test set.
 
@@ -136,7 +136,7 @@ See [architecture.md](architecture.md) for the component diagram, the request se
 - Directed implementation of **hybrid retrieval** (BM25 + LSA dense vectors with Reciprocal Rank Fusion). Measured 100% Recall@3 and 100% routing accuracy on a 37-question labelled evaluation set, enforced as a CI quality gate.
 - Defined the test strategy behind 48 automated tests and a Playwright end-to-end browser test, and documented architecture, limitations and cost (the default mode runs free).
 
-*(Add "Deployed on Streamlit Community Cloud" only after the live URL is verified.)*
+- Deployed the app on **Streamlit Community Cloud** from a public GitHub repository, with **GitHub Actions CI** (lint, tests and evaluation gate) on every push. Live demo: https://abv2xygrggmaucidx5hjbg.streamlit.app
 
 ## 9. Your responsibilities (what to say you did)
 
