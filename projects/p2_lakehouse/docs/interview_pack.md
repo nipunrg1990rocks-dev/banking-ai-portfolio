@@ -1,4 +1,4 @@
-# Interview Pack: Banking Data Engineering Lakehouse
+# Interview Pack: Agentic Banking Lakehouse
 
 > How to describe it: "I developed this independent project using AI-assisted development tools. I defined the data model, the data-quality rules and the controls from my banking experience. I directed the AI tools that wrote the code, reviewed what they produced, and tested and validated the results." Do not attribute it to any employer. Do not claim you hand-wrote the code.
 
@@ -6,7 +6,7 @@
 
 ## 1. The 60-second executive summary
 
-"In a bank, bad data isn't an IT problem. It's a misstated report, a missed AML alert, or a payment counted twice. I built a lakehouse for a fictional bank that takes raw core-banking files and turns them into tables that risk and financial-crime teams can trust. It uses a **Bronze, Silver, Gold** design on **Apache Spark and Delta Lake**. Bronze keeps exactly what the source sent. Silver validates it against 18 data-quality rules, quarantines the bad records with the reason, keeps **full history of customer risk-rating changes**, and makes sure a re-sent payment can never be counted twice. Gold produces **AML alert candidates**, a customer 360 view and KPIs. Like a finance reconciliation, every step must balance: the run **stops** if Bronze doesn't match the source's control totals, or if any record is unaccounted for. I planted known defects and suspicious patterns in the synthetic data. The pipeline found **every one and nothing else**, and 44 automated tests prove it on every code change. The same code runs on my laptop, in CI and on Databricks."
+"In a bank, bad data isn't an IT problem. It's a misstated report, a missed AML alert, or a payment counted twice. I built a lakehouse for a fictional bank that takes raw core-banking files and turns them into tables that risk and financial-crime teams can trust. It uses a **Bronze, Silver, Gold** design on **Apache Spark and Delta Lake**. Bronze keeps exactly what the source sent. Silver validates it against 18 data-quality rules, quarantines the bad records with the reason, keeps **full history of customer risk-rating changes**, and makes sure a re-sent payment can never be counted twice. Gold produces **AML alert candidates**, a customer 360 view and KPIs. Like a finance reconciliation, every step must balance: the run **stops** if Bronze doesn't match the source's control totals, or if any record is unaccounted for. I planted known defects and suspicious patterns in the synthetic data. The pipeline found **every one and nothing else**, and 58 automated tests prove it on every code change. On top of the data, **three AI agents** do analyst work. One investigates each AML alert and writes a scored, evidence-cited case. One finds the root cause when a load is blocked and drafts the ticket. One answers business questions in plain English with SQL. They only read data through tools, every step is audited, and a person approves what they propose. I score them against the same answer key. The same code runs on my laptop, in CI and on Databricks."
 
 ## 2. Business problem and banking use case
 
@@ -24,15 +24,17 @@
 
 | Measure | Value |
 |---|---|
-| Source records landed (2 batches + reference data) | 18,513 |
-| Silver transactions | 16,644 |
+| Source records landed (2 batches + reference data) | 18,517 |
+| Silver transactions | 16,648 |
 | Duplicates removed / records quarantined | 33 / 25 |
-| DQ checks evaluated / blocking controls passed | 52 / 16 of 16 |
-| AML alert candidates (all planted, none false) | 7 (3 structuring, 3 high-risk jurisdiction, 1 rapid movement) |
+| DQ checks evaluated / blocking controls passed | 53 / 16 of 17 (the 17th blocked the planted truncated delivery, as designed) |
+| AML alert candidates | 8 (3 structuring, 3 high-risk jurisdiction, 2 rapid movement). 7 genuine, 1 planted false positive (a corporate payroll cycle) |
 | SCD2 customer changes captured / unchanged re-sends ignored | 40 / 5 |
 | Late re-sent transactions not double-counted | 10 |
-| Pipeline time on one machine | about 80 seconds |
-| Automated tests (Project 02) / whole repo | 44 / 92 |
+| Pipeline time on one machine | about 100 seconds |
+| Automated tests (Project 02) / whole repo | 58 / 106 |
+| Agent evaluation, offline planner (no LLM) | AML 8/8 cases fully correct, incident 1/1, questions 6/6 |
+| Agent evaluation, Claude | Not yet run (needs API key and cost approval) |
 
 ## 4. What each technology does (plain English, then technical)
 
@@ -52,9 +54,12 @@
 | **Time travel** | Read a table as it was at an earlier version | `VERSION AS OF 0` returns the September state |
 | **Change Data Feed** | A log of row-level inserts and updates | Shows exactly what batch 2 changed in customers and accounts |
 | **OPTIMIZE / Z-ORDER** | Tidy small files and sort data so queries skip what they don't need | Run on Silver transactions and customers after Gold |
-| **Streamlit** | Python framework for web apps | 8-tab explorer over the run snapshot |
+| **AI agents (tool use)** | A model that decides which tool to call next, reads the result and keeps going until it can answer | `agents/`: 14 read-only tools, strict submit schemas, step limits, audit log |
+| **Claude (Anthropic API)** | The LLM that powers the agents in live mode | Manual tool-use loop with adaptive thinking and prompt caching (`brains.py`); runs are recorded and replayed |
+| **Offline planner** | A fixed checklist in code that uses the same tools, no AI | Keeps the app free and gives the evaluation a baseline; labelled in the app |
+| **Streamlit** | Python framework for web apps | Mission Control, three agent tabs, a lakehouse explorer and How it works |
 | **DuckDB** | A tiny in-process SQL engine | Powers the app's read-only SQL console, locked against file access |
-| **pytest / Playwright / GitHub Actions** | Automated tests, a robot browser, CI | 44 tests that run the real pipeline, an 8-step browser test, and CI on every push |
+| **pytest / Playwright / GitHub Actions** | Automated tests, a robot browser, CI | 58 tests that run the real pipeline and the agents, a 12-step browser test, and CI on every push |
 
 ## 5. Diagrams
 
@@ -99,32 +104,52 @@ sequenceDiagram
     Note over T: Unchanged re-sends: hash equal, nothing happens
 ```
 
+### 5.4 How an agent investigates an alert
+
+```mermaid
+sequenceDiagram
+    participant U as Analyst
+    participant E as Agent engine
+    participant B as Brain (Claude or offline planner)
+    participant T as Read-only tools
+    U->>E: Investigate alert A-…
+    loop until it submits (tool-call limit)
+        E->>B: goal + results so far
+        B->>E: call get_transactions / profile / peers / network / SQL
+        E->>T: validated call
+        T-->>E: result (rows capped), logged to audit
+    end
+    B->>E: submit_case (strict schema)
+    E-->>U: case: ESCALATE/CLOSE, score, evidence
+    U->>E: Approve or override (audited)
+```
+
 The full component diagram, data model and controls are in [architecture.md](architecture.md).
 
 ## 6. Three-minute demo script
 
 | Time | Do | Say |
 |---|---|---|
-| 0:00 | Open the app, Overview tab | "This is a lakehouse for a fictional bank, all synthetic. This header shows the exact pipeline run you're looking at: Spark 4.1 and Delta Lake, with 16 out of 16 blocking controls passed." |
-| 0:20 | Point at the lineage graph | "Raw files land in Bronze untouched. Silver validates and conforms them, and Gold builds what the business uses. The row counts are real." |
-| 0:40 | Point at "Every transaction accounted for" | "This is the control I care most about as a banker. Every Bronze row is either a duplicate, quarantined, an already-loaded re-send, or inserted, and the run stops if it doesn't balance. Batch 2 re-sent 10 September payments, and they weren't counted twice." |
-| 1:05 | Data quality tab | "18 rules, each declared once with an action: warn, drop or fail. These are the 25 quarantined records, with the raw values and the rule they broke, so a data steward can fix them at source." |
-| 1:35 | AML alerts tab, structuring alert selected | "Gold builds AML alert candidates. This customer made four cash deposits between 9,000 and 9,999 dollars on one day, classic structuring. Red dots are the alert transactions in context. They are candidates for an investigator, never decisions." |
-| 2:10 | Customer history tab | "Customer risk ratings change. Instead of overwriting, a Delta MERGE closes the old version and opens a new one. So I can always say what the rating was on the day of a transaction, and the Change Data Feed shows exactly what changed." |
-| 2:35 | Delta Lake tab, move slider to v0 | "Time travel: this is the table exactly as it was after the September load. That's how you reproduce a report for an auditor." |
-| 2:50 | Close | "The same code runs on Databricks with Unity Catalog and a job DAG, and 44 tests run the real pipeline on every change." |
+| 0:00 | Open the app, Mission Control | "This is a lakehouse for a fictional bank, all synthetic, with AI agents on top. Overnight, two batches went Bronze to Silver to Gold on Spark and Delta Lake. A third delivery was blocked, and there are 8 AML alerts waiting." |
+| 0:20 | Point at the red BLOCKED stage | "A transactions file arrived cut off. The manifest promised 3,150 rows; the Bronze control stopped it, so nothing downstream changed." |
+| 0:35 | Data Steward tab, Dispatch | "Instead of an engineer digging through logs, the Data Steward agent checks the pipeline audit, then the file itself: bytes, checksum, the last line. It finds a truncated file, 315 rows missing, and drafts the ticket. I approve it." |
+| 1:15 | AML Investigator tab, pick the payroll alert, Dispatch | "Now an alert. Watch the trace: it pulls the transactions, the customer profile, 90 days of behaviour, peers and the counterparty network. Here it finds a monthly payroll cycle that went just over the threshold, and recommends CLOSE with a score and cited evidence. It recommends; I decide." |
+| 2:00 | Run on all alerts and score | "I don't trust an agent I can't measure. This scores every case against the answer key planted in the data: right decision, trigger transactions cited, no invented ids." |
+| 2:25 | Ask Ledgerline, click a suggested question | "Business users can ask in plain English. It writes the SQL, runs it read-only and draws the chart." |
+| 2:45 | Close on How it works | "Same code on Databricks with Unity Catalog. 58 tests. And this page says clearly what is verified and what isn't." |
 
 ## 7. Ten-minute demo script
 
+0. **(1.5 min) Agents.** Start in Mission Control. Run the Data Steward on the incident, then the AML Investigator on one genuine alert and on the payroll false positive. Show the trace, the approval buttons and the audit trail. Run the scorecard. Say which brain is running (recorded Claude, or the offline planner) and what that means.
 1. **(1 min) Problem framing.** Bad data in banks causes misreporting, missed alerts and double counting. Name the BCBS 239 principles. Explain why history and reconciliation matter.
 2. **(1.5 min) Architecture.** Use the How it works tab and the lineage graph. Walk through landing (with a manifest, as real source systems send), Bronze, Silver and Gold. Explain the `TableStore` idea: the same code runs locally and on Databricks.
-3. **(1.5 min) Reconciliation and controls.** Show the batch equations. Then explain the failure path: if the manifest says 13,538 rows and 13,537 arrive, Bronze fails and nothing downstream runs. An automated test proves this.
+3. **(1.5 min) Reconciliation and controls.** Show the batch equations. Then show the failure path for real: delivery 20261014 promised 3,150 rows and arrived truncated, so Bronze failed and nothing downstream changed. Automated tests prove this.
 4. **(1.5 min) Data quality.** Show the scorecard, quarantine and warn rules. Explain the fail-safe rule: an invalid KYC rating becomes HIGH rather than being dropped, because losing a customer from monitoring is worse than over-monitoring.
 5. **(1.5 min) AML.** Cover the three rules and their SQL (expand the SQL panel), priority logic, the human review status, and data minimisation in Gold.
 6. **(1 min) History.** Show SCD2 before and after, the as-of join used in segment KPIs, and the Change Data Feed.
 7. **(1 min) Delta internals.** Cover history, MERGE metrics, time travel, OPTIMIZE and Z-ORDER, and schema enforcement.
 8. **(0.5 min) SQL console.** Run "cash deposits just under 10,000". Mention that the console is sandboxed.
-9. **(0.5 min) Testing and honesty.** 44 tests compare results to the generator's answer key. CI runs the pipeline. Then state what isn't verified yet.
+9. **(0.5 min) Testing and honesty.** 58 tests compare results to the generator's answer key. CI runs the pipeline. Then state what isn't verified yet.
 
 ## 8. Code walkthrough (where things are)
 
@@ -140,7 +165,12 @@ The full component diagram, data model and controls are in [architecture.md](arc
 | `lakehouse/snapshot.py` | Exports a run for the app | "Records run id, engine and versions, so the app never overstates what it shows." |
 | `databricks/*.py` | Run-all notebook, job creation with the Databricks SDK, governance SQL | "The notebook authenticates as the user; no tokens anywhere." |
 | `explorer.py`, `app.py` | App data layer and UI | "DuckDB with external access disabled and the configuration locked." |
-| `tests/` | Generator, controls, end-to-end pipeline, snapshot and app tests | "The tests compare against an answer key, not just 'it ran'." |
+| `agents/tools.py` | The 14 read-only tools and 3 submit tools, with strict JSON schemas | "The agent can only do what a tool allows, and every tool only reads." |
+| `agents/engine.py` | The loop: tool-call limit, audit, error handling, result truncation | "Every step is audited in a hash-chained log." |
+| `agents/brains.py` | Claude (tool use, adaptive thinking, caching) and the offline planner | "Same tools, same engine; only the decision-maker changes." |
+| `agents/specs.py` | System prompts, house rules and the offline playbooks | "House rules: cite evidence, never invent ids, recommend don't decide." |
+| `agents/evals.py`, `run_agents.py` | Scores agents against the answer key; records Claude runs for replay | "I measure the agent, I don't just demo it." |
+| `tests/` | Generator, controls, end-to-end pipeline, snapshot, app and agent tests | "The tests compare against an answer key, not just 'it ran'." |
 
 ## 9. Interview questions and answers
 
@@ -175,7 +205,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
    Rules judge individual records. Controls judge the whole load: did we receive what the source said it sent, and is every record accounted for? Controls are blocking because a control failure means the numbers can't be trusted at all.
 
 9. **Walk me through the reconciliation.**
-   For each batch: Bronze rows = duplicates removed + quarantined + already loaded + inserted. For batch 1 that's 13,537 = 25 + 19 + 0 + 13,493. Gold then has to add back to Silver in both count and USD value. If any equation breaks, the step is logged FAILED and the run stops.
+   For each batch: Bronze rows = duplicates removed + quarantined + already loaded + inserted. For batch 1 that's 13,539 = 25 + 19 + 0 + 13,495. Gold then has to add back to Silver in both count and USD value. If any equation breaks, the step is logged FAILED and the run stops.
 
 10. **Why default an invalid KYC risk rating to HIGH instead of quarantining the customer?**
     Quarantining the customer would orphan their accounts and transactions, which drops them out of AML monitoring. That's the worst outcome. Treating the rating as HIGH until a data steward fixes it is fail-safe: over-monitoring is recoverable, under-monitoring isn't. I found this in testing: one bad rating cascaded into 2 quarantined accounts and 26 quarantined transactions across both batches.
@@ -192,7 +222,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
     A transaction log. That gives ACID commits, MERGE/UPDATE/DELETE, schema enforcement, time travel, Change Data Feed and file-layout optimisation. Plain Parquet has none of these, so two writers or a failed job can leave a table half-written.
 
 14. **Explain your transaction MERGE.**
-    `MERGE INTO silver.transactions t USING batch s ON t.txn_id = s.txn_id WHEN NOT MATCHED THEN INSERT *`. Because there's no WHEN MATCHED clause, an existing transaction is never touched. In batch 2, ten September transactions were re-sent; the MERGE metrics show 3,151 inserted, and the 10 re-sends were correctly skipped.
+    `MERGE INTO silver.transactions t USING batch s ON t.txn_id = s.txn_id WHEN NOT MATCHED THEN INSERT *`. Because there's no WHEN MATCHED clause, an existing transaction is never touched. In batch 2, ten September transactions were re-sent; the MERGE metrics show 3,153 inserted, and the 10 re-sends were correctly skipped.
 
 15. **Explain your SCD Type 2 MERGE.**
     I stage the batch twice for changed customers: once keyed by `customer_id` and once with a NULL key. Matching rows whose hash differs get closed: `is_current = false` and `effective_to` set to the day before. The NULL-key copy can't match, so it's inserted as the new current version. New customers are inserted directly. Unchanged re-sends have the same hash, so nothing happens. All of this is one atomic commit.
@@ -252,7 +282,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
     Rules produce false positives, and filing or closing an AML case is a regulated judgement. Every alert starts as PENDING_REVIEW for a human investigator, with its rationale and transaction ids. Project 03 builds that human-in-the-loop workflow.
 
 32. **How did you prevent false positives in your test data?**
-    The generator caps random amounts below every threshold (in USD terms, after FX), so only planted scenarios can trigger an alert. That makes "found exactly 7, no extras" a meaningful test, not luck.
+    The generator caps random amounts below every threshold (in USD terms, after FX), so only planted scenarios can trigger an alert. That makes "found exactly these alerts, no extras" a meaningful test, not luck. I then planted one deliberate false positive: a company's monthly payroll that crossed the rapid-movement threshold in October. The rule should fire, and the AML agent should close it after checking the history.
 
 33. **How do you protect personal data?**
     By layer. Bronze is a restricted evidence copy. Silver hashes the e-mail and masks the phone. Gold has no names, contact details or full date of birth (only birth year). Unity Catalog column masks protect names. Everything is synthetic anyway, and high-risk countries are fictional codes.
@@ -263,7 +293,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
 ### Testing, delivery and your role
 
 35. **How did you test it?**
-    44 automated tests. Generator tests check reproducibility and manifest accuracy. Unit tests cover the DQ engine and blocking controls (including a tampered manifest that must fail). End-to-end tests run both batches through real Spark and Delta and compare against the answer key. Other tests cover idempotent re-runs, time travel, the Change Data Feed, schema enforcement, snapshot reproducibility and the SQL console sandbox. An 8-step Playwright browser test clicks through the app. CI installs Java and runs the pipeline on every push.
+    58 automated tests. Generator tests check reproducibility and manifest accuracy. Unit tests cover the DQ engine and blocking controls (including a tampered manifest that must fail). End-to-end tests run both batches through real Spark and Delta and compare against the answer key. Other tests cover idempotent re-runs, time travel, the Change Data Feed, schema enforcement, snapshot reproducibility and the SQL console sandbox. Agent tests use a fake Claude client to prove the loop recovers from a SQL error and stops at the step limit, and run the agents on a live local Spark lakehouse. A 12-step Playwright browser test clicks through the app, including dispatching each agent. CI installs Java and runs the pipeline on every push.
 
 36. **What does "idempotent" mean here and how do you prove it?**
     Running the same batch twice leaves everything unchanged. Bronze skips a batch it already holds, the MERGEs don't re-insert, and quarantine is replaced per batch. A test re-runs batch 2 and asserts every table count is identical.
@@ -272,13 +302,42 @@ The full component diagram, data model and controls are in [architecture.md](arc
     The code was written by AI tools under my direction. I defined the use case, the entities, the defects and AML scenarios to plant, the controls (reconciliation to manifest, fail-safe risk rating), and the acceptance criteria (exact match to the answer key, idempotency). I reviewed outputs, ran and checked the tests and app, and made the design calls, for example quarantine vs fail-safe and the snapshot approach for hosting.
 
 38. **What doesn't work yet, or what would you do next?**
-    The run-all notebook has run on Databricks Free Edition with identical results, but I haven't yet run the scheduled job or applied the column masks there. The hosted app shows a snapshot rather than live Spark. Next steps: Auto Loader ingestion, incremental Gold from the Change Data Feed, Lakeflow Declarative Pipelines expectations, and a DQ trends dashboard (Project 04).
+    The run-all notebook has run on Databricks Free Edition with identical results, but I haven't yet run the scheduled job or applied the column masks there. The hosted app shows a snapshot rather than live Spark. Claude has not yet been evaluated with a real key; until then the scores shown are the offline planner's, and the app says so. Next steps: Auto Loader ingestion, incremental Gold from the Change Data Feed, Lakeflow Declarative Pipelines expectations, and a DQ trends dashboard (Project 04).
+
+### AI agents
+
+39. **What makes this "agentic" rather than a chatbot?**
+    The agent is given a goal, not a script. It chooses which tool to call next based on what the last result showed, recovers from errors, and stops only when it can submit a structured result. The AML agent might check peers first or the counterparty network first, depending on the alert.
+
+40. **Why tools instead of giving the model the data?**
+    Control and auditability. The model never touches tables directly. Every tool is read-only, validates its inputs, caps its output and is logged. That is the same least-privilege principle you'd apply to a human analyst's database access.
+
+41. **How do you stop an agent from making things up?**
+    Four ways. House rules in the prompt require citing transaction ids. The submit tool has a strict schema, so the output is structured. The evaluation checks every cited id exists in Silver. And a person approves before anything is acted on.
+
+42. **How do you evaluate an agent?**
+    Against the answer key the generator planted. For AML: right decision, trigger transactions cited, no invented ids, risk score consistent with the decision, no contact data in the narrative. For the incident: correct root cause and exact row counts. For questions: the agent's SQL must return the same result as a reference query.
+
+43. **Why is there an offline planner?**
+    Three reasons. The public app shouldn't need a paid key, it gives the evaluation a baseline, and it proves the tools and engine are independent of the model. It is clearly labelled as not AI. With Claude, the agent decides its own steps and writes its own narrative.
+
+44. **What did the payroll false positive teach you?**
+    A rule-based alert can be technically correct and still not suspicious. The rapid-movement rule fires on 52,400 in and out within 48 hours. Context clears it: a corporate customer, the same counterparties every month, and last month's cycle just under the threshold. That's exactly the judgement an investigator makes, and why the agent recommends rather than decides.
+
+45. **How do you control LLM cost?**
+    Prompt caching on the growing conversation, a tool-call limit per agent, results truncated before they go back to the model, a dollar cap in the recording script, and replaying recorded runs in the public app instead of calling the API per visitor.
+
+46. **How would you deploy this in a bank?**
+    Run the agents as a scheduled Databricks job over Unity Catalog tables (`03_ai_agents` already writes case reports and steps to Delta). Use a service principal with read-only grants and the model key in a secret scope. Route cases to the case-management queue as PENDING_HUMAN_REVIEW, and get model-risk sign-off with the evaluation as evidence.
 
 ## 10. Failure cases you can demonstrate or explain
 
 | Scenario | What happens | Evidence |
 |---|---|---|
 | Source says 13,538 rows, 13,537 arrive | Bronze control fails, step logged FAILED, run stops | `test_manifest_mismatch_blocks_bronze_and_is_logged` |
+| Truncated delivery 20261014 | Blocked at Bronze; Silver and Gold versions unchanged; Data Steward finds TRUNCATED_FILE, 315 rows missing | Mission Control, Data Steward tab, incident tests |
+| Payroll cycle trips RAPID_MOVEMENT | AML agent recommends CLOSE with evidence | AML Investigator tab, scorecard |
+| Agent writes bad SQL | Error goes back to the model, which corrects it | `test_agents.py` (fake Claude client) |
 | Malformed amount or timestamp | `try_cast` gives NULL, record quarantined with rule name | Quarantine explorer, `test_quarantine_catches_exactly_the_planted_defects` |
 | Batch re-run after a crash | Nothing duplicated | `test_rerunning_a_batch_changes_nothing` |
 | Payment re-sent a week later | Skipped by insert-only MERGE | `test_silver_transactions_are_unique_and_resends_not_double_counted` |
@@ -287,15 +346,16 @@ The full component diagram, data model and controls are in [architecture.md](arc
 
 ## 11. Resume bullets (accurate and independent)
 
-- Designed and delivered (with AI-assisted development) a Databricks-style medallion lakehouse on Apache Spark 4 and Delta Lake for a synthetic bank. It processes 18.5k source records across two batches through Bronze, Silver and Gold, with 18 declarative data-quality rules and 16 blocking reconciliation controls.
-- Implemented SCD Type 2 customer history, idempotent insert-only MERGEs that prevent double-counting of re-sent payments, Change Data Feed and time travel. The pipeline is validated by 44 automated tests that match an answer key of planted defects and AML scenarios exactly.
+- Designed and delivered (with AI-assisted development) a Databricks-style medallion lakehouse on Apache Spark 4 and Delta Lake for a synthetic bank. It processes 18.5k source records across two batches through Bronze, Silver and Gold, with 18 declarative data-quality rules and 17 blocking reconciliation controls.
+- Implemented SCD Type 2 customer history, idempotent insert-only MERGEs that prevent double-counting of re-sent payments, Change Data Feed and time travel. The pipeline is validated by 58 automated tests that match an answer key of planted defects and AML scenarios exactly.
 - Built rule-based AML alert candidates (structuring, high-risk jurisdiction, rapid movement) for human review, plus a Streamlit explorer with lineage, reconciliation, alert drill-down and a sandboxed SQL console. Packaged Unity Catalog governance and a Lakeflow Jobs DAG for Databricks.
 
+- Built three AI agents on the lakehouse (AML investigation, data-incident root cause, natural-language analytics) using LLM tool use with read-only tools, a hash-chained audit trail and human approval, evaluated against a planted answer key.
 - Ran the same pipeline on Databricks Free Edition (serverless Spark, Unity Catalog), with row counts identical to the local and CI runs.
 
 ## 12. Your role (say this plainly)
 
-"I acted as product owner, data architect and test lead. I wrote the requirements: what a bank needs from this data, which defects are realistic, which controls a reviewer would expect, and how alerts must stay human-reviewed. I directed AI coding tools to implement them, reviewed the code and outputs, and insisted on tests that prove exact results. I validated the app myself and decided the trade-offs, for example that an invalid risk rating should default to HIGH rather than drop the customer. I can walk through every module and explain every design choice."
+"I acted as product owner, data architect and test lead. I wrote the requirements: what a bank needs from this data, which defects are realistic, which controls a reviewer would expect, and how alerts must stay human-reviewed. I directed AI coding tools to implement them, reviewed the code and outputs, and insisted on tests that prove exact results. I validated the app myself and decided the trade-offs, for example that an invalid risk rating should default to HIGH rather than drop the customer. I also designed how the AI agents should behave: what tools an investigator needs, what they must never do, and how to prove they are right. I can walk through every module and explain every design choice."
 
 ## 13. Certification tie-in (Databricks Data Engineer Associate)
 
