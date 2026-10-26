@@ -322,7 +322,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
     Three reasons. The public app shouldn't need a paid key, it gives the evaluation a baseline, and it proves the tools and engine are independent of the model. It is clearly labelled as not AI. With Claude, the agent decides its own steps and writes its own narrative.
 
 44. **What did the payroll false positive teach you?**
-    A rule-based alert can be technically correct and still not suspicious. The rapid-movement rule fires on 52,400 in and out within 48 hours. Context clears it: a corporate customer, the same counterparties every month, and last month's cycle just under the threshold. That's exactly the judgement an investigator makes, and why the agent recommends rather than decides.
+    A rule-based alert can be technically correct and still not suspicious. The rapid-movement rule fires because 52,400 came in and 97% went out again within 48 hours. Context clears it: a corporate customer, the same counterparties every month, and last month's cycle just under the threshold. That's exactly the judgement an investigator makes, and why the agent recommends rather than decides.
 
 45. **How do you control LLM cost?**
     Prompt caching on the growing conversation, a tool-call limit per agent, results truncated before they go back to the model, a dollar cap in the recording script, and replaying recorded runs in the public app instead of calling the API per visitor.
