@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from portfolio_core.audit import AuditLog
 
+from . import recordings
 from .backend import Backend, SnapshotBackend, SparkBackend
 from .brains import ClaudeBrain, ScriptedBrain
 from .engine import Agent, AgentRun, AgentSpec, Step
@@ -11,11 +12,12 @@ from .specs import POLICIES, SPECS, goal_for
 from .tools import LakehouseTools
 
 __all__ = ["Agent", "AgentRun", "AgentSpec", "AuditLog", "Backend", "ClaudeBrain", "LakehouseTools", "SPECS",
-           "ScriptedBrain", "SnapshotBackend", "SparkBackend", "Step", "build_agent", "goal_for", "run_agent"]
+           "ScriptedBrain", "SnapshotBackend", "SparkBackend", "Step", "build_agent", "goal_for", "recordings",
+           "run_agent"]
 
 
 def build_agent(name: str, backend: Backend, brain=None, audit: AuditLog | None = None) -> Agent:
-    """``brain`` is a ClaudeBrain, or None for the offline planner."""
+    """``brain`` is a ClaudeBrain or OpenAIToolBrain, or None for the offline planner."""
     return Agent(SPECS[name], LakehouseTools(backend), brain or ScriptedBrain(POLICIES), audit)
 
 

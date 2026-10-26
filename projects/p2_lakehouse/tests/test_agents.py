@@ -142,3 +142,72 @@ def test_recorded_runs_round_trip(backend):
     run = run_agent("data_steward", backend)
     again = AgentRun.from_dict(json.loads(json.dumps(run.to_dict())))
     assert again.output == run.output and len(again.steps) == len(run.steps)
+
+
+# ------------------------------------- Databricks / OpenAI-format brain, faked endpoint
+class FakeCompletions:
+    """Replays scripted chat-completions responses (OpenAI shape) and records each request."""
+
+    def __init__(self, turns):
+        self.turns, self.requests = list(turns), []
+
+    def create(self, **kwargs):
+        self.requests.append({**kwargs, "messages": list(kwargs["messages"])})
+        turn = self.turns.pop(0)
+        if isinstance(turn, Exception):
+            raise turn
+        content, calls = turn
+        msg = SimpleNamespace(content=content, tool_calls=[
+            SimpleNamespace(id=i, function=SimpleNamespace(name=n, arguments=a)) for i, n, a in calls] or None)
+        return SimpleNamespace(choices=[SimpleNamespace(message=msg)],
+                               usage=SimpleNamespace(prompt_tokens=900, completion_tokens=100))
+
+
+def _openai(fake):
+    return SimpleNamespace(chat=SimpleNamespace(completions=fake))
+
+
+def test_databricks_brain_recovers_from_bad_json_and_sql_errors(backend):
+    from agents.brains import OpenAIToolBrain
+
+    good = "SELECT rule_code, COUNT(*) AS alerts FROM aml_alerts GROUP BY rule_code"
+    fake = FakeCompletions([
+        ("Counting alerts.", [("c1", "run_sql", '{"query": "SELECT rule FROM aml_alerts"')]),  # broken JSON
+        (None, [("c2", "run_sql", json.dumps({"query": "SELECT rule FROM aml_alerts"}))]),  # bad column
+        (None, [("c3", "run_sql", json.dumps({"query": good}))]),
+        (None, [("c4", "submit_answer", json.dumps({"answer": "3 rules.", "sql": good,
+                                                    "chart": {"type": "bar", "x": "rule_code", "y": "alerts"}}))]),
+    ])
+    run = run_agent("ask_ledgerline", backend, OpenAIToolBrain(_openai(fake), "databricks-test"),
+                    question="How many alerts per rule?")
+    assert run.status == "completed" and run.output["sql"] == good
+    assert run.brain == "databricks-llm" and run.model == "databricks-test" and run.cost_usd == 0
+    req = fake.requests[1]
+    assert req["messages"][0]["role"] == "system" and req["tools"][0]["type"] == "function"
+    assert req["messages"][-1]["role"] == "tool" and "Invalid JSON" in req["messages"][-1]["content"]
+    assert "error" in json.loads(fake.requests[2]["messages"][-1]["content"])
+    assert run.input_tokens == 3600
+
+
+def test_endpoint_picker_uses_the_first_endpoint_that_can_call_tools():
+    from agents import databricks_llm
+
+    fake = FakeCompletions([
+        RuntimeError("ENDPOINT_NOT_FOUND: not available in this workspace"),
+        ("42", []),  # answers in text, never calls the tool
+        (None, [("p", "record_total", '{"total": 42}')]),
+    ])
+    available = ["databricks-claude-sonnet-4", "databricks-meta-llama-3-3-70b-instruct",
+                 "databricks-gpt-oss-120b", "my-custom-model"]
+    name, tried = databricks_llm.pick_endpoint(_openai(fake), available)
+    assert name == "databricks-gpt-oss-120b"
+    assert [t[0] for t in tried] == available[:3] and "not available" in tried[0][1]
+    assert tried[1][1] == "answered without calling the tool"
+
+
+def test_regenerated_answer_key_matches_the_snapshot(backend):
+    from agents.evals import planted, regenerated_key
+
+    key, snap = regenerated_key(), planted(backend)
+    assert key["incident"] == snap["incident"]
+    assert key["aml_false_positives"] == snap["aml_false_positives"]

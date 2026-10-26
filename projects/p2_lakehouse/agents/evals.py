@@ -56,6 +56,12 @@ ASK_SET = [
                   "GROUP BY customer_id, txn_date HAVING COUNT(*) >= 3)", "key": "customer_id"},
 ]
 
+# The app's suggestion buttons; the ones not in ASK_SET are recorded too, so every button has a replay.
+SUGGESTED = ["Which 5 customers had the highest cross-border volume in the last 30 days?",
+             "How many AML alert candidates are there for each rule?",
+             "Show the daily transaction volume trend",
+             "Which data-quality rules quarantined transactions, and how many records each?"]
+
 
 @dataclass
 class EvalResult:
@@ -78,6 +84,17 @@ class EvalResult:
 
 def planted(backend: SnapshotBackend) -> dict:
     return json.loads((backend.folder / "run_summary.json").read_text())["planted"]
+
+
+def regenerated_key() -> dict:
+    """The answer key, rebuilt by re-running the seeded generator in a scratch folder (for Spark backends,
+    which have no snapshot). Same seed, so the same planted facts as the pipeline's own landing files."""
+    import tempfile
+
+    from lakehouse import synthetic
+
+    with tempfile.TemporaryDirectory() as tmp:
+        return synthetic.generate(tmp).to_dict()
 
 
 def existing_txn_ids(backend, ids: set[str]) -> set[str]:
@@ -148,10 +165,10 @@ def score_ask(run: AgentRun, case: dict, backend: SnapshotBackend) -> dict:
 
 def evaluate(backend: SnapshotBackend, brain=None, agents: tuple[str, ...] = ("aml_investigator", "data_steward",
                                                                                 "ask_ledgerline"),
-             runs_out: list | None = None) -> list[EvalResult]:
+             runs_out: list | None = None, key: dict | None = None) -> list[EvalResult]:
     from . import run_agent
 
-    key = planted(backend)
+    key = key or planted(backend)
     results = []
     brain_name = getattr(brain, "name", "offline-planner")
     if "aml_investigator" in agents:
