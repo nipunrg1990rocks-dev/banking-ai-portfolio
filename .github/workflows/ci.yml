@@ -23,6 +23,8 @@ jobs:
       - run: pytest
       - name: Evaluation report
         run: python projects/p1_compliance_copilot/evaluate.py >> "$GITHUB_STEP_SUMMARY"
+      - name: Exception manager evaluation (Project 03)
+        run: python projects/p3_exception_manager/evaluate.py >> "$GITHUB_STEP_SUMMARY"
       - name: Lakehouse pipeline run (Project 02)
         run: |
           echo '## Project 02 lakehouse pipeline run' >> "$GITHUB_STEP_SUMMARY"
