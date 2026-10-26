@@ -1,0 +1,216 @@
+<title>Ledgerline Compliance Copilot</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a single reading column styled like a policy file, with a citation-tag motif and a pipeline strip */
+  :root {
+    --bg: #f5f7f8;
+    --surface: #ffffff;
+    --ink: #13202b;
+    --muted: #55636f;
+    --rule: #d9e0e5;
+    --accent: #0f6e5c;
+    --accent-soft: #e2f1ec;
+    --amber: #8a5a00;
+    --amber-soft: #fbf0d9;
+    --tag-bg: #eaf0f4;
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f161c; --surface: #16212a; --ink: #e6edf2; --muted: #9aabb8; --rule: #2a3a46;
+      --accent: #5cc7a8; --accent-soft: #143a31; --amber: #f0c060; --amber-soft: #3a2e12; --tag-bg: #1f2e39;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f161c; --surface: #16212a; --ink: #e6edf2; --muted: #9aabb8; --rule: #2a3a46;
+    --accent: #5cc7a8; --accent-soft: #143a31; --amber: #f0c060; --amber-soft: #3a2e12; --tag-bg: #1f2e39;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .wrap {
+    max-width: 920px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 56px;
+    display: grid; gap: 44px;
+  }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 1.55rem; font-weight: 600; }
+  h3 { font-size: 1.1rem; font-weight: 600; }
+  p { margin: 0; max-width: 65ch; }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .tag {
+    font-family: var(--mono); font-size: .8rem; background: var(--tag-bg); color: var(--ink);
+    padding: .1rem .45rem; border-radius: 4px; white-space: nowrap;
+  }
+  section { display: grid; gap: 16px; }
+
+  /* Hero */
+  .hero { display: grid; gap: 18px; border-bottom: 1px solid var(--rule); padding-bottom: 36px; }
+  .lede { font-size: 1.15rem; color: var(--ink); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;
+    padding: .7rem 1.1rem; border-radius: 8px; border: 1px solid var(--accent);
+  }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.secondary { color: var(--accent); background: transparent; }
+  .disclose { font-size: .9rem; color: var(--muted); }
+
+  /* Sample answer, the product's own artefact */
+  .sample {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 20px 22px; display: grid; gap: 12px;
+  }
+  .q { font-weight: 600; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: .78rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px; }
+  .pill.review { background: var(--amber-soft); color: var(--amber); }
+  .pill.ok { background: var(--accent-soft); color: var(--accent); }
+  .sample ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+  .flag { border-left: 3px solid var(--amber); padding-left: 12px; color: var(--muted); font-size: .92rem; }
+
+  /* Numbers */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 4px; }
+  .stat b { font-family: var(--display); font-size: 1.9rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat span { font-size: .85rem; color: var(--muted); }
+  .note { font-size: .88rem; color: var(--muted); }
+
+  /* Pipeline strip: a real sequence, so it is numbered */
+  .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; counter-reset: step; }
+  .step { border-top: 3px solid var(--accent); padding-top: 10px; display: grid; gap: 4px; min-width: 0; }
+  .step h3::before { counter-increment: step; content: counter(step) ". "; color: var(--accent); }
+  .step p { font-size: .9rem; color: var(--muted); }
+
+  /* Two-column lists */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cols > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .list li { padding-left: 18px; position: relative; }
+  .list li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; background: var(--accent); border-radius: 2px; }
+
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack .tag { font-size: .85rem; padding: .25rem .6rem; }
+
+  .role { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 10px; }
+  footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: .88rem; color: var(--muted); display: grid; gap: 6px; }
+
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow { grid-template-columns: 1fr; }
+    .cols { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition: transform .15s ease; }
+    .btn:hover { transform: translateY(-1px); }
+  }
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Portfolio project 01 · Banking GenAI · Risk &amp; Compliance</span>
+    <h1>Ledgerline Compliance Copilot</h1>
+    <p class="lede">An AI policy assistant for bank staff. It answers KYC, AML, sanctions and risk questions only from approved policy text, cites the exact section, shows how confident it is, and sends anything that touches a regulated decision to a human reviewer.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://abv2xygrggmaucidx5hjbg.streamlit.app" target="_blank" rel="noopener">Try the live demo ↗</a>
+      <a class="btn secondary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio" target="_blank" rel="noopener">View the code on GitHub ↗</a>
+    </div>
+    <p class="disclose">Independent project built by Nipun Gupta with AI-assisted development tools. All policies and data are synthetic and describe a fictional bank. It is not affiliated with any employer.</p>
+  </header>
+
+  <section aria-labelledby="why">
+    <span class="eyebrow">The banking problem</span>
+    <h2 id="why">Wrong policy answers become regulatory breaches</h2>
+    <p>Operations and KYC teams search long policy manuals every day. An answer from memory can mean a missed review date, a released sanctions hit, or a customer being tipped off about a SAR. Generic chatbots can't cite policy, keep no audit trail, and may invent rules. This copilot is built around the controls a bank's second line and model-risk team would expect.</p>
+  </section>
+
+  <section aria-labelledby="sample">
+    <span class="eyebrow">What a user sees</span>
+    <h2 id="sample">A regulated question goes to a human, not to the AI</h2>
+    <div class="sample">
+      <p class="q">"Should I release the payment that hit a sanctions alert?"</p>
+      <div class="pills">
+        <span class="pill review">Pending human review</span>
+        <span class="pill ok">Every sentence cited</span>
+      </div>
+      <ul>
+        <li>The payment or account must remain blocked or frozen. <span class="tag">SAN-003 §7</span></li>
+        <li>No potential true match may be released without second-level approval from the Sanctions Compliance Officer. <span class="tag">SAN-003 §7</span></li>
+        <li>AI systems must not make final decisions on regulated matters, including sanctions alert release. <span class="tag">MRM-006 §5</span></li>
+      </ul>
+      <p class="flag">Flag raised: sanctions disposition question. Routed to the review queue, where a different person must approve, amend or reject it with a written rationale.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="results">
+    <span class="eyebrow">Measured, not claimed</span>
+    <h2 id="results">Results from automated testing</h2>
+    <div class="stats">
+      <div class="stat"><b>100%</b><span>Correct policy section in the top 3 results</span></div>
+      <div class="stat"><b>97%</b><span>Answers containing the expected policy fact</span></div>
+      <div class="stat"><b>100%</b><span>Questions routed correctly: answer, review, refuse or block</span></div>
+      <div class="stat"><b>48</b><span>Automated tests, run on every code change</span></div>
+    </div>
+    <p class="note">Measured on a labelled set of 37 test questions, including off-topic and prompt-injection attempts. The set was written for this project, so it checks the design works as intended rather than serving as an independent benchmark.</p>
+  </section>
+
+  <section aria-labelledby="how">
+    <span class="eyebrow">How it works</span>
+    <h2 id="how">One question, five controlled steps</h2>
+    <div class="flow">
+      <div class="step"><h3>Guardrails</h3><p>Personal data is removed. Prompt-injection attempts are blocked.</p></div>
+      <div class="step"><h3>Retrieve</h3><p>Hybrid search (keyword + semantic) finds the five most relevant policy sections.</p></div>
+      <div class="step"><h3>Answer</h3><p>Quotes policy sentences with citations. An optional LLM mode must cite real sources or it is rejected.</p></div>
+      <div class="step"><h3>Check &amp; route</h3><p>Confidence score and risk rules decide: release, human review, or refuse.</p></div>
+      <div class="step"><h3>Audit</h3><p>Every step goes into a hash-chained log that shows any later tampering.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="controls">
+    <div class="cols">
+      <div>
+        <span class="eyebrow">Banking controls built in</span>
+        <h2 id="controls">Governance by design</h2>
+        <ul class="list">
+          <li>Maker-checker review: the person who asks can't approve their own answer</li>
+          <li>Tipping-off detection puts the SAR confidentiality rule first</li>
+          <li>Refuses to answer when the policies don't cover the question</li>
+          <li>Tamper-evident audit trail, verifiable and exportable</li>
+          <li>Runs free by default with no external AI calls, so no data leaves the app</li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">Technology</span>
+        <h2>Stack</h2>
+        <div class="stack">
+          <span class="tag">Python</span><span class="tag">RAG</span><span class="tag">BM25</span>
+          <span class="tag">Vector search (LSA)</span><span class="tag">Reciprocal Rank Fusion</span>
+          <span class="tag">Claude API (optional)</span><span class="tag">Streamlit</span><span class="tag">SQLite</span>
+          <span class="tag">SHA-256 hash chain</span><span class="tag">MLflow</span><span class="tag">pytest</span>
+          <span class="tag">Playwright</span><span class="tag">GitHub Actions CI</span><span class="tag">Streamlit Cloud</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="role" aria-labelledby="role">
+    <span class="eyebrow">My role</span>
+    <h2 id="role">Banking judgement, directed AI delivery</h2>
+    <p>I drew on 12 years in banking risk, controls, operations and UAT. I defined the use case and the control requirements: citations, confidence, escalation rules, maker-checker review, audit and data minimisation. I directed AI coding tools to build it, reviewed the design, set the test scenarios from real compliance risks, and validated and deployed the result.</p>
+  </section>
+
+  <footer>
+    <span>Nipun Gupta · AI Transformation · Risk &amp; Controls · Business Analysis · PMO</span>
+    <span>Project 1 of 5 in a Banking AI &amp; Databricks portfolio, 2026.</span>
+  </footer>
+</main>
