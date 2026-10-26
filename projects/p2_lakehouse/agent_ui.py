@@ -6,7 +6,6 @@ Kept out of ``app.py`` so the lakehouse explorer and the agent experience stay r
 from __future__ import annotations
 
 import json
-import re
 import time
 from pathlib import Path
 
@@ -14,13 +13,14 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 from agents import AgentRun, AuditLog, ClaudeBrain, SnapshotBackend, run_agent
+from agents.evals import SUGGESTED
+from agents.recordings import RUNS_DIR, recording_path, slug
 from agents.specs import ASK_INTENTS, SPECS
 
 from portfolio_core.llm import live_llm_available
 from portfolio_core.ui import pill
 
-RUNS_DIR = Path(__file__).resolve().parent / "data" / "agent_runs"
-RECORDED, OFFLINE, LIVE = "Claude · recorded run", "Offline planner · no LLM", "Claude · live"
+RECORDED, OFFLINE, LIVE = "LLM · recorded run", "Offline planner · no LLM", "Claude · live"
 TOOL_ICON = {"get_alert": "🚨", "get_transactions": "💳", "get_customer_profile": "🪪", "get_customer_activity": "📈",
              "compare_to_peers": "👥", "find_counterparty_history": "🔁", "counterparty_network": "🕸️",
              "run_sql": "🧮", "list_tables": "🗂️", "get_pipeline_status": "🛰️", "get_dq_findings": "🧪",
@@ -75,14 +75,6 @@ def audit() -> AuditLog:
     return st.session_state.audit
 
 
-def _slug(text: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60]
-
-
-def recording_path(agent: str, key: str) -> Path:
-    return RUNS_DIR / agent / f"{_slug(key)}.json"
-
-
 def load_recording(agent: str, key: str) -> AgentRun | None:
     path = recording_path(agent, key)
     return AgentRun.from_dict(json.loads(path.read_text())) if path.exists() else None
@@ -97,10 +89,17 @@ def brain_modes() -> list[str]:
     return modes + ([LIVE] if live_llm_available() else [])
 
 
+def recorded_report() -> dict:
+    path = RUNS_DIR / "eval_llm.json"
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
 def brain_note(mode: str) -> str:
+    rep = recorded_report()
+    where = f" on {rep['where']}" if rep.get("where") else ""
     return {
-        RECORDED: "Replaying a real Claude run recorded with run_agents.py: every thought, tool call and result is "
-                  "exactly what the model did. No API call is made now.",
+        RECORDED: f"Replaying a real run of <b>{rep.get('model', 'an LLM')}</b>{where}, recorded {rep.get('recorded_at', '')}: "
+                  "every thought, tool call and result is exactly what the model did. No model is called now.",
         OFFLINE: "The offline planner is a fixed investigation playbook written in Python with rule-based scoring. It "
                  "calls the same tools through the same engine, but it is <b>not an LLM</b>.",
         LIVE: "Claude is called live through the Anthropic API for this run. Each run costs a few cents.",
@@ -114,7 +113,7 @@ def dispatch(agent: str, mode: str, key: str, **context) -> AgentRun:
             audit().record("agent_run_replayed", {"agent": agent, "recorded_run": run.run_id, "model": run.model},
                            actor="app", correlation_id=run.run_id)
             return run
-        st.toast("No recorded Claude run for this one yet; using the offline planner.", icon="ℹ️")
+        st.toast("No recorded LLM run for this one yet; using the offline planner.", icon="ℹ️")
     brain = ClaudeBrain() if mode == LIVE else None
     return run_agent(agent, backend(), brain, audit(), **context)
 
@@ -337,8 +336,8 @@ def triage_board(mode: str) -> None:
     if st.button("Run on all alerts and score against the answer key", key="triage"):
         from agents.evals import evaluate
 
-        if mode == RECORDED and (RUNS_DIR / "eval_claude.json").exists():
-            st.session_state.triage_result = json.loads((RUNS_DIR / "eval_claude.json").read_text())
+        if mode == RECORDED and (RUNS_DIR / "eval_llm.json").exists():
+            st.session_state.triage_result = json.loads((RUNS_DIR / "eval_llm.json").read_text())
         else:
             with st.spinner("Investigating every alert…"):
                 res = evaluate(backend(), ClaudeBrain() if mode == LIVE else None, agents=("aml_investigator",))
@@ -392,10 +391,6 @@ def steward_tab(mode: str, animate: bool) -> None:
 
 
 # ------------------------------------------------------------------- ask
-SUGGESTED = ["Which 5 customers had the highest cross-border volume in the last 30 days?",
-             "How many AML alert candidates are there for each rule?",
-             "Show the daily transaction volume trend",
-             "Which data-quality rules quarantined transactions, and how many records each?"]
 
 
 def ask_tab(mode: str, animate: bool) -> None:
@@ -408,7 +403,7 @@ def ask_tab(mode: str, animate: bool) -> None:
     cols = st.columns(len(SUGGESTED))
     clicked = None
     for col, q in zip(cols, SUGGESTED, strict=True):
-        if col.button(q, key=f"sugg-{_slug(q)}", use_container_width=True):
+        if col.button(q, key=f"sugg-{slug(q)}", use_container_width=True):
             clicked = q
     question = st.chat_input("Ask about customers, transactions, alerts or data quality…") or clicked
     if question:
@@ -470,8 +465,10 @@ a dollar cap; tool errors go back to the brain so it can correct itself; the eva
 Silver so invented transaction ids are caught.
 
 **Two brains, same tools and engine:**
-- **Claude** (Anthropic API, tool use with adaptive thinking) decides its own steps and writes its own reports.
-  The hosted app replays recorded Claude runs, so visitors see exactly what Claude did without any API calls.
+- **An LLM** decides its own steps and writes its own reports. Two are wired in: a Databricks Foundation Model
+  endpoint called from the `03_ai_agents` notebook with the workspace's own credentials (no API key, free tier),
+  and Claude through the Anthropic API. The hosted app replays recorded LLM runs, so visitors see exactly what the
+  model did without any model calls.
 - **Offline planner** (no LLM): a fixed playbook in Python with rule-based scoring. It keeps the app working with no
   key and no cost, and gives the evaluation a baseline. It is labelled wherever its output appears.
 """)
@@ -481,16 +478,16 @@ Silver so invented transaction ids are caught.
                "root cause and row counts, and SQL that returns the same result as a reference query.")
     rows = [{"brain": s["brain"], "agent": s["agent"], "cases fully correct": f"{s['passed']}/{s['cases']}",
              **s["checks"]} for s in offline_scorecard()]
-    claude_file = RUNS_DIR / "eval_claude.json"
-    if claude_file.exists():
-        rep = json.loads(claude_file.read_text())
+    rep = recorded_report()
+    if rep:
         for name, body in rep.items():
             if isinstance(body, dict) and "summary" in body:
                 s = body["summary"]
-                rows.append({"brain": f"claude ({rep.get('model')})", "agent": name,
+                rows.append({"brain": f"{rep.get('brain')} ({rep.get('model')})", "agent": name,
                              "cases fully correct": f"{s['passed']}/{s['cases']}", **s["checks"]})
-        st.caption(f"Claude run recorded {rep.get('recorded_at')}, total API spend ${rep.get('spent_usd')}.")
+        st.caption(f"LLM run recorded {rep.get('recorded_at')}{' on ' + rep['where'] if rep.get('where') else ''}, "
+                   f"model {rep.get('model')}, API spend ${rep.get('spent_usd')}.")
     else:
-        st.info("Claude has not been evaluated yet. The scores below are the offline planner only; Claude's row will "
+        st.info("No LLM has been evaluated yet. The scores below are the offline planner only; an LLM's row will "
                 "appear here after a real recorded run, never before.")
     st.dataframe(pd.DataFrame(rows).fillna(""), hide_index=True, use_container_width=True)

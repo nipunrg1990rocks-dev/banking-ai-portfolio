@@ -3,6 +3,10 @@
 * ``ClaudeBrain``   Claude through the Anthropic API with native tool use. The model
   reads tool results, decides what to check next, recovers from errors (for
   example a SQL mistake) and writes the final report.
+* ``OpenAIToolBrain`` any OpenAI-compatible chat endpoint with tool calling. On
+  Databricks this is a Foundation Model serving endpoint reached with the
+  notebook's own credentials (see ``databricks_llm.py``): no API key, no bill
+  beyond the workspace's own quota.
 * ``ScriptedBrain`` the offline planner: a fixed investigation playbook written in
   Python, with rule-based scoring. It uses the *same* tools through the *same*
   engine, so the hosted app works with no API key and no cost. It is not an LLM,
@@ -11,6 +15,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Callable, Generator
 
 from portfolio_core.llm import LLMUnavailable, resolve_api_key, resolve_model
@@ -115,5 +120,81 @@ class ClaudeBrain:
                 results.append({"type": "tool_result", "tool_use_id": call.id, "content": compact(result),
                                 **({} if ok else {"is_error": True})})
             messages.append({"role": "user", "content": results})
+            if ctx.done:
+                return
+
+
+def _text_of(content) -> str:
+    """Message text. Some endpoints return a list of parts (text, reasoning) instead of a string."""
+    if isinstance(content, str):
+        return content
+    parts = []
+    for part in content or []:
+        if not isinstance(part, dict):
+            continue
+        if part.get("type") == "reasoning":
+            parts += [x.get("text", "") for x in part.get("summary") or [] if isinstance(x, dict)]
+        else:
+            parts.append(part.get("text", ""))
+    return "\n".join(x for x in parts if x)
+
+
+class OpenAIToolBrain:
+    """The same agent loop as ``ClaudeBrain``, in the OpenAI chat-completions tool format.
+
+    ``client`` is an ``openai.OpenAI``-style client (``client.chat.completions.create``).
+    Cost is reported as 0: on Databricks Free Edition the endpoints draw on the free
+    daily quota, and token counts are still recorded.
+    """
+
+    name = "databricks-llm"
+
+    def __init__(self, client, model: str, temperature: float = 0.0, max_tokens: int = 4000):
+        self.client = client
+        self.model = model
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+
+    @staticmethod
+    def tools_for(schemas: list[dict]) -> list[dict]:
+        return [{"type": "function", "function": {"name": t["name"], "description": t["description"],
+                                                  "parameters": t["input_schema"]}} for t in schemas]
+
+    def run(self, ctx: AgentContext) -> None:
+        system = ctx.spec.system + "\n\n" + ctx.context.get("system_suffix", "")
+        messages: list[dict] = [{"role": "system", "content": system}, {"role": "user", "content": ctx.goal}]
+        tools = self.tools_for(ctx.tool_schemas())
+        nudged = False
+        for _ in range(ctx.spec.max_tool_calls + 4):
+            response = self.client.chat.completions.create(model=self.model, messages=messages, tools=tools,
+                                                           temperature=self.temperature, max_tokens=self.max_tokens)
+            usage = getattr(response, "usage", None)
+            ctx.add_usage(getattr(usage, "prompt_tokens", 0) or 0, getattr(usage, "completion_tokens", 0) or 0, 0.0)
+            msg = response.choices[0].message
+            text = _text_of(msg.content)
+            if text:
+                ctx.think(text)
+            calls = list(msg.tool_calls or [])
+            messages.append({"role": "assistant", "content": text or None,
+                             **({"tool_calls": [{"id": c.id, "type": "function",
+                                                 "function": {"name": c.function.name,
+                                                              "arguments": c.function.arguments or "{}"}}
+                                                for c in calls]} if calls else {})})
+            if not calls:
+                if ctx.done or nudged:
+                    return
+                nudged = True
+                messages.append({"role": "user", "content": f"Finish now by calling the {ctx.spec.submit_tool} tool."})
+                continue
+            for call in calls:
+                try:
+                    args = json.loads(call.function.arguments or "{}")
+                    if not isinstance(args, dict):
+                        raise ValueError("arguments must be a JSON object")
+                except ValueError as exc:
+                    result, ok = {"error": f"Invalid JSON arguments: {exc}"}, False
+                else:
+                    result, ok = ctx.call_tool(call.function.name, args)
+                messages.append({"role": "tool", "tool_call_id": call.id, "content": compact(result)})
             if ctx.done:
                 return

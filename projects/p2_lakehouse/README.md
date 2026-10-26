@@ -61,7 +61,7 @@ pytest projects/p2_lakehouse                          # tests
 
 1. In your workspace: **Workspace → Create → Git folder**, paste `https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio`.
 2. Open `projects/p2_lakehouse/databricks/00_run_pipeline` and click **Run all** (serverless; a few minutes).
-3. Optional: open `03_ai_agents` and click **Run all** to let the agents investigate the live tables.
+3. Open `03_ai_agents` and click **Run all**: the agents investigate the live tables using a free Databricks Foundation Model endpoint (picked automatically, no API key) and are scored against the answer key.
 4. Optional: run `01_create_job` to create the 6-task **Ledgerline Lakehouse** job, then `02_unity_catalog_governance`.
 
 ## Documentation
