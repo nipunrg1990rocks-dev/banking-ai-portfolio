@@ -1,0 +1,25 @@
+rule_id,table_name,column_name,dimension,description,severity,threshold_pct,owner,origin
+DQ-TXN-01,silver.transactions,txn_id,Completeness,Transaction id is present,CRITICAL,99.9,Head of Payments Data,P2 lakehouse rule txn_id_present
+DQ-TXN-02,silver.transactions,amount,Completeness,Amount is present,CRITICAL,99.9,Head of Payments Data,P2 lakehouse rule amount_present
+DQ-TXN-03,silver.transactions,currency,Validity,Currency is an ISO code we trade,HIGH,99.9,Head of Payments Data,P2 lakehouse rule valid_currency
+DQ-TXN-04,silver.transactions,account_id,Consistency,Account exists in the account master,CRITICAL,99.9,Head of Payments Data,P2 lakehouse rule known_account
+DQ-TXN-05,silver.transactions,txn_ts,Validity,Timestamp parses and is not future-dated,HIGH,99.9,Head of Payments Data,"P2 lakehouse rules valid_timestamp, not_future_dated"
+DQ-TXN-06,silver.transactions,amount_usd,Completeness,A USD FX rate exists for the currency,CRITICAL,99.9,Head of Payments Data,P2 lakehouse rule fx_rate_available
+DQ-CUS-01,silver.customers,customer_id,Completeness,Customer id is present,CRITICAL,99.9,Head of Client Data,P2 lakehouse rule customer_id_present
+DQ-CUS-02,silver.customers,email,Validity,E-mail address is well formed,MEDIUM,99.0,Head of Client Data,P2 lakehouse rule valid_email
+DQ-CUS-03,silver.customers,kyc_risk_rating,Validity,"KYC risk rating is LOW, MEDIUM or HIGH",CRITICAL,99.5,Head of Client Data,P2 lakehouse rule valid_risk_rating
+DQ-CUS-04,silver.customers,country,Validity,Country is in the country-risk reference,HIGH,99.5,Head of Client Data,P2 lakehouse rule known_country
+DQ-ACC-01,silver.accounts,customer_id,Consistency,Account owner exists in the customer master,CRITICAL,99.5,Head of Client Data,P2 lakehouse rule known_customer
+DQ-KYC-01,kyc.customer_profile,residential_address,Completeness,Residential address is captured (needed for KYC and sanctions screening),HIGH,98.5,Head of KYC Operations,Enterprise DQ rule
+DQ-KYC-02,kyc.customer_profile,tax_id,Completeness,Tax identification number is captured,HIGH,99.0,Head of KYC Operations,Enterprise DQ rule
+DQ-KYC-03,kyc.periodic_reviews,next_review_date,Validity,Next review date matches the risk-based review cycle,MEDIUM,99.5,Head of KYC Operations,Enterprise DQ rule
+DQ-PAY-01,payments.swift_messages,beneficiary_bic,Validity,Beneficiary BIC is in the BIC directory,CRITICAL,99.9,Head of Payments Operations,Enterprise DQ rule
+DQ-PAY-02,payments.swift_messages,uetr,Uniqueness,UETR is unique (no duplicate payment messages),CRITICAL,99.99,Head of Payments Operations,Enterprise DQ rule
+DQ-FXR-01,ref.fx_rates,rate,Completeness,A rate is delivered for every traded currency,CRITICAL,100.0,Head of Market Data,Enterprise DQ rule
+DQ-FXR-02,ref.fx_rates,delivered_at,Timeliness,Rates delivered before the 07:00 cut-off,CRITICAL,100.0,Head of Market Data,Enterprise DQ rule
+DQ-GL-01,gl.journal_lines,amount,Accuracy,Every journal balances (debits equal credits),CRITICAL,100.0,Financial Controller,Enterprise DQ rule
+DQ-GL-02,gl.journal_lines,cost_centre,Validity,Cost centre exists in the hierarchy,MEDIUM,99.0,Financial Controller,Enterprise DQ rule
+DQ-LN-01,risk.loan_book,collateral_value,Completeness,Collateral value is present for secured loans,HIGH,98.0,Head of Credit Risk Data,Enterprise DQ rule
+DQ-LN-02,risk.loan_book,pd,Validity,Probability of default is between 0 and 1,HIGH,99.5,Head of Credit Risk Data,Enterprise DQ rule
+DQ-CRD-01,cards.settlements,settlement_ref,Uniqueness,Settlement reference is unique,HIGH,99.95,Head of Cards Operations,Enterprise DQ rule
+DQ-CRD-02,cards.settlements,merchant_country,Validity,Merchant country is a valid ISO code,MEDIUM,99.0,Head of Cards Operations,Enterprise DQ rule

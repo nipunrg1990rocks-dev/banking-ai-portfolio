@@ -1,0 +1,74 @@
+{
+  "reporting_days": 50,
+  "from": "2026-08-03",
+  "to": "2026-10-09",
+  "incidents": [
+    {
+      "id": "INC-1",
+      "metric": "RECON_OPEN_BREAKS",
+      "cause": "CHG-2026-1043",
+      "onset": "2026-10-05",
+      "first_detected": "2026-10-05",
+      "lag_business_days": 0,
+      "story": "Core banking release R26.10 mis-maps value dates on EUR nostro postings"
+    },
+    {
+      "id": "INC-2",
+      "metric": "DQ_HEALTH_SCORE",
+      "cause": "INC-2026-0871",
+      "onset": "2026-10-07",
+      "first_detected": "2026-10-07",
+      "lag_business_days": 0,
+      "story": "MarketData vendor outage: FX rate file missing and late"
+    },
+    {
+      "id": "INC-3",
+      "metric": "DQ_RULES_BREACHED",
+      "cause": "CHG-2026-0955",
+      "onset": "2026-08-17",
+      "first_detected": "2026-08-19",
+      "lag_business_days": 2,
+      "story": "Digital onboarding form v3 made address optional; completeness drifts down"
+    },
+    {
+      "id": "INC-4",
+      "metric": "EXC_SLA_BREACH_PCT",
+      "cause": "BUS-2026-0012",
+      "onset": "2026-09-28",
+      "first_detected": "2026-09-30",
+      "lag_business_days": 2,
+      "story": "EUR instant-payments corridor launch lifts repair volumes 65% with no extra staff"
+    },
+    {
+      "id": "INC-5",
+      "metric": "KRI_HR_KYC_OVERDUE_PCT",
+      "cause": "(no change: overdue item)",
+      "onset": "2026-09-26",
+      "first_detected": "2026-09-28",
+      "lag_business_days": 0,
+      "story": "One high-risk customer's annual KYC review is overdue: 1 of 39 is above the 2% limit"
+    },
+    {
+      "id": "INC-6",
+      "metric": "KRI_LCR_PCT",
+      "cause": "BUS-2026-0019",
+      "onset": "2026-10-06",
+      "first_detected": "2026-10-07",
+      "lag_business_days": 1,
+      "story": "Two corporate clients move deposits out; LCR drops below the 120% early-warning trigger"
+    },
+    {
+      "id": "INC-7",
+      "metric": "KRI_OPLOSS_YTD_USD_M",
+      "cause": "INC-2026-0815",
+      "onset": "2026-09-22",
+      "first_detected": "2026-09-22",
+      "lag_business_days": 0,
+      "story": "Duplicate outbound payment batch (USD 1.85m loss) takes YTD losses past the USD 10m trigger"
+    }
+  ],
+  "recall": 1.0,
+  "median_lag_business_days": 0.0,
+  "wrong_root_causes": [],
+  "avg_findings_per_day": 3.0
+}
