@@ -26,6 +26,7 @@ SQL_TABLES = {
     "dq_scorecard": "gold_dq_scorecard.csv",
     "quarantine": "quarantine_transactions.csv",
     "customer_history": "scd2_customer_history.csv",
+    "dq_results": "dq_results.csv",
 }
 EXAMPLE_QUERIES = {  # each value starts with a newline only to keep lines short; stripped below
     "Top 10 customers by cross-border volume (30 days)": """
@@ -121,6 +122,7 @@ class Snapshot:
             "checks_with_findings": len(dq_fail),
             "controls_passed": int(((self.dq.action == "fail") & (self.dq.rows_failed == 0)).sum()),
             "controls": int((self.dq.action == "fail").sum()),
+            "controls_tripped": int(((self.dq.action == "fail") & (self.dq.rows_failed > 0)).sum()),
             "alerts": len(self.alerts),
             "silver_transactions": self.summary["table_counts"]["silver.transactions"],
             "gold_tables": sum(1 for k in self.summary["table_counts"] if k.startswith("gold.")),
@@ -171,8 +173,10 @@ def gold_sql(name: str) -> str:
 def sql_console(folder: Path = SNAPSHOT) -> duckdb.DuckDBPyConnection:
     """An in-memory DuckDB holding the snapshot tables, locked so queries cannot touch files or the network."""
     con = duckdb.connect(":memory:")
-    for table, file in SQL_TABLES.items():
-        df = pd.read_csv(folder / file)
+    frames = {table: pd.read_csv(folder / file) for table, file in SQL_TABLES.items()}
+    summary = json.loads((folder / "run_summary.json").read_text())
+    frames["pipeline_steps"] = pd.DataFrame(summary["steps"]).drop(columns=["run_started_at"], errors="ignore")
+    for table, df in frames.items():
         con.register("_df", df)
         con.execute(f"CREATE TABLE {table} AS SELECT * FROM _df")
         con.unregister("_df")

@@ -26,6 +26,10 @@ WARN, DROP, FAIL = "warn", "drop", "fail"
 class DataQualityError(RuntimeError):
     """Raised when a ``fail`` rule is broken. The run stops and nothing downstream is published."""
 
+    def __init__(self, message: str, metric: dict | None = None) -> None:
+        super().__init__(message)
+        self.metric = metric
+
 
 @dataclass(frozen=True)
 class Rule:
@@ -101,7 +105,7 @@ def control_check(name: str, passed: bool, *, table: str, detail: str, layer: st
         "rows_failed": 0 if passed else rows_checked,
     }
     if not passed:
-        raise DataQualityError(f"{table}: control '{name}' failed: {detail}")
+        raise DataQualityError(f"{table}: control '{name}' failed: {detail}", metric)
     return metric
 
 

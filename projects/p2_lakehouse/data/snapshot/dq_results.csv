@@ -1,53 +1,54 @@
 run_id,batch_id,layer,table_name,rule_name,action,description,expression,rows_checked,rows_failed
-run_20261026T141724Z,,gold,gold.daily_transaction_summary,gold_daily_summary_reconciles_to_silver,fail,"daily summary 16644 txns / 17,180,775.81 USD vs silver 16644 txns / 17,180,775.81 USD",control,1,0
-run_20261026T141724Z,,gold,gold.segment_monthly_kpis,gold_segment_kpis_cover_every_transaction,fail,segment KPIs count 16644 txns vs silver 16644 (SCD2 as-of join complete),control,1,0
-run_20261026T141724Z,20260930,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 1077 rows, source manifest says 1077",control,1077,0
-run_20261026T141724Z,20260930,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 603 rows, source manifest says 603",control,603,0
-run_20261026T141724Z,20260930,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20260930: landed amount total 45,633,618.88 vs manifest 45,633,618.88",control,1,0
-run_20261026T141724Z,20260930,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 13537 rows, source manifest says 13537",control,13537,0
-run_20261026T141724Z,20260930,silver,silver.accounts,account_id_present,drop,Every account needs an id,account_id IS NOT NULL AND account_id <> '',1076,0
-run_20261026T141724Z,20260930,silver,silver.accounts,known_customer,drop,Account must belong to a known customer (referential integrity),customer_known,1076,2
-run_20261026T141724Z,20260930,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20260930: bronze 1077 = duplicates 1 + quarantined 2 + valid 1074,control,1077,0
-run_20261026T141724Z,20260930,silver,silver.accounts,valid_currency,drop,Account currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",1076,0
-run_20261026T141724Z,20260930,silver,silver.accounts,valid_status,drop,Account status must be a known value,"status IN ('ACTIVE','DORMANT','CLOSED')",1076,0
-run_20261026T141724Z,20260930,silver,silver.customers,customer_id_present,drop,Every customer must have an identifier,customer_id IS NOT NULL AND customer_id <> '',601,1
-run_20261026T141724Z,20260930,silver,silver.customers,dob_present,warn,Date of birth should be present (needed for KYC refresh),date_of_birth IS NOT NULL,601,2
-run_20261026T141724Z,20260930,silver,silver.customers,known_country,warn,Country of residence should exist in the country reference table,country_known,601,2
-run_20261026T141724Z,20260930,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20260930: bronze 603 = duplicates 2 + quarantined 1 + valid 600,control,603,0
-run_20261026T141724Z,20260930,silver,silver.customers,valid_email,warn,"E-mail should be well formed (kept, flagged for data steward)","email RLIKE '^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$'",601,3
-run_20261026T141724Z,20260930,silver,silver.customers,valid_risk_rating,warn,"KYC risk rating should be LOW, MEDIUM or HIGH; an invalid rating is defaulted to HIGH (fail-safe)","kyc_risk_rating_raw IN ('LOW','MEDIUM','HIGH')",601,1
-run_20261026T141724Z,20260930,silver,silver.customers,valid_segment,drop,Customer segment must be a known value,"segment IN ('RETAIL','PREMIER','SME','CORPORATE')",601,0
-run_20261026T141724Z,20260930,silver,silver.transactions,amount_positive,drop,Amount must be positive (direction comes from the transaction type),amount IS NULL OR amount > 0,13512,3
-run_20261026T141724Z,20260930,silver,silver.transactions,amount_present,drop,Amount must be present and numeric,amount IS NOT NULL,13512,4
-run_20261026T141724Z,20260930,silver,silver.transactions,fx_rate_available,drop,A USD FX rate must exist for the currency and date (otherwise amount_usd would be wrong),"usd_rate IS NOT NULL OR currency NOT IN ('USD','EUR','GBP','INR','SGD','AED','JPY') OR txn_ts IS NULL OR txn_ts > business_cutoff",13512,0
-run_20261026T141724Z,20260930,silver,silver.transactions,known_account,drop,Transaction must post to a known account,account_known,13512,4
-run_20261026T141724Z,20260930,silver,silver.transactions,not_future_dated,drop,Transaction cannot be dated after the batch business date,txn_ts IS NULL OR txn_ts <= business_cutoff,13512,2
-run_20261026T141724Z,20260930,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20260930: bronze 13537 = duplicates 25 + quarantined 19 + inserted 13493 + already loaded 0,control,13537,0
-run_20261026T141724Z,20260930,silver,silver.transactions,txn_id_present,drop,Every transaction needs an id,txn_id IS NOT NULL AND txn_id <> '',13512,1
-run_20261026T141724Z,20260930,silver,silver.transactions,valid_currency,drop,Currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",13512,3
-run_20261026T141724Z,20260930,silver,silver.transactions,valid_timestamp,drop,Timestamp must parse as ISO-8601 UTC,txn_ts IS NOT NULL,13512,2
-run_20261026T141724Z,20261007,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 57 rows, source manifest says 57",control,57,0
-run_20261026T141724Z,20261007,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 70 rows, source manifest says 70",control,70,0
-run_20261026T141724Z,20261007,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20261007: landed amount total 17,192,687.84 vs manifest 17,192,687.84",control,1,0
-run_20261026T141724Z,20261007,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 3169 rows, source manifest says 3169",control,3169,0
-run_20261026T141724Z,20261007,silver,silver.accounts,account_id_present,drop,Every account needs an id,account_id IS NOT NULL AND account_id <> '',57,0
-run_20261026T141724Z,20261007,silver,silver.accounts,known_customer,drop,Account must belong to a known customer (referential integrity),customer_known,57,0
-run_20261026T141724Z,20261007,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20261007: bronze 57 = duplicates 0 + quarantined 0 + valid 57,control,57,0
-run_20261026T141724Z,20261007,silver,silver.accounts,valid_currency,drop,Account currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",57,0
-run_20261026T141724Z,20261007,silver,silver.accounts,valid_status,drop,Account status must be a known value,"status IN ('ACTIVE','DORMANT','CLOSED')",57,0
-run_20261026T141724Z,20261007,silver,silver.customers,customer_id_present,drop,Every customer must have an identifier,customer_id IS NOT NULL AND customer_id <> '',70,0
-run_20261026T141724Z,20261007,silver,silver.customers,dob_present,warn,Date of birth should be present (needed for KYC refresh),date_of_birth IS NOT NULL,70,0
-run_20261026T141724Z,20261007,silver,silver.customers,known_country,warn,Country of residence should exist in the country reference table,country_known,70,0
-run_20261026T141724Z,20261007,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20261007: bronze 70 = duplicates 0 + quarantined 0 + valid 70,control,70,0
-run_20261026T141724Z,20261007,silver,silver.customers,valid_email,warn,"E-mail should be well formed (kept, flagged for data steward)","email RLIKE '^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$'",70,0
-run_20261026T141724Z,20261007,silver,silver.customers,valid_risk_rating,warn,"KYC risk rating should be LOW, MEDIUM or HIGH; an invalid rating is defaulted to HIGH (fail-safe)","kyc_risk_rating_raw IN ('LOW','MEDIUM','HIGH')",70,0
-run_20261026T141724Z,20261007,silver,silver.customers,valid_segment,drop,Customer segment must be a known value,"segment IN ('RETAIL','PREMIER','SME','CORPORATE')",70,0
-run_20261026T141724Z,20261007,silver,silver.transactions,amount_positive,drop,Amount must be positive (direction comes from the transaction type),amount IS NULL OR amount > 0,3164,0
-run_20261026T141724Z,20261007,silver,silver.transactions,amount_present,drop,Amount must be present and numeric,amount IS NOT NULL,3164,2
-run_20261026T141724Z,20261007,silver,silver.transactions,fx_rate_available,drop,A USD FX rate must exist for the currency and date (otherwise amount_usd would be wrong),"usd_rate IS NOT NULL OR currency NOT IN ('USD','EUR','GBP','INR','SGD','AED','JPY') OR txn_ts IS NULL OR txn_ts > business_cutoff",3164,0
-run_20261026T141724Z,20261007,silver,silver.transactions,known_account,drop,Transaction must post to a known account,account_known,3164,1
-run_20261026T141724Z,20261007,silver,silver.transactions,not_future_dated,drop,Transaction cannot be dated after the batch business date,txn_ts IS NULL OR txn_ts <= business_cutoff,3164,0
-run_20261026T141724Z,20261007,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20261007: bronze 3169 = duplicates 5 + quarantined 3 + inserted 3151 + already loaded 10,control,3169,0
-run_20261026T141724Z,20261007,silver,silver.transactions,txn_id_present,drop,Every transaction needs an id,txn_id IS NOT NULL AND txn_id <> '',3164,0
-run_20261026T141724Z,20261007,silver,silver.transactions,valid_currency,drop,Currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",3164,0
-run_20261026T141724Z,20261007,silver,silver.transactions,valid_timestamp,drop,Timestamp must parse as ISO-8601 UTC,txn_ts IS NOT NULL,3164,0
+run_20261026T154211Z,,gold,gold.daily_transaction_summary,gold_daily_summary_reconciles_to_silver,fail,"daily summary 16648 txns / 17,379,942.81 USD vs silver 16648 txns / 17,379,942.81 USD",control,1,0
+run_20261026T154211Z,,gold,gold.segment_monthly_kpis,gold_segment_kpis_cover_every_transaction,fail,segment KPIs count 16648 txns vs silver 16648 (SCD2 as-of join complete),control,1,0
+run_20261026T154211Z,20260930,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 1077 rows, source manifest says 1077",control,1077,0
+run_20261026T154211Z,20260930,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 603 rows, source manifest says 603",control,603,0
+run_20261026T154211Z,20260930,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20260930: landed amount total 45,729,557.88 vs manifest 45,729,557.88",control,1,0
+run_20261026T154211Z,20260930,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20260930: landed 13539 rows, source manifest says 13539",control,13539,0
+run_20261026T154211Z,20260930,silver,silver.accounts,account_id_present,drop,Every account needs an id,account_id IS NOT NULL AND account_id <> '',1076,0
+run_20261026T154211Z,20260930,silver,silver.accounts,known_customer,drop,Account must belong to a known customer (referential integrity),customer_known,1076,2
+run_20261026T154211Z,20260930,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20260930: bronze 1077 = duplicates 1 + quarantined 2 + valid 1074,control,1077,0
+run_20261026T154211Z,20260930,silver,silver.accounts,valid_currency,drop,Account currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",1076,0
+run_20261026T154211Z,20260930,silver,silver.accounts,valid_status,drop,Account status must be a known value,"status IN ('ACTIVE','DORMANT','CLOSED')",1076,0
+run_20261026T154211Z,20260930,silver,silver.customers,customer_id_present,drop,Every customer must have an identifier,customer_id IS NOT NULL AND customer_id <> '',601,1
+run_20261026T154211Z,20260930,silver,silver.customers,dob_present,warn,Date of birth should be present (needed for KYC refresh),date_of_birth IS NOT NULL,601,2
+run_20261026T154211Z,20260930,silver,silver.customers,known_country,warn,Country of residence should exist in the country reference table,country_known,601,2
+run_20261026T154211Z,20260930,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20260930: bronze 603 = duplicates 2 + quarantined 1 + valid 600,control,603,0
+run_20261026T154211Z,20260930,silver,silver.customers,valid_email,warn,"E-mail should be well formed (kept, flagged for data steward)","email RLIKE '^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$'",601,3
+run_20261026T154211Z,20260930,silver,silver.customers,valid_risk_rating,warn,"KYC risk rating should be LOW, MEDIUM or HIGH; an invalid rating is defaulted to HIGH (fail-safe)","kyc_risk_rating_raw IN ('LOW','MEDIUM','HIGH')",601,1
+run_20261026T154211Z,20260930,silver,silver.customers,valid_segment,drop,Customer segment must be a known value,"segment IN ('RETAIL','PREMIER','SME','CORPORATE')",601,0
+run_20261026T154211Z,20260930,silver,silver.transactions,amount_positive,drop,Amount must be positive (direction comes from the transaction type),amount IS NULL OR amount > 0,13514,3
+run_20261026T154211Z,20260930,silver,silver.transactions,amount_present,drop,Amount must be present and numeric,amount IS NOT NULL,13514,4
+run_20261026T154211Z,20260930,silver,silver.transactions,fx_rate_available,drop,A USD FX rate must exist for the currency and date (otherwise amount_usd would be wrong),"usd_rate IS NOT NULL OR currency NOT IN ('USD','EUR','GBP','INR','SGD','AED','JPY') OR txn_ts IS NULL OR txn_ts > business_cutoff",13514,0
+run_20261026T154211Z,20260930,silver,silver.transactions,known_account,drop,Transaction must post to a known account,account_known,13514,4
+run_20261026T154211Z,20260930,silver,silver.transactions,not_future_dated,drop,Transaction cannot be dated after the batch business date,txn_ts IS NULL OR txn_ts <= business_cutoff,13514,2
+run_20261026T154211Z,20260930,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20260930: bronze 13539 = duplicates 25 + quarantined 19 + inserted 13495 + already loaded 0,control,13539,0
+run_20261026T154211Z,20260930,silver,silver.transactions,txn_id_present,drop,Every transaction needs an id,txn_id IS NOT NULL AND txn_id <> '',13514,1
+run_20261026T154211Z,20260930,silver,silver.transactions,valid_currency,drop,Currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",13514,3
+run_20261026T154211Z,20260930,silver,silver.transactions,valid_timestamp,drop,Timestamp must parse as ISO-8601 UTC,txn_ts IS NOT NULL,13514,2
+run_20261026T154211Z,20261007,bronze,bronze.accounts,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 57 rows, source manifest says 57",control,57,0
+run_20261026T154211Z,20261007,bronze,bronze.customers,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 70 rows, source manifest says 70",control,70,0
+run_20261026T154211Z,20261007,bronze,bronze.transactions,bronze_control_total_matches_manifest,fail,"batch 20261007: landed amount total 17,295,915.84 vs manifest 17,295,915.84",control,1,0
+run_20261026T154211Z,20261007,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20261007: landed 3171 rows, source manifest says 3171",control,3171,0
+run_20261026T154211Z,20261007,silver,silver.accounts,account_id_present,drop,Every account needs an id,account_id IS NOT NULL AND account_id <> '',57,0
+run_20261026T154211Z,20261007,silver,silver.accounts,known_customer,drop,Account must belong to a known customer (referential integrity),customer_known,57,0
+run_20261026T154211Z,20261007,silver,silver.accounts,silver_accounts_reconcile_to_bronze,fail,batch 20261007: bronze 57 = duplicates 0 + quarantined 0 + valid 57,control,57,0
+run_20261026T154211Z,20261007,silver,silver.accounts,valid_currency,drop,Account currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",57,0
+run_20261026T154211Z,20261007,silver,silver.accounts,valid_status,drop,Account status must be a known value,"status IN ('ACTIVE','DORMANT','CLOSED')",57,0
+run_20261026T154211Z,20261007,silver,silver.customers,customer_id_present,drop,Every customer must have an identifier,customer_id IS NOT NULL AND customer_id <> '',70,0
+run_20261026T154211Z,20261007,silver,silver.customers,dob_present,warn,Date of birth should be present (needed for KYC refresh),date_of_birth IS NOT NULL,70,0
+run_20261026T154211Z,20261007,silver,silver.customers,known_country,warn,Country of residence should exist in the country reference table,country_known,70,0
+run_20261026T154211Z,20261007,silver,silver.customers,silver_customers_reconcile_to_bronze,fail,batch 20261007: bronze 70 = duplicates 0 + quarantined 0 + valid 70,control,70,0
+run_20261026T154211Z,20261007,silver,silver.customers,valid_email,warn,"E-mail should be well formed (kept, flagged for data steward)","email RLIKE '^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$'",70,0
+run_20261026T154211Z,20261007,silver,silver.customers,valid_risk_rating,warn,"KYC risk rating should be LOW, MEDIUM or HIGH; an invalid rating is defaulted to HIGH (fail-safe)","kyc_risk_rating_raw IN ('LOW','MEDIUM','HIGH')",70,0
+run_20261026T154211Z,20261007,silver,silver.customers,valid_segment,drop,Customer segment must be a known value,"segment IN ('RETAIL','PREMIER','SME','CORPORATE')",70,0
+run_20261026T154211Z,20261007,silver,silver.transactions,amount_positive,drop,Amount must be positive (direction comes from the transaction type),amount IS NULL OR amount > 0,3166,0
+run_20261026T154211Z,20261007,silver,silver.transactions,amount_present,drop,Amount must be present and numeric,amount IS NOT NULL,3166,2
+run_20261026T154211Z,20261007,silver,silver.transactions,fx_rate_available,drop,A USD FX rate must exist for the currency and date (otherwise amount_usd would be wrong),"usd_rate IS NOT NULL OR currency NOT IN ('USD','EUR','GBP','INR','SGD','AED','JPY') OR txn_ts IS NULL OR txn_ts > business_cutoff",3166,0
+run_20261026T154211Z,20261007,silver,silver.transactions,known_account,drop,Transaction must post to a known account,account_known,3166,1
+run_20261026T154211Z,20261007,silver,silver.transactions,not_future_dated,drop,Transaction cannot be dated after the batch business date,txn_ts IS NULL OR txn_ts <= business_cutoff,3166,0
+run_20261026T154211Z,20261007,silver,silver.transactions,silver_transactions_reconcile_to_bronze,fail,batch 20261007: bronze 3171 = duplicates 5 + quarantined 3 + inserted 3153 + already loaded 10,control,3171,0
+run_20261026T154211Z,20261007,silver,silver.transactions,txn_id_present,drop,Every transaction needs an id,txn_id IS NOT NULL AND txn_id <> '',3166,0
+run_20261026T154211Z,20261007,silver,silver.transactions,valid_currency,drop,Currency must be supported,"currency IN ('USD','EUR','GBP','INR','SGD','AED','JPY')",3166,0
+run_20261026T154211Z,20261007,silver,silver.transactions,valid_timestamp,drop,Timestamp must parse as ISO-8601 UTC,txn_ts IS NOT NULL,3166,0
+run_20261026T154211Z,20261014,bronze,bronze.transactions,bronze_record_count_matches_manifest,fail,"batch 20261014: landed 2836 rows, source manifest says 3150",control,2836,2836

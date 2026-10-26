@@ -17,6 +17,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.types import ArrayType
 
+from .forensics import inspect_delivery
 from .gold import gold_sql_files, table_name
 from .store import TableStore, on_databricks
 
@@ -107,6 +108,14 @@ def export_snapshot(store: TableStore, result: dict, out_dir: Path = SNAPSHOT_DI
         for t in tables:
             counts[f"{layer}.{t}"] = store.read(layer, t).count()
 
+    # The incident: what the pipeline did, plus file-level evidence for every delivery in the landing zone.
+    incident = result.get("incident")
+    if incident:
+        deliveries = {b: inspect_delivery(store.config.landing, b)
+                      for b in sorted(p.name.split("=", 1)[1] for p in Path(store.config.landing).glob("batch=*"))}
+        (out_dir / "incident.json").write_text(json.dumps({"incident": incident, "deliveries": deliveries},
+                                                          indent=2, default=str), encoding="utf-8")
+
     oracle = result.get("oracle") or {}
     summary = {
         "run_id": result["run_id"],
@@ -121,10 +130,12 @@ def export_snapshot(store: TableStore, result: dict, out_dir: Path = SNAPSHOT_DI
                   for s in result["steps"]],
         "planted": {
             "aml_scenarios": oracle.get("aml_scenarios", {}),
+            "aml_false_positives": oracle.get("aml_false_positives", {}),
             "txn_defects": {k: len(v) for k, v in oracle.get("txn_defects", {}).items()},
             "customer_defects": {k: len(v) for k, v in oracle.get("customer_defects", {}).items()},
             "scd2_changed_customers": len(oracle.get("scd2_changed_customers", [])),
             "cross_batch_resends": len(oracle.get("cross_batch_resends", [])),
+            "incident": oracle.get("incident", {}),
         },
     }
     (out_dir / "run_summary.json").write_text(json.dumps(summary, indent=2, default=str), encoding="utf-8")

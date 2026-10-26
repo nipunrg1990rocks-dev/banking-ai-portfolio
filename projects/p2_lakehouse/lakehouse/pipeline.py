@@ -11,11 +11,17 @@ Every step appends to two audit tables:
 
 If a blocking control fails the step is logged as FAILED and the exception stops
 the run, so Gold is never refreshed from data that did not reconcile.
+
+``Pipeline.incident()`` replays that on purpose: a third delivery arrives with a
+truncated transactions file, the Bronze controls block it, and the evidence
+(table versions before and after, the failed control) is kept for the Data
+Steward agent to investigate.
 """
 
 from __future__ import annotations
 
 import json
+import shutil
 import time
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -101,7 +107,8 @@ class Pipeline:
         try:
             entries, metrics = fn()
         except DataQualityError as exc:
-            self._record(step, [], [], started, status="FAILED", batch_id=batch_id, error=str(exc))
+            self._record(step, [], [exc.metric] if exc.metric else [], started, status="FAILED", batch_id=batch_id,
+                         error=str(exc))
             raise
         self._record(step, entries, metrics, started, batch_id=batch_id)
         return entries
@@ -117,9 +124,7 @@ class Pipeline:
         return oracle.to_dict()
 
     def batches(self) -> list[str]:
-        root = self.store.config.landing
-        if root.startswith("/Volumes") or Path(root).exists():
-            return sorted(p.name.split("=", 1)[1] for p in Path(root).glob("batch=*"))
+        """The scheduled deliveries. The incident batch is never part of a normal run."""
         return sorted(synthetic.BATCHES)
 
     def reference(self):
@@ -159,7 +164,27 @@ class Pipeline:
             return out, []
         return self._run("optimize", run)
 
-    def run_all(self, *, land: bool = True, optimize: bool = True, **generator_args) -> dict:
+    def incident(self) -> dict:
+        """A truncated delivery arrives. Bronze must block it, and nothing downstream may change."""
+        batch_id = synthetic.INCIDENT_BATCH
+        landing = Path(self.store.config.landing)
+        shutil.copytree(landing / "incoming" / f"batch={batch_id}", landing / f"batch={batch_id}", dirs_exist_ok=True)
+        watched = [("bronze", "customers"), ("bronze", "accounts"), ("bronze", "transactions"),
+                   ("silver", "transactions"), ("gold", "daily_transaction_summary")]
+        before = {f"{layer}.{t}": self.store.version(layer, t) for layer, t in watched}
+        try:
+            self.bronze(batch_id)
+            outcome, error = "LOADED", None
+        except DataQualityError as exc:
+            outcome, error = "BLOCKED", str(exc)
+        after = {f"{layer}.{t}": self.store.version(layer, t) for layer, t in watched}
+        landed = {t: self.store.read("bronze", t).filter(F.col("_batch_id") == batch_id).count()
+                  for t in ("customers", "accounts", "transactions")}
+        return {"batch_id": batch_id, "outcome": outcome, "error": error, "versions_before": before,
+                "versions_after": after, "rows_landed_in_bronze": landed}
+
+    def run_all(self, *, land: bool = True, optimize: bool = True, incident: bool = True,
+                **generator_args) -> dict:
         started = time.time()
         self.store.setup()
         oracle = self.land(**generator_args) if land else None
@@ -170,8 +195,9 @@ class Pipeline:
         self.gold()
         if optimize:
             self.optimize()
+        incident_result = self.incident() if incident and land else None
         return {"run_id": self.run_id, "duration_s": round(time.time() - started, 1), "oracle": oracle,
-                "steps": self.step_log, "dq": self.dq_log}
+                "incident": incident_result, "steps": self.step_log, "dq": self.dq_log}
 
 
 def failed_rows_by_rule(store: TableStore, run_id: str) -> dict[str, int]:
