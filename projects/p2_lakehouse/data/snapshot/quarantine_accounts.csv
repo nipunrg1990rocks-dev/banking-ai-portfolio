@@ -1,0 +1,3 @@
+account_id,customer_id,product,currency,open_date,status,branch_code,credit_limit,_batch_id,customer_known,_dq_failed_rules
+A0001076,C984857,CHECKING,USD,2024-07-20,ACTIVE,B007,,20260930,False,known_customer
+A0001077,C935856,SAVINGS,USD,2022-09-19,ACTIVE,B001,,20260930,False,known_customer

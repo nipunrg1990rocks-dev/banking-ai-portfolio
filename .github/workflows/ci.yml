@@ -14,8 +14,19 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
       - run: pip install -r requirements-dev.txt
       - run: ruff check .
       - run: pytest
       - name: Evaluation report
         run: python projects/p1_compliance_copilot/evaluate.py >> "$GITHUB_STEP_SUMMARY"
+      - name: Lakehouse pipeline run (Project 02)
+        run: |
+          echo '## Project 02 lakehouse pipeline run' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          python projects/p2_lakehouse/run_pipeline.py --workdir /tmp/lakehouse --no-snapshot 2>/dev/null \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

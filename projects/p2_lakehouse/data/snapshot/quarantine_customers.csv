@@ -1,0 +1,2 @@
+customer_id,first_name,last_name,date_of_birth,country,segment,kyc_risk_rating_raw,pep_flag,onboarding_date,branch_code,_batch_id,country_known,kyc_risk_rating,risk_rating_defaulted,_dq_failed_rules,email_hash,email_domain,phone_masked
+,Farah,Santos,1954-02-23,US,RETAIL,LOW,False,2017-09-10,B005,20260930,True,LOW,False,customer_id_present,c7c3a330daac33a5a949dd2cac16d2397cdfaad0dc2255351f26298facc5c7cf,example.com,***-***-1601

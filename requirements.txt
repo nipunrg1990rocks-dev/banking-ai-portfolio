@@ -6,3 +6,4 @@ scikit-learn==1.9.1
 rank-bm25==0.2.2
 nltk==3.10.4
 anthropic==2.3.0
+duckdb==1.5.6
