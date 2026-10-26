@@ -1,0 +1,19 @@
+[project]
+name = "banking-ai-portfolio"
+version = "0.1.0"
+description = "Five independent, AI-assisted banking AI and Databricks portfolio projects (synthetic data only)."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "projects"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["portfolio_core", "copilot"]
