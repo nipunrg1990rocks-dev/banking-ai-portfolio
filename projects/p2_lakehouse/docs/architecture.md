@@ -128,4 +128,4 @@ In the committed run, every planted defect was caught and nothing else was quara
 - **Gold is fully recomputed** on each run. That is fine at this scale. At bank scale, Gold would read the Silver Change Data Feed incrementally.
 - **AML rules are simple and illustrative.** They are thresholds, not a model, and are not regulatory guidance. They produce candidates for a human investigator and never decisions.
 - **Single-machine Spark locally.** Performance numbers are not representative of a cluster.
-- **Not yet verified on Databricks.** The notebooks are written for Free Edition (serverless, Unity Catalog) but have not been run there yet. This section will be updated with evidence after the first run.
+- **Databricks: notebook run verified, job and governance not yet.** On 2026-10-26, Nipun ran `00_run_pipeline` on Databricks Free Edition (serverless, Spark 4.2.0, Unity Catalog, run `run_20261026T144959Z`, 356 s). Every table count matched the local run exactly (see `docs/evidence/databricks_run_20261026.png`). The 6-task Lakeflow job (`01_create_job`) and the column masks and tags (`02_unity_catalog_governance.sql`) have not been run yet.

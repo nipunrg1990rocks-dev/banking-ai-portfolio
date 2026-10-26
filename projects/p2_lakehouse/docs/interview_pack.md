@@ -272,7 +272,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
     The code was written by AI tools under my direction. I defined the use case, the entities, the defects and AML scenarios to plant, the controls (reconciliation to manifest, fail-safe risk rating), and the acceptance criteria (exact match to the answer key, idempotency). I reviewed outputs, ran and checked the tests and app, and made the design calls, for example quarantine vs fail-safe and the snapshot approach for hosting.
 
 38. **What doesn't work yet, or what would you do next?**
-    It hasn't been run on Databricks yet; it needs my Free Edition workspace. The hosted app shows a snapshot rather than live Spark. Next steps: Auto Loader ingestion, incremental Gold from the Change Data Feed, Lakeflow Declarative Pipelines expectations, and a DQ trends dashboard (Project 04).
+    The run-all notebook has run on Databricks Free Edition with identical results, but I haven't yet run the scheduled job or applied the column masks there. The hosted app shows a snapshot rather than live Spark. Next steps: Auto Loader ingestion, incremental Gold from the Change Data Feed, Lakeflow Declarative Pipelines expectations, and a DQ trends dashboard (Project 04).
 
 ## 10. Failure cases you can demonstrate or explain
 
@@ -291,7 +291,7 @@ The full component diagram, data model and controls are in [architecture.md](arc
 - Implemented SCD Type 2 customer history, idempotent insert-only MERGEs that prevent double-counting of re-sent payments, Change Data Feed and time travel. The pipeline is validated by 44 automated tests that match an answer key of planted defects and AML scenarios exactly.
 - Built rule-based AML alert candidates (structuring, high-risk jurisdiction, rapid movement) for human review, plus a Streamlit explorer with lineage, reconciliation, alert drill-down and a sandboxed SQL console. Packaged Unity Catalog governance and a Lakeflow Jobs DAG for Databricks.
 
-*Add after the Databricks run is verified:* "Deployed and ran on Databricks Free Edition with Unity Catalog and a 6-task serverless job."
+- Ran the same pipeline on Databricks Free Edition (serverless Spark, Unity Catalog), with row counts identical to the local and CI runs.
 
 ## 12. Your role (say this plainly)
 

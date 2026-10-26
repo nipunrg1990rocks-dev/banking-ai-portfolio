@@ -28,7 +28,7 @@ A Bronze → Silver → Gold **Delta Lake** pipeline on **Apache Spark** for a *
 | Automated tests (`pytest`) | 44 passed for this project (92 in the repo), including real Spark/Delta end-to-end runs |
 | Browser test (Playwright, 8 steps against the running app) | All passed; screenshots in `docs/screenshots/` |
 | GitHub Actions CI | Installs Java 17, runs all tests and the pipeline |
-| **Databricks Free Edition run** | **Not yet run.** The notebooks are ready; this needs the owner's workspace |
+| **Databricks Free Edition run** (checked by Nipun, 2026-10-26) | `00_run_pipeline` ran end to end on serverless (Spark 4.2.0) in 356 s, run `run_20261026T144959Z`. Table counts match the local run exactly: 16,644 Silver transactions, 22 + 1 + 2 quarantined. All blocking controls passed, because the run would have stopped otherwise. Evidence: [`docs/evidence/databricks_run_20261026.png`](docs/evidence/databricks_run_20261026.png). The job DAG (`01_create_job`) and the governance SQL (`02`) have not been run yet |
 | **Public hosted URL** | **Not yet deployed** |
 
 ## Run it

@@ -392,8 +392,8 @@ with tabs[7]:
 | Where | How | Status |
 |---|---|---|
 | Laptop / CI | `run_pipeline.py` (PySpark + delta-spark) | Verified: produced this snapshot; tests in CI |
-| Databricks Free Edition | `databricks/00_run_pipeline` notebook, Unity Catalog | Code ready; Databricks run pending |
-| Lakeflow Jobs | `databricks/01_create_job`: 6-task DAG, serverless | Code ready; Databricks run pending |
+| Databricks Free Edition | `databricks/00_run_pipeline`, Unity Catalog | Verified: serverless, same table counts |
+| Lakeflow Jobs | `databricks/01_create_job`: 6-task DAG, serverless | Code ready; not yet run |
 
 A `TableStore` class is the only place that knows whether a table is a local Delta folder or a Unity Catalog
 table, so the PySpark and SQL are identical everywhere.
@@ -402,8 +402,10 @@ table, so the PySpark and SQL are identical everywhere.
 - **Verified:** the full pipeline on local Spark 4.1 + Delta 4.4; every planted defect, duplicate, re-send, SCD2
   change and AML scenario is found exactly (tests compare against the generator's answer key); time travel, change
   data feed, schema enforcement, idempotent re-runs and blocking controls are covered by tests.
-- **Not yet verified:** running on Databricks (needs the owner's free account), Unity Catalog column masks and
-  lineage, and the scheduled job. They will be marked verified here only after a real run.
+- **Verified on Databricks:** the run-all notebook on Free Edition (serverless, Unity Catalog), with the same
+  table counts as the local run (16,644 Silver transactions, 25 quarantined).
+- **Not yet verified:** Unity Catalog column masks and tags, and the scheduled 6-task job. They will be marked
+  verified here only after a real run.
 """)
     st.markdown("Source code: [github.com/nipunrg1990rocks-dev/banking-ai-portfolio]"
                 "(https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p2_lakehouse)")
