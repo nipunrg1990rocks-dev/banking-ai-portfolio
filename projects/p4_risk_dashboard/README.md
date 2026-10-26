@@ -28,7 +28,7 @@ A risk and data-quality control room for a **fictional bank (Ledgerline Bank)**.
 | Agent back-test, 50 business days (3 Aug to 9 Oct 2026) | **7 of 7** planted incidents found with the right cause, **0** wrong root causes on any day. Median detection lag: 0 business days; the longest was 2 ([report](docs/evaluation/backtest_report.md)). Decoy releases are never blamed |
 | Same SQL on two engines | All 12 views return identical rows on DuckDB and Apache Spark 4.1.3 (automated test) |
 | Databricks notebook path | Run end to end on local Spark: it writes the tables and views, then runs the agent. The briefing is **identical** to the offline one (automated test) |
-| Automated tests (`pytest`) | 85 for this project (191 in the repo), including a Streamlit AppTest, a fake Databricks workspace and fake Databricks AI and Claude clients |
+| Automated tests (`pytest`) | 85 for this project (195 in the repo), including a Streamlit AppTest, a fake Databricks workspace and fake Databricks AI and Claude clients |
 | Browser test (Playwright, 9 steps against the running app) | All passed; screenshots in `docs/screenshots/` |
 | **Databricks Free Edition run** | **Not yet run by Nipun.** Steps below |
 | **Live LLM mode** | **Not yet run against a real model.** The Databricks foundation-model path (endpoint discovery, tool loop, grounding check and fallback) is tested against a fake workspace, and the notebook's fallback was run locally. Which endpoints Free Edition offers is not confirmed until Nipun runs the notebook. Claude is optional and needs an API key and spend approval |
