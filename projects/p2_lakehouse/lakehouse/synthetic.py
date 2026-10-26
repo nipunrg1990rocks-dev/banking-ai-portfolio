@@ -11,6 +11,11 @@ October: new customers and transactions, customer attribute changes (for SCD
 Type 2), account status changes (for upserts) and late re-sends of September
 transactions (to prove the load is idempotent).
 
+A third delivery (``incoming/batch=20261014``) is the incident scenario: its
+transactions file is cut off mid-transfer, so it no longer matches its manifest.
+``Pipeline.incident()`` moves it into the landing zone, and the Bronze controls
+must block it.
+
 Known data defects and AML scenarios are planted on purpose and returned in an
 ``Oracle`` so tests can check that the pipeline catches exactly those, no more
 and no less. Everything is generated from a fixed seed, so a run is
@@ -20,6 +25,7 @@ reproducible. No real people, accounts or institutions are represented.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import random
 from dataclasses import dataclass, field
@@ -32,6 +38,9 @@ BATCHES = {
     "20260930": (date(2026, 9, 1), date(2026, 9, 30)),
     "20261007": (date(2026, 10, 1), date(2026, 10, 7)),
 }
+INCIDENT_BATCH = "20261014"
+INCIDENT_DAYS = (date(2026, 10, 8), date(2026, 10, 14))
+INCIDENT_KEEP_FRACTION = 0.9  # share of transaction lines that arrive intact before the transfer cut off
 
 FIRST_NAMES = [
     "Aarav", "Amelia", "Andre", "Beatriz", "Chen", "Chloe", "Daniel", "Divya", "Elena", "Ethan", "Farah", "Gabriel",
@@ -118,10 +127,13 @@ class Oracle:
     duplicate_account_rows: int = 0
     cross_batch_resends: list[str] = field(default_factory=list)  # Sept txn ids re-sent in batch 2
     aml_scenarios: dict[str, list[str]] = field(default_factory=dict)  # rule code -> customer ids
+    # Alerts the rules raise on legitimate activity; an investigator should close them with a reason.
+    aml_false_positives: dict[str, list[str]] = field(default_factory=dict)
     scd2_changed_customers: list[str] = field(default_factory=list)
     unchanged_resent_customers: list[str] = field(default_factory=list)
     account_status_changes: list[str] = field(default_factory=list)
     counts: dict[str, dict[str, int]] = field(default_factory=dict)  # batch -> file -> rows
+    incident: dict = field(default_factory=dict)  # what was cut off in the incident batch
 
     def to_dict(self) -> dict:
         return self.__dict__.copy()
@@ -259,6 +271,37 @@ class _Generator:
             self._txn(acct, d + timedelta(days=1), "WIRE_OUT", round(inbound * 0.96, 2), cp_name="Meridian Escrow"),
         ]
 
+    def _plant_payroll_cycle(self, d: date, inbound: float) -> list[dict]:
+        """A false positive: a corporate client's monthly receipt, paid straight out as payroll.
+
+        It uses its own RNG so the rest of the data set is unchanged. The September cycle stays
+        under the RAPID_MOVEMENT threshold; the October cycle trips it. An investigator who looks
+        at the history sees the same counterparties, a month apart, on a low-risk corporate account.
+        """
+        rng = random.Random(SEED + 3)
+        if not self.oracle.aml_false_positives:
+            blocked = set(sum(self.oracle.aml_scenarios.values(), [])) | set(
+                sum(self.oracle.customer_defects.values(), []))
+            pool = sorted({a["customer_id"] for a in self.accounts.values()
+                           if a["product"] == "BUSINESS_CURRENT" and a["currency"] == "USD" and a["status"] == "ACTIVE"
+                           and self.customers[a["customer_id"]]["segment"] == "CORPORATE"
+                           and self.customers[a["customer_id"]]["kyc_risk_rating"] == "LOW"
+                           and a["customer_id"] not in blocked})
+            self.oracle.aml_false_positives = {"RAPID_MOVEMENT": [rng.choice(pool)] if pool else []}
+        if not self.oracle.aml_false_positives["RAPID_MOVEMENT"]:
+            return []  # small test data sets may have no suitable corporate customer
+        cid = self.oracle.aml_false_positives["RAPID_MOVEMENT"][0]
+        acct = next(a for a in self.accounts.values() if a["customer_id"] == cid and a["product"] == "BUSINESS_CURRENT")
+        saved, self.rng = self.rng, rng
+        try:
+            return [
+                self._txn(acct, d, "WIRE_IN", inbound, cp_country="US", cp_name="Northbridge Logistics Inc"),
+                self._txn(acct, d + timedelta(days=1), "WIRE_OUT", round(inbound * 0.97, 2), cp_country="US",
+                          cp_name="Woodgrove Payroll Services"),
+            ]
+        finally:
+            self.rng = saved
+
     @staticmethod
     def _usd_customer_ids(customers: list[dict], accounts: dict[str, dict]) -> list[str]:
         # Planted scenarios use USD accounts so the thresholds read naturally in dollars.
@@ -360,6 +403,7 @@ class _Generator:
         oracle.account_defects = {"known_customer": [o["account_id"] for o in orphans]}
         acct_rows += orphans + [dict(rng.choice(acct_rows))]
         oracle.duplicate_account_rows = 1
+        txns += self._plant_payroll_cycle(date(2026, 9, 29), inbound=48_700.00)  # below the 50k rule threshold
         return {"customers": cust_rows, "accounts": acct_rows, "transactions": txns}
 
     def batch2(self) -> dict[str, list[dict]]:
@@ -418,9 +462,27 @@ class _Generator:
         txns += resends + dupes
         rng.shuffle(txns)
 
+        txns += self._plant_payroll_cycle(date(2026, 10, 6), inbound=52_400.00)  # same cycle, now above it
+
         cust_rows = [dict(c) for c in changed + unchanged + new_customers]
         acct_rows = [{k: v for k, v in a.items() if not k.startswith("_")} for a in closing + new_accounts]
         return {"customers": cust_rows, "accounts": acct_rows, "transactions": txns}
+
+    def incident_batch(self, seed: int) -> dict[str, list[dict]]:
+        """Week 2 of October: routine changes and transactions. Its own RNG, so batches 1 and 2 never change."""
+        self.rng = rng = random.Random(seed)
+        stable = [c for c in self.customers.values() if c["customer_id"] not in set(self.oracle.scd2_changed_customers)]
+        changed = [dict(c) for c in rng.sample(stable, 6)]
+        for c in changed:
+            c["kyc_risk_rating"] = {"LOW": "MEDIUM", "MEDIUM": "HIGH", "HIGH": "MEDIUM"}[c["kyc_risk_rating"]]
+        active = [a for a in self.accounts.values() if a["status"] == "ACTIVE"]
+        closing = [dict(a) for a in rng.sample(active, 3)]
+        for a in closing:
+            a["status"] = "DORMANT"
+        txns = self._random_txns(_days(*INCIDENT_DAYS), self.txns_per_day, active)
+        rng.shuffle(txns)
+        accounts = [{k: v for k, v in a.items() if not k.startswith("_")} for a in closing]
+        return {"customers": changed, "accounts": accounts, "transactions": txns}
 
 
 def _write_csv(path: Path, rows: list[dict]) -> None:
@@ -436,6 +498,49 @@ def _write_jsonl(path: Path, rows: list[dict]) -> None:
     with path.open("w", encoding="utf-8") as fh:
         for r in rows:
             fh.write(json.dumps(r) + "\n")
+
+
+def file_fingerprint(path: Path) -> dict:
+    data = path.read_bytes()
+    return {"bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+
+
+def _write_batch(folder: Path, batch_id: str, business_date: date, files: dict[str, list[dict]]) -> dict:
+    """Write one delivery plus its manifest (record counts, control total, file sizes and checksums)."""
+    _write_csv(folder / "customers.csv", files["customers"])
+    _write_csv(folder / "accounts.csv", files["accounts"])
+    _write_jsonl(folder / "transactions.jsonl", files["transactions"])
+    txns = files["transactions"]
+    manifest = {
+        "source_system": "LEDGERLINE_CORE",
+        "batch_id": batch_id,
+        "business_date": business_date.isoformat(),
+        "record_counts": {k: len(v) for k, v in files.items()},
+        "transactions_control_total": round(sum(float(t["amount"]) for t in txns if t["amount"]), 2),
+        "files": {name: file_fingerprint(folder / name)
+                  for name in ("customers.csv", "accounts.csv", "transactions.jsonl")},
+    }
+    (folder / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return manifest
+
+
+def _truncate(path: Path, keep_fraction: float) -> dict:
+    """Simulate a transfer that stopped part-way: keep whole lines, then half of the next one."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    keep = int(len(lines) * keep_fraction)
+    partial = lines[keep][: len(lines[keep]) // 2]
+    path.write_text("\n".join(lines[:keep]) + "\n" + partial, encoding="utf-8")
+    lost = [json.loads(line) for line in lines[keep:]]
+    return {
+        "batch_id": INCIDENT_BATCH,
+        "file": "transactions.jsonl",
+        "expected_rows": len(lines),
+        "complete_rows_delivered": keep,
+        "partial_rows": 1,
+        "rows_lost": len(lines) - keep,
+        "amount_lost": round(sum(float(t["amount"]) for t in lost if t["amount"]), 2),
+        "first_lost_txn_id": lost[0]["txn_id"],
+    }
 
 
 def _reference(rng: random.Random) -> dict[str, list[dict]]:
@@ -462,21 +567,12 @@ def generate(landing: str | Path, *, seed: int = SEED, n_customers: int = 600, t
     for name, rows in _reference(random.Random(seed + 1)).items():
         _write_csv(landing / "reference" / f"{name}.csv", rows)
     for batch_id, build in (("20260930", gen.batch1), ("20261007", gen.batch2)):
-        files = build()
-        folder = landing / f"batch={batch_id}"
-        _write_csv(folder / "customers.csv", files["customers"])
-        _write_csv(folder / "accounts.csv", files["accounts"])
-        _write_jsonl(folder / "transactions.jsonl", files["transactions"])
-        txns = files["transactions"]
-        manifest = {
-            "source_system": "LEDGERLINE_CORE",
-            "batch_id": batch_id,
-            "business_date": BATCHES[batch_id][1].isoformat(),
-            "record_counts": {k: len(v) for k, v in files.items()},
-            "transactions_control_total": round(sum(float(t["amount"]) for t in txns if t["amount"]), 2),
-        }
-        (folder / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+        manifest = _write_batch(landing / f"batch={batch_id}", batch_id, BATCHES[batch_id][1], build())
         gen.oracle.counts[batch_id] = manifest["record_counts"]
+    # The incident delivery waits in incoming/ until Pipeline.incident() moves it into the landing zone.
+    incoming = landing / "incoming" / f"batch={INCIDENT_BATCH}"
+    _write_batch(incoming, INCIDENT_BATCH, INCIDENT_DAYS[1], gen.incident_batch(seed + 2))
+    gen.oracle.incident = _truncate(incoming / "transactions.jsonl", INCIDENT_KEEP_FRACTION)
     return gen.oracle
 
 

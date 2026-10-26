@@ -124,12 +124,16 @@ def test_account_status_changes_are_upserted(store, oracle):
 
 # --------------------------------------------------------------------- gold
 def test_aml_rules_raise_exactly_the_planted_scenarios(store, oracle):
+    """The rules fire on every planted scenario, plus the one planted false positive (a payroll cycle)."""
     alerts = store.read("gold", "aml_alert_candidates").collect()
     found = {}
     for a in alerts:
         found.setdefault(a["rule_code"], set()).add(a["customer_id"])
         assert a["status"] == "PENDING_REVIEW"
-    assert found == {rule: set(ids) for rule, ids in oracle["aml_scenarios"].items()}
+    expected = {rule: set(ids) for rule, ids in oracle["aml_scenarios"].items()}
+    for rule, ids in oracle["aml_false_positives"].items():
+        expected[rule] |= set(ids)
+    assert found == expected
 
 
 def test_customer_360_has_one_row_per_customer_and_no_direct_pii(store):
@@ -194,3 +198,31 @@ def test_rerunning_a_batch_changes_nothing(store):
     assert store.read("bronze", "transactions").count() == bronze_before
     skipped = [s for s in p.step_log if s["step"] == "bronze"]
     assert all("skipped" in (s["details"] or "") for s in skipped)
+
+
+# ------------------------------------------------------------------ incident
+def test_truncated_delivery_is_blocked_and_nothing_downstream_changes(full_run, oracle):
+    store, result = full_run
+    incident = result["incident"]
+    assert incident["outcome"] == "BLOCKED"
+    assert "bronze_record_count_matches_manifest" in incident["error"]
+    for table in ("bronze.transactions", "silver.transactions", "gold.daily_transaction_summary"):
+        assert incident["versions_after"][table] == incident["versions_before"][table], table
+    assert incident["rows_landed_in_bronze"]["transactions"] == 0
+    failed = [d for d in result["dq"] if d["batch_id"] == oracle["incident"]["batch_id"] and d["rows_failed"]]
+    assert [d["rule_name"] for d in failed] == ["bronze_record_count_matches_manifest"]
+    assert failed[0]["rows_checked"] == oracle["incident"]["complete_rows_delivered"] + 1
+    step = [s for s in result["steps"] if s["status"] == "FAILED"]
+    assert len(step) == 1 and step[0]["batch_id"] == oracle["incident"]["batch_id"]
+
+
+def test_delivery_forensics_find_the_truncation(full_run, oracle):
+    from lakehouse.forensics import inspect_delivery
+
+    store, _ = full_run
+    evidence = inspect_delivery(store.config.landing, oracle["incident"]["batch_id"])
+    txn = evidence["files"]["transactions.jsonl"]
+    assert txn["checksum_matches"] is False and txn["last_line_is_valid_json"] is False
+    assert txn["actual_bytes"] < txn["expected_bytes"]
+    assert evidence["files"]["customers.csv"]["checksum_matches"] is True
+    assert inspect_delivery(store.config.landing, "20260930")["files"]["transactions.jsonl"]["checksum_matches"]

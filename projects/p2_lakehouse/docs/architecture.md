@@ -1,8 +1,8 @@
-# Architecture: Banking Data Engineering Lakehouse
+# Architecture: Agentic Banking Lakehouse
 
 ## 1. Context
 
-Banks run on data that arrives late, twice, or broken: a core-banking extract with a missing amount, a payment file re-sent after a timeout, a customer whose KYC risk rating changed overnight. Risk, finance and financial-crime teams still need numbers they can trust and trace back to source. This project builds that foundation for **Ledgerline Bank**, a fictional bank. It is a lakehouse that lands source files, validates and conforms them, keeps full history, and publishes business-ready tables with evidence that nothing was lost or double-counted.
+Banks run on data that arrives late, twice, or broken: a core-banking extract with a missing amount, a payment file re-sent after a timeout, a customer whose KYC risk rating changed overnight. Risk, finance and financial-crime teams still need numbers they can trust and trace back to source. This project builds that foundation for **Ledgerline Bank**, a fictional bank. It is a lakehouse that lands source files, validates and conforms them, keeps full history, and publishes business-ready tables with evidence that nothing was lost or double-counted. Three AI agents then work on top of those tables, the way an analyst would: investigating AML alerts, explaining a blocked load and answering business questions. A person approves everything they propose.
 
 All data is synthetic, generated from a fixed seed. No real bank, customer or employer data is used.
 
@@ -21,7 +21,8 @@ flowchart TB
     M --> S[Gold Spark SQL<br/>sql/gold/*.sql]
     S --> A[(AML alerts, customer 360,<br/>KPIs, DQ scorecard)]
     S --> C3{{Control: Gold<br/>adds back to Silver}}
-    A --> APP[Streamlit explorer]
+    A --> AG[AI agents<br/>agents/]
+    AG --> APP[Streamlit app<br/>with human approval]
     B & M & S -.-> L[(audit.pipeline_steps<br/>audit.dq_results)]
 ```
 
@@ -89,9 +90,39 @@ Blocking controls (action `fail`) stop the run and log the step as FAILED:
 4. The Gold daily summary adds back to Silver in count and USD value.
 5. Gold segment KPIs cover every Silver transaction, which proves the SCD2 as-of join is complete.
 
-In the committed run, every planted defect was caught and nothing else was quarantined. That gives 25 rows quarantined and 33 duplicates removed, and all 16 blocking controls passed.
+In the committed run, every planted defect was caught and nothing else was quarantined. That gives 25 rows quarantined and 33 duplicates removed. 16 of the 17 blocking controls passed. The 17th tripped on purpose: delivery 20261014 is planted with a truncated `transactions.jsonl` (the manifest says 3,150 rows; 2,835 complete rows and one cut-off line arrived). The Bronze count control blocked it, and the Delta versions of Silver and Gold before and after are identical, which the tests check.
 
-## 6. Delta Lake features used
+## 6. AI agents
+
+```mermaid
+flowchart TB
+    U[Goal: an alert id, the incident, or a question] --> E[Agent engine<br/>engine.py]
+    E <--> BR{Brain}
+    BR --- C[Claude via Anthropic API<br/>tool use, adaptive thinking]
+    BR --- P[Offline planner<br/>fixed playbook, no LLM]
+    E --> T[14 read-only tools<br/>tools.py]
+    T --> BK{Backend}
+    BK --- SN[Snapshot in DuckDB<br/>hosted app, tests]
+    BK --- SP[Spark SQL views over<br/>Unity Catalog tables]
+    E --> S[Submit tool with strict schema:<br/>case, incident report, answer]
+    S --> H[Human approves or overrides]
+    E -.-> AU[(Hash-chained audit log)]
+```
+
+| Agent | Tools | Output |
+|---|---|---|
+| AML Investigator | `get_alert`, `get_transactions`, `get_customer_profile`, `get_customer_activity`, `compare_to_peers`, `find_counterparty_history`, `counterparty_network`, `run_sql` | `submit_case`: ESCALATE or CLOSE, risk score 0-100, red flags, mitigating factors, evidence transaction ids, narrative, next steps |
+| Data Steward | `get_pipeline_status`, `get_dq_findings`, `inspect_delivery`, `get_delivery_history`, `run_sql` | `submit_incident_report`: root-cause category, rows expected, received and missing, downstream impact, remediation, draft ticket |
+| Ask Ledgerline | `list_tables`, `run_sql` | `submit_answer`: answer, final SQL, chart spec |
+
+- **Same tools, two brains.** `ClaudeBrain` runs a manual tool-use loop with the Anthropic SDK. Tool errors (for example a SQL typo) go back to the model as `is_error` results so it can correct itself, and prompt caching keeps the growing conversation cheap. `ScriptedBrain` drives the same tools from a Python playbook, so the hosted app works with no key, and the evaluation has a baseline.
+- **Guardrails.** Tools only read. SQL must be a single read-only statement, and results are capped at 1,000 rows. Ids are validated by pattern before they reach a query. Each agent has a tool-call limit. Tool results are truncated before going back to the model. The recording script stops at a dollar cap.
+- **Human in the loop.** Agents only recommend. On Databricks, case reports land with `review_status = PENDING_HUMAN_REVIEW`; in the app, approve and override are written to the audit log.
+- **Evaluation.** `agents/evals.py` scores every output against the generator's answer key (`run_summary.json -> planted`), which the agents' tools cannot read. Checks include the right decision (7 alerts should escalate; the planted payroll false positive for C000212 should close), trigger transactions cited, no invented transaction ids, score consistent with decision, no contact data in narratives, the correct incident row counts, and SQL that returns the same result as a reference query.
+- **Recorded runs.** `run_agents.py --brain claude --record` saves every Claude run (thoughts, tool calls, tokens, cost) to `data/agent_runs/`. The hosted app replays them, so visitors see exactly what Claude did without the app calling the API.
+- **On Databricks.** `databricks/03_ai_agents.py` runs the agents over Spark SQL views of the Unity Catalog tables and appends to `gold.aml_case_reports` and `audit.agent_steps`.
+
+## 7. Delta Lake features used
 
 | Feature | Where | Why it matters in a bank |
 |---|---|---|
@@ -104,28 +135,31 @@ In the committed run, every planted defect was caught and nothing else was quara
 | OPTIMIZE + Z-ORDER | `pipeline.optimize` | Fewer, better-organised files, so investigator queries skip irrelevant data |
 | `_metadata.file_path` | `bronze.py` | Row-level lineage back to the delivered file |
 
-## 7. Security and privacy
+## 8. Security and privacy
 
 - Synthetic data only. High-risk jurisdictions use fictional ISO user-assigned codes (XR, XS, XE), so the data makes no claims about real countries.
 - PII minimisation by layer. Bronze keeps the raw delivery, as a restricted evidence copy. Silver stores a hashed e-mail and a masked phone. Gold has no names, e-mail, phone or full date of birth.
 - On Databricks, `02_unity_catalog_governance.sql` adds column comments, `classification = pii` tags and a column mask that shows names only to members of a KYC analyst group.
 - The app's SQL console is DuckDB in memory with `enable_external_access = false` and the configuration locked. It accepts read-only statements and returns at most 1,000 rows. Tests prove that file reads, COPY, DROP, INSTALL and configuration changes are all blocked.
-- There are no credentials in the code. Databricks notebooks authenticate as the signed-in user.
+- There are no credentials in the code. Databricks notebooks authenticate as the signed-in user. The Anthropic API key, when used, comes from an environment variable, Streamlit secrets or a Databricks secret scope.
+- Agents see Silver and Gold only, through read-only tools. Gold has no names or contact details, and the evaluation fails any narrative that contains an e-mail address or phone number.
 
-## 8. Cost
+## 9. Cost
 
 | Item | Cost |
 |---|---|
 | Local / CI runs (GitHub Actions) | $0 |
 | Streamlit Community Cloud hosting | $0 |
 | Databricks Free Edition (serverless, quota-limited) | $0 |
-| LLM APIs | Not used in this project |
+| Claude API (optional) | $0 by default: the hosted app replays recordings or uses the offline planner. A full recorded evaluation (16 runs) is capped at $5 and only runs with the owner's approval |
 
-## 9. Trade-offs and limitations
+## 10. Trade-offs and limitations
 
 - **The app shows a snapshot.** Community Cloud has no Java or Spark, so the app reads CSV/JSON exported from a real run. The run id, engine and versions are shown in the header, and a test checks that a fresh run reproduces the snapshot exactly.
 - **Batch, not streaming.** The landing zone is read with batch reads. On Databricks the natural next step is Auto Loader (`cloudFiles`) with `availableNow` triggers, or Lakeflow Declarative Pipelines, whose expectations map one-to-one onto `dq.py` rules.
 - **Gold is fully recomputed** on each run. That is fine at this scale. At bank scale, Gold would read the Silver Change Data Feed incrementally.
 - **AML rules are simple and illustrative.** They are thresholds, not a model, and are not regulatory guidance. They produce candidates for a human investigator and never decisions.
+- **The offline planner is not AI.** It is a fixed playbook with rule-based scoring, there so the app works for free and the evaluation has a baseline. The app labels it everywhere it appears. Claude's own scores appear only after a real recorded run.
+- **The agents' evaluation is small.** It has 8 alerts, 1 incident and 6 questions. It catches regressions and hallucinated evidence, but it is not a statistically meaningful benchmark.
 - **Single-machine Spark locally.** Performance numbers are not representative of a cluster.
-- **Databricks: notebook run verified, job and governance not yet.** On 2026-10-26, Nipun ran `00_run_pipeline` on Databricks Free Edition (serverless, Spark 4.2.0, Unity Catalog, run `run_20261026T144959Z`, 356 s). Every table count matched the local run exactly (see `docs/evidence/databricks_run_20261026.png`). The 6-task Lakeflow job (`01_create_job`) and the column masks and tags (`02_unity_catalog_governance.sql`) have not been run yet.
+- **Databricks: notebook run verified, job and governance not yet.** On 2026-10-26, Nipun ran `00_run_pipeline` on Databricks Free Edition (serverless, Spark 4.2.0, Unity Catalog, run `run_20261026T144959Z`, 356 s). Every table count matched the local run of that data version exactly (see `docs/evidence/databricks_run_20261026.png`). The incident batch and payroll false positive were added afterwards and have been run locally only, as has the agents notebook (`03_ai_agents`), which is tested on a local Spark lakehouse. The 6-task Lakeflow job (`01_create_job`) and the column masks and tags (`02_unity_catalog_governance.sql`) have not been run yet.

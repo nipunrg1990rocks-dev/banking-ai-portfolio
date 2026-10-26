@@ -18,8 +18,10 @@ def con():
 def test_headline_numbers_are_consistent(snap):
     h = snap.headline()
     assert h["silver_transactions"] == len(snap.transactions)
-    assert h["alerts"] == 7
-    assert h["controls_passed"] == h["controls"] > 0
+    assert h["alerts"] == 8
+    # Every control on the two good batches passed; exactly one tripped, blocking the truncated incident batch.
+    assert h["controls_passed"] == h["controls"] - 1 > 0
+    assert h["controls_tripped"] == 1
 
 
 def test_every_batch_balances(snap):
