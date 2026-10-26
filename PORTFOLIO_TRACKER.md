@@ -5,7 +5,7 @@ Last updated: 2026-10-26. Evidence links point to files in this repository.
 | Project | Scope agreed | Code complete | Tests run | Bugs outstanding | Deployment ready | URL verified | Demo pack | Interview training | Cost to date | Next action | Owner |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 01 Compliance Copilot | Yes (master brief) | Yes, MVP | 48/48 pytest (local and GitHub Actions CI green); 10/10 browser steps; eval Recall@3 1.00 | None known; limitations in docs/architecture.md | Yes (requirements pinned, Streamlit config, CI) | Yes: https://abv2xygrggmaucidx5hjbg.streamlit.app, smoke-checked by Nipun on 2026-10-26 (ask, review routing, audit chain) | Yes: [interview_pack.md](projects/p1_compliance_copilot/docs/interview_pack.md) | Not started | $0 | Interview rehearsal of the 3-minute demo; optional: approve live LLM mode | Claude (build), Nipun (accounts, review) |
-| 02 Lakehouse | Yes (brief) | No | - | - | - | - | - | - | $0 | Start after P1 deploy; needs Databricks Free Edition account | - |
+| 02 Lakehouse | Yes (brief) | Yes: [projects/p2_lakehouse](projects/p2_lakehouse/) (PR #1) | 44/44 pytest incl. real Spark 4.1 + Delta 4.4 end-to-end runs; 8/8 browser steps; 16/16 blocking controls in the committed run | None known; limitations in docs/architecture.md | Local/CI yes. Databricks notebooks ready, **not yet run** | No (app not yet deployed) | Yes: [interview_pack.md](projects/p2_lakehouse/docs/interview_pack.md) + [PDF](projects/p2_lakehouse/docs/Ledgerline_Banking_Lakehouse_Interview_Pack.pdf) | Not started | $0 | Nipun: create Databricks Free Edition account, then run `00_run_pipeline`; deploy app on Streamlit Cloud | Claude (build), Nipun (accounts, review) |
 | 03 Agentic Ops | Yes (brief) | No | - | - | - | - | - | - | $0 | - | - |
 | 04 Risk & DQ Dashboard | Yes (brief) | No | - | - | - | - | - | - | $0 | - | - |
 | 05 Reg Change Analyzer | Yes (brief) | No | - | - | - | - | - | - | $0 | - | - |
@@ -16,5 +16,5 @@ Last updated: 2026-10-26. Evidence links point to files in this repository.
 |---|---|---|
 | GitHub | Connected. Repo nipunrg1990rocks-dev/banking-ai-portfolio (public), code pushed 2026-10-26 | none |
 | Streamlit Community Cloud | App deployed: https://abv2xygrggmaucidx5hjbg.streamlit.app | `ANTHROPIC_API_KEY` (only if live mode approved) |
-| Databricks Free Edition | Not set up (needed for projects 02 and 04) | none |
+| Databricks Free Edition | Requested sign-up 2026-10-26 (needed for projects 02 and 04) | none (notebooks authenticate as the signed-in user) |
 | Anthropic API | Not set up; spend not approved | none |
