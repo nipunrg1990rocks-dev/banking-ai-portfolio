@@ -163,7 +163,7 @@
         <li><span class="k">4</span><span>Check the payer and payee history: the same cycle ran in September at 48,700 USD, just under the threshold. <code>find_counterparty_history</code></span></li>
         <li><span class="k">5</span><span>Score 25 out of 100: a recurring payroll cycle. Submit a case for the investigator to approve. <code>submit_case</code></span></li>
       </ol>
-      <p class="note">This trace is from the offline planner, a fixed playbook that uses the same tools without an LLM, so the public demo needs no API key. With Claude, the model chooses its own steps. The payroll false positive was planted on purpose: the rule is right to fire, and judgement is what clears it.</p>
+      <p class="note">This trace is from the offline planner, a fixed playbook that uses the same tools without an LLM, so the public demo needs no API key. With an LLM (a free Databricks Foundation Model in the workspace), the model chooses its own steps. The payroll false positive was planted on purpose: the rule is right to fire, and judgement is what clears it.</p>
     </div>
   </section>
 
@@ -257,9 +257,9 @@
           <tr><td>Full pipeline on Spark 4.1 and Delta Lake 4.4</td><td><span class="pill ok">Verified</span> 18,517 records in about 100 seconds; the truncated delivery blocked as designed</td></tr>
           <tr><td>Automated tests and browser test of the app</td><td><span class="pill ok">Verified</span> 58 tests; 12 browser steps, including each agent</td></tr>
           <tr><td>Agents with the offline planner (no LLM), scored against the answer key</td><td><span class="pill ok">Verified</span> 8/8 alerts, 1/1 incident, 6/6 questions</td></tr>
-          <tr><td>Agents with Claude</td><td><span class="pill review">Built, not yet evaluated</span> needs an API key</td></tr>
+          <tr><td>Agents on Databricks with a free Foundation Model (no API key)</td><td><span class="pill review">Run, reported by owner</span> model and scores not captured</td></tr>
           <tr><td>Full pipeline on Databricks Free Edition (serverless, Unity Catalog)</td><td><span class="pill ok">Verified</span> Same table counts as local, on the data version before the incident batch; 356 seconds</td></tr>
-          <tr><td>Agents notebook, scheduled 6-task job and column masks on Databricks</td><td><span class="pill review">Ready, not yet run</span></td></tr>
+          <tr><td>Scheduled 6-task job and column masks on Databricks</td><td><span class="pill review">Ready, not yet run</span></td></tr>
           <tr><td>Hosted explorer app</td><td><span class="pill review">Not yet deployed</span></td></tr>
         </tbody>
       </table>

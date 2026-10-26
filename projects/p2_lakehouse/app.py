@@ -423,7 +423,7 @@ with top[5]:
 | Databricks Free Edition | `databricks/00_run_pipeline`, Unity Catalog | Verified: serverless, same table counts |
 | Lakeflow Jobs | `databricks/01_create_job`: 6-task DAG, serverless | Code ready; not yet run |
 | AI agents on Databricks | `databricks/03_ai_agents`: agents read UC tables, write cases to Delta \
-| Tested on local Spark; not yet run on Databricks |
+| Run by Nipun on Free Edition (reported, no screenshot; model and scores not captured) |
 
 A `TableStore` class is the only place that knows whether a table is a local Delta folder or a Unity Catalog
 table, so the PySpark and SQL are identical everywhere.
