@@ -2,6 +2,8 @@
 
 Five independent, AI-assisted portfolio projects that apply GenAI and data engineering to banking risk, compliance and operations. **All data is synthetic.** These projects are not affiliated with any employer or real financial institution.
 
+**Portfolio website:** https://nipunrg1990rocks-dev.github.io/banking-ai-portfolio/ (built from [`site/`](site/); every link and status lives in [`site/portfolio.json`](site/portfolio.json)).
+
 | # | Project | Stack | Status |
 |---|---|---|---|
 | 01 | [Enterprise Banking Risk & Compliance AI Copilot](projects/p1_compliance_copilot/) | Python, RAG (BM25 + vectors), Claude (optional), Streamlit, SQLite audit chain, MLflow | Built, tested, [live demo](https://abv2xygrggmaucidx5hjbg.streamlit.app) |

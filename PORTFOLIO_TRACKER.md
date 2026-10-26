@@ -18,3 +18,13 @@ Last updated: 2026-10-26. Evidence links point to files in this repository.
 | Streamlit Community Cloud | App deployed: https://abv2xygrggmaucidx5hjbg.streamlit.app | `ANTHROPIC_API_KEY` (only if live mode approved) |
 | Databricks Free Edition | Requested sign-up 2026-10-26 (needed for projects 02 and 04) | none (notebooks authenticate as the signed-in user) |
 | Anthropic API | Not set up; spend not approved | none |
+
+## Portfolio website
+
+| Item | Status |
+|---|---|
+| Site source | [`site/`](site/): `portfolio.json` (links, statuses), `template.html`, `build.py` |
+| Hosting | GitHub Pages via `.github/workflows/pages.yml`, rebuilt on every push to main |
+| URL | https://nipunrg1990rocks-dev.github.io/banking-ai-portfolio/ (live once Pages is switched on: Settings > Pages > Source: GitHub Actions) |
+| Tests | `tests/test_site.py`: build succeeds, every local link resolves, hash chain verifies, missing files show "coming soon" |
+| To add a demo link | Paste the URL into that project's `live_url` in `site/portfolio.json`, set `status` to `live` and `status_label` to `Live demo` |

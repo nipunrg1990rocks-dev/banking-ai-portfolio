@@ -1,0 +1,211 @@
+{
+  "_how_to_edit": "This file holds every link and status on the portfolio site. To add a live demo, paste its URL into live_url for that project and push to main; the site rebuilds itself. Leave a field as an empty string to hide it. Showcase pages and PDFs appear on their own once their files are on main.",
+  "person": {
+    "name": "Nipun Gupta",
+    "headline": "Banking risk and controls professional building governed AI",
+    "roles": ["AI Transformation", "Risk & Controls", "Business Analysis", "PMO"],
+    "years_banking": 12,
+    "summary": "I have spent about twelve years in banking risk, controls, operations and UAT. These five projects apply that experience to AI: each one is built around the controls a second line, model-risk or audit team would ask for before letting AI near a regulated process.",
+    "github_url": "https://github.com/nipunrg1990rocks-dev",
+    "linkedin_url": "",
+    "email": ""
+  },
+  "site": {
+    "url": "https://nipunrg1990rocks-dev.github.io/banking-ai-portfolio/",
+    "repo_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio",
+    "bank": "Ledgerline Bank",
+    "year": 2026
+  },
+  "projects": [
+    {
+      "id": "p1",
+      "number": 1,
+      "name": "Compliance Copilot",
+      "full_name": "Enterprise Banking Risk & Compliance AI Copilot",
+      "kind": "GenAI · RAG",
+      "lifecycle": "Staff ask about policy",
+      "status": "live",
+      "status_label": "Live demo",
+      "summary": "A policy assistant for bank staff. It answers KYC, AML, sanctions and risk questions only from approved policy text, cites the exact section, shows how confident it is, and sends anything that touches a regulated decision to a human reviewer.",
+      "problem": "A wrong policy answer from memory can mean a missed review date, a released sanctions hit or a customer tipped off about a SAR.",
+      "ai": "Hybrid keyword and semantic search finds the policy sections, every sentence of the answer carries a citation, and risk rules decide whether to answer, route to review, refuse or block.",
+      "stats": [
+        {"value": "100%", "label": "correct policy section in the top 3 results"},
+        {"value": "97%", "label": "answers containing the expected policy fact"},
+        {"value": "100%", "label": "questions routed correctly to answer, review, refuse or block"},
+        {"value": "48", "label": "automated tests on every code change"}
+      ],
+      "stats_note": "Measured on 37 labelled questions written for this project, including prompt-injection attempts.",
+      "controls": [
+        "Maker-checker: the person who asks can't approve their own answer",
+        "Tipping-off detection puts the SAR confidentiality rule first",
+        "Hash-chained audit log that shows any later tampering"
+      ],
+      "stack": ["Python", "RAG", "BM25 + vectors", "Reciprocal Rank Fusion", "Streamlit", "SQLite", "MLflow", "pytest", "Playwright"],
+      "live_url": "https://abv2xygrggmaucidx5hjbg.streamlit.app",
+      "code_path": "projects/p1_compliance_copilot",
+      "showcase": "docs/showcase/p1_compliance_copilot.html",
+      "pdf": "projects/p1_compliance_copilot/docs/Ledgerline_Compliance_Copilot_Interview_Pack.pdf",
+      "pr_url": "",
+      "checks": {
+        "tests": {"state": "verified", "text": "48 tests"},
+        "browser": {"state": "verified", "text": "10 steps"},
+        "databricks": {"state": "na", "text": "Not used"},
+        "llm": {"state": "pending", "text": "Optional, not run live"},
+        "hosted": {"state": "owner", "text": "Live, checked by me"}
+      }
+    },
+    {
+      "id": "p2",
+      "number": 2,
+      "name": "Agentic Lakehouse",
+      "full_name": "Banking Data Engineering Lakehouse",
+      "kind": "Databricks · AI agents",
+      "lifecycle": "Data arrives",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "A Bronze, Silver and Gold pipeline on Apache Spark and Delta Lake that refuses to publish numbers that don't reconcile, with three AI agents on top that investigate AML alerts, explain blocked loads and answer business questions.",
+      "problem": "Source files arrive with missing amounts, duplicates and late re-sends. Reports built on them can double-count a payment or miss an AML pattern.",
+      "ai": "An AML Investigator, a Data Steward and an Ask Ledgerline agent use 14 read-only tools. They run on free Databricks foundation models, or offline with no model at all, and a person approves what they propose.",
+      "stats": [
+        {"value": "18,517", "label": "source records through Bronze, Silver and Gold"},
+        {"value": "8 / 8", "label": "AML cases decided correctly, including a planted false positive"},
+        {"value": "22 / 22", "label": "planted transaction defects quarantined with their rule"},
+        {"value": "58", "label": "automated tests running the real Spark pipeline"}
+      ],
+      "stats_note": "Agent scores are from the offline planner against the generator's answer key.",
+      "controls": [
+        "Bronze must match the source manifest's record count and amount total",
+        "Customer risk-rating history kept as SCD Type 2, never overwritten",
+        "AML alerts are candidates for an investigator, never decisions"
+      ],
+      "stack": ["Databricks", "PySpark", "Spark SQL", "Delta Lake", "Unity Catalog", "Lakeflow Jobs", "AI agents", "Streamlit", "DuckDB"],
+      "live_url": "",
+      "code_path": "projects/p2_lakehouse",
+      "showcase": "docs/showcase/p2_lakehouse.html",
+      "pdf": "projects/p2_lakehouse/docs/Ledgerline_Banking_Lakehouse_Interview_Pack.pdf",
+      "pr_url": "",
+      "checks": {
+        "tests": {"state": "verified", "text": "58 tests"},
+        "browser": {"state": "verified", "text": "12 steps"},
+        "databricks": {"state": "owner", "text": "Ran on Free Edition, checked by me"},
+        "llm": {"state": "owner", "text": "Ran on Databricks, scores not captured"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    },
+    {
+      "id": "p3",
+      "number": 3,
+      "name": "Exception Manager",
+      "full_name": "Agentic AI Operations Exception Manager",
+      "kind": "Agentic AI · LangGraph",
+      "lifecycle": "Exceptions are worked",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "AI agents that work an operations exception queue: they triage each case, investigate it with tools, score its priority and propose one fix. Plain, auditable rules then decide who must approve, and regulated decisions always go to a person.",
+      "problem": "Ops teams spend their day pulling evidence from five systems. The real risk is the decision: releasing a screened payment without the right sign-off is a regulatory and fraud event.",
+      "ai": "A 12-step LangGraph workflow that pauses for a human when a decision needs one and resumes on approve, reject or escalate. Prompt-injection text inside a ticket is flagged and ignored.",
+      "stats": [
+        {"value": "100%", "label": "correct route on a 42-case queue across 8 exception types"},
+        {"value": "0", "label": "regulated decisions executed without a human"},
+        {"value": "0 / 300", "label": "control violations in fuzzed cases, including injection text"},
+        {"value": "50", "label": "automated tests plus a 10-step browser test"}
+      ],
+      "stats_note": "Each test case carries acceptance criteria the agent cannot see.",
+      "controls": [
+        "Sanctions, KYC and credit decisions are never automated",
+        "Maker-checker above USD 50,000, with a delegated-authority matrix",
+        "Agents only read; one executor acts after a final authorisation check"
+      ],
+      "stack": ["LangGraph", "interrupt / resume", "Tool calling", "scikit-learn", "Guardrails", "Streamlit", "Graphviz", "pytest", "Playwright"],
+      "live_url": "",
+      "code_path": "projects/p3_exception_manager",
+      "showcase": "docs/showcase/p3_exception_manager.html",
+      "pdf": "projects/p3_exception_manager/docs/Ledgerline_Exception_Manager_Interview_Pack.pdf",
+      "pr_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/pull/3",
+      "checks": {
+        "tests": {"state": "verified", "text": "50 tests"},
+        "browser": {"state": "verified", "text": "10 steps"},
+        "databricks": {"state": "na", "text": "Not used"},
+        "llm": {"state": "pending", "text": "Optional, not run live"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    },
+    {
+      "id": "p4",
+      "number": 4,
+      "name": "Risk Control Room",
+      "full_name": "AI-Powered Risk & Data Quality Dashboard",
+      "kind": "Databricks SQL · AI agent",
+      "lifecycle": "Risk is monitored",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "A risk and data-quality dashboard where an AI agent investigates every metric each morning. It finds which desk or feed moved the number, links the move to the change that caused it, forecasts when a limit will break and drafts the actions the risk appetite policy requires.",
+      "problem": "A committee pack shows a breached KRI, then analysts spend days finding which desk, which feed, since when and what changed.",
+      "ai": "The Risk Insights Agent scans 20 metrics, breaks each move down, finds its onset, matches it to the change log and forecasts the breach. Answers that state a number no tool returned are rejected.",
+      "stats": [
+        {"value": "7 / 7", "label": "planted incidents found with the right cause over 50 business days"},
+        {"value": "0", "label": "wrong root causes, despite decoy changes in the log"},
+        {"value": "20", "label": "metrics defined once over 12 Databricks SQL views"},
+        {"value": "85", "label": "automated tests plus a 9-step browser test"}
+      ],
+      "stats_note": "The agent was replayed day by day, seeing only the data up to each day.",
+      "controls": [
+        "Every metric has an owner, thresholds, a policy reference and visible SQL",
+        "Root causes are hypotheses with a confidence level, never stated as fact",
+        "The board pack needs a named approver and a SHA-256 fingerprint"
+      ],
+      "stack": ["Databricks SQL", "Unity Catalog", "Delta Lake", "Apache Spark", "DuckDB", "Semantic metrics", "Forecasting", "Streamlit", "Altair"],
+      "live_url": "",
+      "code_path": "projects/p4_risk_dashboard",
+      "showcase": "docs/showcase/p4_risk_dashboard.html",
+      "pdf": "projects/p4_risk_dashboard/docs/Ledgerline_Risk_Control_Room_Interview_Pack.pdf",
+      "pr_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/pull/6",
+      "checks": {
+        "tests": {"state": "verified", "text": "85 tests"},
+        "browser": {"state": "verified", "text": "9 steps"},
+        "databricks": {"state": "pending", "text": "Notebook ready, local Spark only"},
+        "llm": {"state": "pending", "text": "Built, simulated clients only"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    },
+    {
+      "id": "p5",
+      "number": 5,
+      "name": "RegRadar",
+      "full_name": "GenAI Regulatory Change Impact Analyzer",
+      "kind": "GenAI · 7-agent crew",
+      "lifecycle": "The rules change",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "When a regulator publishes a new or amended rule, seven AI agents read it, compare it word by word with the version it replaces, find the policies and controls it lands on, decide where the bank no longer complies and draft the fixes. A named person decides every action and a second person signs off.",
+      "problem": "The expensive failures are quiet: a tightened figure nobody spotted, or a policy updated while the control that enforces it still runs on the old number.",
+      "ai": "Intake, Change Analyst, Policy Mapper, Gap Assessor, Remediation Planner, Challenger and Reporter. Verdicts come from explainable rules; the model can add review flags but never change a verdict.",
+      "stats": [
+        {"value": "0", "label": "unsafe misses: no real gap reported as covered, across 33 rules"},
+        {"value": "91%", "label": "gap status exactly right; all 3 errors sent to human review"},
+        {"value": "100%", "label": "changes detected across 44 provisions"},
+        {"value": "57", "label": "automated tests plus an 11-step browser test"}
+      ],
+      "stats_note": "Scored against a hand-written answer key. A held-out circular scored 80% on its first run; that is reported too.",
+      "controls": [
+        "Any number in a model summary must exist in the sources, or it is rejected",
+        "Sign-off is blocked until every Critical and High action is decided",
+        "Four-eyes: the approver cannot be anyone who decided an action"
+      ],
+      "stack": ["Agentic AI", "Databricks foundation models", "ai_query()", "RAG", "Document intelligence", "Delta Lake", "scikit-learn", "Streamlit", "pytest"],
+      "live_url": "",
+      "code_path": "projects/p5_reg_change",
+      "showcase": "docs/showcase/p5_reg_change.html",
+      "pdf": "projects/p5_reg_change/docs/Ledgerline_RegRadar_Interview_Pack.pdf",
+      "pr_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/pull/8",
+      "checks": {
+        "tests": {"state": "verified", "text": "57 tests"},
+        "browser": {"state": "verified", "text": "11 steps"},
+        "databricks": {"state": "pending", "text": "Ran on local Spark only"},
+        "llm": {"state": "pending", "text": "Built, not run live"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    }
+  ]
+}
