@@ -1,0 +1,571 @@
+business_date,source_system,feed_name,sla_ts,arrived_ts,minutes_vs_sla,on_time
+2026-06-01,LedgerCore,Core banking end-of-day balances,2026-06-01 06:00:00,2026-06-01 05:30:00,-30,True
+2026-06-01,CardHub,Card scheme settlement file,2026-06-01 05:30:00,2026-06-01 05:18:00,-12,True
+2026-06-01,PayFlow,SWIFT payment messages,2026-06-01 06:30:00,2026-06-01 05:28:00,-62,True
+2026-06-01,MarketData,End-of-day FX rates,2026-06-01 07:00:00,2026-06-01 05:56:00,-64,True
+2026-06-01,OnboardIQ,KYC customer profile extract,2026-06-01 06:00:00,2026-06-01 05:49:00,-11,True
+2026-06-01,GeneralLedger,GL journal extract,2026-06-01 07:30:00,2026-06-01 06:48:00,-42,True
+2026-06-02,LedgerCore,Core banking end-of-day balances,2026-06-02 06:00:00,2026-06-02 04:56:00,-64,True
+2026-06-02,CardHub,Card scheme settlement file,2026-06-02 05:30:00,2026-06-02 04:47:00,-43,True
+2026-06-02,PayFlow,SWIFT payment messages,2026-06-02 06:30:00,2026-06-02 05:33:00,-57,True
+2026-06-02,MarketData,End-of-day FX rates,2026-06-02 07:00:00,2026-06-02 05:50:00,-70,True
+2026-06-02,OnboardIQ,KYC customer profile extract,2026-06-02 06:00:00,2026-06-02 05:02:00,-58,True
+2026-06-02,GeneralLedger,GL journal extract,2026-06-02 07:30:00,2026-06-02 06:37:00,-53,True
+2026-06-03,LedgerCore,Core banking end-of-day balances,2026-06-03 06:00:00,2026-06-03 05:23:00,-37,True
+2026-06-03,CardHub,Card scheme settlement file,2026-06-03 05:30:00,2026-06-03 04:39:00,-51,True
+2026-06-03,PayFlow,SWIFT payment messages,2026-06-03 06:30:00,2026-06-03 05:59:00,-31,True
+2026-06-03,MarketData,End-of-day FX rates,2026-06-03 07:00:00,2026-06-03 06:35:00,-25,True
+2026-06-03,OnboardIQ,KYC customer profile extract,2026-06-03 06:00:00,2026-06-03 05:36:00,-24,True
+2026-06-03,GeneralLedger,GL journal extract,2026-06-03 07:30:00,2026-06-03 07:02:00,-28,True
+2026-06-04,LedgerCore,Core banking end-of-day balances,2026-06-04 06:00:00,2026-06-04 05:05:00,-55,True
+2026-06-04,CardHub,Card scheme settlement file,2026-06-04 05:30:00,2026-06-04 04:39:00,-51,True
+2026-06-04,PayFlow,SWIFT payment messages,2026-06-04 06:30:00,2026-06-04 05:21:00,-69,True
+2026-06-04,MarketData,End-of-day FX rates,2026-06-04 07:00:00,2026-06-04 06:05:00,-55,True
+2026-06-04,OnboardIQ,KYC customer profile extract,2026-06-04 06:00:00,2026-06-04 05:04:00,-56,True
+2026-06-04,GeneralLedger,GL journal extract,2026-06-04 07:30:00,2026-06-04 06:25:00,-65,True
+2026-06-05,LedgerCore,Core banking end-of-day balances,2026-06-05 06:00:00,2026-06-05 05:17:00,-43,True
+2026-06-05,CardHub,Card scheme settlement file,2026-06-05 05:30:00,2026-06-05 05:11:00,-19,True
+2026-06-05,PayFlow,SWIFT payment messages,2026-06-05 06:30:00,2026-06-05 05:31:00,-59,True
+2026-06-05,MarketData,End-of-day FX rates,2026-06-05 07:00:00,2026-06-05 06:03:00,-57,True
+2026-06-05,OnboardIQ,KYC customer profile extract,2026-06-05 06:00:00,2026-06-05 05:00:00,-60,True
+2026-06-05,GeneralLedger,GL journal extract,2026-06-05 07:30:00,2026-06-05 06:26:00,-64,True
+2026-06-08,LedgerCore,Core banking end-of-day balances,2026-06-08 06:00:00,2026-06-08 05:46:00,-14,True
+2026-06-08,CardHub,Card scheme settlement file,2026-06-08 05:30:00,2026-06-08 05:15:00,-15,True
+2026-06-08,PayFlow,SWIFT payment messages,2026-06-08 06:30:00,2026-06-08 05:41:00,-49,True
+2026-06-08,MarketData,End-of-day FX rates,2026-06-08 07:00:00,2026-06-08 06:25:00,-35,True
+2026-06-08,OnboardIQ,KYC customer profile extract,2026-06-08 06:00:00,2026-06-08 05:01:00,-59,True
+2026-06-08,GeneralLedger,GL journal extract,2026-06-08 07:30:00,2026-06-08 07:14:00,-16,True
+2026-06-09,LedgerCore,Core banking end-of-day balances,2026-06-09 06:00:00,2026-06-09 05:02:00,-58,True
+2026-06-09,CardHub,Card scheme settlement file,2026-06-09 05:30:00,2026-06-09 04:31:00,-59,True
+2026-06-09,PayFlow,SWIFT payment messages,2026-06-09 06:30:00,2026-06-09 05:24:00,-66,True
+2026-06-09,MarketData,End-of-day FX rates,2026-06-09 07:00:00,2026-06-09 06:30:00,-30,True
+2026-06-09,OnboardIQ,KYC customer profile extract,2026-06-09 06:00:00,2026-06-09 05:30:00,-30,True
+2026-06-09,GeneralLedger,GL journal extract,2026-06-09 07:30:00,2026-06-09 07:00:00,-30,True
+2026-06-10,LedgerCore,Core banking end-of-day balances,2026-06-10 06:00:00,2026-06-10 05:27:00,-33,True
+2026-06-10,CardHub,Card scheme settlement file,2026-06-10 05:30:00,2026-06-10 05:01:00,-29,True
+2026-06-10,PayFlow,SWIFT payment messages,2026-06-10 06:30:00,2026-06-10 06:01:00,-29,True
+2026-06-10,MarketData,End-of-day FX rates,2026-06-10 07:00:00,2026-06-10 06:05:00,-55,True
+2026-06-10,OnboardIQ,KYC customer profile extract,2026-06-10 06:00:00,2026-06-10 05:49:00,-11,True
+2026-06-10,GeneralLedger,GL journal extract,2026-06-10 07:30:00,2026-06-10 06:33:00,-57,True
+2026-06-11,LedgerCore,Core banking end-of-day balances,2026-06-11 06:00:00,2026-06-11 05:22:00,-38,True
+2026-06-11,CardHub,Card scheme settlement file,2026-06-11 05:30:00,2026-06-11 04:42:00,-48,True
+2026-06-11,PayFlow,SWIFT payment messages,2026-06-11 06:30:00,2026-06-11 06:05:00,-25,True
+2026-06-11,MarketData,End-of-day FX rates,2026-06-11 07:00:00,2026-06-11 06:05:00,-55,True
+2026-06-11,OnboardIQ,KYC customer profile extract,2026-06-11 06:00:00,2026-06-11 04:56:00,-64,True
+2026-06-11,GeneralLedger,GL journal extract,2026-06-11 07:30:00,2026-06-11 06:53:00,-37,True
+2026-06-12,LedgerCore,Core banking end-of-day balances,2026-06-12 06:00:00,2026-06-12 04:56:00,-64,True
+2026-06-12,CardHub,Card scheme settlement file,2026-06-12 05:30:00,2026-06-12 05:01:00,-29,True
+2026-06-12,PayFlow,SWIFT payment messages,2026-06-12 06:30:00,2026-06-12 05:42:00,-48,True
+2026-06-12,MarketData,End-of-day FX rates,2026-06-12 07:00:00,2026-06-12 06:10:00,-50,True
+2026-06-12,OnboardIQ,KYC customer profile extract,2026-06-12 06:00:00,2026-06-12 05:08:00,-52,True
+2026-06-12,GeneralLedger,GL journal extract,2026-06-12 07:30:00,2026-06-12 07:05:00,-25,True
+2026-06-15,LedgerCore,Core banking end-of-day balances,2026-06-15 06:00:00,2026-06-15 05:42:00,-18,True
+2026-06-15,CardHub,Card scheme settlement file,2026-06-15 05:30:00,2026-06-15 04:29:00,-61,True
+2026-06-15,PayFlow,SWIFT payment messages,2026-06-15 06:30:00,2026-06-15 05:21:00,-69,True
+2026-06-15,MarketData,End-of-day FX rates,2026-06-15 07:00:00,2026-06-15 06:11:00,-49,True
+2026-06-15,OnboardIQ,KYC customer profile extract,2026-06-15 06:00:00,2026-06-15 05:11:00,-49,True
+2026-06-15,GeneralLedger,GL journal extract,2026-06-15 07:30:00,2026-06-15 06:44:00,-46,True
+2026-06-16,LedgerCore,Core banking end-of-day balances,2026-06-16 06:00:00,2026-06-16 04:54:00,-66,True
+2026-06-16,CardHub,Card scheme settlement file,2026-06-16 05:30:00,2026-06-16 04:39:00,-51,True
+2026-06-16,PayFlow,SWIFT payment messages,2026-06-16 06:30:00,2026-06-16 05:51:00,-39,True
+2026-06-16,MarketData,End-of-day FX rates,2026-06-16 07:00:00,2026-06-16 06:14:00,-46,True
+2026-06-16,OnboardIQ,KYC customer profile extract,2026-06-16 06:00:00,2026-06-16 06:15:00,15,False
+2026-06-16,GeneralLedger,GL journal extract,2026-06-16 07:30:00,2026-06-16 07:06:00,-24,True
+2026-06-17,LedgerCore,Core banking end-of-day balances,2026-06-17 06:00:00,2026-06-17 05:34:00,-26,True
+2026-06-17,CardHub,Card scheme settlement file,2026-06-17 05:30:00,2026-06-17 04:47:00,-43,True
+2026-06-17,PayFlow,SWIFT payment messages,2026-06-17 06:30:00,2026-06-17 05:45:00,-45,True
+2026-06-17,MarketData,End-of-day FX rates,2026-06-17 07:00:00,2026-06-17 06:21:00,-39,True
+2026-06-17,OnboardIQ,KYC customer profile extract,2026-06-17 06:00:00,2026-06-17 05:09:00,-51,True
+2026-06-17,GeneralLedger,GL journal extract,2026-06-17 07:30:00,2026-06-17 06:28:00,-62,True
+2026-06-18,LedgerCore,Core banking end-of-day balances,2026-06-18 06:00:00,2026-06-18 06:50:00,50,False
+2026-06-18,CardHub,Card scheme settlement file,2026-06-18 05:30:00,2026-06-18 04:50:00,-40,True
+2026-06-18,PayFlow,SWIFT payment messages,2026-06-18 06:30:00,2026-06-18 05:50:00,-40,True
+2026-06-18,MarketData,End-of-day FX rates,2026-06-18 07:00:00,2026-06-18 06:40:00,-20,True
+2026-06-18,OnboardIQ,KYC customer profile extract,2026-06-18 06:00:00,2026-06-18 05:06:00,-54,True
+2026-06-18,GeneralLedger,GL journal extract,2026-06-18 07:30:00,2026-06-18 06:44:00,-46,True
+2026-06-19,LedgerCore,Core banking end-of-day balances,2026-06-19 06:00:00,2026-06-19 05:02:00,-58,True
+2026-06-19,CardHub,Card scheme settlement file,2026-06-19 05:30:00,2026-06-19 04:59:00,-31,True
+2026-06-19,PayFlow,SWIFT payment messages,2026-06-19 06:30:00,2026-06-19 06:06:00,-24,True
+2026-06-19,MarketData,End-of-day FX rates,2026-06-19 07:00:00,2026-06-19 06:20:00,-40,True
+2026-06-19,OnboardIQ,KYC customer profile extract,2026-06-19 06:00:00,2026-06-19 05:11:00,-49,True
+2026-06-19,GeneralLedger,GL journal extract,2026-06-19 07:30:00,2026-06-19 07:12:00,-18,True
+2026-06-22,LedgerCore,Core banking end-of-day balances,2026-06-22 06:00:00,2026-06-22 04:58:00,-62,True
+2026-06-22,CardHub,Card scheme settlement file,2026-06-22 05:30:00,2026-06-22 05:18:00,-12,True
+2026-06-22,PayFlow,SWIFT payment messages,2026-06-22 06:30:00,2026-06-22 05:26:00,-64,True
+2026-06-22,MarketData,End-of-day FX rates,2026-06-22 07:00:00,2026-06-22 06:00:00,-60,True
+2026-06-22,OnboardIQ,KYC customer profile extract,2026-06-22 06:00:00,2026-06-22 04:53:00,-67,True
+2026-06-22,GeneralLedger,GL journal extract,2026-06-22 07:30:00,2026-06-22 06:50:00,-40,True
+2026-06-23,LedgerCore,Core banking end-of-day balances,2026-06-23 06:00:00,2026-06-23 05:09:00,-51,True
+2026-06-23,CardHub,Card scheme settlement file,2026-06-23 05:30:00,2026-06-23 04:22:00,-68,True
+2026-06-23,PayFlow,SWIFT payment messages,2026-06-23 06:30:00,2026-06-23 06:20:00,-10,True
+2026-06-23,MarketData,End-of-day FX rates,2026-06-23 07:00:00,2026-06-23 06:11:00,-49,True
+2026-06-23,OnboardIQ,KYC customer profile extract,2026-06-23 06:00:00,2026-06-23 05:06:00,-54,True
+2026-06-23,GeneralLedger,GL journal extract,2026-06-23 07:30:00,2026-06-23 06:30:00,-60,True
+2026-06-24,LedgerCore,Core banking end-of-day balances,2026-06-24 06:00:00,2026-06-24 04:56:00,-64,True
+2026-06-24,CardHub,Card scheme settlement file,2026-06-24 05:30:00,2026-06-24 04:47:00,-43,True
+2026-06-24,PayFlow,SWIFT payment messages,2026-06-24 06:30:00,2026-06-24 05:39:00,-51,True
+2026-06-24,MarketData,End-of-day FX rates,2026-06-24 07:00:00,2026-06-24 05:55:00,-65,True
+2026-06-24,OnboardIQ,KYC customer profile extract,2026-06-24 06:00:00,2026-06-24 05:08:00,-52,True
+2026-06-24,GeneralLedger,GL journal extract,2026-06-24 07:30:00,2026-06-24 07:13:00,-17,True
+2026-06-25,LedgerCore,Core banking end-of-day balances,2026-06-25 06:00:00,2026-06-25 04:58:00,-62,True
+2026-06-25,CardHub,Card scheme settlement file,2026-06-25 05:30:00,2026-06-25 05:08:00,-22,True
+2026-06-25,PayFlow,SWIFT payment messages,2026-06-25 06:30:00,2026-06-25 05:53:00,-37,True
+2026-06-25,MarketData,End-of-day FX rates,2026-06-25 07:00:00,2026-06-25 06:15:00,-45,True
+2026-06-25,OnboardIQ,KYC customer profile extract,2026-06-25 06:00:00,2026-06-25 05:14:00,-46,True
+2026-06-25,GeneralLedger,GL journal extract,2026-06-25 07:30:00,2026-06-25 06:22:00,-68,True
+2026-06-26,LedgerCore,Core banking end-of-day balances,2026-06-26 06:00:00,2026-06-26 05:05:00,-55,True
+2026-06-26,CardHub,Card scheme settlement file,2026-06-26 05:30:00,2026-06-26 05:12:00,-18,True
+2026-06-26,PayFlow,SWIFT payment messages,2026-06-26 06:30:00,2026-06-26 05:58:00,-32,True
+2026-06-26,MarketData,End-of-day FX rates,2026-06-26 07:00:00,2026-06-26 06:36:00,-24,True
+2026-06-26,OnboardIQ,KYC customer profile extract,2026-06-26 06:00:00,2026-06-26 05:12:00,-48,True
+2026-06-26,GeneralLedger,GL journal extract,2026-06-26 07:30:00,2026-06-26 06:21:00,-69,True
+2026-06-29,LedgerCore,Core banking end-of-day balances,2026-06-29 06:00:00,2026-06-29 04:51:00,-69,True
+2026-06-29,CardHub,Card scheme settlement file,2026-06-29 05:30:00,2026-06-29 05:05:00,-25,True
+2026-06-29,PayFlow,SWIFT payment messages,2026-06-29 06:30:00,2026-06-29 05:29:00,-61,True
+2026-06-29,MarketData,End-of-day FX rates,2026-06-29 07:00:00,2026-06-29 06:08:00,-52,True
+2026-06-29,OnboardIQ,KYC customer profile extract,2026-06-29 06:00:00,2026-06-29 05:28:00,-32,True
+2026-06-29,GeneralLedger,GL journal extract,2026-06-29 07:30:00,2026-06-29 06:29:00,-61,True
+2026-06-30,LedgerCore,Core banking end-of-day balances,2026-06-30 06:00:00,2026-06-30 05:06:00,-54,True
+2026-06-30,CardHub,Card scheme settlement file,2026-06-30 05:30:00,2026-06-30 05:02:00,-28,True
+2026-06-30,PayFlow,SWIFT payment messages,2026-06-30 06:30:00,2026-06-30 05:37:00,-53,True
+2026-06-30,MarketData,End-of-day FX rates,2026-06-30 07:00:00,2026-06-30 06:11:00,-49,True
+2026-06-30,OnboardIQ,KYC customer profile extract,2026-06-30 06:00:00,2026-06-30 05:22:00,-38,True
+2026-06-30,GeneralLedger,GL journal extract,2026-06-30 07:30:00,2026-06-30 06:51:00,-39,True
+2026-07-01,LedgerCore,Core banking end-of-day balances,2026-07-01 06:00:00,2026-07-01 05:08:00,-52,True
+2026-07-01,CardHub,Card scheme settlement file,2026-07-01 05:30:00,2026-07-01 04:29:00,-61,True
+2026-07-01,PayFlow,SWIFT payment messages,2026-07-01 06:30:00,2026-07-01 05:45:00,-45,True
+2026-07-01,MarketData,End-of-day FX rates,2026-07-01 07:00:00,2026-07-01 06:27:00,-33,True
+2026-07-01,OnboardIQ,KYC customer profile extract,2026-07-01 06:00:00,2026-07-01 05:49:00,-11,True
+2026-07-01,GeneralLedger,GL journal extract,2026-07-01 07:30:00,2026-07-01 06:40:00,-50,True
+2026-07-02,LedgerCore,Core banking end-of-day balances,2026-07-02 06:00:00,2026-07-02 05:35:00,-25,True
+2026-07-02,CardHub,Card scheme settlement file,2026-07-02 05:30:00,2026-07-02 04:58:00,-32,True
+2026-07-02,PayFlow,SWIFT payment messages,2026-07-02 06:30:00,2026-07-02 05:44:00,-46,True
+2026-07-02,MarketData,End-of-day FX rates,2026-07-02 07:00:00,2026-07-02 06:31:00,-29,True
+2026-07-02,OnboardIQ,KYC customer profile extract,2026-07-02 06:00:00,2026-07-02 05:28:00,-32,True
+2026-07-02,GeneralLedger,GL journal extract,2026-07-02 07:30:00,2026-07-02 06:57:00,-33,True
+2026-07-03,LedgerCore,Core banking end-of-day balances,2026-07-03 06:00:00,2026-07-03 05:23:00,-37,True
+2026-07-03,CardHub,Card scheme settlement file,2026-07-03 05:30:00,2026-07-03 04:50:00,-40,True
+2026-07-03,PayFlow,SWIFT payment messages,2026-07-03 06:30:00,2026-07-03 06:09:00,-21,True
+2026-07-03,MarketData,End-of-day FX rates,2026-07-03 07:00:00,2026-07-03 06:19:00,-41,True
+2026-07-03,OnboardIQ,KYC customer profile extract,2026-07-03 06:00:00,2026-07-03 05:42:00,-18,True
+2026-07-03,GeneralLedger,GL journal extract,2026-07-03 07:30:00,2026-07-03 07:16:00,-14,True
+2026-07-06,LedgerCore,Core banking end-of-day balances,2026-07-06 06:00:00,2026-07-06 05:12:00,-48,True
+2026-07-06,CardHub,Card scheme settlement file,2026-07-06 05:30:00,2026-07-06 04:56:00,-34,True
+2026-07-06,PayFlow,SWIFT payment messages,2026-07-06 06:30:00,2026-07-06 05:57:00,-33,True
+2026-07-06,MarketData,End-of-day FX rates,2026-07-06 07:00:00,2026-07-06 06:45:00,-15,True
+2026-07-06,OnboardIQ,KYC customer profile extract,2026-07-06 06:00:00,2026-07-06 05:04:00,-56,True
+2026-07-06,GeneralLedger,GL journal extract,2026-07-06 07:30:00,2026-07-06 06:50:00,-40,True
+2026-07-07,LedgerCore,Core banking end-of-day balances,2026-07-07 06:00:00,2026-07-07 05:46:00,-14,True
+2026-07-07,CardHub,Card scheme settlement file,2026-07-07 05:30:00,2026-07-07 05:58:00,28,False
+2026-07-07,PayFlow,SWIFT payment messages,2026-07-07 06:30:00,2026-07-07 07:48:00,78,False
+2026-07-07,MarketData,End-of-day FX rates,2026-07-07 07:00:00,2026-07-07 06:02:00,-58,True
+2026-07-07,OnboardIQ,KYC customer profile extract,2026-07-07 06:00:00,2026-07-07 05:48:00,-12,True
+2026-07-07,GeneralLedger,GL journal extract,2026-07-07 07:30:00,2026-07-07 06:33:00,-57,True
+2026-07-08,LedgerCore,Core banking end-of-day balances,2026-07-08 06:00:00,2026-07-08 04:57:00,-63,True
+2026-07-08,CardHub,Card scheme settlement file,2026-07-08 05:30:00,2026-07-08 04:32:00,-58,True
+2026-07-08,PayFlow,SWIFT payment messages,2026-07-08 06:30:00,2026-07-08 05:55:00,-35,True
+2026-07-08,MarketData,End-of-day FX rates,2026-07-08 07:00:00,2026-07-08 06:42:00,-18,True
+2026-07-08,OnboardIQ,KYC customer profile extract,2026-07-08 06:00:00,2026-07-08 05:41:00,-19,True
+2026-07-08,GeneralLedger,GL journal extract,2026-07-08 07:30:00,2026-07-08 07:16:00,-14,True
+2026-07-09,LedgerCore,Core banking end-of-day balances,2026-07-09 06:00:00,2026-07-09 05:11:00,-49,True
+2026-07-09,CardHub,Card scheme settlement file,2026-07-09 05:30:00,2026-07-09 04:43:00,-47,True
+2026-07-09,PayFlow,SWIFT payment messages,2026-07-09 06:30:00,2026-07-09 05:34:00,-56,True
+2026-07-09,MarketData,End-of-day FX rates,2026-07-09 07:00:00,2026-07-09 06:45:00,-15,True
+2026-07-09,OnboardIQ,KYC customer profile extract,2026-07-09 06:00:00,2026-07-09 05:37:00,-23,True
+2026-07-09,GeneralLedger,GL journal extract,2026-07-09 07:30:00,2026-07-09 07:10:00,-20,True
+2026-07-10,LedgerCore,Core banking end-of-day balances,2026-07-10 06:00:00,2026-07-10 04:52:00,-68,True
+2026-07-10,CardHub,Card scheme settlement file,2026-07-10 05:30:00,2026-07-10 04:49:00,-41,True
+2026-07-10,PayFlow,SWIFT payment messages,2026-07-10 06:30:00,2026-07-10 05:57:00,-33,True
+2026-07-10,MarketData,End-of-day FX rates,2026-07-10 07:00:00,2026-07-10 06:42:00,-18,True
+2026-07-10,OnboardIQ,KYC customer profile extract,2026-07-10 06:00:00,2026-07-10 04:53:00,-67,True
+2026-07-10,GeneralLedger,GL journal extract,2026-07-10 07:30:00,2026-07-10 07:08:00,-22,True
+2026-07-13,LedgerCore,Core banking end-of-day balances,2026-07-13 06:00:00,2026-07-13 04:57:00,-63,True
+2026-07-13,CardHub,Card scheme settlement file,2026-07-13 05:30:00,2026-07-13 04:53:00,-37,True
+2026-07-13,PayFlow,SWIFT payment messages,2026-07-13 06:30:00,2026-07-13 06:12:00,-18,True
+2026-07-13,MarketData,End-of-day FX rates,2026-07-13 07:00:00,2026-07-13 06:19:00,-41,True
+2026-07-13,OnboardIQ,KYC customer profile extract,2026-07-13 06:00:00,2026-07-13 05:31:00,-29,True
+2026-07-13,GeneralLedger,GL journal extract,2026-07-13 07:30:00,2026-07-13 06:46:00,-44,True
+2026-07-14,LedgerCore,Core banking end-of-day balances,2026-07-14 06:00:00,2026-07-14 05:30:00,-30,True
+2026-07-14,CardHub,Card scheme settlement file,2026-07-14 05:30:00,2026-07-14 05:10:00,-20,True
+2026-07-14,PayFlow,SWIFT payment messages,2026-07-14 06:30:00,2026-07-14 05:36:00,-54,True
+2026-07-14,MarketData,End-of-day FX rates,2026-07-14 07:00:00,2026-07-14 05:54:00,-66,True
+2026-07-14,OnboardIQ,KYC customer profile extract,2026-07-14 06:00:00,2026-07-14 07:11:00,71,False
+2026-07-14,GeneralLedger,GL journal extract,2026-07-14 07:30:00,2026-07-14 07:15:00,-15,True
+2026-07-15,LedgerCore,Core banking end-of-day balances,2026-07-15 06:00:00,2026-07-15 05:44:00,-16,True
+2026-07-15,CardHub,Card scheme settlement file,2026-07-15 05:30:00,2026-07-15 05:18:00,-12,True
+2026-07-15,PayFlow,SWIFT payment messages,2026-07-15 06:30:00,2026-07-15 06:17:00,-13,True
+2026-07-15,MarketData,End-of-day FX rates,2026-07-15 07:00:00,2026-07-15 06:49:00,-11,True
+2026-07-15,OnboardIQ,KYC customer profile extract,2026-07-15 06:00:00,2026-07-15 05:19:00,-41,True
+2026-07-15,GeneralLedger,GL journal extract,2026-07-15 07:30:00,2026-07-15 06:21:00,-69,True
+2026-07-16,LedgerCore,Core banking end-of-day balances,2026-07-16 06:00:00,2026-07-16 05:35:00,-25,True
+2026-07-16,CardHub,Card scheme settlement file,2026-07-16 05:30:00,2026-07-16 04:28:00,-62,True
+2026-07-16,PayFlow,SWIFT payment messages,2026-07-16 06:30:00,2026-07-16 05:59:00,-31,True
+2026-07-16,MarketData,End-of-day FX rates,2026-07-16 07:00:00,2026-07-16 06:46:00,-14,True
+2026-07-16,OnboardIQ,KYC customer profile extract,2026-07-16 06:00:00,2026-07-16 05:14:00,-46,True
+2026-07-16,GeneralLedger,GL journal extract,2026-07-16 07:30:00,2026-07-16 06:36:00,-54,True
+2026-07-17,LedgerCore,Core banking end-of-day balances,2026-07-17 06:00:00,2026-07-17 05:40:00,-20,True
+2026-07-17,CardHub,Card scheme settlement file,2026-07-17 05:30:00,2026-07-17 04:53:00,-37,True
+2026-07-17,PayFlow,SWIFT payment messages,2026-07-17 06:30:00,2026-07-17 06:02:00,-28,True
+2026-07-17,MarketData,End-of-day FX rates,2026-07-17 07:00:00,2026-07-17 05:55:00,-65,True
+2026-07-17,OnboardIQ,KYC customer profile extract,2026-07-17 06:00:00,2026-07-17 05:21:00,-39,True
+2026-07-17,GeneralLedger,GL journal extract,2026-07-17 07:30:00,2026-07-17 06:46:00,-44,True
+2026-07-20,LedgerCore,Core banking end-of-day balances,2026-07-20 06:00:00,2026-07-20 05:27:00,-33,True
+2026-07-20,CardHub,Card scheme settlement file,2026-07-20 05:30:00,2026-07-20 04:58:00,-32,True
+2026-07-20,PayFlow,SWIFT payment messages,2026-07-20 06:30:00,2026-07-20 05:37:00,-53,True
+2026-07-20,MarketData,End-of-day FX rates,2026-07-20 07:00:00,2026-07-20 06:41:00,-19,True
+2026-07-20,OnboardIQ,KYC customer profile extract,2026-07-20 06:00:00,2026-07-20 05:35:00,-25,True
+2026-07-20,GeneralLedger,GL journal extract,2026-07-20 07:30:00,2026-07-20 07:03:00,-27,True
+2026-07-21,LedgerCore,Core banking end-of-day balances,2026-07-21 06:00:00,2026-07-21 05:08:00,-52,True
+2026-07-21,CardHub,Card scheme settlement file,2026-07-21 05:30:00,2026-07-21 04:51:00,-39,True
+2026-07-21,PayFlow,SWIFT payment messages,2026-07-21 06:30:00,2026-07-21 05:45:00,-45,True
+2026-07-21,MarketData,End-of-day FX rates,2026-07-21 07:00:00,2026-07-21 06:38:00,-22,True
+2026-07-21,OnboardIQ,KYC customer profile extract,2026-07-21 06:00:00,2026-07-21 04:57:00,-63,True
+2026-07-21,GeneralLedger,GL journal extract,2026-07-21 07:30:00,2026-07-21 06:28:00,-62,True
+2026-07-22,LedgerCore,Core banking end-of-day balances,2026-07-22 06:00:00,2026-07-22 05:01:00,-59,True
+2026-07-22,CardHub,Card scheme settlement file,2026-07-22 05:30:00,2026-07-22 04:48:00,-42,True
+2026-07-22,PayFlow,SWIFT payment messages,2026-07-22 06:30:00,2026-07-22 06:09:00,-21,True
+2026-07-22,MarketData,End-of-day FX rates,2026-07-22 07:00:00,2026-07-22 06:46:00,-14,True
+2026-07-22,OnboardIQ,KYC customer profile extract,2026-07-22 06:00:00,2026-07-22 05:13:00,-47,True
+2026-07-22,GeneralLedger,GL journal extract,2026-07-22 07:30:00,2026-07-22 06:38:00,-52,True
+2026-07-23,LedgerCore,Core banking end-of-day balances,2026-07-23 06:00:00,2026-07-23 04:54:00,-66,True
+2026-07-23,CardHub,Card scheme settlement file,2026-07-23 05:30:00,2026-07-23 04:31:00,-59,True
+2026-07-23,PayFlow,SWIFT payment messages,2026-07-23 06:30:00,2026-07-23 05:56:00,-34,True
+2026-07-23,MarketData,End-of-day FX rates,2026-07-23 07:00:00,2026-07-23 06:02:00,-58,True
+2026-07-23,OnboardIQ,KYC customer profile extract,2026-07-23 06:00:00,2026-07-23 05:37:00,-23,True
+2026-07-23,GeneralLedger,GL journal extract,2026-07-23 07:30:00,2026-07-23 07:15:00,-15,True
+2026-07-24,LedgerCore,Core banking end-of-day balances,2026-07-24 06:00:00,2026-07-24 05:33:00,-27,True
+2026-07-24,CardHub,Card scheme settlement file,2026-07-24 05:30:00,2026-07-24 05:15:00,-15,True
+2026-07-24,PayFlow,SWIFT payment messages,2026-07-24 06:30:00,2026-07-24 06:16:00,-14,True
+2026-07-24,MarketData,End-of-day FX rates,2026-07-24 07:00:00,2026-07-24 06:30:00,-30,True
+2026-07-24,OnboardIQ,KYC customer profile extract,2026-07-24 06:00:00,2026-07-24 05:31:00,-29,True
+2026-07-24,GeneralLedger,GL journal extract,2026-07-24 07:30:00,2026-07-24 06:39:00,-51,True
+2026-07-27,LedgerCore,Core banking end-of-day balances,2026-07-27 06:00:00,2026-07-27 05:36:00,-24,True
+2026-07-27,CardHub,Card scheme settlement file,2026-07-27 05:30:00,2026-07-27 05:15:00,-15,True
+2026-07-27,PayFlow,SWIFT payment messages,2026-07-27 06:30:00,2026-07-27 06:09:00,-21,True
+2026-07-27,MarketData,End-of-day FX rates,2026-07-27 07:00:00,2026-07-27 06:26:00,-34,True
+2026-07-27,OnboardIQ,KYC customer profile extract,2026-07-27 06:00:00,2026-07-27 05:39:00,-21,True
+2026-07-27,GeneralLedger,GL journal extract,2026-07-27 07:30:00,2026-07-27 06:55:00,-35,True
+2026-07-28,LedgerCore,Core banking end-of-day balances,2026-07-28 06:00:00,2026-07-28 05:19:00,-41,True
+2026-07-28,CardHub,Card scheme settlement file,2026-07-28 05:30:00,2026-07-28 04:55:00,-35,True
+2026-07-28,PayFlow,SWIFT payment messages,2026-07-28 06:30:00,2026-07-28 06:01:00,-29,True
+2026-07-28,MarketData,End-of-day FX rates,2026-07-28 07:00:00,2026-07-28 06:23:00,-37,True
+2026-07-28,OnboardIQ,KYC customer profile extract,2026-07-28 06:00:00,2026-07-28 05:06:00,-54,True
+2026-07-28,GeneralLedger,GL journal extract,2026-07-28 07:30:00,2026-07-28 06:31:00,-59,True
+2026-07-29,LedgerCore,Core banking end-of-day balances,2026-07-29 06:00:00,2026-07-29 05:49:00,-11,True
+2026-07-29,CardHub,Card scheme settlement file,2026-07-29 05:30:00,2026-07-29 04:46:00,-44,True
+2026-07-29,PayFlow,SWIFT payment messages,2026-07-29 06:30:00,2026-07-29 06:06:00,-24,True
+2026-07-29,MarketData,End-of-day FX rates,2026-07-29 07:00:00,2026-07-29 06:07:00,-53,True
+2026-07-29,OnboardIQ,KYC customer profile extract,2026-07-29 06:00:00,2026-07-29 05:30:00,-30,True
+2026-07-29,GeneralLedger,GL journal extract,2026-07-29 07:30:00,2026-07-29 07:17:00,-13,True
+2026-07-30,LedgerCore,Core banking end-of-day balances,2026-07-30 06:00:00,2026-07-30 05:11:00,-49,True
+2026-07-30,CardHub,Card scheme settlement file,2026-07-30 05:30:00,2026-07-30 04:40:00,-50,True
+2026-07-30,PayFlow,SWIFT payment messages,2026-07-30 06:30:00,2026-07-30 05:43:00,-47,True
+2026-07-30,MarketData,End-of-day FX rates,2026-07-30 07:00:00,2026-07-30 06:40:00,-20,True
+2026-07-30,OnboardIQ,KYC customer profile extract,2026-07-30 06:00:00,2026-07-30 05:04:00,-56,True
+2026-07-30,GeneralLedger,GL journal extract,2026-07-30 07:30:00,2026-07-30 07:01:00,-29,True
+2026-07-31,LedgerCore,Core banking end-of-day balances,2026-07-31 06:00:00,2026-07-31 05:47:00,-13,True
+2026-07-31,CardHub,Card scheme settlement file,2026-07-31 05:30:00,2026-07-31 05:13:00,-17,True
+2026-07-31,PayFlow,SWIFT payment messages,2026-07-31 06:30:00,2026-07-31 05:28:00,-62,True
+2026-07-31,MarketData,End-of-day FX rates,2026-07-31 07:00:00,2026-07-31 06:50:00,-10,True
+2026-07-31,OnboardIQ,KYC customer profile extract,2026-07-31 06:00:00,2026-07-31 05:15:00,-45,True
+2026-07-31,GeneralLedger,GL journal extract,2026-07-31 07:30:00,2026-07-31 06:40:00,-50,True
+2026-08-03,LedgerCore,Core banking end-of-day balances,2026-08-03 06:00:00,2026-08-03 05:48:00,-12,True
+2026-08-03,CardHub,Card scheme settlement file,2026-08-03 05:30:00,2026-08-03 05:16:00,-14,True
+2026-08-03,PayFlow,SWIFT payment messages,2026-08-03 06:30:00,2026-08-03 06:15:00,-15,True
+2026-08-03,MarketData,End-of-day FX rates,2026-08-03 07:00:00,2026-08-03 06:35:00,-25,True
+2026-08-03,OnboardIQ,KYC customer profile extract,2026-08-03 06:00:00,2026-08-03 05:50:00,-10,True
+2026-08-03,GeneralLedger,GL journal extract,2026-08-03 07:30:00,2026-08-03 06:32:00,-58,True
+2026-08-04,LedgerCore,Core banking end-of-day balances,2026-08-04 06:00:00,2026-08-04 05:42:00,-18,True
+2026-08-04,CardHub,Card scheme settlement file,2026-08-04 05:30:00,2026-08-04 04:32:00,-58,True
+2026-08-04,PayFlow,SWIFT payment messages,2026-08-04 06:30:00,2026-08-04 05:46:00,-44,True
+2026-08-04,MarketData,End-of-day FX rates,2026-08-04 07:00:00,2026-08-04 06:23:00,-37,True
+2026-08-04,OnboardIQ,KYC customer profile extract,2026-08-04 06:00:00,2026-08-04 05:07:00,-53,True
+2026-08-04,GeneralLedger,GL journal extract,2026-08-04 07:30:00,2026-08-04 07:15:00,-15,True
+2026-08-05,LedgerCore,Core banking end-of-day balances,2026-08-05 06:00:00,2026-08-05 05:35:00,-25,True
+2026-08-05,CardHub,Card scheme settlement file,2026-08-05 05:30:00,2026-08-05 04:38:00,-52,True
+2026-08-05,PayFlow,SWIFT payment messages,2026-08-05 06:30:00,2026-08-05 05:48:00,-42,True
+2026-08-05,MarketData,End-of-day FX rates,2026-08-05 07:00:00,2026-08-05 06:22:00,-38,True
+2026-08-05,OnboardIQ,KYC customer profile extract,2026-08-05 06:00:00,2026-08-05 04:56:00,-64,True
+2026-08-05,GeneralLedger,GL journal extract,2026-08-05 07:30:00,2026-08-05 06:36:00,-54,True
+2026-08-06,LedgerCore,Core banking end-of-day balances,2026-08-06 06:00:00,2026-08-06 04:57:00,-63,True
+2026-08-06,CardHub,Card scheme settlement file,2026-08-06 05:30:00,2026-08-06 04:41:00,-49,True
+2026-08-06,PayFlow,SWIFT payment messages,2026-08-06 06:30:00,2026-08-06 06:09:00,-21,True
+2026-08-06,MarketData,End-of-day FX rates,2026-08-06 07:00:00,2026-08-06 06:38:00,-22,True
+2026-08-06,OnboardIQ,KYC customer profile extract,2026-08-06 06:00:00,2026-08-06 05:13:00,-47,True
+2026-08-06,GeneralLedger,GL journal extract,2026-08-06 07:30:00,2026-08-06 06:28:00,-62,True
+2026-08-07,LedgerCore,Core banking end-of-day balances,2026-08-07 06:00:00,2026-08-07 05:41:00,-19,True
+2026-08-07,CardHub,Card scheme settlement file,2026-08-07 05:30:00,2026-08-07 05:00:00,-30,True
+2026-08-07,PayFlow,SWIFT payment messages,2026-08-07 06:30:00,2026-08-07 06:04:00,-26,True
+2026-08-07,MarketData,End-of-day FX rates,2026-08-07 07:00:00,2026-08-07 05:54:00,-66,True
+2026-08-07,OnboardIQ,KYC customer profile extract,2026-08-07 06:00:00,2026-08-07 04:51:00,-69,True
+2026-08-07,GeneralLedger,GL journal extract,2026-08-07 07:30:00,2026-08-07 06:27:00,-63,True
+2026-08-10,LedgerCore,Core banking end-of-day balances,2026-08-10 06:00:00,2026-08-10 05:08:00,-52,True
+2026-08-10,CardHub,Card scheme settlement file,2026-08-10 05:30:00,2026-08-10 04:41:00,-49,True
+2026-08-10,PayFlow,SWIFT payment messages,2026-08-10 06:30:00,2026-08-10 05:52:00,-38,True
+2026-08-10,MarketData,End-of-day FX rates,2026-08-10 07:00:00,2026-08-10 06:24:00,-36,True
+2026-08-10,OnboardIQ,KYC customer profile extract,2026-08-10 06:00:00,2026-08-10 05:12:00,-48,True
+2026-08-10,GeneralLedger,GL journal extract,2026-08-10 07:30:00,2026-08-10 06:24:00,-66,True
+2026-08-11,LedgerCore,Core banking end-of-day balances,2026-08-11 06:00:00,2026-08-11 05:39:00,-21,True
+2026-08-11,CardHub,Card scheme settlement file,2026-08-11 05:30:00,2026-08-11 05:15:00,-15,True
+2026-08-11,PayFlow,SWIFT payment messages,2026-08-11 06:30:00,2026-08-11 05:30:00,-60,True
+2026-08-11,MarketData,End-of-day FX rates,2026-08-11 07:00:00,2026-08-11 06:26:00,-34,True
+2026-08-11,OnboardIQ,KYC customer profile extract,2026-08-11 06:00:00,2026-08-11 05:26:00,-34,True
+2026-08-11,GeneralLedger,GL journal extract,2026-08-11 07:30:00,2026-08-11 06:33:00,-57,True
+2026-08-12,LedgerCore,Core banking end-of-day balances,2026-08-12 06:00:00,2026-08-12 05:27:00,-33,True
+2026-08-12,CardHub,Card scheme settlement file,2026-08-12 05:30:00,2026-08-12 04:28:00,-62,True
+2026-08-12,PayFlow,SWIFT payment messages,2026-08-12 06:30:00,2026-08-12 05:38:00,-52,True
+2026-08-12,MarketData,End-of-day FX rates,2026-08-12 07:00:00,2026-08-12 06:10:00,-50,True
+2026-08-12,OnboardIQ,KYC customer profile extract,2026-08-12 06:00:00,2026-08-12 05:20:00,-40,True
+2026-08-12,GeneralLedger,GL journal extract,2026-08-12 07:30:00,2026-08-12 06:47:00,-43,True
+2026-08-13,LedgerCore,Core banking end-of-day balances,2026-08-13 06:00:00,2026-08-13 05:07:00,-53,True
+2026-08-13,CardHub,Card scheme settlement file,2026-08-13 05:30:00,2026-08-13 04:47:00,-43,True
+2026-08-13,PayFlow,SWIFT payment messages,2026-08-13 06:30:00,2026-08-13 05:22:00,-68,True
+2026-08-13,MarketData,End-of-day FX rates,2026-08-13 07:00:00,2026-08-13 05:53:00,-67,True
+2026-08-13,OnboardIQ,KYC customer profile extract,2026-08-13 06:00:00,2026-08-13 05:48:00,-12,True
+2026-08-13,GeneralLedger,GL journal extract,2026-08-13 07:30:00,2026-08-13 07:15:00,-15,True
+2026-08-14,LedgerCore,Core banking end-of-day balances,2026-08-14 06:00:00,2026-08-14 05:28:00,-32,True
+2026-08-14,CardHub,Card scheme settlement file,2026-08-14 05:30:00,2026-08-14 04:30:00,-60,True
+2026-08-14,PayFlow,SWIFT payment messages,2026-08-14 06:30:00,2026-08-14 05:32:00,-58,True
+2026-08-14,MarketData,End-of-day FX rates,2026-08-14 07:00:00,2026-08-14 05:59:00,-61,True
+2026-08-14,OnboardIQ,KYC customer profile extract,2026-08-14 06:00:00,2026-08-14 05:06:00,-54,True
+2026-08-14,GeneralLedger,GL journal extract,2026-08-14 07:30:00,2026-08-14 06:33:00,-57,True
+2026-08-17,LedgerCore,Core banking end-of-day balances,2026-08-17 06:00:00,2026-08-17 05:27:00,-33,True
+2026-08-17,CardHub,Card scheme settlement file,2026-08-17 05:30:00,2026-08-17 04:41:00,-49,True
+2026-08-17,PayFlow,SWIFT payment messages,2026-08-17 06:30:00,2026-08-17 06:15:00,-15,True
+2026-08-17,MarketData,End-of-day FX rates,2026-08-17 07:00:00,2026-08-17 05:53:00,-67,True
+2026-08-17,OnboardIQ,KYC customer profile extract,2026-08-17 06:00:00,2026-08-17 05:31:00,-29,True
+2026-08-17,GeneralLedger,GL journal extract,2026-08-17 07:30:00,2026-08-17 07:11:00,-19,True
+2026-08-18,LedgerCore,Core banking end-of-day balances,2026-08-18 06:00:00,2026-08-18 05:07:00,-53,True
+2026-08-18,CardHub,Card scheme settlement file,2026-08-18 05:30:00,2026-08-18 04:40:00,-50,True
+2026-08-18,PayFlow,SWIFT payment messages,2026-08-18 06:30:00,2026-08-18 05:42:00,-48,True
+2026-08-18,MarketData,End-of-day FX rates,2026-08-18 07:00:00,2026-08-18 06:08:00,-52,True
+2026-08-18,OnboardIQ,KYC customer profile extract,2026-08-18 06:00:00,2026-08-18 04:54:00,-66,True
+2026-08-18,GeneralLedger,GL journal extract,2026-08-18 07:30:00,2026-08-18 06:50:00,-40,True
+2026-08-19,LedgerCore,Core banking end-of-day balances,2026-08-19 06:00:00,2026-08-19 05:15:00,-45,True
+2026-08-19,CardHub,Card scheme settlement file,2026-08-19 05:30:00,2026-08-19 05:16:00,-14,True
+2026-08-19,PayFlow,SWIFT payment messages,2026-08-19 06:30:00,2026-08-19 05:25:00,-65,True
+2026-08-19,MarketData,End-of-day FX rates,2026-08-19 07:00:00,2026-08-19 06:06:00,-54,True
+2026-08-19,OnboardIQ,KYC customer profile extract,2026-08-19 06:00:00,2026-08-19 05:17:00,-43,True
+2026-08-19,GeneralLedger,GL journal extract,2026-08-19 07:30:00,2026-08-19 06:23:00,-67,True
+2026-08-20,LedgerCore,Core banking end-of-day balances,2026-08-20 06:00:00,2026-08-20 05:39:00,-21,True
+2026-08-20,CardHub,Card scheme settlement file,2026-08-20 05:30:00,2026-08-20 05:15:00,-15,True
+2026-08-20,PayFlow,SWIFT payment messages,2026-08-20 06:30:00,2026-08-20 06:07:00,-23,True
+2026-08-20,MarketData,End-of-day FX rates,2026-08-20 07:00:00,2026-08-20 06:20:00,-40,True
+2026-08-20,OnboardIQ,KYC customer profile extract,2026-08-20 06:00:00,2026-08-20 05:10:00,-50,True
+2026-08-20,GeneralLedger,GL journal extract,2026-08-20 07:30:00,2026-08-20 06:57:00,-33,True
+2026-08-21,LedgerCore,Core banking end-of-day balances,2026-08-21 06:00:00,2026-08-21 05:22:00,-38,True
+2026-08-21,CardHub,Card scheme settlement file,2026-08-21 05:30:00,2026-08-21 04:32:00,-58,True
+2026-08-21,PayFlow,SWIFT payment messages,2026-08-21 06:30:00,2026-08-21 05:35:00,-55,True
+2026-08-21,MarketData,End-of-day FX rates,2026-08-21 07:00:00,2026-08-21 05:53:00,-67,True
+2026-08-21,OnboardIQ,KYC customer profile extract,2026-08-21 06:00:00,2026-08-21 05:49:00,-11,True
+2026-08-21,GeneralLedger,GL journal extract,2026-08-21 07:30:00,2026-08-21 06:35:00,-55,True
+2026-08-24,LedgerCore,Core banking end-of-day balances,2026-08-24 06:00:00,2026-08-24 05:09:00,-51,True
+2026-08-24,CardHub,Card scheme settlement file,2026-08-24 05:30:00,2026-08-24 05:56:00,26,False
+2026-08-24,PayFlow,SWIFT payment messages,2026-08-24 06:30:00,2026-08-24 05:27:00,-63,True
+2026-08-24,MarketData,End-of-day FX rates,2026-08-24 07:00:00,2026-08-24 05:55:00,-65,True
+2026-08-24,OnboardIQ,KYC customer profile extract,2026-08-24 06:00:00,2026-08-24 05:22:00,-38,True
+2026-08-24,GeneralLedger,GL journal extract,2026-08-24 07:30:00,2026-08-24 06:21:00,-69,True
+2026-08-25,LedgerCore,Core banking end-of-day balances,2026-08-25 06:00:00,2026-08-25 05:06:00,-54,True
+2026-08-25,CardHub,Card scheme settlement file,2026-08-25 05:30:00,2026-08-25 04:54:00,-36,True
+2026-08-25,PayFlow,SWIFT payment messages,2026-08-25 06:30:00,2026-08-25 06:10:00,-20,True
+2026-08-25,MarketData,End-of-day FX rates,2026-08-25 07:00:00,2026-08-25 06:04:00,-56,True
+2026-08-25,OnboardIQ,KYC customer profile extract,2026-08-25 06:00:00,2026-08-25 05:21:00,-39,True
+2026-08-25,GeneralLedger,GL journal extract,2026-08-25 07:30:00,2026-08-25 07:08:00,-22,True
+2026-08-26,LedgerCore,Core banking end-of-day balances,2026-08-26 06:00:00,2026-08-26 04:56:00,-64,True
+2026-08-26,CardHub,Card scheme settlement file,2026-08-26 05:30:00,2026-08-26 04:28:00,-62,True
+2026-08-26,PayFlow,SWIFT payment messages,2026-08-26 06:30:00,2026-08-26 05:44:00,-46,True
+2026-08-26,MarketData,End-of-day FX rates,2026-08-26 07:00:00,2026-08-26 06:09:00,-51,True
+2026-08-26,OnboardIQ,KYC customer profile extract,2026-08-26 06:00:00,2026-08-26 05:42:00,-18,True
+2026-08-26,GeneralLedger,GL journal extract,2026-08-26 07:30:00,2026-08-26 07:11:00,-19,True
+2026-08-27,LedgerCore,Core banking end-of-day balances,2026-08-27 06:00:00,2026-08-27 05:09:00,-51,True
+2026-08-27,CardHub,Card scheme settlement file,2026-08-27 05:30:00,2026-08-27 05:07:00,-23,True
+2026-08-27,PayFlow,SWIFT payment messages,2026-08-27 06:30:00,2026-08-27 06:17:00,-13,True
+2026-08-27,MarketData,End-of-day FX rates,2026-08-27 07:00:00,2026-08-27 05:54:00,-66,True
+2026-08-27,OnboardIQ,KYC customer profile extract,2026-08-27 06:00:00,2026-08-27 05:48:00,-12,True
+2026-08-27,GeneralLedger,GL journal extract,2026-08-27 07:30:00,2026-08-27 06:21:00,-69,True
+2026-08-28,LedgerCore,Core banking end-of-day balances,2026-08-28 06:00:00,2026-08-28 05:11:00,-49,True
+2026-08-28,CardHub,Card scheme settlement file,2026-08-28 05:30:00,2026-08-28 04:22:00,-68,True
+2026-08-28,PayFlow,SWIFT payment messages,2026-08-28 06:30:00,2026-08-28 05:24:00,-66,True
+2026-08-28,MarketData,End-of-day FX rates,2026-08-28 07:00:00,2026-08-28 06:05:00,-55,True
+2026-08-28,OnboardIQ,KYC customer profile extract,2026-08-28 06:00:00,2026-08-28 05:09:00,-51,True
+2026-08-28,GeneralLedger,GL journal extract,2026-08-28 07:30:00,2026-08-28 07:13:00,-17,True
+2026-08-31,LedgerCore,Core banking end-of-day balances,2026-08-31 06:00:00,2026-08-31 05:18:00,-42,True
+2026-08-31,CardHub,Card scheme settlement file,2026-08-31 05:30:00,2026-08-31 04:39:00,-51,True
+2026-08-31,PayFlow,SWIFT payment messages,2026-08-31 06:30:00,2026-08-31 06:18:00,-12,True
+2026-08-31,MarketData,End-of-day FX rates,2026-08-31 07:00:00,2026-08-31 06:25:00,-35,True
+2026-08-31,OnboardIQ,KYC customer profile extract,2026-08-31 06:00:00,2026-08-31 05:21:00,-39,True
+2026-08-31,GeneralLedger,GL journal extract,2026-08-31 07:30:00,2026-08-31 06:41:00,-49,True
+2026-09-01,LedgerCore,Core banking end-of-day balances,2026-09-01 06:00:00,2026-09-01 05:36:00,-24,True
+2026-09-01,CardHub,Card scheme settlement file,2026-09-01 05:30:00,2026-09-01 04:43:00,-47,True
+2026-09-01,PayFlow,SWIFT payment messages,2026-09-01 06:30:00,2026-09-01 05:21:00,-69,True
+2026-09-01,MarketData,End-of-day FX rates,2026-09-01 07:00:00,2026-09-01 06:18:00,-42,True
+2026-09-01,OnboardIQ,KYC customer profile extract,2026-09-01 06:00:00,2026-09-01 05:01:00,-59,True
+2026-09-01,GeneralLedger,GL journal extract,2026-09-01 07:30:00,2026-09-01 07:09:00,-21,True
+2026-09-02,LedgerCore,Core banking end-of-day balances,2026-09-02 06:00:00,2026-09-02 05:49:00,-11,True
+2026-09-02,CardHub,Card scheme settlement file,2026-09-02 05:30:00,2026-09-02 05:08:00,-22,True
+2026-09-02,PayFlow,SWIFT payment messages,2026-09-02 06:30:00,2026-09-02 06:35:00,5,False
+2026-09-02,MarketData,End-of-day FX rates,2026-09-02 07:00:00,2026-09-02 06:46:00,-14,True
+2026-09-02,OnboardIQ,KYC customer profile extract,2026-09-02 06:00:00,2026-09-02 05:13:00,-47,True
+2026-09-02,GeneralLedger,GL journal extract,2026-09-02 07:30:00,2026-09-02 06:55:00,-35,True
+2026-09-03,LedgerCore,Core banking end-of-day balances,2026-09-03 06:00:00,2026-09-03 04:55:00,-65,True
+2026-09-03,CardHub,Card scheme settlement file,2026-09-03 05:30:00,2026-09-03 04:27:00,-63,True
+2026-09-03,PayFlow,SWIFT payment messages,2026-09-03 06:30:00,2026-09-03 05:22:00,-68,True
+2026-09-03,MarketData,End-of-day FX rates,2026-09-03 07:00:00,2026-09-03 06:39:00,-21,True
+2026-09-03,OnboardIQ,KYC customer profile extract,2026-09-03 06:00:00,2026-09-03 04:54:00,-66,True
+2026-09-03,GeneralLedger,GL journal extract,2026-09-03 07:30:00,2026-09-03 06:32:00,-58,True
+2026-09-04,LedgerCore,Core banking end-of-day balances,2026-09-04 06:00:00,2026-09-04 05:10:00,-50,True
+2026-09-04,CardHub,Card scheme settlement file,2026-09-04 05:30:00,2026-09-04 05:17:00,-13,True
+2026-09-04,PayFlow,SWIFT payment messages,2026-09-04 06:30:00,2026-09-04 05:45:00,-45,True
+2026-09-04,MarketData,End-of-day FX rates,2026-09-04 07:00:00,2026-09-04 06:43:00,-17,True
+2026-09-04,OnboardIQ,KYC customer profile extract,2026-09-04 06:00:00,2026-09-04 05:29:00,-31,True
+2026-09-04,GeneralLedger,GL journal extract,2026-09-04 07:30:00,2026-09-04 06:27:00,-63,True
+2026-09-07,LedgerCore,Core banking end-of-day balances,2026-09-07 06:00:00,2026-09-07 05:36:00,-24,True
+2026-09-07,CardHub,Card scheme settlement file,2026-09-07 05:30:00,2026-09-07 05:07:00,-23,True
+2026-09-07,PayFlow,SWIFT payment messages,2026-09-07 06:30:00,2026-09-07 05:20:00,-70,True
+2026-09-07,MarketData,End-of-day FX rates,2026-09-07 07:00:00,2026-09-07 05:54:00,-66,True
+2026-09-07,OnboardIQ,KYC customer profile extract,2026-09-07 06:00:00,2026-09-07 05:40:00,-20,True
+2026-09-07,GeneralLedger,GL journal extract,2026-09-07 07:30:00,2026-09-07 07:14:00,-16,True
+2026-09-08,LedgerCore,Core banking end-of-day balances,2026-09-08 06:00:00,2026-09-08 05:20:00,-40,True
+2026-09-08,CardHub,Card scheme settlement file,2026-09-08 05:30:00,2026-09-08 06:35:00,65,False
+2026-09-08,PayFlow,SWIFT payment messages,2026-09-08 06:30:00,2026-09-08 05:49:00,-41,True
+2026-09-08,MarketData,End-of-day FX rates,2026-09-08 07:00:00,2026-09-08 07:57:00,57,False
+2026-09-08,OnboardIQ,KYC customer profile extract,2026-09-08 06:00:00,2026-09-08 04:53:00,-67,True
+2026-09-08,GeneralLedger,GL journal extract,2026-09-08 07:30:00,2026-09-08 06:32:00,-58,True
+2026-09-09,LedgerCore,Core banking end-of-day balances,2026-09-09 06:00:00,2026-09-09 07:03:00,63,False
+2026-09-09,CardHub,Card scheme settlement file,2026-09-09 05:30:00,2026-09-09 05:19:00,-11,True
+2026-09-09,PayFlow,SWIFT payment messages,2026-09-09 06:30:00,2026-09-09 05:40:00,-50,True
+2026-09-09,MarketData,End-of-day FX rates,2026-09-09 07:00:00,2026-09-09 06:12:00,-48,True
+2026-09-09,OnboardIQ,KYC customer profile extract,2026-09-09 06:00:00,2026-09-09 05:04:00,-56,True
+2026-09-09,GeneralLedger,GL journal extract,2026-09-09 07:30:00,2026-09-09 06:46:00,-44,True
+2026-09-10,LedgerCore,Core banking end-of-day balances,2026-09-10 06:00:00,2026-09-10 05:10:00,-50,True
+2026-09-10,CardHub,Card scheme settlement file,2026-09-10 05:30:00,2026-09-10 04:49:00,-41,True
+2026-09-10,PayFlow,SWIFT payment messages,2026-09-10 06:30:00,2026-09-10 06:07:00,-23,True
+2026-09-10,MarketData,End-of-day FX rates,2026-09-10 07:00:00,2026-09-10 06:50:00,-10,True
+2026-09-10,OnboardIQ,KYC customer profile extract,2026-09-10 06:00:00,2026-09-10 05:25:00,-35,True
+2026-09-10,GeneralLedger,GL journal extract,2026-09-10 07:30:00,2026-09-10 06:50:00,-40,True
+2026-09-11,LedgerCore,Core banking end-of-day balances,2026-09-11 06:00:00,2026-09-11 04:55:00,-65,True
+2026-09-11,CardHub,Card scheme settlement file,2026-09-11 05:30:00,2026-09-11 05:18:00,-12,True
+2026-09-11,PayFlow,SWIFT payment messages,2026-09-11 06:30:00,2026-09-11 05:52:00,-38,True
+2026-09-11,MarketData,End-of-day FX rates,2026-09-11 07:00:00,2026-09-11 06:28:00,-32,True
+2026-09-11,OnboardIQ,KYC customer profile extract,2026-09-11 06:00:00,2026-09-11 05:39:00,-21,True
+2026-09-11,GeneralLedger,GL journal extract,2026-09-11 07:30:00,2026-09-11 06:40:00,-50,True
+2026-09-14,LedgerCore,Core banking end-of-day balances,2026-09-14 06:00:00,2026-09-14 05:48:00,-12,True
+2026-09-14,CardHub,Card scheme settlement file,2026-09-14 05:30:00,2026-09-14 04:58:00,-32,True
+2026-09-14,PayFlow,SWIFT payment messages,2026-09-14 06:30:00,2026-09-14 05:33:00,-57,True
+2026-09-14,MarketData,End-of-day FX rates,2026-09-14 07:00:00,2026-09-14 06:47:00,-13,True
+2026-09-14,OnboardIQ,KYC customer profile extract,2026-09-14 06:00:00,2026-09-14 05:03:00,-57,True
+2026-09-14,GeneralLedger,GL journal extract,2026-09-14 07:30:00,2026-09-14 06:47:00,-43,True
+2026-09-15,LedgerCore,Core banking end-of-day balances,2026-09-15 06:00:00,2026-09-15 05:26:00,-34,True
+2026-09-15,CardHub,Card scheme settlement file,2026-09-15 05:30:00,2026-09-15 04:31:00,-59,True
+2026-09-15,PayFlow,SWIFT payment messages,2026-09-15 06:30:00,2026-09-15 06:14:00,-16,True
+2026-09-15,MarketData,End-of-day FX rates,2026-09-15 07:00:00,2026-09-15 06:02:00,-58,True
+2026-09-15,OnboardIQ,KYC customer profile extract,2026-09-15 06:00:00,2026-09-15 04:54:00,-66,True
+2026-09-15,GeneralLedger,GL journal extract,2026-09-15 07:30:00,2026-09-15 07:05:00,-25,True
+2026-09-16,LedgerCore,Core banking end-of-day balances,2026-09-16 06:00:00,2026-09-16 05:26:00,-34,True
+2026-09-16,CardHub,Card scheme settlement file,2026-09-16 05:30:00,2026-09-16 05:00:00,-30,True
+2026-09-16,PayFlow,SWIFT payment messages,2026-09-16 06:30:00,2026-09-16 06:16:00,-14,True
+2026-09-16,MarketData,End-of-day FX rates,2026-09-16 07:00:00,2026-09-16 05:55:00,-65,True
+2026-09-16,OnboardIQ,KYC customer profile extract,2026-09-16 06:00:00,2026-09-16 05:18:00,-42,True
+2026-09-16,GeneralLedger,GL journal extract,2026-09-16 07:30:00,2026-09-16 06:32:00,-58,True
+2026-09-17,LedgerCore,Core banking end-of-day balances,2026-09-17 06:00:00,2026-09-17 05:34:00,-26,True
+2026-09-17,CardHub,Card scheme settlement file,2026-09-17 05:30:00,2026-09-17 04:34:00,-56,True
+2026-09-17,PayFlow,SWIFT payment messages,2026-09-17 06:30:00,2026-09-17 05:30:00,-60,True
+2026-09-17,MarketData,End-of-day FX rates,2026-09-17 07:00:00,2026-09-17 06:48:00,-12,True
+2026-09-17,OnboardIQ,KYC customer profile extract,2026-09-17 06:00:00,2026-09-17 05:11:00,-49,True
+2026-09-17,GeneralLedger,GL journal extract,2026-09-17 07:30:00,2026-09-17 06:39:00,-51,True
+2026-09-18,LedgerCore,Core banking end-of-day balances,2026-09-18 06:00:00,2026-09-18 05:48:00,-12,True
+2026-09-18,CardHub,Card scheme settlement file,2026-09-18 05:30:00,2026-09-18 04:58:00,-32,True
+2026-09-18,PayFlow,SWIFT payment messages,2026-09-18 06:30:00,2026-09-18 05:46:00,-44,True
+2026-09-18,MarketData,End-of-day FX rates,2026-09-18 07:00:00,2026-09-18 06:06:00,-54,True
+2026-09-18,OnboardIQ,KYC customer profile extract,2026-09-18 06:00:00,2026-09-18 05:33:00,-27,True
+2026-09-18,GeneralLedger,GL journal extract,2026-09-18 07:30:00,2026-09-18 06:41:00,-49,True
+2026-09-21,LedgerCore,Core banking end-of-day balances,2026-09-21 06:00:00,2026-09-21 05:41:00,-19,True
+2026-09-21,CardHub,Card scheme settlement file,2026-09-21 05:30:00,2026-09-21 05:07:00,-23,True
+2026-09-21,PayFlow,SWIFT payment messages,2026-09-21 06:30:00,2026-09-21 05:33:00,-57,True
+2026-09-21,MarketData,End-of-day FX rates,2026-09-21 07:00:00,2026-09-21 06:36:00,-24,True
+2026-09-21,OnboardIQ,KYC customer profile extract,2026-09-21 06:00:00,2026-09-21 05:36:00,-24,True
+2026-09-21,GeneralLedger,GL journal extract,2026-09-21 07:30:00,2026-09-21 06:33:00,-57,True
+2026-09-22,LedgerCore,Core banking end-of-day balances,2026-09-22 06:00:00,2026-09-22 05:49:00,-11,True
+2026-09-22,CardHub,Card scheme settlement file,2026-09-22 05:30:00,2026-09-22 05:20:00,-10,True
+2026-09-22,PayFlow,SWIFT payment messages,2026-09-22 06:30:00,2026-09-22 06:01:00,-29,True
+2026-09-22,MarketData,End-of-day FX rates,2026-09-22 07:00:00,2026-09-22 05:59:00,-61,True
+2026-09-22,OnboardIQ,KYC customer profile extract,2026-09-22 06:00:00,2026-09-22 05:24:00,-36,True
+2026-09-22,GeneralLedger,GL journal extract,2026-09-22 07:30:00,2026-09-22 06:21:00,-69,True
+2026-09-23,LedgerCore,Core banking end-of-day balances,2026-09-23 06:00:00,2026-09-23 05:06:00,-54,True
+2026-09-23,CardHub,Card scheme settlement file,2026-09-23 05:30:00,2026-09-23 04:38:00,-52,True
+2026-09-23,PayFlow,SWIFT payment messages,2026-09-23 06:30:00,2026-09-23 05:39:00,-51,True
+2026-09-23,MarketData,End-of-day FX rates,2026-09-23 07:00:00,2026-09-23 06:22:00,-38,True
+2026-09-23,OnboardIQ,KYC customer profile extract,2026-09-23 06:00:00,2026-09-23 05:21:00,-39,True
+2026-09-23,GeneralLedger,GL journal extract,2026-09-23 07:30:00,2026-09-23 07:01:00,-29,True
+2026-09-24,LedgerCore,Core banking end-of-day balances,2026-09-24 06:00:00,2026-09-24 05:45:00,-15,True
+2026-09-24,CardHub,Card scheme settlement file,2026-09-24 05:30:00,2026-09-24 04:24:00,-66,True
+2026-09-24,PayFlow,SWIFT payment messages,2026-09-24 06:30:00,2026-09-24 06:11:00,-19,True
+2026-09-24,MarketData,End-of-day FX rates,2026-09-24 07:00:00,2026-09-24 06:21:00,-39,True
+2026-09-24,OnboardIQ,KYC customer profile extract,2026-09-24 06:00:00,2026-09-24 05:45:00,-15,True
+2026-09-24,GeneralLedger,GL journal extract,2026-09-24 07:30:00,2026-09-24 06:32:00,-58,True
+2026-09-25,LedgerCore,Core banking end-of-day balances,2026-09-25 06:00:00,2026-09-25 04:53:00,-67,True
+2026-09-25,CardHub,Card scheme settlement file,2026-09-25 05:30:00,2026-09-25 04:41:00,-49,True
+2026-09-25,PayFlow,SWIFT payment messages,2026-09-25 06:30:00,2026-09-25 05:37:00,-53,True
+2026-09-25,MarketData,End-of-day FX rates,2026-09-25 07:00:00,2026-09-25 06:18:00,-42,True
+2026-09-25,OnboardIQ,KYC customer profile extract,2026-09-25 06:00:00,2026-09-25 05:23:00,-37,True
+2026-09-25,GeneralLedger,GL journal extract,2026-09-25 07:30:00,2026-09-25 06:37:00,-53,True
+2026-09-28,LedgerCore,Core banking end-of-day balances,2026-09-28 06:00:00,2026-09-28 05:12:00,-48,True
+2026-09-28,CardHub,Card scheme settlement file,2026-09-28 05:30:00,2026-09-28 05:03:00,-27,True
+2026-09-28,PayFlow,SWIFT payment messages,2026-09-28 06:30:00,2026-09-28 06:20:00,-10,True
+2026-09-28,MarketData,End-of-day FX rates,2026-09-28 07:00:00,2026-09-28 06:49:00,-11,True
+2026-09-28,OnboardIQ,KYC customer profile extract,2026-09-28 06:00:00,2026-09-28 04:57:00,-63,True
+2026-09-28,GeneralLedger,GL journal extract,2026-09-28 07:30:00,2026-09-28 07:12:00,-18,True
+2026-09-29,LedgerCore,Core banking end-of-day balances,2026-09-29 06:00:00,2026-09-29 05:04:00,-56,True
+2026-09-29,CardHub,Card scheme settlement file,2026-09-29 05:30:00,2026-09-29 04:39:00,-51,True
+2026-09-29,PayFlow,SWIFT payment messages,2026-09-29 06:30:00,2026-09-29 06:03:00,-27,True
+2026-09-29,MarketData,End-of-day FX rates,2026-09-29 07:00:00,2026-09-29 06:22:00,-38,True
+2026-09-29,OnboardIQ,KYC customer profile extract,2026-09-29 06:00:00,2026-09-29 05:44:00,-16,True
+2026-09-29,GeneralLedger,GL journal extract,2026-09-29 07:30:00,2026-09-29 06:54:00,-36,True
+2026-09-30,LedgerCore,Core banking end-of-day balances,2026-09-30 06:00:00,2026-09-30 05:16:00,-44,True
+2026-09-30,CardHub,Card scheme settlement file,2026-09-30 05:30:00,2026-09-30 04:55:00,-35,True
+2026-09-30,PayFlow,SWIFT payment messages,2026-09-30 06:30:00,2026-09-30 05:23:00,-67,True
+2026-09-30,MarketData,End-of-day FX rates,2026-09-30 07:00:00,2026-09-30 06:19:00,-41,True
+2026-09-30,OnboardIQ,KYC customer profile extract,2026-09-30 06:00:00,2026-09-30 05:20:00,-40,True
+2026-09-30,GeneralLedger,GL journal extract,2026-09-30 07:30:00,2026-09-30 07:09:00,-21,True
+2026-10-01,LedgerCore,Core banking end-of-day balances,2026-10-01 06:00:00,2026-10-01 05:28:00,-32,True
+2026-10-01,CardHub,Card scheme settlement file,2026-10-01 05:30:00,2026-10-01 04:39:00,-51,True
+2026-10-01,PayFlow,SWIFT payment messages,2026-10-01 06:30:00,2026-10-01 05:47:00,-43,True
+2026-10-01,MarketData,End-of-day FX rates,2026-10-01 07:00:00,2026-10-01 06:05:00,-55,True
+2026-10-01,OnboardIQ,KYC customer profile extract,2026-10-01 06:00:00,2026-10-01 04:59:00,-61,True
+2026-10-01,GeneralLedger,GL journal extract,2026-10-01 07:30:00,2026-10-01 06:38:00,-52,True
+2026-10-02,LedgerCore,Core banking end-of-day balances,2026-10-02 06:00:00,2026-10-02 04:55:00,-65,True
+2026-10-02,CardHub,Card scheme settlement file,2026-10-02 05:30:00,2026-10-02 05:09:00,-21,True
+2026-10-02,PayFlow,SWIFT payment messages,2026-10-02 06:30:00,2026-10-02 05:39:00,-51,True
+2026-10-02,MarketData,End-of-day FX rates,2026-10-02 07:00:00,2026-10-02 06:24:00,-36,True
+2026-10-02,OnboardIQ,KYC customer profile extract,2026-10-02 06:00:00,2026-10-02 05:33:00,-27,True
+2026-10-02,GeneralLedger,GL journal extract,2026-10-02 07:30:00,2026-10-02 06:50:00,-40,True
+2026-10-05,LedgerCore,Core banking end-of-day balances,2026-10-05 06:00:00,2026-10-05 07:40:00,100,False
+2026-10-05,CardHub,Card scheme settlement file,2026-10-05 05:30:00,2026-10-05 04:44:00,-46,True
+2026-10-05,PayFlow,SWIFT payment messages,2026-10-05 06:30:00,2026-10-05 06:03:00,-27,True
+2026-10-05,MarketData,End-of-day FX rates,2026-10-05 07:00:00,2026-10-05 06:09:00,-51,True
+2026-10-05,OnboardIQ,KYC customer profile extract,2026-10-05 06:00:00,2026-10-05 05:07:00,-53,True
+2026-10-05,GeneralLedger,GL journal extract,2026-10-05 07:30:00,2026-10-05 06:45:00,-45,True
+2026-10-06,LedgerCore,Core banking end-of-day balances,2026-10-06 06:00:00,2026-10-06 05:39:00,-21,True
+2026-10-06,CardHub,Card scheme settlement file,2026-10-06 05:30:00,2026-10-06 04:24:00,-66,True
+2026-10-06,PayFlow,SWIFT payment messages,2026-10-06 06:30:00,2026-10-06 05:48:00,-42,True
+2026-10-06,MarketData,End-of-day FX rates,2026-10-06 07:00:00,2026-10-06 06:19:00,-41,True
+2026-10-06,OnboardIQ,KYC customer profile extract,2026-10-06 06:00:00,2026-10-06 04:52:00,-68,True
+2026-10-06,GeneralLedger,GL journal extract,2026-10-06 07:30:00,2026-10-06 07:07:00,-23,True
+2026-10-07,LedgerCore,Core banking end-of-day balances,2026-10-07 06:00:00,2026-10-07 05:44:00,-16,True
+2026-10-07,CardHub,Card scheme settlement file,2026-10-07 05:30:00,2026-10-07 04:48:00,-42,True
+2026-10-07,PayFlow,SWIFT payment messages,2026-10-07 06:30:00,2026-10-07 05:55:00,-35,True
+2026-10-07,MarketData,End-of-day FX rates,2026-10-07 07:00:00,2026-10-07 14:10:00,430,False
+2026-10-07,OnboardIQ,KYC customer profile extract,2026-10-07 06:00:00,2026-10-07 05:31:00,-29,True
+2026-10-07,GeneralLedger,GL journal extract,2026-10-07 07:30:00,2026-10-07 06:43:00,-47,True
+2026-10-08,LedgerCore,Core banking end-of-day balances,2026-10-08 06:00:00,2026-10-08 05:46:00,-14,True
+2026-10-08,CardHub,Card scheme settlement file,2026-10-08 05:30:00,2026-10-08 04:25:00,-65,True
+2026-10-08,PayFlow,SWIFT payment messages,2026-10-08 06:30:00,2026-10-08 05:57:00,-33,True
+2026-10-08,MarketData,End-of-day FX rates,2026-10-08 07:00:00,2026-10-08 09:45:00,165,False
+2026-10-08,OnboardIQ,KYC customer profile extract,2026-10-08 06:00:00,2026-10-08 05:32:00,-28,True
+2026-10-08,GeneralLedger,GL journal extract,2026-10-08 07:30:00,2026-10-08 06:39:00,-51,True
+2026-10-09,LedgerCore,Core banking end-of-day balances,2026-10-09 06:00:00,2026-10-09 05:09:00,-51,True
+2026-10-09,CardHub,Card scheme settlement file,2026-10-09 05:30:00,2026-10-09 05:10:00,-20,True
+2026-10-09,PayFlow,SWIFT payment messages,2026-10-09 06:30:00,2026-10-09 06:00:00,-30,True
+2026-10-09,MarketData,End-of-day FX rates,2026-10-09 07:00:00,2026-10-09 06:44:00,-16,True
+2026-10-09,OnboardIQ,KYC customer profile extract,2026-10-09 06:00:00,2026-10-09 05:22:00,-38,True
+2026-10-09,GeneralLedger,GL journal extract,2026-10-09 07:30:00,2026-10-09 06:20:00,-70,True

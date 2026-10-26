@@ -1,0 +1,765 @@
+break_id,recon_id,opened_date,break_type,amount_usd,root_cause,owner_team,status,resolved_date
+BRK-00001,NOSTRO_USD,2026-06-01,DUPLICATE,62638.32,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-02
+BRK-00002,NOSTRO_EUR,2026-06-01,AMOUNT_MISMATCH,50538.96,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-02
+BRK-00003,NOSTRO_GBP,2026-06-01,DUPLICATE,37433.23,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-04
+BRK-00004,GL_SUBLEDGER,2026-06-01,FX_DIFFERENCE,222082.05,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-06-07
+BRK-00005,CARD_SCHEME,2026-06-01,DUPLICATE,891.59,Duplicate posting in one system,Cards Operations,RESOLVED,2026-06-02
+BRK-00006,CARD_SCHEME,2026-06-01,FX_DIFFERENCE,7975.45,FX rate difference on conversion,Cards Operations,RESOLVED,2026-06-02
+BRK-00007,NOSTRO_USD,2026-06-02,DUPLICATE,17994.54,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-04
+BRK-00008,NOSTRO_EUR,2026-06-02,MISSING_ENTRY,42357.98,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-06
+BRK-00009,NOSTRO_GBP,2026-06-02,VALUE_DATE_MISMATCH,8776.6,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-03
+BRK-00010,NOSTRO_GBP,2026-06-02,MISSING_ENTRY,51988.48,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-03
+BRK-00011,CARD_SCHEME,2026-06-02,AMOUNT_MISMATCH,5537.35,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-04
+BRK-00012,SWIFT_PAYMENTS,2026-06-02,FX_DIFFERENCE,65588.97,FX rate difference on conversion,Payments Operations,RESOLVED,2026-06-03
+BRK-00013,SWIFT_PAYMENTS,2026-06-02,MISSING_ENTRY,12954.76,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-05
+BRK-00014,NOSTRO_USD,2026-06-03,MISSING_ENTRY,54883.49,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-04
+BRK-00015,NOSTRO_USD,2026-06-03,VALUE_DATE_MISMATCH,203818.61,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-06
+BRK-00016,NOSTRO_GBP,2026-06-03,VALUE_DATE_MISMATCH,11067.09,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-08
+BRK-00017,NOSTRO_GBP,2026-06-03,FX_DIFFERENCE,42178.47,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-05
+BRK-00018,CARD_SCHEME,2026-06-03,AMOUNT_MISMATCH,6398.41,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-08
+BRK-00019,CARD_SCHEME,2026-06-03,AMOUNT_MISMATCH,1184.2,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-06
+BRK-00020,SWIFT_PAYMENTS,2026-06-03,AMOUNT_MISMATCH,16138.92,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-05
+BRK-00021,SWIFT_PAYMENTS,2026-06-03,VALUE_DATE_MISMATCH,26097.32,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-06-25
+BRK-00022,NOSTRO_USD,2026-06-04,AMOUNT_MISMATCH,14061.62,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-06
+BRK-00023,GL_SUBLEDGER,2026-06-04,VALUE_DATE_MISMATCH,513144.38,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-06-17
+BRK-00024,CARD_SCHEME,2026-06-04,MISSING_ENTRY,1783.7,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-06
+BRK-00025,CARD_SCHEME,2026-06-04,MISSING_ENTRY,1518.43,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-05
+BRK-00026,CARD_SCHEME,2026-06-04,DUPLICATE,3226.07,Duplicate posting in one system,Cards Operations,RESOLVED,2026-06-05
+BRK-00027,SWIFT_PAYMENTS,2026-06-04,MISSING_ENTRY,77812.36,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-07
+BRK-00028,SWIFT_PAYMENTS,2026-06-04,FX_DIFFERENCE,15139.2,FX rate difference on conversion,Payments Operations,RESOLVED,2026-06-06
+BRK-00029,SWIFT_PAYMENTS,2026-06-04,VALUE_DATE_MISMATCH,12968.08,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-06-06
+BRK-00030,SWIFT_PAYMENTS,2026-06-04,FX_DIFFERENCE,99742.92,FX rate difference on conversion,Payments Operations,RESOLVED,2026-06-06
+BRK-00031,NOSTRO_USD,2026-06-05,AMOUNT_MISMATCH,127699.77,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-08
+BRK-00032,NOSTRO_USD,2026-06-05,FX_DIFFERENCE,55450.26,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-06
+BRK-00033,NOSTRO_USD,2026-06-05,MISSING_ENTRY,52045.58,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-07
+BRK-00034,NOSTRO_USD,2026-06-05,MISSING_ENTRY,13209.95,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-07
+BRK-00035,NOSTRO_USD,2026-06-05,AMOUNT_MISMATCH,195251.17,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-06
+BRK-00036,NOSTRO_EUR,2026-06-05,AMOUNT_MISMATCH,61282.25,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-08
+BRK-00037,SWIFT_PAYMENTS,2026-06-05,MISSING_ENTRY,153232.08,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-06
+BRK-00038,SWIFT_PAYMENTS,2026-06-05,VALUE_DATE_MISMATCH,13260.7,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-06-08
+BRK-00039,NOSTRO_USD,2026-06-08,VALUE_DATE_MISMATCH,32812.96,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-09
+BRK-00040,NOSTRO_USD,2026-06-08,AMOUNT_MISMATCH,132358.49,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-09
+BRK-00041,NOSTRO_USD,2026-06-08,AMOUNT_MISMATCH,132636.73,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-13
+BRK-00042,NOSTRO_EUR,2026-06-08,FX_DIFFERENCE,27581.61,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-12
+BRK-00043,NOSTRO_GBP,2026-06-08,AMOUNT_MISMATCH,73622.17,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-09
+BRK-00044,NOSTRO_GBP,2026-06-08,MISSING_ENTRY,44653.18,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-09
+BRK-00045,GL_SUBLEDGER,2026-06-08,FX_DIFFERENCE,192176.98,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-06-12
+BRK-00046,CARD_SCHEME,2026-06-08,VALUE_DATE_MISMATCH,3153.92,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-06-10
+BRK-00047,NOSTRO_USD,2026-06-09,AMOUNT_MISMATCH,50559.18,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-17
+BRK-00048,NOSTRO_USD,2026-06-09,AMOUNT_MISMATCH,28354.44,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-10
+BRK-00049,NOSTRO_USD,2026-06-09,FX_DIFFERENCE,130224.32,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-30
+BRK-00050,NOSTRO_EUR,2026-06-09,AMOUNT_MISMATCH,21948.63,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-12
+BRK-00051,NOSTRO_GBP,2026-06-09,AMOUNT_MISMATCH,38435.53,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-11
+BRK-00052,NOSTRO_GBP,2026-06-09,MISSING_ENTRY,30469.9,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-10
+BRK-00053,GL_SUBLEDGER,2026-06-09,DUPLICATE,153572.05,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-06-10
+BRK-00054,SWIFT_PAYMENTS,2026-06-09,AMOUNT_MISMATCH,80324.23,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-11
+BRK-00055,NOSTRO_USD,2026-06-10,MISSING_ENTRY,119865.76,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-12
+BRK-00056,NOSTRO_USD,2026-06-10,AMOUNT_MISMATCH,62716.53,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-13
+BRK-00057,NOSTRO_USD,2026-06-10,AMOUNT_MISMATCH,14767.84,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-13
+BRK-00058,NOSTRO_GBP,2026-06-10,AMOUNT_MISMATCH,54470.28,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-11
+BRK-00059,CARD_SCHEME,2026-06-10,AMOUNT_MISMATCH,23888.53,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-12
+BRK-00060,CARD_SCHEME,2026-06-10,AMOUNT_MISMATCH,1368.35,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-05
+BRK-00061,SWIFT_PAYMENTS,2026-06-10,AMOUNT_MISMATCH,20032.54,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-15
+BRK-00062,NOSTRO_USD,2026-06-11,AMOUNT_MISMATCH,31889.09,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-16
+BRK-00063,NOSTRO_USD,2026-06-11,AMOUNT_MISMATCH,28960.46,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-12
+BRK-00064,NOSTRO_EUR,2026-06-11,DUPLICATE,22419.33,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-14
+BRK-00065,NOSTRO_EUR,2026-06-11,FX_DIFFERENCE,91112.51,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-13
+BRK-00066,GL_SUBLEDGER,2026-06-11,AMOUNT_MISMATCH,565610.67,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-06-19
+BRK-00067,GL_SUBLEDGER,2026-06-11,VALUE_DATE_MISMATCH,20924.1,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-06-14
+BRK-00068,CARD_SCHEME,2026-06-11,AMOUNT_MISMATCH,6013.97,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-12
+BRK-00069,CARD_SCHEME,2026-06-11,MISSING_ENTRY,4889.4,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-12
+BRK-00070,CARD_SCHEME,2026-06-11,MISSING_ENTRY,3556.34,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-12
+BRK-00071,CARD_SCHEME,2026-06-11,AMOUNT_MISMATCH,4163.87,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-12
+BRK-00072,SWIFT_PAYMENTS,2026-06-11,AMOUNT_MISMATCH,12607.93,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-12
+BRK-00073,NOSTRO_USD,2026-06-12,VALUE_DATE_MISMATCH,85293.07,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-19
+BRK-00074,NOSTRO_USD,2026-06-12,AMOUNT_MISMATCH,44384.47,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-13
+BRK-00075,NOSTRO_GBP,2026-06-12,AMOUNT_MISMATCH,14958.84,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-16
+BRK-00076,GL_SUBLEDGER,2026-06-12,DUPLICATE,53714.94,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-06-13
+BRK-00077,CARD_SCHEME,2026-06-12,FX_DIFFERENCE,29845.32,FX rate difference on conversion,Cards Operations,RESOLVED,2026-06-16
+BRK-00078,SWIFT_PAYMENTS,2026-06-12,VALUE_DATE_MISMATCH,7642.36,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-06-17
+BRK-00079,NOSTRO_USD,2026-06-15,AMOUNT_MISMATCH,32429.24,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-18
+BRK-00080,NOSTRO_USD,2026-06-15,DUPLICATE,33406.14,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-16
+BRK-00081,NOSTRO_USD,2026-06-15,AMOUNT_MISMATCH,35496.62,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-17
+BRK-00082,NOSTRO_USD,2026-06-15,VALUE_DATE_MISMATCH,556601.42,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-17
+BRK-00083,NOSTRO_EUR,2026-06-15,AMOUNT_MISMATCH,15074.27,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-16
+BRK-00084,CARD_SCHEME,2026-06-15,AMOUNT_MISMATCH,12226.96,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-16
+BRK-00085,CARD_SCHEME,2026-06-15,AMOUNT_MISMATCH,2746.51,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-17
+BRK-00086,CARD_SCHEME,2026-06-15,MISSING_ENTRY,1497.86,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-16
+BRK-00087,SWIFT_PAYMENTS,2026-06-15,FX_DIFFERENCE,41289.29,FX rate difference on conversion,Payments Operations,RESOLVED,2026-06-16
+BRK-00088,SWIFT_PAYMENTS,2026-06-15,AMOUNT_MISMATCH,25597.39,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-16
+BRK-00089,NOSTRO_USD,2026-06-16,AMOUNT_MISMATCH,44542.83,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-17
+BRK-00090,NOSTRO_EUR,2026-06-16,MISSING_ENTRY,35886.01,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-21
+BRK-00091,GL_SUBLEDGER,2026-06-16,VALUE_DATE_MISMATCH,30120.08,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-06-23
+BRK-00092,GL_SUBLEDGER,2026-06-16,VALUE_DATE_MISMATCH,64666.28,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-06-25
+BRK-00093,GL_SUBLEDGER,2026-06-16,VALUE_DATE_MISMATCH,60909.36,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-06-27
+BRK-00094,CARD_SCHEME,2026-06-16,MISSING_ENTRY,13088.12,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-17
+BRK-00095,CARD_SCHEME,2026-06-16,MISSING_ENTRY,2603.29,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-17
+BRK-00096,SWIFT_PAYMENTS,2026-06-16,AMOUNT_MISMATCH,31975.76,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-18
+BRK-00097,SWIFT_PAYMENTS,2026-06-16,MISSING_ENTRY,132941.69,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-21
+BRK-00098,NOSTRO_USD,2026-06-17,VALUE_DATE_MISMATCH,117369.73,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-23
+BRK-00099,NOSTRO_GBP,2026-06-17,MISSING_ENTRY,3061.85,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-18
+BRK-00100,NOSTRO_GBP,2026-06-17,VALUE_DATE_MISMATCH,70582.11,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-18
+BRK-00101,NOSTRO_GBP,2026-06-17,DUPLICATE,7540.78,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-18
+BRK-00102,GL_SUBLEDGER,2026-06-17,DUPLICATE,78807.78,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-06-19
+BRK-00103,GL_SUBLEDGER,2026-06-17,DUPLICATE,67196.14,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-06-19
+BRK-00104,CARD_SCHEME,2026-06-17,VALUE_DATE_MISMATCH,5535.26,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-06-18
+BRK-00105,CARD_SCHEME,2026-06-17,AMOUNT_MISMATCH,5116.77,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-19
+BRK-00106,SWIFT_PAYMENTS,2026-06-17,MISSING_ENTRY,12786.92,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-21
+BRK-00107,SWIFT_PAYMENTS,2026-06-17,DUPLICATE,135909.95,Duplicate posting in one system,Payments Operations,RESOLVED,2026-06-18
+BRK-00108,NOSTRO_EUR,2026-06-18,FX_DIFFERENCE,37305.54,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-20
+BRK-00109,NOSTRO_EUR,2026-06-18,MISSING_ENTRY,21250.51,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-21
+BRK-00110,NOSTRO_GBP,2026-06-18,VALUE_DATE_MISMATCH,9894.41,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-19
+BRK-00111,GL_SUBLEDGER,2026-06-18,AMOUNT_MISMATCH,278191.86,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-06-26
+BRK-00112,GL_SUBLEDGER,2026-06-18,MISSING_ENTRY,50859.52,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-15
+BRK-00113,CARD_SCHEME,2026-06-18,MISSING_ENTRY,2066.49,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-22
+BRK-00114,CARD_SCHEME,2026-06-18,AMOUNT_MISMATCH,9152.44,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-20
+BRK-00115,CARD_SCHEME,2026-06-18,FX_DIFFERENCE,3938.79,FX rate difference on conversion,Cards Operations,RESOLVED,2026-06-19
+BRK-00116,CARD_SCHEME,2026-06-18,AMOUNT_MISMATCH,6961.98,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-23
+BRK-00117,CARD_SCHEME,2026-06-18,AMOUNT_MISMATCH,2206.98,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-19
+BRK-00118,SWIFT_PAYMENTS,2026-06-18,VALUE_DATE_MISMATCH,17549.33,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-06-20
+BRK-00119,NOSTRO_USD,2026-06-19,FX_DIFFERENCE,31757.42,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-20
+BRK-00120,NOSTRO_EUR,2026-06-19,AMOUNT_MISMATCH,71429.05,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-23
+BRK-00121,NOSTRO_EUR,2026-06-19,MISSING_ENTRY,6972.52,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-26
+BRK-00122,NOSTRO_GBP,2026-06-19,MISSING_ENTRY,136107.95,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-22
+BRK-00123,GL_SUBLEDGER,2026-06-19,FX_DIFFERENCE,43898.58,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-06-28
+BRK-00124,SWIFT_PAYMENTS,2026-06-19,DUPLICATE,20002.01,Duplicate posting in one system,Payments Operations,RESOLVED,2026-06-20
+BRK-00125,NOSTRO_GBP,2026-06-22,FX_DIFFERENCE,24422.83,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-01
+BRK-00126,CARD_SCHEME,2026-06-22,MISSING_ENTRY,19390.95,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-17
+BRK-00127,CARD_SCHEME,2026-06-22,VALUE_DATE_MISMATCH,5380.66,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-06-23
+BRK-00128,CARD_SCHEME,2026-06-22,MISSING_ENTRY,3009.07,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-24
+BRK-00129,SWIFT_PAYMENTS,2026-06-22,FX_DIFFERENCE,10650.61,FX rate difference on conversion,Payments Operations,RESOLVED,2026-06-23
+BRK-00130,NOSTRO_USD,2026-06-23,FX_DIFFERENCE,34773.3,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-25
+BRK-00131,NOSTRO_USD,2026-06-23,FX_DIFFERENCE,17133.48,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00132,NOSTRO_USD,2026-06-23,DUPLICATE,25565.14,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-06-28
+BRK-00133,CARD_SCHEME,2026-06-23,AMOUNT_MISMATCH,2429.1,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-27
+BRK-00134,CARD_SCHEME,2026-06-23,MISSING_ENTRY,1968.85,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-30
+BRK-00135,CARD_SCHEME,2026-06-23,VALUE_DATE_MISMATCH,2694.26,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-06-24
+BRK-00136,SWIFT_PAYMENTS,2026-06-23,AMOUNT_MISMATCH,26325.49,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-30
+BRK-00137,NOSTRO_EUR,2026-06-24,VALUE_DATE_MISMATCH,15390.94,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-06-26
+BRK-00138,NOSTRO_GBP,2026-06-24,MISSING_ENTRY,109134.86,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-25
+BRK-00139,GL_SUBLEDGER,2026-06-24,FX_DIFFERENCE,185677.87,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-06-28
+BRK-00140,SWIFT_PAYMENTS,2026-06-24,VALUE_DATE_MISMATCH,35807.48,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-07-18
+BRK-00141,NOSTRO_USD,2026-06-25,FX_DIFFERENCE,10057.98,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-01
+BRK-00142,NOSTRO_GBP,2026-06-25,AMOUNT_MISMATCH,51659.21,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-30
+BRK-00143,NOSTRO_GBP,2026-06-25,MISSING_ENTRY,94213.08,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-28
+BRK-00144,CARD_SCHEME,2026-06-25,MISSING_ENTRY,12040.8,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-06-26
+BRK-00145,CARD_SCHEME,2026-06-25,AMOUNT_MISMATCH,1583.87,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-26
+BRK-00146,SWIFT_PAYMENTS,2026-06-25,AMOUNT_MISMATCH,31993.11,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-28
+BRK-00147,SWIFT_PAYMENTS,2026-06-25,AMOUNT_MISMATCH,10612.98,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-26
+BRK-00148,SWIFT_PAYMENTS,2026-06-25,MISSING_ENTRY,21440.74,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-06-28
+BRK-00149,NOSTRO_USD,2026-06-26,MISSING_ENTRY,14430.71,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-27
+BRK-00150,NOSTRO_EUR,2026-06-26,MISSING_ENTRY,17632.47,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-06-30
+BRK-00151,NOSTRO_EUR,2026-06-26,FX_DIFFERENCE,21471.57,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-06-28
+BRK-00152,NOSTRO_GBP,2026-06-26,DUPLICATE,188575.85,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-07
+BRK-00153,CARD_SCHEME,2026-06-26,AMOUNT_MISMATCH,1602.39,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-06-28
+BRK-00154,SWIFT_PAYMENTS,2026-06-26,AMOUNT_MISMATCH,26578.57,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-06-28
+BRK-00155,NOSTRO_USD,2026-06-29,AMOUNT_MISMATCH,62582.57,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-06-30
+BRK-00156,NOSTRO_EUR,2026-06-29,MISSING_ENTRY,34256.72,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-03
+BRK-00157,NOSTRO_EUR,2026-06-29,MISSING_ENTRY,29883.99,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00158,NOSTRO_EUR,2026-06-29,FX_DIFFERENCE,13471.53,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-03
+BRK-00159,GL_SUBLEDGER,2026-06-29,FX_DIFFERENCE,84860.63,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-07-05
+BRK-00160,GL_SUBLEDGER,2026-06-29,FX_DIFFERENCE,46397.85,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-07-05
+BRK-00161,SWIFT_PAYMENTS,2026-06-29,FX_DIFFERENCE,46408.4,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-02
+BRK-00162,NOSTRO_USD,2026-06-30,FX_DIFFERENCE,53008.25,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-01
+BRK-00163,NOSTRO_USD,2026-06-30,MISSING_ENTRY,15141.54,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00164,NOSTRO_USD,2026-06-30,AMOUNT_MISMATCH,32439.81,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-01
+BRK-00165,NOSTRO_GBP,2026-06-30,AMOUNT_MISMATCH,204162.49,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00166,NOSTRO_GBP,2026-06-30,MISSING_ENTRY,25909.11,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00167,CARD_SCHEME,2026-06-30,MISSING_ENTRY,2276.24,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-01
+BRK-00168,CARD_SCHEME,2026-06-30,DUPLICATE,14460.07,Duplicate posting in one system,Cards Operations,RESOLVED,2026-07-01
+BRK-00169,CARD_SCHEME,2026-06-30,MISSING_ENTRY,4460.37,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-01
+BRK-00170,CARD_SCHEME,2026-06-30,VALUE_DATE_MISMATCH,5306.08,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-07-01
+BRK-00171,NOSTRO_USD,2026-07-01,VALUE_DATE_MISMATCH,23302.74,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-06
+BRK-00172,NOSTRO_USD,2026-07-01,VALUE_DATE_MISMATCH,45291.06,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-03
+BRK-00173,NOSTRO_USD,2026-07-01,MISSING_ENTRY,97823.89,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-04
+BRK-00174,NOSTRO_USD,2026-07-01,MISSING_ENTRY,69813.55,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-02
+BRK-00175,GL_SUBLEDGER,2026-07-01,FX_DIFFERENCE,220678.6,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-07-02
+BRK-00176,GL_SUBLEDGER,2026-07-01,MISSING_ENTRY,105586.66,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-02
+BRK-00177,CARD_SCHEME,2026-07-01,AMOUNT_MISMATCH,6503.57,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-04
+BRK-00178,CARD_SCHEME,2026-07-01,DUPLICATE,985.52,Duplicate posting in one system,Cards Operations,RESOLVED,2026-07-02
+BRK-00179,CARD_SCHEME,2026-07-01,AMOUNT_MISMATCH,10082.22,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-04
+BRK-00180,NOSTRO_USD,2026-07-02,MISSING_ENTRY,51947.66,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-05
+BRK-00181,NOSTRO_GBP,2026-07-02,FX_DIFFERENCE,5234.02,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-05
+BRK-00182,GL_SUBLEDGER,2026-07-02,DUPLICATE,55681.95,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-07-06
+BRK-00183,GL_SUBLEDGER,2026-07-02,VALUE_DATE_MISMATCH,45665.05,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-07-06
+BRK-00184,GL_SUBLEDGER,2026-07-02,MISSING_ENTRY,592190.62,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-09
+BRK-00185,CARD_SCHEME,2026-07-02,AMOUNT_MISMATCH,8161.84,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-05
+BRK-00186,SWIFT_PAYMENTS,2026-07-02,DUPLICATE,84297.14,Duplicate posting in one system,Payments Operations,RESOLVED,2026-07-03
+BRK-00187,NOSTRO_USD,2026-07-03,MISSING_ENTRY,20631.23,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-04
+BRK-00188,NOSTRO_USD,2026-07-03,MISSING_ENTRY,122158.03,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-04
+BRK-00189,NOSTRO_EUR,2026-07-03,MISSING_ENTRY,7485.06,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-06
+BRK-00190,NOSTRO_EUR,2026-07-03,MISSING_ENTRY,43764.28,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-06
+BRK-00191,NOSTRO_GBP,2026-07-03,FX_DIFFERENCE,18255.18,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-07
+BRK-00192,GL_SUBLEDGER,2026-07-03,VALUE_DATE_MISMATCH,94355.62,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-07-06
+BRK-00193,CARD_SCHEME,2026-07-03,VALUE_DATE_MISMATCH,6411.86,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-07-04
+BRK-00194,NOSTRO_USD,2026-07-06,VALUE_DATE_MISMATCH,12056.12,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-11
+BRK-00195,NOSTRO_GBP,2026-07-06,VALUE_DATE_MISMATCH,22817.57,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-07
+BRK-00196,GL_SUBLEDGER,2026-07-06,VALUE_DATE_MISMATCH,96360.34,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-07-08
+BRK-00197,CARD_SCHEME,2026-07-06,MISSING_ENTRY,2586.4,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-07
+BRK-00198,CARD_SCHEME,2026-07-06,AMOUNT_MISMATCH,5392.23,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-08
+BRK-00199,CARD_SCHEME,2026-07-06,FX_DIFFERENCE,7375.03,FX rate difference on conversion,Cards Operations,RESOLVED,2026-07-24
+BRK-00200,SWIFT_PAYMENTS,2026-07-06,AMOUNT_MISMATCH,14437.99,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-11
+BRK-00201,SWIFT_PAYMENTS,2026-07-06,MISSING_ENTRY,15382.45,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-07-07
+BRK-00202,NOSTRO_EUR,2026-07-07,AMOUNT_MISMATCH,23518.68,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-15
+BRK-00203,CARD_SCHEME,2026-07-07,MISSING_ENTRY,1823.64,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-12
+BRK-00204,CARD_SCHEME,2026-07-07,MISSING_ENTRY,4651.11,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-09
+BRK-00205,SWIFT_PAYMENTS,2026-07-07,AMOUNT_MISMATCH,58858.15,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-09
+BRK-00206,NOSTRO_USD,2026-07-08,DUPLICATE,46950.38,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-15
+BRK-00207,NOSTRO_USD,2026-07-08,AMOUNT_MISMATCH,8373.21,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-10
+BRK-00208,NOSTRO_USD,2026-07-08,MISSING_ENTRY,47943.66,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-12
+BRK-00209,NOSTRO_EUR,2026-07-08,FX_DIFFERENCE,11800.92,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-12
+BRK-00210,GL_SUBLEDGER,2026-07-08,VALUE_DATE_MISMATCH,60872.82,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-07-15
+BRK-00211,CARD_SCHEME,2026-07-08,AMOUNT_MISMATCH,1887.21,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-09
+BRK-00212,CARD_SCHEME,2026-07-08,AMOUNT_MISMATCH,2653.08,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-10
+BRK-00213,CARD_SCHEME,2026-07-08,MISSING_ENTRY,1649.94,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-11
+BRK-00214,NOSTRO_USD,2026-07-09,MISSING_ENTRY,99587.88,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-10
+BRK-00215,NOSTRO_USD,2026-07-09,VALUE_DATE_MISMATCH,43304.23,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-11
+BRK-00216,NOSTRO_EUR,2026-07-09,MISSING_ENTRY,205671.74,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-10
+BRK-00217,CARD_SCHEME,2026-07-09,AMOUNT_MISMATCH,8387.64,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-14
+BRK-00218,CARD_SCHEME,2026-07-09,VALUE_DATE_MISMATCH,5265.58,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-07-30
+BRK-00219,CARD_SCHEME,2026-07-09,MISSING_ENTRY,10573.04,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-11
+BRK-00220,CARD_SCHEME,2026-07-09,MISSING_ENTRY,1554.85,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-11
+BRK-00221,CARD_SCHEME,2026-07-09,AMOUNT_MISMATCH,994.82,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-12
+BRK-00222,NOSTRO_EUR,2026-07-10,AMOUNT_MISMATCH,18997.63,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-11
+BRK-00223,CARD_SCHEME,2026-07-10,AMOUNT_MISMATCH,968.32,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-11
+BRK-00224,CARD_SCHEME,2026-07-10,MISSING_ENTRY,17649.62,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-11
+BRK-00225,CARD_SCHEME,2026-07-10,MISSING_ENTRY,685.39,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-11
+BRK-00226,SWIFT_PAYMENTS,2026-07-10,MISSING_ENTRY,7659.67,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-07-11
+BRK-00227,SWIFT_PAYMENTS,2026-07-10,AMOUNT_MISMATCH,19186.36,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-13
+BRK-00228,SWIFT_PAYMENTS,2026-07-10,FX_DIFFERENCE,82362.58,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-11
+BRK-00229,NOSTRO_GBP,2026-07-13,AMOUNT_MISMATCH,42768.4,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-19
+BRK-00230,GL_SUBLEDGER,2026-07-13,MISSING_ENTRY,111467.63,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-14
+BRK-00231,CARD_SCHEME,2026-07-13,DUPLICATE,10922.5,Duplicate posting in one system,Cards Operations,RESOLVED,2026-07-16
+BRK-00232,SWIFT_PAYMENTS,2026-07-13,FX_DIFFERENCE,87515.01,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-25
+BRK-00233,NOSTRO_USD,2026-07-14,DUPLICATE,18889.9,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-16
+BRK-00234,NOSTRO_EUR,2026-07-14,MISSING_ENTRY,43731.95,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-17
+BRK-00235,NOSTRO_GBP,2026-07-14,FX_DIFFERENCE,17568.92,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-17
+BRK-00236,GL_SUBLEDGER,2026-07-14,VALUE_DATE_MISMATCH,50921.83,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-07-19
+BRK-00237,CARD_SCHEME,2026-07-14,MISSING_ENTRY,3149.56,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-15
+BRK-00238,CARD_SCHEME,2026-07-14,AMOUNT_MISMATCH,2275.18,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-15
+BRK-00239,NOSTRO_USD,2026-07-15,MISSING_ENTRY,40108.23,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-26
+BRK-00240,NOSTRO_USD,2026-07-15,MISSING_ENTRY,32854.06,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-18
+BRK-00241,NOSTRO_USD,2026-07-15,MISSING_ENTRY,179487.12,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-16
+BRK-00242,SWIFT_PAYMENTS,2026-07-15,VALUE_DATE_MISMATCH,20662.69,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-07-17
+BRK-00243,SWIFT_PAYMENTS,2026-07-15,MISSING_ENTRY,16672.2,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-07-16
+BRK-00244,NOSTRO_USD,2026-07-16,FX_DIFFERENCE,27025.15,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-18
+BRK-00245,NOSTRO_EUR,2026-07-16,AMOUNT_MISMATCH,139784.26,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-22
+BRK-00246,NOSTRO_GBP,2026-07-16,AMOUNT_MISMATCH,55292.98,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-17
+BRK-00247,GL_SUBLEDGER,2026-07-16,MISSING_ENTRY,90305.51,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-17
+BRK-00248,CARD_SCHEME,2026-07-16,AMOUNT_MISMATCH,4499.91,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-19
+BRK-00249,CARD_SCHEME,2026-07-16,DUPLICATE,2689.9,Duplicate posting in one system,Cards Operations,RESOLVED,2026-07-17
+BRK-00250,SWIFT_PAYMENTS,2026-07-16,MISSING_ENTRY,47453.76,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-07-17
+BRK-00251,SWIFT_PAYMENTS,2026-07-16,FX_DIFFERENCE,7094.98,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-17
+BRK-00252,NOSTRO_EUR,2026-07-17,MISSING_ENTRY,37582.03,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-21
+BRK-00253,NOSTRO_GBP,2026-07-17,DUPLICATE,24471.5,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-18
+BRK-00254,CARD_SCHEME,2026-07-17,DUPLICATE,1538.68,Duplicate posting in one system,Cards Operations,RESOLVED,2026-07-20
+BRK-00255,SWIFT_PAYMENTS,2026-07-17,MISSING_ENTRY,11536.23,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-07-18
+BRK-00256,SWIFT_PAYMENTS,2026-07-17,VALUE_DATE_MISMATCH,27797.08,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-07-18
+BRK-00257,NOSTRO_EUR,2026-07-20,FX_DIFFERENCE,14440.07,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-30
+BRK-00258,CARD_SCHEME,2026-07-20,MISSING_ENTRY,4406.34,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-23
+BRK-00259,SWIFT_PAYMENTS,2026-07-20,AMOUNT_MISMATCH,5014.53,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-21
+BRK-00260,SWIFT_PAYMENTS,2026-07-20,AMOUNT_MISMATCH,57272.88,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-04
+BRK-00261,SWIFT_PAYMENTS,2026-07-20,VALUE_DATE_MISMATCH,11348.77,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-07-21
+BRK-00262,NOSTRO_USD,2026-07-21,DUPLICATE,5017.58,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-23
+BRK-00263,CARD_SCHEME,2026-07-21,VALUE_DATE_MISMATCH,7380.75,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-07-26
+BRK-00264,CARD_SCHEME,2026-07-21,MISSING_ENTRY,1199.15,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-04
+BRK-00265,CARD_SCHEME,2026-07-21,FX_DIFFERENCE,4127.27,FX rate difference on conversion,Cards Operations,RESOLVED,2026-07-22
+BRK-00266,SWIFT_PAYMENTS,2026-07-21,AMOUNT_MISMATCH,40663.79,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-24
+BRK-00267,NOSTRO_USD,2026-07-22,MISSING_ENTRY,49563.95,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-23
+BRK-00268,NOSTRO_EUR,2026-07-22,FX_DIFFERENCE,117779.37,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-23
+BRK-00269,NOSTRO_GBP,2026-07-22,MISSING_ENTRY,108913.81,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-29
+BRK-00270,GL_SUBLEDGER,2026-07-22,AMOUNT_MISMATCH,98634.29,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-08-01
+BRK-00271,CARD_SCHEME,2026-07-22,AMOUNT_MISMATCH,4327.03,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-23
+BRK-00272,SWIFT_PAYMENTS,2026-07-22,VALUE_DATE_MISMATCH,22931.61,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-07-25
+BRK-00273,SWIFT_PAYMENTS,2026-07-22,AMOUNT_MISMATCH,56555.66,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-14
+BRK-00274,NOSTRO_USD,2026-07-23,VALUE_DATE_MISMATCH,12420.76,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-01
+BRK-00275,NOSTRO_USD,2026-07-23,MISSING_ENTRY,80381.09,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-25
+BRK-00276,NOSTRO_USD,2026-07-23,FX_DIFFERENCE,104971.21,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-24
+BRK-00277,NOSTRO_USD,2026-07-23,VALUE_DATE_MISMATCH,95739.32,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-26
+BRK-00278,NOSTRO_USD,2026-07-23,AMOUNT_MISMATCH,21378.24,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-27
+BRK-00279,NOSTRO_EUR,2026-07-23,VALUE_DATE_MISMATCH,13129.06,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-24
+BRK-00280,NOSTRO_EUR,2026-07-23,AMOUNT_MISMATCH,16093.17,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-28
+BRK-00281,NOSTRO_EUR,2026-07-23,FX_DIFFERENCE,27421.55,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-07-24
+BRK-00282,GL_SUBLEDGER,2026-07-23,MISSING_ENTRY,103718.49,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-07-24
+BRK-00283,GL_SUBLEDGER,2026-07-23,AMOUNT_MISMATCH,134636.58,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-07-24
+BRK-00284,CARD_SCHEME,2026-07-23,AMOUNT_MISMATCH,2973.24,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-25
+BRK-00285,CARD_SCHEME,2026-07-23,MISSING_ENTRY,2739.51,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-25
+BRK-00286,NOSTRO_USD,2026-07-24,DUPLICATE,17284.94,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-07-25
+BRK-00287,NOSTRO_EUR,2026-07-24,VALUE_DATE_MISMATCH,132438.18,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-27
+BRK-00288,NOSTRO_GBP,2026-07-24,AMOUNT_MISMATCH,63756.0,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-25
+BRK-00289,SWIFT_PAYMENTS,2026-07-24,AMOUNT_MISMATCH,38767.46,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-25
+BRK-00290,SWIFT_PAYMENTS,2026-07-24,AMOUNT_MISMATCH,32044.73,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-07-27
+BRK-00291,NOSTRO_USD,2026-07-27,VALUE_DATE_MISMATCH,42245.05,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-28
+BRK-00292,NOSTRO_USD,2026-07-27,AMOUNT_MISMATCH,31706.34,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-29
+BRK-00293,NOSTRO_GBP,2026-07-27,VALUE_DATE_MISMATCH,25427.8,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-07-29
+BRK-00294,NOSTRO_GBP,2026-07-27,AMOUNT_MISMATCH,32561.46,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-29
+BRK-00295,CARD_SCHEME,2026-07-27,AMOUNT_MISMATCH,4212.02,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-07-28
+BRK-00296,CARD_SCHEME,2026-07-27,MISSING_ENTRY,2554.84,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-17
+BRK-00297,CARD_SCHEME,2026-07-27,MISSING_ENTRY,904.25,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-28
+BRK-00298,NOSTRO_USD,2026-07-28,MISSING_ENTRY,48514.9,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-30
+BRK-00299,NOSTRO_EUR,2026-07-28,MISSING_ENTRY,68845.77,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-30
+BRK-00300,CARD_SCHEME,2026-07-28,VALUE_DATE_MISMATCH,1882.37,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-01
+BRK-00301,CARD_SCHEME,2026-07-28,FX_DIFFERENCE,12361.44,FX rate difference on conversion,Cards Operations,RESOLVED,2026-07-29
+BRK-00302,CARD_SCHEME,2026-07-28,VALUE_DATE_MISMATCH,16807.86,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-07-29
+BRK-00303,SWIFT_PAYMENTS,2026-07-28,FX_DIFFERENCE,15295.22,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-31
+BRK-00304,NOSTRO_USD,2026-07-29,AMOUNT_MISMATCH,44439.72,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-07-30
+BRK-00305,NOSTRO_GBP,2026-07-29,FX_DIFFERENCE,96745.36,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-01
+BRK-00306,NOSTRO_GBP,2026-07-29,MISSING_ENTRY,17856.57,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-07-30
+BRK-00307,CARD_SCHEME,2026-07-29,MISSING_ENTRY,42656.16,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-30
+BRK-00308,NOSTRO_USD,2026-07-30,MISSING_ENTRY,52493.7,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-01
+BRK-00309,NOSTRO_EUR,2026-07-30,AMOUNT_MISMATCH,26175.69,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-02
+BRK-00310,GL_SUBLEDGER,2026-07-30,FX_DIFFERENCE,675928.41,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-08-13
+BRK-00311,CARD_SCHEME,2026-07-30,MISSING_ENTRY,14182.16,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-03
+BRK-00312,CARD_SCHEME,2026-07-30,MISSING_ENTRY,984.84,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-07-31
+BRK-00313,SWIFT_PAYMENTS,2026-07-30,FX_DIFFERENCE,24421.36,FX rate difference on conversion,Payments Operations,RESOLVED,2026-07-31
+BRK-00314,NOSTRO_EUR,2026-07-31,AMOUNT_MISMATCH,13596.12,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-03
+BRK-00315,NOSTRO_GBP,2026-07-31,MISSING_ENTRY,40223.46,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-24
+BRK-00316,NOSTRO_GBP,2026-07-31,MISSING_ENTRY,30433.72,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-16
+BRK-00317,CARD_SCHEME,2026-07-31,VALUE_DATE_MISMATCH,11721.55,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-02
+BRK-00318,SWIFT_PAYMENTS,2026-07-31,FX_DIFFERENCE,9810.08,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-03
+BRK-00319,NOSTRO_USD,2026-08-03,MISSING_ENTRY,16524.94,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-04
+BRK-00320,NOSTRO_USD,2026-08-03,FX_DIFFERENCE,22109.3,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-06
+BRK-00321,NOSTRO_EUR,2026-08-03,AMOUNT_MISMATCH,132289.49,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-11
+BRK-00322,CARD_SCHEME,2026-08-03,MISSING_ENTRY,9728.92,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-04
+BRK-00323,CARD_SCHEME,2026-08-03,MISSING_ENTRY,1036.18,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-08
+BRK-00324,SWIFT_PAYMENTS,2026-08-03,AMOUNT_MISMATCH,171970.16,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-04
+BRK-00325,NOSTRO_USD,2026-08-04,DUPLICATE,35959.98,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-06
+BRK-00326,NOSTRO_EUR,2026-08-04,MISSING_ENTRY,28822.83,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-07
+BRK-00327,CARD_SCHEME,2026-08-04,FX_DIFFERENCE,2281.28,FX rate difference on conversion,Cards Operations,RESOLVED,2026-08-05
+BRK-00328,CARD_SCHEME,2026-08-04,FX_DIFFERENCE,557.34,FX rate difference on conversion,Cards Operations,RESOLVED,2026-08-06
+BRK-00329,CARD_SCHEME,2026-08-04,AMOUNT_MISMATCH,875.87,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-17
+BRK-00330,CARD_SCHEME,2026-08-04,DUPLICATE,10682.52,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-05
+BRK-00331,CARD_SCHEME,2026-08-04,MISSING_ENTRY,2276.02,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-23
+BRK-00332,NOSTRO_USD,2026-08-05,VALUE_DATE_MISMATCH,57218.23,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-14
+BRK-00333,NOSTRO_USD,2026-08-05,FX_DIFFERENCE,35411.54,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-09
+BRK-00334,SWIFT_PAYMENTS,2026-08-05,DUPLICATE,35880.14,Duplicate posting in one system,Payments Operations,RESOLVED,2026-08-07
+BRK-00335,SWIFT_PAYMENTS,2026-08-05,AMOUNT_MISMATCH,38218.21,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-08
+BRK-00336,NOSTRO_USD,2026-08-06,FX_DIFFERENCE,16170.68,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-11
+BRK-00337,NOSTRO_USD,2026-08-06,VALUE_DATE_MISMATCH,19425.18,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-07
+BRK-00338,NOSTRO_USD,2026-08-06,MISSING_ENTRY,88565.76,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-10
+BRK-00339,NOSTRO_USD,2026-08-06,MISSING_ENTRY,51004.4,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00340,NOSTRO_USD,2026-08-06,MISSING_ENTRY,82411.24,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-08
+BRK-00341,NOSTRO_USD,2026-08-06,AMOUNT_MISMATCH,13222.76,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00342,NOSTRO_EUR,2026-08-06,AMOUNT_MISMATCH,44865.51,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-07
+BRK-00343,NOSTRO_EUR,2026-08-06,MISSING_ENTRY,99428.09,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-07
+BRK-00344,NOSTRO_EUR,2026-08-06,VALUE_DATE_MISMATCH,131174.93,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-09
+BRK-00345,NOSTRO_GBP,2026-08-06,MISSING_ENTRY,14836.78,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-11
+BRK-00346,NOSTRO_GBP,2026-08-06,AMOUNT_MISMATCH,15471.79,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-08
+BRK-00347,NOSTRO_GBP,2026-08-06,DUPLICATE,7985.61,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-09
+BRK-00348,SWIFT_PAYMENTS,2026-08-06,MISSING_ENTRY,5213.02,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-08
+BRK-00349,NOSTRO_USD,2026-08-07,VALUE_DATE_MISMATCH,37209.19,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-08
+BRK-00350,NOSTRO_USD,2026-08-07,AMOUNT_MISMATCH,18819.22,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-09
+BRK-00351,NOSTRO_EUR,2026-08-07,AMOUNT_MISMATCH,37386.33,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-09
+BRK-00352,NOSTRO_EUR,2026-08-07,MISSING_ENTRY,23758.37,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-08
+BRK-00353,CARD_SCHEME,2026-08-07,DUPLICATE,1871.41,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-08
+BRK-00354,SWIFT_PAYMENTS,2026-08-07,MISSING_ENTRY,35203.84,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-11
+BRK-00355,NOSTRO_USD,2026-08-10,VALUE_DATE_MISMATCH,32332.06,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-14
+BRK-00356,NOSTRO_USD,2026-08-10,DUPLICATE,29886.39,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00357,CARD_SCHEME,2026-08-10,AMOUNT_MISMATCH,3564.68,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-13
+BRK-00358,CARD_SCHEME,2026-08-10,VALUE_DATE_MISMATCH,1482.62,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-14
+BRK-00359,SWIFT_PAYMENTS,2026-08-10,AMOUNT_MISMATCH,102648.14,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-13
+BRK-00360,SWIFT_PAYMENTS,2026-08-10,FX_DIFFERENCE,95073.39,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-12
+BRK-00361,SWIFT_PAYMENTS,2026-08-10,FX_DIFFERENCE,90067.54,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-12
+BRK-00362,SWIFT_PAYMENTS,2026-08-10,AMOUNT_MISMATCH,19124.08,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-13
+BRK-00363,SWIFT_PAYMENTS,2026-08-10,FX_DIFFERENCE,104557.45,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-13
+BRK-00364,NOSTRO_USD,2026-08-11,AMOUNT_MISMATCH,35276.92,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00365,NOSTRO_EUR,2026-08-11,AMOUNT_MISMATCH,25673.83,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00366,NOSTRO_EUR,2026-08-11,VALUE_DATE_MISMATCH,135336.48,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00367,NOSTRO_EUR,2026-08-11,AMOUNT_MISMATCH,99156.25,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00368,NOSTRO_GBP,2026-08-11,AMOUNT_MISMATCH,27661.14,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-12
+BRK-00369,CARD_SCHEME,2026-08-11,AMOUNT_MISMATCH,14097.4,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-13
+BRK-00370,CARD_SCHEME,2026-08-11,AMOUNT_MISMATCH,4425.79,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-12
+BRK-00371,CARD_SCHEME,2026-08-11,VALUE_DATE_MISMATCH,6686.38,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-19
+BRK-00372,CARD_SCHEME,2026-08-11,MISSING_ENTRY,7310.34,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-12
+BRK-00373,SWIFT_PAYMENTS,2026-08-11,MISSING_ENTRY,71252.01,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-12
+BRK-00374,SWIFT_PAYMENTS,2026-08-11,MISSING_ENTRY,8366.3,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-12
+BRK-00375,NOSTRO_USD,2026-08-12,AMOUNT_MISMATCH,52766.91,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-14
+BRK-00376,NOSTRO_EUR,2026-08-12,VALUE_DATE_MISMATCH,3346.31,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-13
+BRK-00377,NOSTRO_EUR,2026-08-12,VALUE_DATE_MISMATCH,101022.12,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-13
+BRK-00378,NOSTRO_EUR,2026-08-12,DUPLICATE,76739.98,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-15
+BRK-00379,NOSTRO_GBP,2026-08-12,FX_DIFFERENCE,79290.08,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-14
+BRK-00380,GL_SUBLEDGER,2026-08-12,VALUE_DATE_MISMATCH,121729.3,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-08-16
+BRK-00381,CARD_SCHEME,2026-08-12,AMOUNT_MISMATCH,3041.95,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-13
+BRK-00382,CARD_SCHEME,2026-08-12,DUPLICATE,14222.45,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-14
+BRK-00383,CARD_SCHEME,2026-08-12,MISSING_ENTRY,6854.24,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-14
+BRK-00384,CARD_SCHEME,2026-08-12,VALUE_DATE_MISMATCH,1141.28,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-14
+BRK-00385,SWIFT_PAYMENTS,2026-08-12,MISSING_ENTRY,104743.47,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-14
+BRK-00386,NOSTRO_USD,2026-08-13,AMOUNT_MISMATCH,48804.92,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-15
+BRK-00387,NOSTRO_USD,2026-08-13,FX_DIFFERENCE,190582.39,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-14
+BRK-00388,NOSTRO_EUR,2026-08-13,MISSING_ENTRY,42714.25,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-16
+BRK-00389,GL_SUBLEDGER,2026-08-13,VALUE_DATE_MISMATCH,131596.73,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-08-14
+BRK-00390,SWIFT_PAYMENTS,2026-08-13,FX_DIFFERENCE,8261.3,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-17
+BRK-00391,NOSTRO_USD,2026-08-14,FX_DIFFERENCE,80810.74,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-15
+BRK-00392,NOSTRO_USD,2026-08-14,FX_DIFFERENCE,15294.72,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-15
+BRK-00393,NOSTRO_EUR,2026-08-14,FX_DIFFERENCE,10881.25,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-16
+BRK-00394,NOSTRO_EUR,2026-08-14,DUPLICATE,8104.65,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-18
+BRK-00395,GL_SUBLEDGER,2026-08-14,DUPLICATE,90587.39,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-08-15
+BRK-00396,CARD_SCHEME,2026-08-14,VALUE_DATE_MISMATCH,4249.2,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-16
+BRK-00397,CARD_SCHEME,2026-08-14,MISSING_ENTRY,12882.91,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-16
+BRK-00398,SWIFT_PAYMENTS,2026-08-14,MISSING_ENTRY,37208.42,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-16
+BRK-00399,NOSTRO_EUR,2026-08-17,AMOUNT_MISMATCH,15938.5,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-03
+BRK-00400,NOSTRO_EUR,2026-08-17,MISSING_ENTRY,49510.43,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-26
+BRK-00401,NOSTRO_EUR,2026-08-17,MISSING_ENTRY,95153.77,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-18
+BRK-00402,NOSTRO_GBP,2026-08-17,FX_DIFFERENCE,60896.5,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-25
+BRK-00403,NOSTRO_GBP,2026-08-17,AMOUNT_MISMATCH,14583.78,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-20
+BRK-00404,GL_SUBLEDGER,2026-08-17,AMOUNT_MISMATCH,246261.03,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-08-24
+BRK-00405,GL_SUBLEDGER,2026-08-17,VALUE_DATE_MISMATCH,47090.84,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-08-23
+BRK-00406,CARD_SCHEME,2026-08-17,DUPLICATE,9024.64,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-18
+BRK-00407,CARD_SCHEME,2026-08-17,AMOUNT_MISMATCH,2894.87,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-19
+BRK-00408,CARD_SCHEME,2026-08-17,VALUE_DATE_MISMATCH,9582.29,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-19
+BRK-00409,NOSTRO_USD,2026-08-18,AMOUNT_MISMATCH,21683.65,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-21
+BRK-00410,NOSTRO_EUR,2026-08-18,FX_DIFFERENCE,3802.22,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-20
+BRK-00411,NOSTRO_EUR,2026-08-18,AMOUNT_MISMATCH,122239.77,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-21
+BRK-00412,NOSTRO_GBP,2026-08-18,AMOUNT_MISMATCH,39887.98,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-19
+BRK-00413,GL_SUBLEDGER,2026-08-18,VALUE_DATE_MISMATCH,96775.72,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-08-19
+BRK-00414,GL_SUBLEDGER,2026-08-18,VALUE_DATE_MISMATCH,118715.77,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-08-22
+BRK-00415,CARD_SCHEME,2026-08-18,DUPLICATE,2200.23,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-21
+BRK-00416,CARD_SCHEME,2026-08-18,DUPLICATE,14197.47,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-19
+BRK-00417,CARD_SCHEME,2026-08-18,VALUE_DATE_MISMATCH,1448.74,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-21
+BRK-00418,SWIFT_PAYMENTS,2026-08-18,AMOUNT_MISMATCH,68553.58,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-19
+BRK-00419,NOSTRO_USD,2026-08-19,AMOUNT_MISMATCH,14486.63,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-21
+BRK-00420,NOSTRO_USD,2026-08-19,AMOUNT_MISMATCH,16358.56,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-20
+BRK-00421,NOSTRO_USD,2026-08-19,MISSING_ENTRY,108049.05,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-23
+BRK-00422,NOSTRO_USD,2026-08-19,FX_DIFFERENCE,82287.08,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-23
+BRK-00423,CARD_SCHEME,2026-08-19,AMOUNT_MISMATCH,3338.82,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-20
+BRK-00424,CARD_SCHEME,2026-08-19,MISSING_ENTRY,709.79,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-20
+BRK-00425,CARD_SCHEME,2026-08-19,VALUE_DATE_MISMATCH,3526.61,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-20
+BRK-00426,CARD_SCHEME,2026-08-19,AMOUNT_MISMATCH,5025.4,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-20
+BRK-00427,CARD_SCHEME,2026-08-19,MISSING_ENTRY,6322.08,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-20
+BRK-00428,SWIFT_PAYMENTS,2026-08-19,MISSING_ENTRY,26008.78,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-22
+BRK-00429,SWIFT_PAYMENTS,2026-08-19,VALUE_DATE_MISMATCH,16232.46,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-08-24
+BRK-00430,SWIFT_PAYMENTS,2026-08-19,MISSING_ENTRY,5245.87,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-21
+BRK-00431,NOSTRO_USD,2026-08-20,MISSING_ENTRY,74630.18,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-21
+BRK-00432,NOSTRO_GBP,2026-08-20,MISSING_ENTRY,136712.78,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-24
+BRK-00433,GL_SUBLEDGER,2026-08-20,MISSING_ENTRY,37852.61,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-08-22
+BRK-00434,CARD_SCHEME,2026-08-20,AMOUNT_MISMATCH,7710.45,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-21
+BRK-00435,CARD_SCHEME,2026-08-20,MISSING_ENTRY,6207.39,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-24
+BRK-00436,SWIFT_PAYMENTS,2026-08-20,DUPLICATE,5863.57,Duplicate posting in one system,Payments Operations,RESOLVED,2026-08-25
+BRK-00437,SWIFT_PAYMENTS,2026-08-20,DUPLICATE,138521.91,Duplicate posting in one system,Payments Operations,RESOLVED,2026-08-23
+BRK-00438,SWIFT_PAYMENTS,2026-08-20,VALUE_DATE_MISMATCH,19042.97,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-08-21
+BRK-00439,NOSTRO_EUR,2026-08-21,FX_DIFFERENCE,63463.57,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00440,GL_SUBLEDGER,2026-08-21,AMOUNT_MISMATCH,66794.48,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-08
+BRK-00441,GL_SUBLEDGER,2026-08-21,DUPLICATE,138487.68,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-08-30
+BRK-00442,CARD_SCHEME,2026-08-21,VALUE_DATE_MISMATCH,2834.9,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-25
+BRK-00443,SWIFT_PAYMENTS,2026-08-21,VALUE_DATE_MISMATCH,46210.79,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-08-23
+BRK-00444,NOSTRO_EUR,2026-08-24,FX_DIFFERENCE,16729.06,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-26
+BRK-00445,NOSTRO_EUR,2026-08-24,AMOUNT_MISMATCH,167853.75,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-25
+BRK-00446,NOSTRO_EUR,2026-08-24,DUPLICATE,47769.05,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-08-25
+BRK-00447,NOSTRO_GBP,2026-08-24,FX_DIFFERENCE,16850.35,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-26
+BRK-00448,CARD_SCHEME,2026-08-24,MISSING_ENTRY,12837.78,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-17
+BRK-00449,CARD_SCHEME,2026-08-24,DUPLICATE,6961.63,Duplicate posting in one system,Cards Operations,RESOLVED,2026-08-25
+BRK-00450,CARD_SCHEME,2026-08-24,FX_DIFFERENCE,2448.58,FX rate difference on conversion,Cards Operations,RESOLVED,2026-08-25
+BRK-00451,NOSTRO_EUR,2026-08-25,AMOUNT_MISMATCH,18832.73,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-29
+BRK-00452,NOSTRO_EUR,2026-08-25,AMOUNT_MISMATCH,54780.62,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-29
+BRK-00453,NOSTRO_EUR,2026-08-25,FX_DIFFERENCE,101782.71,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-27
+BRK-00454,CARD_SCHEME,2026-08-25,MISSING_ENTRY,2131.54,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-26
+BRK-00455,CARD_SCHEME,2026-08-25,FX_DIFFERENCE,2177.69,FX rate difference on conversion,Cards Operations,RESOLVED,2026-09-17
+BRK-00456,CARD_SCHEME,2026-08-25,MISSING_ENTRY,21094.9,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-28
+BRK-00457,CARD_SCHEME,2026-08-25,MISSING_ENTRY,7232.08,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-08-26
+BRK-00458,SWIFT_PAYMENTS,2026-08-25,FX_DIFFERENCE,21424.3,FX rate difference on conversion,Payments Operations,RESOLVED,2026-08-27
+BRK-00459,SWIFT_PAYMENTS,2026-08-25,AMOUNT_MISMATCH,161018.18,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-28
+BRK-00460,SWIFT_PAYMENTS,2026-08-25,MISSING_ENTRY,12077.11,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-27
+BRK-00461,NOSTRO_USD,2026-08-26,FX_DIFFERENCE,88238.02,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00462,NOSTRO_USD,2026-08-26,MISSING_ENTRY,26644.69,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00463,NOSTRO_USD,2026-08-26,AMOUNT_MISMATCH,95930.09,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00464,NOSTRO_USD,2026-08-26,VALUE_DATE_MISMATCH,46767.68,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-08-27
+BRK-00465,NOSTRO_EUR,2026-08-26,AMOUNT_MISMATCH,230579.13,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-28
+BRK-00466,NOSTRO_EUR,2026-08-26,AMOUNT_MISMATCH,37465.69,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-27
+BRK-00467,NOSTRO_GBP,2026-08-26,FX_DIFFERENCE,10559.91,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-08-27
+BRK-00468,CARD_SCHEME,2026-08-26,AMOUNT_MISMATCH,4834.77,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-28
+BRK-00469,CARD_SCHEME,2026-08-26,VALUE_DATE_MISMATCH,987.66,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-27
+BRK-00470,CARD_SCHEME,2026-08-26,AMOUNT_MISMATCH,2400.99,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-27
+BRK-00471,CARD_SCHEME,2026-08-26,VALUE_DATE_MISMATCH,12001.3,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-08-28
+BRK-00472,NOSTRO_USD,2026-08-27,AMOUNT_MISMATCH,91660.04,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-08-29
+BRK-00473,CARD_SCHEME,2026-08-27,FX_DIFFERENCE,7600.29,FX rate difference on conversion,Cards Operations,RESOLVED,2026-08-29
+BRK-00474,CARD_SCHEME,2026-08-27,FX_DIFFERENCE,2154.01,FX rate difference on conversion,Cards Operations,RESOLVED,2026-08-28
+BRK-00475,SWIFT_PAYMENTS,2026-08-27,MISSING_ENTRY,24101.26,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-08-30
+BRK-00476,NOSTRO_USD,2026-08-28,AMOUNT_MISMATCH,7154.56,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-06
+BRK-00477,NOSTRO_EUR,2026-08-28,MISSING_ENTRY,22967.45,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-02
+BRK-00478,NOSTRO_GBP,2026-08-28,MISSING_ENTRY,56381.57,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-08-29
+BRK-00479,GL_SUBLEDGER,2026-08-28,DUPLICATE,919808.18,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-09-04
+BRK-00480,CARD_SCHEME,2026-08-28,AMOUNT_MISMATCH,6313.82,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-08-29
+BRK-00481,SWIFT_PAYMENTS,2026-08-28,AMOUNT_MISMATCH,100484.8,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-08-29
+BRK-00482,NOSTRO_USD,2026-08-31,MISSING_ENTRY,88589.19,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-01
+BRK-00483,NOSTRO_USD,2026-08-31,AMOUNT_MISMATCH,102947.68,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-02
+BRK-00484,NOSTRO_USD,2026-08-31,VALUE_DATE_MISMATCH,99397.08,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-05
+BRK-00485,NOSTRO_USD,2026-08-31,MISSING_ENTRY,54286.22,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-02
+BRK-00486,NOSTRO_EUR,2026-08-31,AMOUNT_MISMATCH,16229.23,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-03
+BRK-00487,NOSTRO_EUR,2026-08-31,AMOUNT_MISMATCH,32799.43,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-03
+BRK-00488,NOSTRO_GBP,2026-08-31,VALUE_DATE_MISMATCH,60025.61,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-01
+BRK-00489,NOSTRO_GBP,2026-08-31,VALUE_DATE_MISMATCH,72297.94,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-06
+BRK-00490,CARD_SCHEME,2026-08-31,VALUE_DATE_MISMATCH,7147.96,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-03
+BRK-00491,SWIFT_PAYMENTS,2026-08-31,MISSING_ENTRY,3423.78,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-01
+BRK-00492,NOSTRO_EUR,2026-09-01,VALUE_DATE_MISMATCH,73829.71,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-02
+BRK-00493,NOSTRO_EUR,2026-09-01,MISSING_ENTRY,197142.48,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-03
+BRK-00494,NOSTRO_GBP,2026-09-01,AMOUNT_MISMATCH,18559.05,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-02
+BRK-00495,SWIFT_PAYMENTS,2026-09-01,AMOUNT_MISMATCH,63315.68,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-04
+BRK-00496,SWIFT_PAYMENTS,2026-09-01,VALUE_DATE_MISMATCH,10175.65,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-03
+BRK-00497,NOSTRO_USD,2026-09-02,VALUE_DATE_MISMATCH,27359.19,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-09
+BRK-00498,NOSTRO_USD,2026-09-02,MISSING_ENTRY,136414.33,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-03
+BRK-00499,NOSTRO_USD,2026-09-02,FX_DIFFERENCE,230451.12,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-06
+BRK-00500,NOSTRO_USD,2026-09-02,MISSING_ENTRY,183108.27,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-05
+BRK-00501,NOSTRO_EUR,2026-09-02,MISSING_ENTRY,19489.28,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-04
+BRK-00502,GL_SUBLEDGER,2026-09-02,DUPLICATE,28989.0,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-09-09
+BRK-00503,GL_SUBLEDGER,2026-09-02,VALUE_DATE_MISMATCH,85965.51,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-09-04
+BRK-00504,NOSTRO_EUR,2026-09-03,FX_DIFFERENCE,212489.93,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-08
+BRK-00505,NOSTRO_EUR,2026-09-03,MISSING_ENTRY,248192.11,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-05
+BRK-00506,NOSTRO_EUR,2026-09-03,MISSING_ENTRY,56180.55,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-06
+BRK-00507,NOSTRO_GBP,2026-09-03,MISSING_ENTRY,56471.56,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-07
+BRK-00508,GL_SUBLEDGER,2026-09-03,MISSING_ENTRY,34157.04,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-09-04
+BRK-00509,GL_SUBLEDGER,2026-09-03,AMOUNT_MISMATCH,462171.06,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-08
+BRK-00510,CARD_SCHEME,2026-09-03,MISSING_ENTRY,3934.15,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-05
+BRK-00511,CARD_SCHEME,2026-09-03,MISSING_ENTRY,1467.17,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-04
+BRK-00512,NOSTRO_USD,2026-09-04,DUPLICATE,28016.73,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-06
+BRK-00513,NOSTRO_EUR,2026-09-04,AMOUNT_MISMATCH,51969.22,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-07
+BRK-00514,NOSTRO_EUR,2026-09-04,DUPLICATE,12347.19,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-08
+BRK-00515,NOSTRO_EUR,2026-09-04,AMOUNT_MISMATCH,158668.75,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-05
+BRK-00516,NOSTRO_GBP,2026-09-04,MISSING_ENTRY,20877.12,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-05
+BRK-00517,CARD_SCHEME,2026-09-04,AMOUNT_MISMATCH,9660.04,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-07
+BRK-00518,CARD_SCHEME,2026-09-04,MISSING_ENTRY,2376.88,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-05
+BRK-00519,CARD_SCHEME,2026-09-04,AMOUNT_MISMATCH,2081.56,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-10
+BRK-00520,CARD_SCHEME,2026-09-04,MISSING_ENTRY,6959.25,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-07
+BRK-00521,NOSTRO_EUR,2026-09-07,VALUE_DATE_MISMATCH,28875.23,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-08
+BRK-00522,GL_SUBLEDGER,2026-09-07,AMOUNT_MISMATCH,136063.64,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-08
+BRK-00523,CARD_SCHEME,2026-09-07,VALUE_DATE_MISMATCH,5940.12,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-09
+BRK-00524,CARD_SCHEME,2026-09-07,MISSING_ENTRY,12151.07,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-09
+BRK-00525,CARD_SCHEME,2026-09-07,AMOUNT_MISMATCH,2316.28,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-17
+BRK-00526,CARD_SCHEME,2026-09-07,VALUE_DATE_MISMATCH,3486.12,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-09
+BRK-00527,CARD_SCHEME,2026-09-07,AMOUNT_MISMATCH,7638.91,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-08
+BRK-00528,SWIFT_PAYMENTS,2026-09-07,VALUE_DATE_MISMATCH,40788.08,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-09
+BRK-00529,NOSTRO_USD,2026-09-08,FX_DIFFERENCE,83571.4,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-10
+BRK-00530,NOSTRO_EUR,2026-09-08,VALUE_DATE_MISMATCH,10083.64,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00531,NOSTRO_EUR,2026-09-08,AMOUNT_MISMATCH,61392.35,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-11
+BRK-00532,NOSTRO_GBP,2026-09-08,FX_DIFFERENCE,19027.12,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-11
+BRK-00533,NOSTRO_GBP,2026-09-08,AMOUNT_MISMATCH,25865.58,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-10
+BRK-00534,CARD_SCHEME,2026-09-08,MISSING_ENTRY,1381.06,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-09
+BRK-00535,CARD_SCHEME,2026-09-08,VALUE_DATE_MISMATCH,3835.06,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-09
+BRK-00536,CARD_SCHEME,2026-09-08,DUPLICATE,1451.45,Duplicate posting in one system,Cards Operations,RESOLVED,2026-09-12
+BRK-00537,SWIFT_PAYMENTS,2026-09-08,MISSING_ENTRY,11242.39,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-11
+BRK-00538,NOSTRO_USD,2026-09-09,MISSING_ENTRY,61705.38,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-14
+BRK-00539,NOSTRO_USD,2026-09-09,AMOUNT_MISMATCH,44763.85,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-10
+BRK-00540,CARD_SCHEME,2026-09-09,MISSING_ENTRY,1090.68,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-12
+BRK-00541,SWIFT_PAYMENTS,2026-09-09,FX_DIFFERENCE,14592.81,FX rate difference on conversion,Payments Operations,RESOLVED,2026-09-11
+BRK-00542,NOSTRO_USD,2026-09-10,VALUE_DATE_MISMATCH,108059.34,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-13
+BRK-00543,NOSTRO_EUR,2026-09-10,MISSING_ENTRY,12793.89,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-11
+BRK-00544,CARD_SCHEME,2026-09-10,VALUE_DATE_MISMATCH,7037.92,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-11
+BRK-00545,SWIFT_PAYMENTS,2026-09-10,MISSING_ENTRY,5160.55,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-11
+BRK-00546,SWIFT_PAYMENTS,2026-09-10,VALUE_DATE_MISMATCH,12695.2,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-12
+BRK-00547,SWIFT_PAYMENTS,2026-09-10,VALUE_DATE_MISMATCH,26176.41,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-11
+BRK-00548,NOSTRO_EUR,2026-09-11,MISSING_ENTRY,29093.35,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00549,NOSTRO_GBP,2026-09-11,AMOUNT_MISMATCH,70473.93,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-12
+BRK-00550,NOSTRO_GBP,2026-09-11,MISSING_ENTRY,64813.76,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-12
+BRK-00551,GL_SUBLEDGER,2026-09-11,AMOUNT_MISMATCH,176164.35,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-21
+BRK-00552,SWIFT_PAYMENTS,2026-09-11,MISSING_ENTRY,15292.97,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-15
+BRK-00553,SWIFT_PAYMENTS,2026-09-11,AMOUNT_MISMATCH,9573.84,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-13
+BRK-00554,NOSTRO_USD,2026-09-14,MISSING_ENTRY,34475.67,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00555,NOSTRO_EUR,2026-09-14,VALUE_DATE_MISMATCH,15757.83,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00556,NOSTRO_GBP,2026-09-14,MISSING_ENTRY,16496.44,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00557,NOSTRO_GBP,2026-09-14,MISSING_ENTRY,68735.51,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-15
+BRK-00558,GL_SUBLEDGER,2026-09-14,AMOUNT_MISMATCH,36564.74,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-16
+BRK-00559,CARD_SCHEME,2026-09-14,VALUE_DATE_MISMATCH,3091.19,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-18
+BRK-00560,SWIFT_PAYMENTS,2026-09-14,MISSING_ENTRY,77037.12,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-18
+BRK-00561,NOSTRO_USD,2026-09-15,MISSING_ENTRY,77281.68,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-16
+BRK-00562,NOSTRO_USD,2026-09-15,MISSING_ENTRY,37798.64,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-16
+BRK-00563,NOSTRO_USD,2026-09-15,MISSING_ENTRY,36030.97,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-16
+BRK-00564,NOSTRO_USD,2026-09-15,AMOUNT_MISMATCH,86041.31,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-30
+BRK-00565,NOSTRO_USD,2026-09-15,DUPLICATE,88923.7,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-21
+BRK-00566,NOSTRO_USD,2026-09-15,MISSING_ENTRY,10519.28,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00567,NOSTRO_EUR,2026-09-15,MISSING_ENTRY,50976.24,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-17
+BRK-00568,NOSTRO_GBP,2026-09-15,AMOUNT_MISMATCH,15415.54,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-17
+BRK-00569,NOSTRO_GBP,2026-09-15,MISSING_ENTRY,31604.54,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00570,CARD_SCHEME,2026-09-15,AMOUNT_MISMATCH,7326.9,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-26
+BRK-00571,CARD_SCHEME,2026-09-15,MISSING_ENTRY,12083.5,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-19
+BRK-00572,NOSTRO_EUR,2026-09-16,MISSING_ENTRY,9068.12,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00573,NOSTRO_GBP,2026-09-16,MISSING_ENTRY,46808.89,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00574,NOSTRO_GBP,2026-09-16,AMOUNT_MISMATCH,43628.31,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-17
+BRK-00575,GL_SUBLEDGER,2026-09-16,AMOUNT_MISMATCH,177278.21,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-19
+BRK-00576,GL_SUBLEDGER,2026-09-16,VALUE_DATE_MISMATCH,33426.57,Value date differs between statement and ledger,Finance Reconciliations,RESOLVED,2026-09-24
+BRK-00577,CARD_SCHEME,2026-09-16,DUPLICATE,7374.09,Duplicate posting in one system,Cards Operations,RESOLVED,2026-09-18
+BRK-00578,SWIFT_PAYMENTS,2026-09-16,VALUE_DATE_MISMATCH,3266.87,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-18
+BRK-00579,NOSTRO_USD,2026-09-17,FX_DIFFERENCE,292854.88,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00580,NOSTRO_USD,2026-09-17,DUPLICATE,226212.78,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-20
+BRK-00581,NOSTRO_USD,2026-09-17,VALUE_DATE_MISMATCH,30055.96,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00582,NOSTRO_USD,2026-09-17,AMOUNT_MISMATCH,255302.59,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00583,NOSTRO_EUR,2026-09-17,MISSING_ENTRY,32038.1,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00584,NOSTRO_EUR,2026-09-17,DUPLICATE,180773.24,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00585,NOSTRO_EUR,2026-09-17,MISSING_ENTRY,6346.76,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-20
+BRK-00586,NOSTRO_GBP,2026-09-17,FX_DIFFERENCE,46313.22,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00587,NOSTRO_GBP,2026-09-17,FX_DIFFERENCE,166077.7,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-18
+BRK-00588,GL_SUBLEDGER,2026-09-17,MISSING_ENTRY,132699.82,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-09-18
+BRK-00589,GL_SUBLEDGER,2026-09-17,AMOUNT_MISMATCH,126292.38,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-10-04
+BRK-00590,CARD_SCHEME,2026-09-17,AMOUNT_MISMATCH,8710.2,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-19
+BRK-00591,CARD_SCHEME,2026-09-17,MISSING_ENTRY,1067.62,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-19
+BRK-00592,CARD_SCHEME,2026-09-17,DUPLICATE,6030.61,Duplicate posting in one system,Cards Operations,RESOLVED,2026-09-19
+BRK-00593,SWIFT_PAYMENTS,2026-09-17,MISSING_ENTRY,11049.33,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-21
+BRK-00594,NOSTRO_USD,2026-09-18,VALUE_DATE_MISMATCH,54401.7,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00595,NOSTRO_GBP,2026-09-18,AMOUNT_MISMATCH,6084.01,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-19
+BRK-00596,CARD_SCHEME,2026-09-18,AMOUNT_MISMATCH,2358.92,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-19
+BRK-00597,CARD_SCHEME,2026-09-18,MISSING_ENTRY,9878.95,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-25
+BRK-00598,NOSTRO_USD,2026-09-21,VALUE_DATE_MISMATCH,66579.58,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-22
+BRK-00599,NOSTRO_USD,2026-09-21,AMOUNT_MISMATCH,18136.52,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-25
+BRK-00600,NOSTRO_GBP,2026-09-21,MISSING_ENTRY,132524.68,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-22
+BRK-00601,CARD_SCHEME,2026-09-21,AMOUNT_MISMATCH,1843.33,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-24
+BRK-00602,CARD_SCHEME,2026-09-21,FX_DIFFERENCE,19812.51,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-04
+BRK-00603,CARD_SCHEME,2026-09-21,AMOUNT_MISMATCH,1701.58,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-23
+BRK-00604,NOSTRO_USD,2026-09-22,MISSING_ENTRY,18084.8,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-23
+BRK-00605,NOSTRO_USD,2026-09-22,DUPLICATE,185219.05,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-09-24
+BRK-00606,NOSTRO_USD,2026-09-22,MISSING_ENTRY,45134.2,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-25
+BRK-00607,NOSTRO_EUR,2026-09-22,FX_DIFFERENCE,60380.87,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-25
+BRK-00608,NOSTRO_GBP,2026-09-22,MISSING_ENTRY,29634.13,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-23
+BRK-00609,GL_SUBLEDGER,2026-09-22,AMOUNT_MISMATCH,155146.19,Charges deducted by intermediary bank,Finance Reconciliations,RESOLVED,2026-09-24
+BRK-00610,GL_SUBLEDGER,2026-09-22,MISSING_ENTRY,123810.18,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-09-26
+BRK-00611,SWIFT_PAYMENTS,2026-09-22,MISSING_ENTRY,55783.94,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-25
+BRK-00612,NOSTRO_USD,2026-09-23,VALUE_DATE_MISMATCH,33915.93,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-27
+BRK-00613,NOSTRO_USD,2026-09-23,AMOUNT_MISMATCH,11377.01,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-24
+BRK-00614,NOSTRO_EUR,2026-09-23,AMOUNT_MISMATCH,14241.85,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-28
+BRK-00615,NOSTRO_GBP,2026-09-23,MISSING_ENTRY,7832.6,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-29
+BRK-00616,GL_SUBLEDGER,2026-09-23,FX_DIFFERENCE,170733.74,FX rate difference on conversion,Finance Reconciliations,RESOLVED,2026-09-24
+BRK-00617,CARD_SCHEME,2026-09-23,VALUE_DATE_MISMATCH,12972.05,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-09-25
+BRK-00618,SWIFT_PAYMENTS,2026-09-23,AMOUNT_MISMATCH,33265.95,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-29
+BRK-00619,SWIFT_PAYMENTS,2026-09-23,VALUE_DATE_MISMATCH,26950.9,Value date differs between statement and ledger,Payments Operations,RESOLVED,2026-09-25
+BRK-00620,SWIFT_PAYMENTS,2026-09-23,FX_DIFFERENCE,172042.87,FX rate difference on conversion,Payments Operations,RESOLVED,2026-09-26
+BRK-00621,NOSTRO_USD,2026-09-24,MISSING_ENTRY,176733.13,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-28
+BRK-00622,NOSTRO_EUR,2026-09-24,AMOUNT_MISMATCH,36092.38,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-26
+BRK-00623,CARD_SCHEME,2026-09-24,FX_DIFFERENCE,1006.49,FX rate difference on conversion,Cards Operations,RESOLVED,2026-09-29
+BRK-00624,SWIFT_PAYMENTS,2026-09-24,AMOUNT_MISMATCH,22693.93,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-28
+BRK-00625,SWIFT_PAYMENTS,2026-09-24,FX_DIFFERENCE,57905.02,FX rate difference on conversion,Payments Operations,RESOLVED,2026-09-25
+BRK-00626,NOSTRO_USD,2026-09-25,MISSING_ENTRY,120588.53,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-27
+BRK-00627,NOSTRO_EUR,2026-09-25,VALUE_DATE_MISMATCH,88145.93,Value date differs between statement and ledger,Cash Reconciliations,RESOLVED,2026-09-26
+BRK-00628,NOSTRO_EUR,2026-09-25,AMOUNT_MISMATCH,12695.8,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-29
+BRK-00629,CARD_SCHEME,2026-09-25,AMOUNT_MISMATCH,1577.25,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-28
+BRK-00630,CARD_SCHEME,2026-09-25,AMOUNT_MISMATCH,2311.3,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-04
+BRK-00631,CARD_SCHEME,2026-09-25,AMOUNT_MISMATCH,2469.9,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-09-28
+BRK-00632,CARD_SCHEME,2026-09-25,MISSING_ENTRY,8359.2,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-09-28
+BRK-00633,SWIFT_PAYMENTS,2026-09-25,MISSING_ENTRY,156729.2,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-26
+BRK-00634,NOSTRO_USD,2026-09-28,MISSING_ENTRY,57350.3,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-09-30
+BRK-00635,NOSTRO_EUR,2026-09-28,AMOUNT_MISMATCH,99785.25,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-04
+BRK-00636,NOSTRO_EUR,2026-09-28,MISSING_ENTRY,29461.68,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00637,NOSTRO_EUR,2026-09-28,AMOUNT_MISMATCH,12676.12,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-29
+BRK-00638,NOSTRO_EUR,2026-09-28,MISSING_ENTRY,95418.46,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-02
+BRK-00639,NOSTRO_EUR,2026-09-28,AMOUNT_MISMATCH,104245.85,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-29
+BRK-00640,CARD_SCHEME,2026-09-28,MISSING_ENTRY,5321.23,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-10-01
+BRK-00641,CARD_SCHEME,2026-09-28,DUPLICATE,17131.67,Duplicate posting in one system,Cards Operations,RESOLVED,2026-09-29
+BRK-00642,SWIFT_PAYMENTS,2026-09-28,AMOUNT_MISMATCH,97880.41,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-30
+BRK-00643,NOSTRO_USD,2026-09-29,FX_DIFFERENCE,22344.26,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-10-01
+BRK-00644,NOSTRO_USD,2026-09-29,FX_DIFFERENCE,122080.33,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-30
+BRK-00645,NOSTRO_USD,2026-09-29,FX_DIFFERENCE,39142.01,FX rate difference on conversion,Cash Reconciliations,RESOLVED,2026-09-30
+BRK-00646,NOSTRO_USD,2026-09-29,AMOUNT_MISMATCH,95788.01,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-09-30
+BRK-00647,NOSTRO_GBP,2026-09-29,MISSING_ENTRY,3902.98,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00648,NOSTRO_GBP,2026-09-29,MISSING_ENTRY,18214.93,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-01
+BRK-00649,GL_SUBLEDGER,2026-09-29,MISSING_ENTRY,87053.41,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-10-05
+BRK-00650,GL_SUBLEDGER,2026-09-29,MISSING_ENTRY,322109.55,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-10-03
+BRK-00651,GL_SUBLEDGER,2026-09-29,AMOUNT_MISMATCH,113581.17,Charges deducted by intermediary bank,Finance Reconciliations,OPEN,
+BRK-00652,CARD_SCHEME,2026-09-29,VALUE_DATE_MISMATCH,36913.27,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-10-02
+BRK-00653,CARD_SCHEME,2026-09-29,FX_DIFFERENCE,14100.35,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-07
+BRK-00654,SWIFT_PAYMENTS,2026-09-29,MISSING_ENTRY,15316.69,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-09-30
+BRK-00655,SWIFT_PAYMENTS,2026-09-29,AMOUNT_MISMATCH,22355.79,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-09-30
+BRK-00656,NOSTRO_USD,2026-09-30,AMOUNT_MISMATCH,39743.12,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-02
+BRK-00657,NOSTRO_EUR,2026-09-30,AMOUNT_MISMATCH,15162.56,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-02
+BRK-00658,NOSTRO_EUR,2026-09-30,VALUE_DATE_MISMATCH,13533.52,Value date differs between statement and ledger,Cash Reconciliations,OPEN,
+BRK-00659,GL_SUBLEDGER,2026-09-30,DUPLICATE,168224.77,Duplicate posting in one system,Finance Reconciliations,RESOLVED,2026-10-05
+BRK-00660,CARD_SCHEME,2026-09-30,VALUE_DATE_MISMATCH,4629.96,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-10-06
+BRK-00661,CARD_SCHEME,2026-09-30,DUPLICATE,6037.32,Duplicate posting in one system,Cards Operations,OPEN,
+BRK-00662,CARD_SCHEME,2026-09-30,AMOUNT_MISMATCH,9511.21,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-09
+BRK-00663,SWIFT_PAYMENTS,2026-09-30,AMOUNT_MISMATCH,46913.74,Charges deducted by intermediary bank,Payments Operations,RESOLVED,2026-10-01
+BRK-00664,NOSTRO_USD,2026-10-01,DUPLICATE,18404.12,Duplicate posting in one system,Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00665,NOSTRO_USD,2026-10-01,MISSING_ENTRY,17072.31,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-02
+BRK-00666,NOSTRO_EUR,2026-10-01,MISSING_ENTRY,13365.36,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-05
+BRK-00667,NOSTRO_EUR,2026-10-01,AMOUNT_MISMATCH,65273.39,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-02
+BRK-00668,CARD_SCHEME,2026-10-01,FX_DIFFERENCE,4646.12,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-02
+BRK-00669,CARD_SCHEME,2026-10-01,MISSING_ENTRY,2814.6,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-10-02
+BRK-00670,CARD_SCHEME,2026-10-01,FX_DIFFERENCE,20095.15,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-04
+BRK-00671,CARD_SCHEME,2026-10-01,VALUE_DATE_MISMATCH,5969.86,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-10-03
+BRK-00672,CARD_SCHEME,2026-10-01,AMOUNT_MISMATCH,7983.62,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-04
+BRK-00673,SWIFT_PAYMENTS,2026-10-01,MISSING_ENTRY,27308.65,"Entry booked by correspondent, not yet booked internally",Payments Operations,OPEN,
+BRK-00674,NOSTRO_USD,2026-10-02,AMOUNT_MISMATCH,30279.16,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-03
+BRK-00675,NOSTRO_USD,2026-10-02,MISSING_ENTRY,73011.32,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-05
+BRK-00676,NOSTRO_USD,2026-10-02,MISSING_ENTRY,91212.18,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-03
+BRK-00677,NOSTRO_GBP,2026-10-02,AMOUNT_MISMATCH,50977.1,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00678,GL_SUBLEDGER,2026-10-02,MISSING_ENTRY,400851.84,"Entry booked by correspondent, not yet booked internally",Finance Reconciliations,RESOLVED,2026-10-05
+BRK-00679,CARD_SCHEME,2026-10-02,AMOUNT_MISMATCH,2962.32,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-04
+BRK-00680,CARD_SCHEME,2026-10-02,FX_DIFFERENCE,1992.06,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-04
+BRK-00681,CARD_SCHEME,2026-10-02,MISSING_ENTRY,35093.64,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-10-03
+BRK-00682,CARD_SCHEME,2026-10-02,FX_DIFFERENCE,1818.96,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-03
+BRK-00683,CARD_SCHEME,2026-10-02,MISSING_ENTRY,4116.16,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-10-03
+BRK-00684,CARD_SCHEME,2026-10-02,AMOUNT_MISMATCH,5814.6,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-04
+BRK-00685,SWIFT_PAYMENTS,2026-10-02,MISSING_ENTRY,25504.93,"Entry booked by correspondent, not yet booked internally",Payments Operations,OPEN,
+BRK-00686,NOSTRO_EUR,2026-10-05,MISSING_ENTRY,370756.51,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-06
+BRK-00687,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,28388.01,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-06
+BRK-00688,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,86350.28,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00689,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,43209.67,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00690,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,136041.68,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00691,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,72560.82,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00692,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,42243.32,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00693,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,100438.4,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00694,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,41409.84,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00695,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,92173.99,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00696,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,52264.4,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00697,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,16134.6,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00698,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,34974.49,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-08
+BRK-00699,NOSTRO_EUR,2026-10-05,VALUE_DATE_MISMATCH,8900.74,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00700,NOSTRO_GBP,2026-10-05,AMOUNT_MISMATCH,60189.81,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-06
+BRK-00701,CARD_SCHEME,2026-10-05,MISSING_ENTRY,791.14,"Entry booked by correspondent, not yet booked internally",Cards Operations,RESOLVED,2026-10-06
+BRK-00702,CARD_SCHEME,2026-10-05,AMOUNT_MISMATCH,977.76,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-06
+BRK-00703,SWIFT_PAYMENTS,2026-10-05,FX_DIFFERENCE,18599.01,FX rate difference on conversion,Payments Operations,RESOLVED,2026-10-06
+BRK-00704,NOSTRO_USD,2026-10-06,MISSING_ENTRY,38844.03,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00705,NOSTRO_EUR,2026-10-06,AMOUNT_MISMATCH,76885.03,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00706,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,13737.03,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00707,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,22232.63,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00708,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,25007.6,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00709,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,31687.45,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00710,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,65427.38,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00711,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,162151.88,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00712,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,26326.37,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00713,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,42232.05,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00714,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,25302.68,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00715,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,53232.63,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00716,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,11152.61,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00717,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,12311.42,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00718,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,72891.79,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00719,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,74322.72,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00720,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,94427.88,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00721,NOSTRO_EUR,2026-10-06,VALUE_DATE_MISMATCH,162822.97,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00722,NOSTRO_GBP,2026-10-06,MISSING_ENTRY,8492.57,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-07
+BRK-00723,NOSTRO_GBP,2026-10-06,MISSING_ENTRY,29193.1,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,RESOLVED,2026-10-08
+BRK-00724,GL_SUBLEDGER,2026-10-06,AMOUNT_MISMATCH,240545.94,Charges deducted by intermediary bank,Finance Reconciliations,OPEN,
+BRK-00725,CARD_SCHEME,2026-10-06,VALUE_DATE_MISMATCH,8130.98,Value date differs between statement and ledger,Cards Operations,RESOLVED,2026-10-07
+BRK-00726,CARD_SCHEME,2026-10-06,DUPLICATE,6360.86,Duplicate posting in one system,Cards Operations,RESOLVED,2026-10-07
+BRK-00727,SWIFT_PAYMENTS,2026-10-06,FX_DIFFERENCE,11323.29,FX rate difference on conversion,Payments Operations,RESOLVED,2026-10-07
+BRK-00728,NOSTRO_USD,2026-10-07,DUPLICATE,18593.29,Duplicate posting in one system,Cash Reconciliations,OPEN,
+BRK-00729,NOSTRO_USD,2026-10-07,MISSING_ENTRY,63173.93,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00730,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,34663.25,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00731,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,41238.93,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00732,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,105623.99,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-08
+BRK-00733,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,21151.48,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00734,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,46140.46,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-08
+BRK-00735,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,16191.77,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00736,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,67111.3,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00737,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,91797.9,Value-date mapping defect after core release R26.10,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00738,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,44359.52,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00739,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,9235.18,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00740,NOSTRO_EUR,2026-10-07,VALUE_DATE_MISMATCH,86157.89,Value-date mapping defect after core release R26.10,Cash Reconciliations,OPEN,
+BRK-00741,GL_SUBLEDGER,2026-10-07,AMOUNT_MISMATCH,78042.77,Charges deducted by intermediary bank,Finance Reconciliations,OPEN,
+BRK-00742,CARD_SCHEME,2026-10-07,VALUE_DATE_MISMATCH,18626.51,Value date differs between statement and ledger,Cards Operations,OPEN,
+BRK-00743,SWIFT_PAYMENTS,2026-10-07,VALUE_DATE_MISMATCH,27842.65,Value date differs between statement and ledger,Payments Operations,OPEN,
+BRK-00744,SWIFT_PAYMENTS,2026-10-07,MISSING_ENTRY,35872.15,"Entry booked by correspondent, not yet booked internally",Payments Operations,RESOLVED,2026-10-08
+BRK-00745,NOSTRO_USD,2026-10-08,AMOUNT_MISMATCH,49997.58,Charges deducted by intermediary bank,Cash Reconciliations,RESOLVED,2026-10-09
+BRK-00746,NOSTRO_EUR,2026-10-08,AMOUNT_MISMATCH,37022.02,Charges deducted by intermediary bank,Cash Reconciliations,OPEN,
+BRK-00747,NOSTRO_GBP,2026-10-08,FX_DIFFERENCE,29781.69,FX rate difference on conversion,Cash Reconciliations,OPEN,
+BRK-00748,GL_SUBLEDGER,2026-10-08,DUPLICATE,31370.27,Duplicate posting in one system,Finance Reconciliations,OPEN,
+BRK-00749,CARD_SCHEME,2026-10-08,MISSING_ENTRY,10493.61,"Entry booked by correspondent, not yet booked internally",Cards Operations,OPEN,
+BRK-00750,CARD_SCHEME,2026-10-08,FX_DIFFERENCE,4998.46,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-09
+BRK-00751,CARD_SCHEME,2026-10-08,AMOUNT_MISMATCH,15084.15,Charges deducted by intermediary bank,Cards Operations,RESOLVED,2026-10-09
+BRK-00752,CARD_SCHEME,2026-10-08,FX_DIFFERENCE,9323.34,FX rate difference on conversion,Cards Operations,RESOLVED,2026-10-09
+BRK-00753,CARD_SCHEME,2026-10-08,FX_DIFFERENCE,2421.23,FX rate difference on conversion,Cards Operations,OPEN,
+BRK-00754,SWIFT_PAYMENTS,2026-10-08,AMOUNT_MISMATCH,27082.91,Charges deducted by intermediary bank,Payments Operations,OPEN,
+BRK-00755,NOSTRO_USD,2026-10-09,MISSING_ENTRY,68648.1,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00756,NOSTRO_EUR,2026-10-09,MISSING_ENTRY,115923.84,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00757,NOSTRO_EUR,2026-10-09,MISSING_ENTRY,322268.85,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00758,NOSTRO_GBP,2026-10-09,MISSING_ENTRY,308030.55,"Entry booked by correspondent, not yet booked internally",Cash Reconciliations,OPEN,
+BRK-00759,GL_SUBLEDGER,2026-10-09,VALUE_DATE_MISMATCH,230018.39,Value date differs between statement and ledger,Finance Reconciliations,OPEN,
+BRK-00760,CARD_SCHEME,2026-10-09,DUPLICATE,3508.5,Duplicate posting in one system,Cards Operations,OPEN,
+BRK-00761,CARD_SCHEME,2026-10-09,AMOUNT_MISMATCH,14640.9,Charges deducted by intermediary bank,Cards Operations,OPEN,
+BRK-00762,CARD_SCHEME,2026-10-09,FX_DIFFERENCE,342.16,FX rate difference on conversion,Cards Operations,OPEN,
+BRK-00763,SWIFT_PAYMENTS,2026-10-09,MISSING_ENTRY,80275.94,"Entry booked by correspondent, not yet booked internally",Payments Operations,OPEN,
+BRK-00764,SWIFT_PAYMENTS,2026-10-09,VALUE_DATE_MISMATCH,29753.46,Value date differs between statement and ledger,Payments Operations,OPEN,

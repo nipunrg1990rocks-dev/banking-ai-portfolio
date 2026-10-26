@@ -1,0 +1,111 @@
+event_id,event_date,basel_event_type,business_line,gross_loss_usd,recovery_usd,description,net_loss_usd
+OPL-00001,2026-01-01,EDPM,Retail Banking,111019.79,0.0,Operational loss event,111019.79
+OPL-00002,2026-01-05,CPBP,Trading and Sales,86648.85,17329.77,Operational loss event,69319.08
+OPL-00003,2026-01-07,EDPM,Retail Banking,16058.36,8029.18,Operational loss event,8029.18
+OPL-00004,2026-01-08,IF,Trading and Sales,2625.21,0.0,Operational loss event,2625.21
+OPL-00005,2026-01-12,EDPM,Trading and Sales,17706.14,0.0,Operational loss event,17706.14
+OPL-00006,2026-01-19,EDPM,Retail Banking,33842.7,16921.35,Operational loss event,16921.35
+OPL-00007,2026-01-19,BDSF,Retail Banking,62170.76,0.0,Operational loss event,62170.76
+OPL-00008,2026-01-20,EDPM,Commercial Banking,41411.53,0.0,Operational loss event,41411.53
+OPL-00009,2026-01-21,CPBP,Retail Banking,266946.46,53389.29,Operational loss event,213557.17
+OPL-00010,2026-01-21,CPBP,Payments and Settlement,51697.03,0.0,Operational loss event,51697.03
+OPL-00011,2026-01-21,DPA,Payments and Settlement,58514.89,11702.98,Operational loss event,46811.91
+OPL-00012,2026-01-22,EF,Asset Management,62962.05,0.0,Operational loss event,62962.05
+OPL-00013,2026-01-30,BDSF,Retail Banking,50614.87,10122.97,Operational loss event,40491.9
+OPL-00014,2026-02-03,DPA,Trading and Sales,5366.19,2683.1,Operational loss event,2683.09
+OPL-00015,2026-02-03,EDPM,Trading and Sales,43253.68,0.0,Operational loss event,43253.68
+OPL-00016,2026-02-04,IF,Retail Banking,65076.03,0.0,Operational loss event,65076.03
+OPL-00017,2026-02-05,EDPM,Trading and Sales,57300.14,0.0,Operational loss event,57300.14
+OPL-00018,2026-02-05,EPWS,Payments and Settlement,14361.93,0.0,Operational loss event,14361.93
+OPL-00019,2026-02-05,EDPM,Payments and Settlement,20286.64,0.0,Operational loss event,20286.64
+OPL-00020,2026-02-05,EF,Trading and Sales,34467.64,0.0,Operational loss event,34467.64
+OPL-00021,2026-02-11,EDPM,Commercial Banking,73735.99,0.0,Operational loss event,73735.99
+OPL-00022,2026-02-13,EF,Commercial Banking,9247.4,1849.48,Operational loss event,7397.92
+OPL-00023,2026-02-13,EDPM,Retail Banking,9805.14,1961.03,Operational loss event,7844.11
+OPL-00024,2026-02-13,EF,Asset Management,10215.61,0.0,Operational loss event,10215.61
+OPL-00025,2026-02-17,EDPM,Payments and Settlement,8975.16,4487.58,Operational loss event,4487.58
+OPL-00026,2026-02-17,EDPM,Trading and Sales,7396.53,1479.31,Operational loss event,5917.22
+OPL-00027,2026-02-19,BDSF,Asset Management,44304.2,8860.84,Operational loss event,35443.36
+OPL-00028,2026-02-20,EPWS,Trading and Sales,88466.8,0.0,Operational loss event,88466.8
+OPL-00029,2026-03-02,EDPM,Trading and Sales,21303.93,0.0,Operational loss event,21303.93
+OPL-00030,2026-03-03,BDSF,Asset Management,275809.28,0.0,Operational loss event,275809.28
+OPL-00031,2026-03-05,EDPM,Payments and Settlement,36801.27,0.0,Operational loss event,36801.27
+OPL-00032,2026-03-09,BDSF,Retail Banking,67457.12,0.0,Operational loss event,67457.12
+OPL-00033,2026-03-11,EF,Trading and Sales,13352.33,6676.16,Operational loss event,6676.17
+OPL-00034,2026-03-11,CPBP,Asset Management,423558.12,0.0,Operational loss event,423558.12
+OPL-00035,2026-03-12,EDPM,Trading and Sales,8985.66,4492.83,Operational loss event,4492.83
+OPL-00036,2026-03-13,EF,Payments and Settlement,31863.01,6372.6,Operational loss event,25490.41
+OPL-00037,2026-03-16,BDSF,Asset Management,10828.8,0.0,Operational loss event,10828.8
+OPL-00038,2026-03-17,EDPM,Payments and Settlement,11252.3,0.0,Operational loss event,11252.3
+OPL-00039,2026-03-19,CPBP,Trading and Sales,3254.44,0.0,Operational loss event,3254.44
+OPL-00040,2026-03-19,EDPM,Payments and Settlement,23834.7,0.0,Operational loss event,23834.7
+OPL-00041,2026-03-24,EDPM,Trading and Sales,4975.25,0.0,Operational loss event,4975.25
+OPL-00042,2026-03-26,EF,Payments and Settlement,101766.24,20353.25,Operational loss event,81412.99
+OPL-00043,2026-03-26,CPBP,Trading and Sales,94736.25,0.0,Operational loss event,94736.25
+OPL-00044,2026-03-27,EF,Commercial Banking,13355.13,0.0,Operational loss event,13355.13
+OPL-00045,2026-03-30,EDPM,Retail Banking,133844.41,0.0,Operational loss event,133844.41
+OPL-00046,2026-03-31,EF,Retail Banking,74767.02,0.0,Operational loss event,74767.02
+OPL-00047,2026-04-01,EF,Trading and Sales,43170.41,0.0,Operational loss event,43170.41
+OPL-00048,2026-04-01,EF,Commercial Banking,99926.96,49963.48,Operational loss event,49963.48
+OPL-00049,2026-04-03,CPBP,Asset Management,38818.46,19409.23,Operational loss event,19409.23
+OPL-00050,2026-04-06,EDPM,Commercial Banking,61104.93,30552.46,Operational loss event,30552.47
+OPL-00051,2026-04-07,EF,Asset Management,23313.09,0.0,Operational loss event,23313.09
+OPL-00052,2026-04-10,EDPM,Asset Management,85647.07,17129.41,Operational loss event,68517.66
+OPL-00053,2026-04-10,EDPM,Payments and Settlement,114207.3,0.0,Operational loss event,114207.3
+OPL-00054,2026-04-14,BDSF,Asset Management,9323.6,1864.72,Operational loss event,7458.88
+OPL-00055,2026-04-16,EDPM,Retail Banking,20815.23,0.0,Operational loss event,20815.23
+OPL-00056,2026-04-17,EDPM,Payments and Settlement,832389.3,0.0,Operational loss event,832389.3
+OPL-00057,2026-04-22,CPBP,Asset Management,165158.18,33031.64,Operational loss event,132126.54
+OPL-00058,2026-04-24,EF,Payments and Settlement,81149.61,0.0,Operational loss event,81149.61
+OPL-00059,2026-04-27,EF,Commercial Banking,144504.34,28900.87,Operational loss event,115603.47
+OPL-00060,2026-05-01,EF,Trading and Sales,18533.15,0.0,Operational loss event,18533.15
+OPL-00061,2026-05-01,EF,Retail Banking,225251.94,0.0,Operational loss event,225251.94
+OPL-00062,2026-05-04,EPWS,Payments and Settlement,10257.52,0.0,Operational loss event,10257.52
+OPL-00063,2026-05-05,EDPM,Payments and Settlement,5928.98,2964.49,Operational loss event,2964.49
+OPL-00064,2026-05-08,EDPM,Asset Management,8851.63,0.0,Operational loss event,8851.63
+OPL-00065,2026-05-18,EDPM,Retail Banking,83984.07,41992.03,Operational loss event,41992.04
+OPL-00066,2026-05-21,EDPM,Payments and Settlement,3493.78,0.0,Operational loss event,3493.78
+OPL-00067,2026-05-28,EF,Retail Banking,127082.71,25416.54,Operational loss event,101666.17
+OPL-00068,2026-05-29,EF,Payments and Settlement,58246.4,0.0,Operational loss event,58246.4
+OPL-00069,2026-05-29,EDPM,Commercial Banking,47312.79,23656.4,Operational loss event,23656.39
+OPL-00070,2026-06-10,CPBP,Asset Management,28593.6,0.0,Operational loss event,28593.6
+OPL-00071,2026-06-11,EDPM,Payments and Settlement,66514.17,13302.83,Operational loss event,53211.34
+OPL-00072,2026-06-12,EDPM,Retail Banking,23267.97,11633.98,Operational loss event,11633.99
+OPL-00073,2026-06-15,BDSF,Retail Banking,5885.68,0.0,Operational loss event,5885.68
+OPL-00074,2026-06-22,EF,Asset Management,1304943.36,0.0,Operational loss event,1304943.36
+OPL-00075,2026-06-23,BDSF,Asset Management,20061.87,10030.93,Operational loss event,10030.94
+OPL-00076,2026-06-26,EDPM,Retail Banking,1084742.83,0.0,Operational loss event,1084742.83
+OPL-00077,2026-07-01,CPBP,Asset Management,28882.46,5776.49,Operational loss event,23105.97
+OPL-00078,2026-07-01,CPBP,Trading and Sales,24903.74,0.0,Operational loss event,24903.74
+OPL-00079,2026-07-06,IF,Commercial Banking,15484.9,0.0,Operational loss event,15484.9
+OPL-00080,2026-07-07,EDPM,Asset Management,11751.8,2350.36,Operational loss event,9401.44
+OPL-00081,2026-07-08,EDPM,Trading and Sales,95246.09,47623.04,Operational loss event,47623.05
+OPL-00082,2026-07-13,EF,Asset Management,13316.23,0.0,Operational loss event,13316.23
+OPL-00083,2026-07-14,EDPM,Trading and Sales,74809.23,37404.62,Operational loss event,37404.61
+OPL-00084,2026-07-22,EF,Payments and Settlement,6601.91,0.0,Operational loss event,6601.91
+OPL-00085,2026-07-24,EDPM,Payments and Settlement,126725.3,0.0,Operational loss event,126725.3
+OPL-00086,2026-08-04,EF,Commercial Banking,145895.46,0.0,Operational loss event,145895.46
+OPL-00087,2026-08-07,EF,Asset Management,36918.74,0.0,Operational loss event,36918.74
+OPL-00088,2026-08-12,CPBP,Asset Management,9338.51,1867.7,Operational loss event,7470.81
+OPL-00089,2026-08-12,CPBP,Asset Management,499331.7,99866.34,Operational loss event,399465.36
+OPL-00090,2026-08-18,EF,Commercial Banking,76272.73,15254.55,Operational loss event,61018.18
+OPL-00091,2026-08-19,CPBP,Trading and Sales,20865.07,4173.01,Operational loss event,16692.06
+OPL-00092,2026-08-19,CPBP,Payments and Settlement,126510.69,25302.14,Operational loss event,101208.55
+OPL-00093,2026-08-20,EDPM,Commercial Banking,73058.28,36529.14,Operational loss event,36529.14
+OPL-00094,2026-08-25,CPBP,Payments and Settlement,69433.88,0.0,Operational loss event,69433.88
+OPL-00095,2026-08-26,EDPM,Asset Management,4402.71,0.0,Operational loss event,4402.71
+OPL-00096,2026-09-02,EPWS,Asset Management,23737.3,0.0,Operational loss event,23737.3
+OPL-00097,2026-09-03,EDPM,Retail Banking,48875.49,0.0,Operational loss event,48875.49
+OPL-00098,2026-09-04,EDPM,Commercial Banking,56719.66,0.0,Operational loss event,56719.66
+OPL-00099,2026-09-11,EDPM,Asset Management,13498.79,2699.76,Operational loss event,10799.03
+OPL-00100,2026-09-14,CPBP,Retail Banking,19671.34,0.0,Operational loss event,19671.34
+OPL-00101,2026-09-15,EDPM,Retail Banking,18026.79,0.0,Operational loss event,18026.79
+OPL-00102,2026-09-18,EDPM,Asset Management,277988.83,55597.77,Operational loss event,222391.06
+OPL-00103,2026-09-18,EDPM,Commercial Banking,20535.35,0.0,Operational loss event,20535.35
+OPL-90001,2026-09-22,EDPM,Payments and Settlement,2300000.0,450000.0,Duplicate outbound payment batch PB-0922-07 (INC-2026-0815),1850000.0
+OPL-00104,2026-09-24,EF,Commercial Banking,56064.58,0.0,Operational loss event,56064.58
+OPL-00105,2026-09-25,EF,Payments and Settlement,6279.99,1256.0,Operational loss event,5023.99
+OPL-00106,2026-09-28,EDPM,Commercial Banking,230355.81,46071.16,Operational loss event,184284.65
+OPL-00107,2026-09-30,EDPM,Commercial Banking,7469.71,3734.85,Operational loss event,3734.86
+OPL-00108,2026-10-05,EDPM,Asset Management,23536.61,0.0,Operational loss event,23536.61
+OPL-00109,2026-10-08,IF,Retail Banking,10854.12,0.0,Operational loss event,10854.12
