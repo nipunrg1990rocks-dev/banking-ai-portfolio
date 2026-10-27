@@ -8,6 +8,8 @@ On top of the lakehouse sit **three AI agents** that investigate what the pipeli
 - **Data Steward** explains a blocked load: reads the pipeline audit, the DQ results and the delivery files themselves (bytes, checksum, last line), finds the root cause and drafts the ticket.
 - **Ask Ledgerline** answers business questions in plain English with SQL and a chart.
 
+**Live demo:** https://kqgpivnvrwznbhmq4gfutm.streamlit.app
+
 > Independent, AI-assisted portfolio project. All data is synthetic. Not affiliated with any real institution.
 
 ![Mission Control: pipeline, incident and agent inbox](docs/screenshots/00_mission_control.png)
@@ -43,7 +45,7 @@ On top of the lakehouse sit **three AI agents** that investigate what the pipeli
 | Browser test (Playwright, 12 steps against the running app) | All passed; screenshots in `docs/screenshots/` |
 | GitHub Actions CI | Installs Java 17, runs all tests and the pipeline |
 | **Databricks Free Edition run** (checked by Nipun, 2026-10-26) | `00_run_pipeline` ran end to end on serverless (Spark 4.2.0) in 356 s, run `run_20261026T144959Z`. Table counts match the local run of that data version exactly: 16,644 Silver transactions, 22 + 1 + 2 quarantined. All blocking controls passed, because the run would have stopped otherwise. Evidence: [`docs/evidence/databricks_run_20261026.png`](docs/evidence/databricks_run_20261026.png). The newer data version (incident batch, payroll false positive) and the agents notebook (`03`) were then run too; see the next row. The job DAG (`01_create_job`) and the governance SQL (`02`) have not been run yet |
-| **Public hosted URL** | **Not yet deployed** |
+| **Public hosted URL** | **Live:** https://kqgpivnvrwznbhmq4gfutm.streamlit.app (deployed by Nipun on Streamlit Community Cloud, 2026-10-27; Claude's network can't open streamlit.app, so Nipun checks it) |
 
 ## Run it
 
