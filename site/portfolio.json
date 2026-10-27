@@ -62,8 +62,8 @@
       "full_name": "Banking Data Engineering Lakehouse",
       "kind": "Databricks · AI agents",
       "lifecycle": "Data arrives",
-      "status": "built",
-      "status_label": "Built and tested",
+      "status": "live",
+      "status_label": "Live demo",
       "summary": "A Bronze, Silver and Gold pipeline on Apache Spark and Delta Lake that refuses to publish numbers that don't reconcile, with three AI agents on top that investigate AML alerts, explain blocked loads and answer business questions.",
       "problem": "Source files arrive with missing amounts, duplicates and late re-sends. Reports built on them can double-count a payment or miss an AML pattern.",
       "ai": "An AML Investigator, a Data Steward and an Ask Ledgerline agent use 14 read-only tools. They run on free Databricks foundation models, or offline with no model at all, and a person approves what they propose.",
@@ -80,7 +80,7 @@
         "AML alerts are candidates for an investigator, never decisions"
       ],
       "stack": ["Databricks", "PySpark", "Spark SQL", "Delta Lake", "Unity Catalog", "Lakeflow Jobs", "AI agents", "Streamlit", "DuckDB"],
-      "live_url": "",
+      "live_url": "https://kqgpivnvrwznbhmq4gfutm.streamlit.app",
       "code_path": "projects/p2_lakehouse",
       "showcase": "docs/showcase/p2_lakehouse.html",
       "pdf": "projects/p2_lakehouse/docs/Ledgerline_Banking_Lakehouse_Interview_Pack.pdf",
@@ -90,7 +90,7 @@
         "browser": {"state": "verified", "text": "12 steps"},
         "databricks": {"state": "owner", "text": "Ran on Free Edition, checked by me"},
         "llm": {"state": "owner", "text": "Ran on Databricks, scores not captured"},
-        "hosted": {"state": "pending", "text": "Not yet deployed"}
+        "hosted": {"state": "owner", "text": "Live, deployed by me"}
       }
     },
     {
