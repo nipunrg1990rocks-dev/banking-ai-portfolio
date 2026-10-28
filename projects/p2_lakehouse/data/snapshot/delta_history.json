@@ -2,37 +2,37 @@
   "silver.transactions": [
     {
       "version": 0,
-      "timestamp": "2026-10-26 14:18:04.550000",
+      "timestamp": "2026-10-26 15:42:57.507000",
       "operation": "WRITE",
-      "rows_at_version": 13493,
+      "rows_at_version": 13495,
       "metrics": {
-        "numOutputRows": "13493"
+        "numOutputRows": "13495"
       }
     },
     {
       "version": 1,
-      "timestamp": "2026-10-26 14:18:27.609000",
+      "timestamp": "2026-10-26 15:43:24.595000",
       "operation": "MERGE",
-      "rows_at_version": 16644,
+      "rows_at_version": 16648,
       "metrics": {
-        "numOutputRows": "3151",
-        "numTargetRowsInserted": "3151",
+        "numOutputRows": "3153",
+        "numTargetRowsInserted": "3153",
         "numTargetRowsUpdated": "0",
         "numTargetRowsDeleted": "0"
       }
     },
     {
       "version": 2,
-      "timestamp": "2026-10-26 14:18:42.550000",
+      "timestamp": "2026-10-26 15:43:41.023000",
       "operation": "OPTIMIZE",
-      "rows_at_version": 16644,
+      "rows_at_version": 16648,
       "metrics": {}
     }
   ],
   "silver.customers": [
     {
       "version": 0,
-      "timestamp": "2026-10-26 14:17:54.270000",
+      "timestamp": "2026-10-26 15:42:45.531000",
       "operation": "WRITE",
       "rows_at_version": 600,
       "metrics": {
@@ -41,7 +41,7 @@
     },
     {
       "version": 1,
-      "timestamp": "2026-10-26 14:18:16.430000",
+      "timestamp": "2026-10-26 15:43:11.047000",
       "operation": "MERGE",
       "rows_at_version": 665,
       "metrics": {
@@ -53,7 +53,7 @@
     },
     {
       "version": 2,
-      "timestamp": "2026-10-26 14:18:43.346000",
+      "timestamp": "2026-10-26 15:43:41.859000",
       "operation": "OPTIMIZE",
       "rows_at_version": 665,
       "metrics": {}
@@ -62,7 +62,7 @@
   "silver.accounts": [
     {
       "version": 0,
-      "timestamp": "2026-10-26 14:17:58.486000",
+      "timestamp": "2026-10-26 15:42:50.243000",
       "operation": "WRITE",
       "rows_at_version": 1074,
       "metrics": {
@@ -71,7 +71,7 @@
     },
     {
       "version": 1,
-      "timestamp": "2026-10-26 14:18:21.070000",
+      "timestamp": "2026-10-26 15:43:16.555000",
       "operation": "MERGE",
       "rows_at_version": 1121,
       "metrics": {

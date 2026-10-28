@@ -5,7 +5,8 @@ Run locally from the repository root:
     streamlit run projects/p2_lakehouse/app.py
 
 The pipeline itself runs on Apache Spark + Delta Lake (locally or on Databricks).
-This app shows the outputs of the last real run, exported to data/snapshot/.
+This app shows the outputs of the last real run, exported to data/snapshot/,
+and three AI agents (see agents/) that investigate them with read-only tools.
 """
 
 from __future__ import annotations
@@ -19,6 +20,7 @@ for p in (str(HERE), str(ROOT)):
     if p not in sys.path:
         sys.path.insert(0, p)
 
+import agent_ui  # noqa: E402
 import altair as alt  # noqa: E402
 import streamlit as st  # noqa: E402
 
@@ -27,6 +29,7 @@ from portfolio_core.ui import FOOTER, PORTFOLIO_CSS, banner, pill  # noqa: E402
 
 st.set_page_config(page_title="Banking Lakehouse", page_icon="🏦", layout="wide")
 st.markdown(PORTFOLIO_CSS, unsafe_allow_html=True)
+st.markdown(agent_ui.AGENT_CSS, unsafe_allow_html=True)
 st.markdown("""
 <style>
   .lh-card { border: 1px solid rgba(19,49,92,.15); border-radius: 10px; padding: .8rem 1rem; height: 100%; }
@@ -59,22 +62,47 @@ snap = load()
 s = snap.summary
 h = snap.headline()
 
+with st.sidebar:
+    st.markdown("### 🧠 Agent brain")
+    modes = agent_ui.brain_modes()
+    mode = st.radio("Who does the thinking?", modes, index=0, key="brain_mode", label_visibility="collapsed")
+    st.markdown(f'<div class="brainnote">{agent_ui.brain_note(mode)}</div>', unsafe_allow_html=True)
+    animate = st.toggle("Animate agent steps", value=True)
+    st.divider()
+    st.caption("Agents only read data. Every tool call and every human decision is written to a hash-chained "
+               "audit log. Nothing is sent or changed without your approval.")
+
 st.markdown(banner(
-    "Ledgerline Bank · Banking Data Lakehouse",
-    "Bronze → Silver → Gold Delta Lake pipeline on Apache Spark, with data-quality controls, SCD Type 2 history, "
-    "reconciliation and AML alerting. Synthetic data for a fictional bank."), unsafe_allow_html=True)
+    "Ledgerline Bank · Agentic Data Lakehouse",
+    "A Databricks-style Bronze → Silver → Gold lakehouse on Apache Spark and Delta Lake, with AI agents that "
+    "investigate AML alerts, diagnose data incidents and answer questions in plain English. Synthetic data for a "
+    "fictional bank."), unsafe_allow_html=True)
 st.markdown(
     pill(f"Run {s['run_id']}", "blue") + pill(f"{s['engine']}", "grey")
     + pill(f"Spark {s['spark_version']} · Delta {s['delta_version']}", "grey")
     + pill(f"Pipeline time {s['duration_s']:.0f}s", "grey")
-    + pill(f"{h['controls_passed']}/{h['controls']} blocking controls passed", "green"),
+    + pill(f"{h['controls_passed']}/{h['controls']} blocking controls passed", "green")
+    + pill(f"{h['controls_tripped']} tripped: incident batch blocked", "red"),
     unsafe_allow_html=True)
-st.caption("You are looking at the real outputs of the pipeline run above, exported after it finished. "
-           "The hosted app does not run Spark itself; `python projects/p2_lakehouse/run_pipeline.py` "
-           "reproduces these numbers exactly (fixed random seed), and the automated tests check that.")
+st.caption("Everything below comes from a real pipeline run, exported after it finished. The hosted app does not run "
+           "Spark itself; `python projects/p2_lakehouse/run_pipeline.py` reproduces these numbers exactly (fixed "
+           "random seed), and the automated tests check that.")
 
-tabs = st.tabs(["Overview", "Data quality", "AML alerts", "Customer history (SCD2)", "Delta Lake",
-                "SQL console", "Gold tables", "How it works"])
+top = st.tabs(["🛰️ Mission Control", "🕵️ AML Investigator", "🛠️ Data Steward", "💬 Ask Ledgerline",
+               "🏛️ Lakehouse explorer", "📐 How it works"])
+with top[0]:
+    agent_ui.mission_control(snap, h)
+with top[1]:
+    agent_ui.aml_tab(snap, mode, animate)
+    st.divider()
+    agent_ui.triage_board(mode)
+with top[2]:
+    agent_ui.steward_tab(mode, animate)
+with top[3]:
+    agent_ui.ask_tab(mode, animate)
+with top[4]:
+    tabs = st.tabs(["Overview", "Data quality", "AML alerts", "Customer history (SCD2)", "Delta Lake",
+                    "SQL console", "Gold tables"])
 
 # ------------------------------------------------------------------ overview
 with tabs[0]:
@@ -371,7 +399,7 @@ with tabs[6]:
             use_container_width=True)
 
 # ------------------------------------------------------------------ how it works
-with tabs[7]:
+with top[5]:
     st.subheader("Architecture")
     cols = st.columns(4)
     cards = [
@@ -394,6 +422,8 @@ with tabs[7]:
 | Laptop / CI | `run_pipeline.py` (PySpark + delta-spark) | Verified: produced this snapshot; tests in CI |
 | Databricks Free Edition | `databricks/00_run_pipeline`, Unity Catalog | Verified: serverless, same table counts |
 | Lakeflow Jobs | `databricks/01_create_job`: 6-task DAG, serverless | Code ready; not yet run |
+| AI agents on Databricks | `databricks/03_ai_agents`: agents read UC tables, write cases to Delta \
+| Run by Nipun on Free Edition (reported, no screenshot; model and scores not captured) |
 
 A `TableStore` class is the only place that knows whether a table is a local Delta folder or a Unity Catalog
 table, so the PySpark and SQL are identical everywhere.
@@ -403,10 +433,13 @@ table, so the PySpark and SQL are identical everywhere.
   change and AML scenario is found exactly (tests compare against the generator's answer key); time travel, change
   data feed, schema enforcement, idempotent re-runs and blocking controls are covered by tests.
 - **Verified on Databricks:** the run-all notebook on Free Edition (serverless, Unity Catalog), with the same
-  table counts as the local run (16,644 Silver transactions, 25 quarantined).
+  table counts as the local run of that data version (16,644 Silver transactions, 25 quarantined). The data has since
+  gained the incident batch and a payroll false positive; that version has been run locally, not yet on Databricks.
 - **Not yet verified:** Unity Catalog column masks and tags, and the scheduled 6-task job. They will be marked
   verified here only after a real run.
 """)
+    st.divider()
+    agent_ui.agents_explainer()
     st.markdown("Source code: [github.com/nipunrg1990rocks-dev/banking-ai-portfolio]"
                 "(https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p2_lakehouse)")
 

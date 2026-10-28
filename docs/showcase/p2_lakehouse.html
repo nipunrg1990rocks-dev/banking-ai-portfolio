@@ -1,4 +1,4 @@
-<title>Ledgerline Banking Lakehouse</title>
+<title>Ledgerline Agentic Lakehouse</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,15 @@
   .alert { border-left: 3px solid var(--bad); padding-left: 12px; display: grid; gap: 6px; }
   .alert ul { margin: 0; padding-left: 1.1rem; font-family: var(--mono); font-size: .85rem; font-variant-numeric: tabular-nums; }
   .note { font-size: .88rem; color: var(--muted); }
+  .agents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .agent { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+  .agent h3 { font-size: 1.1rem; }
+  .agent p { font-size: .9rem; color: var(--muted); margin: 0; }
+  .trace { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: .88rem; }
+  .trace li { display: grid; grid-template-columns: 1.4rem 1fr; gap: 6px; }
+  .trace .k { font-family: var(--mono); color: var(--muted); }
+  .trace code { font-family: var(--mono); font-size: .82rem; background: var(--tag-bg); padding: 0 .3rem; border-radius: 3px; }
+  .verdict { border-left: 3px solid var(--ok); padding-left: 12px; display: grid; gap: 4px; }
 
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
   .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 4px; align-content: start; }
@@ -116,6 +125,7 @@
 
   @media (max-width: 760px) {
     .stats, .medallion { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .agents { grid-template-columns: 1fr; }
     .cols { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -126,15 +136,37 @@
 
 <main class="wrap">
   <header class="hero">
-    <span class="eyebrow">Portfolio project 02 · Data engineering · Databricks &amp; Delta Lake</span>
-    <h1>Ledgerline Banking Lakehouse</h1>
-    <p class="lede">A Bronze, Silver and Gold data pipeline for a bank, built on Apache Spark and Delta Lake. It checks every source record, quarantines bad data with the reason, keeps the full history of customer risk ratings, and refuses to publish numbers that don't reconcile.</p>
+    <span class="eyebrow">Portfolio project 02 · Data engineering + AI agents · Databricks &amp; Delta Lake</span>
+    <h1>Ledgerline Agentic Lakehouse</h1>
+    <p class="lede">A Bronze, Silver and Gold data pipeline for a bank on Apache Spark and Delta Lake, with three AI agents working on top of it. The pipeline checks every record and refuses to publish numbers that don't reconcile. The agents then do analyst work: they investigate AML alerts, find out why a load was blocked, and answer business questions. A person approves everything they propose.</p>
     <div class="cta">
-      <a class="btn primary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p2_lakehouse" target="_blank" rel="noopener">View the code on GitHub ↗</a>
+      <a class="btn primary" href="https://kqgpivnvrwznbhmq4gfutm.streamlit.app" target="_blank" rel="noopener">Open the live demo ↗</a>
+      <a class="btn secondary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p2_lakehouse" target="_blank" rel="noopener">View the code on GitHub ↗</a>
       <a class="btn secondary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/blob/main/projects/p2_lakehouse/docs/Ledgerline_Banking_Lakehouse_Interview_Pack.pdf" target="_blank" rel="noopener">Read the project pack (PDF) ↗</a>
     </div>
     <p class="disclose">Independent project built by Nipun Gupta with AI-assisted development tools. All customers, accounts and transactions are synthetic and describe a fictional bank. It is not affiliated with any employer.</p>
   </header>
+
+  <section aria-labelledby="agents">
+    <span class="eyebrow">The AI layer</span>
+    <h2 id="agents">Three agents, read-only tools, a human decides</h2>
+    <div class="agents">
+      <div class="agent"><span class="eyebrow">AML Investigator</span><h3>Works an alert like an analyst</h3><p>Pulls the transactions, customer profile, 90-day behaviour, peers and counterparty network, then writes a scored case that cites its evidence and recommends escalate or close.</p></div>
+      <div class="agent"><span class="eyebrow">Data Steward</span><h3>Explains a blocked load</h3><p>Reads the pipeline audit, the data-quality results and the delivered file itself (bytes, checksum, last line), names the root cause and drafts the ticket.</p></div>
+      <div class="agent"><span class="eyebrow">Ask Ledgerline</span><h3>Answers in plain English</h3><p>Turns a business question into read-only SQL, runs it and draws the chart, so nobody waits for a report.</p></div>
+    </div>
+    <div class="sample">
+      <div class="pills"><span class="pill review">Alert · Rapid movement · C000212</span><span class="pill ok">Recommendation: close · pending human approval</span></div>
+      <ol class="trace" aria-label="Agent steps for one alert">
+        <li><span class="k">1</span><span>Read the alert: rapid movement, a corporate customer, 52,400 USD in and 97% of it wired out again within 48 hours. <code>get_alert</code></span></li>
+        <li><span class="k">2</span><span>Pull the two triggering wires and the customer profile. <code>get_transactions</code> <code>get_customer_profile</code></span></li>
+        <li><span class="k">3</span><span>Look at five weeks of activity and compare with other corporate customers. <code>get_customer_activity</code> <code>compare_to_peers</code></span></li>
+        <li><span class="k">4</span><span>Check the payer and payee history: the same cycle ran in September at 48,700 USD, just under the threshold. <code>find_counterparty_history</code></span></li>
+        <li><span class="k">5</span><span>Score 25 out of 100: a recurring payroll cycle. Submit a case for the investigator to approve. <code>submit_case</code></span></li>
+      </ol>
+      <p class="note">This trace is from the offline planner, a fixed playbook that uses the same tools without an LLM, so the public demo needs no API key. With an LLM (a free Databricks Foundation Model in the workspace), the model chooses its own steps. The payroll false positive was planted on purpose: the rule is right to fire, and judgement is what clears it.</p>
+    </div>
+  </section>
 
   <section aria-labelledby="why">
     <span class="eyebrow">The banking problem</span>
@@ -146,9 +178,9 @@
     <span class="eyebrow">The medallion, with real row counts</span>
     <h2 id="layers">Raw files in, trusted tables out</h2>
     <div class="medallion">
-      <div class="layer src"><span class="eyebrow">Landing</span><span class="count">18,513</span><p>Source records in two daily batches, plus a manifest with control totals</p></div>
-      <div class="layer br"><span class="eyebrow">Bronze</span><span class="count">16,706</span><p>Transactions kept exactly as delivered, tagged with source file and load time</p></div>
-      <div class="layer sv"><span class="eyebrow">Silver</span><span class="count">16,644</span><p>Validated, de-duplicated, converted to USD, merged without double-counting</p></div>
+      <div class="layer src"><span class="eyebrow">Landing</span><span class="count">18,517</span><p>Source records in two daily batches, plus a manifest with control totals</p></div>
+      <div class="layer br"><span class="eyebrow">Bronze</span><span class="count">16,710</span><p>Transactions kept exactly as delivered, tagged with source file and load time</p></div>
+      <div class="layer sv"><span class="eyebrow">Silver</span><span class="count">16,648</span><p>Validated, de-duplicated, converted to USD, merged without double-counting</p></div>
       <div class="layer gd"><span class="eyebrow">Gold</span><span class="count">5 tables</span><p>AML alert candidates, customer 360, KPIs and a data-quality scorecard</p></div>
     </div>
   </section>
@@ -159,11 +191,11 @@
     <div class="sample">
       <div class="pills"><span class="pill ok">Batch 7 Oct · balanced</span></div>
       <div class="ledger" role="group" aria-label="Reconciliation for the 7 October batch">
-        <div class="cell c-br"><b>3,169</b><span>landed in Bronze</span></div><span class="op">=</span>
+        <div class="cell c-br"><b>3,171</b><span>landed in Bronze</span></div><span class="op">=</span>
         <div class="cell c-dup"><b>5</b><span>duplicates</span></div><span class="op">+</span>
         <div class="cell c-q"><b>3</b><span>quarantined</span></div><span class="op">+</span>
         <div class="cell c-re"><b>10</b><span>re-sent, already loaded</span></div><span class="op">+</span>
-        <div class="cell c-ok"><b>3,151</b><span>inserted to Silver</span></div>
+        <div class="cell c-ok"><b>3,153</b><span>inserted to Silver</span></div>
       </div>
       <p class="note">Ten September payments were re-sent a week later. A Delta MERGE recognised them and did not insert them again. If the equation didn't balance, the run would stop before Gold was refreshed.</p>
       <div class="alert">
@@ -178,12 +210,12 @@
     <span class="eyebrow">Measured, not claimed</span>
     <h2 id="results">Results from automated testing</h2>
     <div class="stats">
-      <div class="stat"><b>16 / 16</b><span>Blocking reconciliation controls passed</span></div>
-      <div class="stat"><b>7 / 7</b><span>Planted AML scenarios found, with no false alerts</span></div>
+      <div class="stat"><b>8 / 8</b><span>AML cases decided correctly by the agent, including the false positive (offline planner)</span></div>
+      <div class="stat"><b>315</b><span>Missing rows in a truncated delivery, blocked at Bronze and explained by the Data Steward</span></div>
       <div class="stat"><b>22 / 22</b><span>Planted transaction defects quarantined, each with its rule</span></div>
-      <div class="stat"><b>44</b><span>Automated tests running the real Spark pipeline on every change</span></div>
+      <div class="stat"><b>58</b><span>Automated tests running the real Spark pipeline and the agents</span></div>
     </div>
-    <p class="note">The synthetic data generator keeps an answer key of every defect, duplicate, re-send, risk-rating change and suspicious pattern it plants. The tests require an exact match. These checks confirm the design works as intended; they are not an independent benchmark.</p>
+    <p class="note">The synthetic data generator keeps an answer key of every defect, duplicate, re-send, risk-rating change and suspicious pattern it plants. The tests and the agent evaluation require an exact match, and the evaluation also fails any case that cites a transaction that doesn't exist. These checks confirm the design works as intended; they are not an independent benchmark.</p>
   </section>
 
   <section aria-labelledby="controls">
@@ -198,12 +230,14 @@
           <li>An unreadable KYC rating defaults to HIGH, so no customer drops out of monitoring</li>
           <li>Personal data hashed or masked in Silver and absent from Gold</li>
           <li>AML alerts are candidates for an investigator, never decisions</li>
+          <li>Agents can only read, every step is in a hash-chained audit log, and a person approves or overrides</li>
         </ul>
       </div>
       <div>
         <span class="eyebrow">Technology</span>
         <h2>Stack</h2>
         <div class="stack">
+          <span class="tag">Claude API · tool use</span><span class="tag">AI agents</span><span class="tag">Agent evaluation</span>
           <span class="tag">Apache Spark 4</span><span class="tag">PySpark</span><span class="tag">Spark SQL</span>
           <span class="tag">Delta Lake</span><span class="tag">MERGE / SCD2</span><span class="tag">Change Data Feed</span>
           <span class="tag">Time travel</span><span class="tag">OPTIMIZE · Z-ORDER</span><span class="tag">Databricks</span>
@@ -221,11 +255,13 @@
       <table class="status">
         <thead><tr><th>Item</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Full pipeline on Spark 4.1 and Delta Lake 4.4</td><td><span class="pill ok">Verified</span> 18,513 records in about 80 seconds</td></tr>
-          <tr><td>Automated tests and browser test of the explorer app</td><td><span class="pill ok">Verified</span> 44 tests; 8 browser steps</td></tr>
-          <tr><td>Full pipeline on Databricks Free Edition (serverless, Unity Catalog)</td><td><span class="pill ok">Verified</span> Same table counts as local; 356 seconds</td></tr>
+          <tr><td>Full pipeline on Spark 4.1 and Delta Lake 4.4</td><td><span class="pill ok">Verified</span> 18,517 records in about 100 seconds; the truncated delivery blocked as designed</td></tr>
+          <tr><td>Automated tests and browser test of the app</td><td><span class="pill ok">Verified</span> 58 tests; 12 browser steps, including each agent</td></tr>
+          <tr><td>Agents with the offline planner (no LLM), scored against the answer key</td><td><span class="pill ok">Verified</span> 8/8 alerts, 1/1 incident, 6/6 questions</td></tr>
+          <tr><td>Agents on Databricks with a free Foundation Model (no API key)</td><td><span class="pill review">Run, reported by owner</span> model and scores not captured</td></tr>
+          <tr><td>Full pipeline on Databricks Free Edition (serverless, Unity Catalog)</td><td><span class="pill ok">Verified</span> Same table counts as local, on the data version before the incident batch; 356 seconds</td></tr>
           <tr><td>Scheduled 6-task job and column masks on Databricks</td><td><span class="pill review">Ready, not yet run</span></td></tr>
-          <tr><td>Hosted explorer app</td><td><span class="pill review">Not yet deployed</span></td></tr>
+          <tr><td>Hosted app (Streamlit Community Cloud)</td><td><span class="pill ok">Live</span> deployed 27 October 2026</td></tr>
         </tbody>
       </table>
     </div>
@@ -234,7 +270,7 @@
   <section class="role" aria-labelledby="role">
     <span class="eyebrow">My role</span>
     <h2 id="role">Banking judgement, directed AI delivery</h2>
-    <p>I drew on 12 years in banking risk, controls, operations and UAT. I defined the data, the defects worth testing, the reconciliation controls and the fail-safe rules. I directed AI coding tools to build the pipeline, reviewed the design, set the acceptance test that every planted issue must be found exactly, and validated the results.</p>
+    <p>I drew on 12 years in banking risk, controls, operations and UAT. I defined the data, the defects worth testing, the reconciliation controls and the fail-safe rules. I designed what the AI agents may and may not do and how to prove they are right. I directed AI coding tools to build it all, reviewed the design, set the acceptance test that every planted issue must be found exactly, and validated the results.</p>
   </section>
 
   <footer>

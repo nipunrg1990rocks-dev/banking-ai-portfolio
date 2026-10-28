@@ -1,0 +1,157 @@
+{
+  "incident": {
+    "batch_id": "20261014",
+    "outcome": "BLOCKED",
+    "error": "bronze.transactions: control 'bronze_record_count_matches_manifest' failed: batch 20261014: landed 2836 rows, source manifest says 3150",
+    "versions_before": {
+      "bronze.customers": 1,
+      "bronze.accounts": 1,
+      "bronze.transactions": 1,
+      "silver.transactions": 2,
+      "gold.daily_transaction_summary": 0
+    },
+    "versions_after": {
+      "bronze.customers": 2,
+      "bronze.accounts": 2,
+      "bronze.transactions": 1,
+      "silver.transactions": 2,
+      "gold.daily_transaction_summary": 0
+    },
+    "rows_landed_in_bronze": {
+      "customers": 6,
+      "accounts": 3,
+      "transactions": 0
+    }
+  },
+  "deliveries": {
+    "20260930": {
+      "batch_id": "20260930",
+      "source_system": "LEDGERLINE_CORE",
+      "business_date": "2026-09-30",
+      "manifest_record_counts": {
+        "customers": 603,
+        "accounts": 1077,
+        "transactions": 13539
+      },
+      "manifest_control_total": 45729557.88,
+      "files": {
+        "customers.csv": {
+          "present": true,
+          "expected_bytes": 65801,
+          "actual_bytes": 65801,
+          "checksum_matches": true,
+          "lines": 604,
+          "ends_with_newline": true,
+          "last_line_tail": "-01-05,theo.evans565@example.com,+1-555-572-9202,US,RETAIL,LOW,N,2017-09-14,B002",
+          "data_rows": 603
+        },
+        "accounts.csv": {
+          "present": true,
+          "expected_bytes": 62751,
+          "actual_bytes": 62751,
+          "checksum_matches": true,
+          "lines": 1078,
+          "ends_with_newline": true,
+          "last_line_tail": "A0000403,C000228,SAVINGS,USD,2018-01-10,ACTIVE,B010,",
+          "data_rows": 1077
+        },
+        "transactions.jsonl": {
+          "present": true,
+          "expected_bytes": 3636741,
+          "actual_bytes": 3636741,
+          "checksum_matches": true,
+          "lines": 13539,
+          "ends_with_newline": true,
+          "last_line_tail": "ove Payroll Services\", \"counterparty_country\": \"US\", \"reference\": \"REF78284279\"}",
+          "last_line_is_valid_json": true
+        }
+      }
+    },
+    "20261007": {
+      "batch_id": "20261007",
+      "source_system": "LEDGERLINE_CORE",
+      "business_date": "2026-10-07",
+      "manifest_record_counts": {
+        "customers": 70,
+        "accounts": 57,
+        "transactions": 3171
+      },
+      "manifest_control_total": 17295915.84,
+      "files": {
+        "customers.csv": {
+          "present": true,
+          "expected_bytes": 7848,
+          "actual_bytes": 7848,
+          "checksum_matches": true,
+          "lines": 71,
+          "ends_with_newline": true,
+          "last_line_tail": "-05,isabel.mensah625@example.com,+1-555-757-8142,US,RETAIL,LOW,N,2026-10-01,B009",
+          "data_rows": 70
+        },
+        "accounts.csv": {
+          "present": true,
+          "expected_bytes": 3395,
+          "actual_bytes": 3395,
+          "checksum_matches": true,
+          "lines": 58,
+          "ends_with_newline": true,
+          "last_line_tail": "A0001124,C000625,CHECKING,USD,2026-10-01,ACTIVE,B009,",
+          "data_rows": 57
+        },
+        "transactions.jsonl": {
+          "present": true,
+          "expected_bytes": 851533,
+          "actual_bytes": 851533,
+          "checksum_matches": true,
+          "lines": 3171,
+          "ends_with_newline": true,
+          "last_line_tail": "ove Payroll Services\", \"counterparty_country\": \"US\", \"reference\": \"REF23088577\"}",
+          "last_line_is_valid_json": true
+        }
+      }
+    },
+    "20261014": {
+      "batch_id": "20261014",
+      "source_system": "LEDGERLINE_CORE",
+      "business_date": "2026-10-14",
+      "manifest_record_counts": {
+        "customers": 6,
+        "accounts": 3,
+        "transactions": 3150
+      },
+      "manifest_control_total": 12478190.37,
+      "files": {
+        "customers.csv": {
+          "present": true,
+          "expected_bytes": 794,
+          "actual_bytes": 794,
+          "checksum_matches": true,
+          "lines": 7,
+          "ends_with_newline": true,
+          "last_line_tail": ",aarav.kapoor587@example.com,+1-555-742-6959,US,PREMIER,MEDIUM,N,2023-04-15,B002",
+          "data_rows": 6
+        },
+        "accounts.csv": {
+          "present": true,
+          "expected_bytes": 251,
+          "actual_bytes": 251,
+          "checksum_matches": true,
+          "lines": 4,
+          "ends_with_newline": true,
+          "last_line_tail": "A0000585,C000334,CHECKING,USD,2024-11-26,DORMANT,B001,",
+          "data_rows": 3
+        },
+        "transactions.jsonl": {
+          "present": true,
+          "expected_bytes": 845918,
+          "actual_bytes": 761399,
+          "checksum_matches": false,
+          "lines": 2836,
+          "ends_with_newline": false,
+          "last_line_tail": "xn_ts\": \"2026-10-09T19:35:24Z\", \"amount\": \"697.01\", \"currency\": \"USD\", \"txn_type",
+          "last_line_is_valid_json": false
+        }
+      }
+    }
+  }
+}
