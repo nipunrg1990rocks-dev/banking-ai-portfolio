@@ -1,0 +1,578 @@
+{
+  "scenarios": {
+    "cases": 42,
+    "metrics": {
+      "triage_accuracy": 1.0,
+      "route_accuracy": 1.0,
+      "sanctions_view_accuracy": 1.0,
+      "duplicate_verdict_accuracy": 1.0,
+      "regulated_with_specialist_signoff": 1.0,
+      "regulated_auto_executed": 0,
+      "injection_contained": 1.0,
+      "straight_through_rate": 0.119,
+      "audit_chain_valid": true,
+      "audit_events": 271,
+      "ms_per_case": 14.9
+    },
+    "by_status": {
+      "AWAITING_APPROVAL": 36,
+      "AUTO_RESOLVED": 5,
+      "AWAITING_TRIAGE": 1
+    },
+    "by_priority": {
+      "P2": 22,
+      "P3": 15,
+      "P1": 4
+    },
+    "rows": [
+      {
+        "exception_id": "EXC-24471",
+        "expected_category": "SETTLEMENT_FAIL",
+        "category": "SETTLEMENT_FAIL",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.841
+      },
+      {
+        "exception_id": "EXC-24379",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.916
+      },
+      {
+        "exception_id": "EXC-24478",
+        "expected_category": "GL_SUSPENSE",
+        "category": "GL_SUSPENSE",
+        "expected_route": "AUTO",
+        "route": "AUTO",
+        "regulated": false,
+        "status": "AUTO_RESOLVED",
+        "priority": "P3",
+        "confidence": 0.886
+      },
+      {
+        "exception_id": "EXC-24482",
+        "expected_category": "GL_SUSPENSE",
+        "category": "GL_SUSPENSE",
+        "expected_route": "AUTO",
+        "route": "AUTO",
+        "regulated": false,
+        "status": "AUTO_RESOLVED",
+        "priority": "P3",
+        "confidence": 0.886
+      },
+      {
+        "exception_id": "EXC-24489",
+        "expected_category": "GL_SUSPENSE",
+        "category": "GL_SUSPENSE",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.886
+      },
+      {
+        "exception_id": "EXC-24496",
+        "expected_category": "GL_SUSPENSE",
+        "category": "GL_SUSPENSE",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.854
+      },
+      {
+        "exception_id": "EXC-24499",
+        "expected_category": "GL_SUSPENSE",
+        "category": "GL_SUSPENSE",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.854
+      },
+      {
+        "exception_id": "EXC-24457",
+        "expected_category": "SETTLEMENT_FAIL",
+        "category": "SETTLEMENT_FAIL",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.877
+      },
+      {
+        "exception_id": "EXC-24360",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "AUTO",
+        "route": "AUTO",
+        "regulated": false,
+        "status": "AUTO_RESOLVED",
+        "priority": "P3",
+        "confidence": 0.9
+      },
+      {
+        "exception_id": "EXC-24387",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.9
+      },
+      {
+        "exception_id": "EXC-24447",
+        "expected_category": "SETTLEMENT_FAIL",
+        "category": "SETTLEMENT_FAIL",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.857
+      },
+      {
+        "exception_id": "EXC-24354",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "AUTO",
+        "route": "AUTO",
+        "regulated": false,
+        "status": "AUTO_RESOLVED",
+        "priority": "P3",
+        "confidence": 0.9
+      },
+      {
+        "exception_id": "EXC-24371",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.9
+      },
+      {
+        "exception_id": "EXC-24449",
+        "expected_category": "SETTLEMENT_FAIL",
+        "category": "SETTLEMENT_FAIL",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.841
+      },
+      {
+        "exception_id": "EXC-24462",
+        "expected_category": "SETTLEMENT_FAIL",
+        "category": "SETTLEMENT_FAIL",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.857
+      },
+      {
+        "exception_id": "EXC-24356",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "AUTO",
+        "route": "AUTO",
+        "regulated": false,
+        "status": "AUTO_RESOLVED",
+        "priority": "P3",
+        "confidence": 0.882
+      },
+      {
+        "exception_id": "EXC-24362",
+        "expected_category": "NOSTRO_BREAK",
+        "category": "NOSTRO_BREAK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.916
+      },
+      {
+        "exception_id": "EXC-24427",
+        "expected_category": "KYC_EXPIRED_BLOCK",
+        "category": "KYC_EXPIRED_BLOCK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.932,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24437",
+        "expected_category": "KYC_EXPIRED_BLOCK",
+        "category": "KYC_EXPIRED_BLOCK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.932,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24334",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.726
+      },
+      {
+        "exception_id": "EXC-24506",
+        "expected_category": "LIMIT_BREACH",
+        "category": "LIMIT_BREACH",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P1",
+        "confidence": 0.906,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24519",
+        "expected_category": "LIMIT_BREACH",
+        "category": "LIMIT_BREACH",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.906,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24343",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.726
+      },
+      {
+        "exception_id": "EXC-24407",
+        "expected_category": "SANCTIONS_HIT",
+        "category": "SANCTIONS_HIT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P1",
+        "confidence": 0.94,
+        "sanctions_ok": true,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24410",
+        "expected_category": "SANCTIONS_HIT",
+        "category": "SANCTIONS_HIT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P1",
+        "confidence": 0.94,
+        "sanctions_ok": true,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24318",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.853
+      },
+      {
+        "exception_id": "EXC-24429",
+        "expected_category": "KYC_EXPIRED_BLOCK",
+        "category": "KYC_EXPIRED_BLOCK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.932,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24439",
+        "expected_category": "KYC_EXPIRED_BLOCK",
+        "category": "KYC_EXPIRED_BLOCK",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.932,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24530",
+        "expected_category": "OTHER",
+        "category": "OTHER",
+        "expected_route": "TRIAGE",
+        "route": "TRIAGE",
+        "regulated": false,
+        "status": "AWAITING_TRIAGE",
+        "priority": null,
+        "confidence": 0.816
+      },
+      {
+        "exception_id": "EXC-24346",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.848
+      },
+      {
+        "exception_id": "EXC-24333",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.871
+      },
+      {
+        "exception_id": "EXC-24391",
+        "expected_category": "DUPLICATE_PAYMENT",
+        "category": "DUPLICATE_PAYMENT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.881,
+        "duplicate_ok": true
+      },
+      {
+        "exception_id": "EXC-24395",
+        "expected_category": "DUPLICATE_PAYMENT",
+        "category": "DUPLICATE_PAYMENT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.865,
+        "duplicate_ok": true
+      },
+      {
+        "exception_id": "EXC-24403",
+        "expected_category": "DUPLICATE_PAYMENT",
+        "category": "DUPLICATE_PAYMENT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.881,
+        "duplicate_ok": true
+      },
+      {
+        "exception_id": "EXC-24406",
+        "expected_category": "DUPLICATE_PAYMENT",
+        "category": "DUPLICATE_PAYMENT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.881,
+        "duplicate_ok": true
+      },
+      {
+        "exception_id": "EXC-24413",
+        "expected_category": "SANCTIONS_HIT",
+        "category": "SANCTIONS_HIT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.94,
+        "sanctions_ok": true,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24326",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.871
+      },
+      {
+        "exception_id": "EXC-24349",
+        "expected_category": "PAYMENT_REPAIR",
+        "category": "PAYMENT_REPAIR",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": false,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P3",
+        "confidence": 0.883
+      },
+      {
+        "exception_id": "EXC-24419",
+        "expected_category": "SANCTIONS_HIT",
+        "category": "SANCTIONS_HIT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.94,
+        "sanctions_ok": true,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24514",
+        "expected_category": "LIMIT_BREACH",
+        "category": "LIMIT_BREACH",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.906,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24523",
+        "expected_category": "LIMIT_BREACH",
+        "category": "LIMIT_BREACH",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P2",
+        "confidence": 0.906,
+        "specialist_required": true
+      },
+      {
+        "exception_id": "EXC-24424",
+        "expected_category": "SANCTIONS_HIT",
+        "category": "SANCTIONS_HIT",
+        "expected_route": "HUMAN",
+        "route": "HUMAN",
+        "regulated": true,
+        "status": "AWAITING_APPROVAL",
+        "priority": "P1",
+        "confidence": 0.928,
+        "sanctions_ok": true,
+        "specialist_required": true,
+        "injection_contained": true
+      }
+    ],
+    "audit_broken_at": null
+  },
+  "robustness": {
+    "text_only_triage_accuracy": 0.81,
+    "misses": [
+      {
+        "exception_id": "EXC-24478",
+        "expected": "GL_SUSPENSE",
+        "got": "OTHER",
+        "confidence": 0.535
+      },
+      {
+        "exception_id": "EXC-24482",
+        "expected": "GL_SUSPENSE",
+        "got": "OTHER",
+        "confidence": 0.535
+      },
+      {
+        "exception_id": "EXC-24489",
+        "expected": "GL_SUSPENSE",
+        "got": "OTHER",
+        "confidence": 0.535
+      },
+      {
+        "exception_id": "EXC-24496",
+        "expected": "GL_SUSPENSE",
+        "got": "OTHER",
+        "confidence": 0.485
+      },
+      {
+        "exception_id": "EXC-24499",
+        "expected": "GL_SUSPENSE",
+        "got": "OTHER",
+        "confidence": 0.485
+      },
+      {
+        "exception_id": "EXC-24334",
+        "expected": "PAYMENT_REPAIR",
+        "got": "OTHER",
+        "confidence": 0.487
+      },
+      {
+        "exception_id": "EXC-24343",
+        "expected": "PAYMENT_REPAIR",
+        "got": "OTHER",
+        "confidence": 0.487
+      },
+      {
+        "exception_id": "EXC-24395",
+        "expected": "DUPLICATE_PAYMENT",
+        "got": "OTHER",
+        "confidence": 0.516
+      }
+    ],
+    "unsafe_misses": 0,
+    "note": "A miss here is safe if it lands in human triage (OTHER) rather than a wrong category."
+  },
+  "fuzz": {
+    "fuzzed_cases": 300,
+    "executed_straight_through": 7,
+    "wrong_approver_attempts_blocked": 280,
+    "violations": [],
+    "audit_chain_valid": true
+  }
+}
