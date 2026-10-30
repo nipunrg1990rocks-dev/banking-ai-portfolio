@@ -1,0 +1,427 @@
+<title>{{TITLE}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a dark vault band holding a live hash chain of the five projects, then a light reading column of project dossiers and a verification register */
+  :root {
+    --paper: #f3f6f5;
+    --surface: #ffffff;
+    --ink: #10201d;
+    --muted: #51625e;
+    --rule: #d5dfdc;
+    --teal: #0d6b59;
+    --teal-soft: #dff0eb;
+    --brass: #8a5d0a;
+    --brass-soft: #f8edd6;
+    --red: #a3322a;
+    --red-soft: #f8e1de;
+    --vault: #0b1715;
+    --vault-2: #12231f;
+    --vault-line: #24403a;
+    --vault-ink: #e3eeeb;
+    --vault-muted: #93aaa4;
+    --vault-teal: #5fd0b3;
+    --vault-brass: #e7b85a;
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e1513; --surface: #15201d; --ink: #e4eeeb; --muted: #9bb0aa; --rule: #283a35;
+      --teal: #5fd0b3; --teal-soft: #15362e; --brass: #e7b85a; --brass-soft: #3a2d12;
+      --red: #f08a7f; --red-soft: #3d1c19;
+      --vault: #070e0c; --vault-2: #0f1c19; --vault-line: #22392f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0e1513; --surface: #15201d; --ink: #e4eeeb; --muted: #9bb0aa; --rule: #283a35;
+    --teal: #5fd0b3; --teal-soft: #15362e; --brass: #e7b85a; --brass-soft: #3a2d12;
+    --red: #f08a7f; --red-soft: #3d1c19;
+    --vault: #070e0c; --vault-2: #0f1c19; --vault-line: #22392f;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .inner { max-width: 1080px; margin: 0 auto; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 600; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p { margin: 0; }
+  a { color: var(--teal); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+  .eyebrow { font-family: var(--mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .mono { font-family: var(--mono); }
+
+  /* Top bar */
+  .topbar { background: var(--vault); color: var(--vault-ink); }
+  .topbar .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+  .brand { font-family: var(--mono); font-size: .82rem; letter-spacing: .06em; color: var(--vault-ink); text-decoration: none; }
+  .brand b { color: var(--vault-teal); font-weight: 500; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  .nav a { color: var(--vault-muted); text-decoration: none; font-size: .9rem; }
+  .nav a:hover { color: var(--vault-ink); }
+
+  /* Hero: the vault */
+  .hero { background: radial-gradient(1200px 500px at 85% -10%, var(--vault-2), transparent 70%), var(--vault); color: var(--vault-ink); }
+  .hero .inner { padding-block: 40px 56px; display: grid; gap: 40px; }
+  .hero .eyebrow { color: var(--vault-muted); }
+  .hero-copy { display: grid; gap: 18px; max-width: 760px; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.9rem); font-weight: 600; letter-spacing: -.015em; }
+  .hero h1 em { font-style: italic; color: var(--vault-teal); font-weight: 500; }
+  .hero .lede { font-size: 1.12rem; color: var(--vault-ink); opacity: .9; max-width: 62ch; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: .95rem; padding: .68rem 1.05rem; border-radius: 8px; border: 1px solid var(--teal); color: var(--teal); background: transparent; font-family: var(--body); cursor: pointer; }
+  .btn.solid { background: var(--teal); color: var(--surface); }
+  .hero .btn { border-color: var(--vault-teal); color: var(--vault-teal); }
+  .hero .btn.solid { background: var(--vault-teal); color: var(--vault); }
+  .btn[aria-disabled="true"] { border-style: dashed; border-color: var(--rule); color: var(--muted); cursor: default; font-weight: 500; }
+  @media (prefers-reduced-motion: no-preference) { .btn:not([aria-disabled="true"]) { transition: transform .15s ease; } .btn:not([aria-disabled="true"]):hover { transform: translateY(-1px); } }
+
+  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--vault-line); border-bottom: 1px solid var(--vault-line); }
+  .fact { padding: 16px 16px 16px 0; display: grid; gap: 2px; min-width: 0; }
+  .fact + .fact { padding-left: 16px; border-left: 1px solid var(--vault-line); }
+  .fact b { font-family: var(--display); font-size: 2rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .fact span { font-size: .85rem; color: var(--vault-muted); }
+
+  /* The chain */
+  .chain-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+  .chain-head p { color: var(--vault-muted); font-size: .92rem; max-width: 60ch; }
+  .chain-tools { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chain-tools .btn { font-size: .85rem; padding: .5rem .85rem; }
+  .chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; position: relative; }
+  .block { position: relative; background: var(--vault-2); border: 1px solid var(--vault-line); border-radius: 10px; padding: 14px; display: grid; gap: 8px; min-width: 0; text-decoration: none; color: var(--vault-ink); transition: border-color .3s ease, background .3s ease; }
+  .block:hover { border-color: var(--vault-teal); }
+  .block + .block::before { content: ""; position: absolute; left: -15px; top: 50%; width: 15px; height: 2px; background: var(--vault-line); }
+  .block .idx { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--vault-muted); display: flex; justify-content: space-between; gap: 8px; }
+  .block .nm { font-family: var(--display); font-size: 1.12rem; font-weight: 600; line-height: 1.2; }
+  .block .st { font-size: .8rem; color: var(--vault-muted); display: flex; align-items: center; gap: 6px; }
+  .block .st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--vault-brass); flex: none; }
+  .block[data-status="live"] .st::before { background: var(--vault-teal); }
+  .hashes { font-family: var(--mono); font-size: .7rem; color: var(--vault-muted); display: grid; gap: 1px; border-top: 1px dashed var(--vault-line); padding-top: 8px; overflow-wrap: anywhere; }
+  .hashes span b { color: var(--vault-ink); font-weight: 500; }
+  .seal { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; }
+  .block.ok { border-color: var(--vault-teal); }
+  .block.ok .seal { color: var(--vault-teal); }
+  .block.bad { border-color: #e2685d; background: #2a1513; }
+  .block.bad .seal { color: #ff9b90; }
+  .chain-msg { font-family: var(--mono); font-size: .82rem; color: var(--vault-muted); min-height: 1.4em; }
+  .chain-msg.ok { color: var(--vault-teal); }
+  .chain-msg.bad { color: #ff9b90; }
+  @media (prefers-reduced-motion: no-preference) {
+    .block { animation: rise .5s ease both; }
+    .block:nth-child(2) { animation-delay: .08s; } .block:nth-child(3) { animation-delay: .16s; }
+    .block:nth-child(4) { animation-delay: .24s; } .block:nth-child(5) { animation-delay: .32s; }
+    @keyframes rise { from { transform: translateY(8px); } to { transform: none; } }
+  }
+
+  /* Reading sections */
+  main section.band .inner { padding-block: 64px 8px; display: grid; gap: 24px; }
+  .section-head { display: grid; gap: 10px; max-width: 70ch; }
+  .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+  /* Lifecycle strip: a real sequence through one bank */
+  .life { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; counter-reset: stage; }
+  .life li { border-top: 3px solid var(--teal); padding-top: 10px; display: grid; gap: 4px; min-width: 0; align-content: start; }
+  .life li::before { counter-increment: stage; content: "Stage " counter(stage); font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .life a { font-family: var(--display); font-weight: 600; font-size: 1.08rem; text-decoration: none; color: var(--ink); }
+  .life a:hover { color: var(--teal); }
+  .life span { font-size: .9rem; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: .92rem; color: var(--muted); }
+  .links b { color: var(--ink); font-weight: 600; }
+
+  /* Project dossiers */
+  .dossier { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 36px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+  .dossier:first-of-type { border-top: 0; }
+  .side { display: grid; gap: 10px; align-content: start; }
+  .num { font-family: var(--display); font-size: 4.2rem; line-height: .9; font-weight: 500; color: var(--teal); font-variant-numeric: tabular-nums; }
+  .kind { font-family: var(--mono); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; padding: .2rem .6rem; border-radius: 999px; width: fit-content; }
+  .chip.live { background: var(--teal-soft); color: var(--teal); }
+  .chip.built { background: var(--brass-soft); color: var(--brass); }
+  .body { display: grid; gap: 18px; min-width: 0; }
+  .body h3 { font-size: clamp(1.5rem, 3vw, 1.95rem); }
+  .body .full { font-size: .92rem; color: var(--muted); margin-top: -10px; }
+  .body .summary { font-size: 1.06rem; max-width: 68ch; }
+  .pa { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .pa > div { display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .pa p { color: var(--muted); font-size: .95rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+  .stat b { font-family: var(--display); font-size: 1.7rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat span { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+  .note { font-size: .85rem; color: var(--muted); }
+  .controls { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .controls li { padding-left: 22px; position: relative; font-size: .95rem; }
+  .controls li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: var(--mono); font-size: .76rem; padding: .15rem .5rem; border-radius: 4px; background: var(--teal-soft); color: var(--ink); white-space: nowrap; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* Principles */
+  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+  .principles div { display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .principles h3 { font-size: 1.08rem; }
+  .principles p { color: var(--muted); font-size: .95rem; }
+  .principles .eyebrow { color: var(--teal); }
+
+  /* Verification register */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: .88rem; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  td.p { font-family: var(--display); font-weight: 600; font-size: 1rem; white-space: nowrap; }
+  .cell { display: grid; gap: 2px; }
+  .cell i { font-style: normal; font-size: .72rem; font-weight: 600; letter-spacing: .02em; padding: .08rem .45rem; border-radius: 4px; width: fit-content; }
+  .cell span { color: var(--muted); font-size: .82rem; }
+  .s-verified i { background: var(--teal-soft); color: var(--teal); }
+  .s-owner i { background: var(--brass-soft); color: var(--brass); }
+  .s-pending i { border: 1px dashed var(--rule); color: var(--muted); }
+  .s-na i { color: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .85rem; color: var(--muted); }
+  .legend .cell { display: inline-flex; gap: 8px; align-items: center; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; }
+  .about > div { display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .about p { max-width: 62ch; }
+  .roles { display: flex; flex-wrap: wrap; gap: 8px; }
+  .roles span { font-size: .85rem; border: 1px solid var(--rule); border-radius: 999px; padding: .2rem .7rem; }
+  .split { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .split li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; font-size: .95rem; }
+  .split li b { font-family: var(--mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding-top: 3px; }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  footer.band { margin-top: 64px; border-top: 1px solid var(--rule); }
+  footer .inner { padding-block: 24px 40px; display: grid; gap: 6px; font-size: .86rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .chain { grid-template-columns: 1fr; gap: 10px; }
+    .block + .block::before { left: 24px; top: -11px; width: 2px; height: 11px; }
+    .block { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .block .idx, .block .hashes { grid-column: 1 / -1; }
+    .life { grid-template-columns: 1fr 1fr; }
+    .dossier { grid-template-columns: 1fr; gap: 16px; }
+    .side { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px 16px; }
+    .side .num { grid-row: span 2; font-size: 3.2rem; }
+    .principles { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+    .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+    .fact:nth-child(n+3) { border-top: 1px solid var(--vault-line); }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .pa { grid-template-columns: 1fr; }
+    .life { grid-template-columns: 1fr; }
+    .principles { grid-template-columns: 1fr; }
+    .split li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+
+<header class="topbar band">
+  <div class="inner">
+    <a class="brand" href="#top">{{NAME_UPPER}} <b>/</b> BANKING AI PORTFOLIO</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#register">What is verified</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero band" id="top">
+  <div class="inner">
+    <div class="hero-copy">
+      <p class="eyebrow">{{NAME}} · Banking AI &amp; Databricks portfolio · {{YEAR}}</p>
+      <h1>AI a bank's <em>second line</em> could sign off.</h1>
+      <p class="lede">{{SUMMARY}}</p>
+      <div class="cta">
+        <a class="btn solid" href="#projects">See the five projects</a>
+        <a class="btn" href="{{REPO_URL}}">Code on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="facts" role="list">
+      <div class="fact" role="listitem"><b>5</b><span>working projects, one fictional bank</span></div>
+      <div class="fact" role="listitem"><b>{{TOTAL_TESTS}}</b><span>automated tests across the five</span></div>
+      <div class="fact" role="listitem"><b>0</b><span>regulated decisions left to AI alone</span></div>
+      <div class="fact" role="listitem"><b>$0</b><span>running cost: free tiers and offline modes</span></div>
+    </div>
+
+    <div class="chain-head">
+      <div style="display:grid;gap:6px">
+        <p class="eyebrow">The portfolio as an audit trail</p>
+        <p>Every project keeps a hash-chained audit log, so this page does too. Each block's SHA-256 covers its project's claim and the block before it. Change one claim and every block after it breaks.</p>
+      </div>
+      <div class="chain-tools">
+        <button class="btn" type="button" id="verify">Verify the chain</button>
+        <button class="btn" type="button" id="tamper">Overstate a result</button>
+      </div>
+    </div>
+    <ol class="chain" id="chain">
+{{CHAIN}}
+    </ol>
+    <p class="chain-msg" id="chain-msg" aria-live="polite">Genesis 0000…0000 · five blocks sealed when this page was built.</p>
+  </div>
+</section>
+
+<main>
+  <section class="band">
+    <div class="inner">
+      <div class="section-head">
+        <p class="eyebrow">One bank, five systems</p>
+        <h2>Follow a day at {{BANK}}</h2>
+        <p>The five projects share one fictional bank and its synthetic data, so together they cover the risk lifecycle from the first file landing to the next regulatory change.</p>
+      </div>
+      <ol class="life">
+{{LIFECYCLE}}
+      </ol>
+      <div class="links">
+        <span><b>Shared code:</b> guardrails, hash-chained audit log and LLM client with an offline fallback</span>
+        <span><b>Risk Control Room</b> reads the Lakehouse's Gold tables</span>
+        <span><b>RegRadar</b> maps new rules onto the Copilot's policies</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="projects">
+    <div class="inner">
+      <div class="section-head">
+        <p class="eyebrow">The projects</p>
+        <h2>Five working systems, each with its own controls</h2>
+        <p>Each project has a project page for a quick read, an interview pack (PDF) with architecture, diagrams and Q&amp;A, and its source code.</p>
+      </div>
+      <div>
+{{PROJECTS}}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner">
+      <div class="section-head">
+        <p class="eyebrow">How every project is built</p>
+        <h2>Six rules I applied to all five</h2>
+      </div>
+      <div class="principles">
+        <div><p class="eyebrow">Decisions</p><h3>Rules decide, models assist</h3><p>Verdicts and routing come from explainable rules that give the same answer every time. The model drafts, explains and challenges.</p></div>
+        <div><p class="eyebrow">Accountability</p><h3>A person approves regulated actions</h3><p>Sanctions, KYC, credit and filings always reach a named human, with maker-checker and segregation of duties.</p></div>
+        <div><p class="eyebrow">Grounding</p><h3>Every number traces to a source</h3><p>An AI answer that cites a section, transaction or figure that doesn't exist is rejected before anyone sees it.</p></div>
+        <div><p class="eyebrow">Audit</p><h3>Every step is on the record</h3><p>Agent steps and approvals go into a SHA-256 hash chain that shows any later edit, like the one at the top of this page.</p></div>
+        <div><p class="eyebrow">Cost and privacy</p><h3>Runs free, works offline</h3><p>Each app runs with no paid AI by default. Live models are free Databricks foundation models, and personal data is redacted first.</p></div>
+        <div><p class="eyebrow">Evidence</p><h3>Measured, not claimed</h3><p>Synthetic data ships with a hidden answer key of planted issues, and the tests must find them exactly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="register">
+    <div class="inner">
+      <div class="section-head">
+        <p class="eyebrow">Status, stated plainly</p>
+        <h2>What is verified, and what isn't yet</h2>
+        <p>Updated {{UPDATED}}. All results come from synthetic data written for these projects, so they show the designs work as intended. They are not independent benchmarks.</p>
+      </div>
+      <div class="legend">
+        <span class="cell s-verified"><i>Verified</i> measured by automated tests or a recorded run</span>
+        <span class="cell s-owner"><i>Checked by me</i> I ran or checked it; no automated record</span>
+        <span class="cell s-pending"><i>Not yet</i> built but not run there yet</span>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th scope="col">Project</th><th scope="col">Automated tests</th><th scope="col">Browser test</th><th scope="col">Databricks</th><th scope="col">Live LLM</th><th scope="col">Hosted demo</th></tr></thead>
+          <tbody>
+{{REGISTER}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="inner">
+      <div class="about">
+        <div>
+          <p class="eyebrow">About me</p>
+          <h2>{{NAME}}</h2>
+          <p>{{HEADLINE}}.</p>
+          <div class="roles">{{ROLES}}</div>
+          <p>I worked on the banking side of risk, controls and change for about {{YEARS}} years, writing requirements, running UAT and living with the controls auditors test. These projects are my answer to a question I kept hearing: how do you let AI into a regulated process without losing control of it?</p>
+          <div class="contact">{{CONTACT}}</div>
+        </div>
+        <div>
+          <p class="eyebrow">How these were built</p>
+          <p>These are independent projects built with AI-assisted development tools. The split of work was clear:</p>
+          <ul class="split">
+            <li><b>I decided</b><span>The use cases, the control rules, what AI may and may not do, and the acceptance criteria.</span></li>
+            <li><b>I designed</b><span>The test scenarios and answer keys: planted defects, decoys, false positives and prompt injections.</span></li>
+            <li><b>AI tools wrote</b><span>The code, under my direction, to the designs and controls above.</span></li>
+            <li><b>I verified</b><span>The test results, the app behaviour and the Databricks runs, and I record anything unproven as unproven.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="band">
+  <div class="inner">
+    <p>Independent, AI-assisted portfolio projects by {{NAME}}. {{BANK}}, its customers, regulators, policies and data are fictional and synthetic. Not affiliated with any employer or real financial institution.</p>
+    <p class="mono">Built from <a href="{{REPO_URL}}">{{REPO_SHORT}}</a> · links and statuses live in site/portfolio.json</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const blocks = [...document.querySelectorAll('#chain .block')];
+  const msg = document.getElementById('chain-msg');
+  const tamperBtn = document.getElementById('tamper');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = ms => new Promise(r => setTimeout(r, reduced ? 0 : ms));
+  let tampered = false;
+
+  async function sha256(text) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function verify() {
+    if (!window.crypto || !crypto.subtle) { msg.textContent = 'This browser cannot compute SHA-256 here.'; return; }
+    blocks.forEach(b => { b.classList.remove('ok', 'bad'); b.querySelector('.seal').textContent = 'checking…'; });
+    msg.className = 'chain-msg'; msg.textContent = 'Recomputing each hash from the block contents…';
+    let prev = '0'.repeat(64), broken = 0;
+    for (const b of blocks) {
+      const claim = [prev, b.dataset.n, b.querySelector('.nm').textContent, b.querySelector('.st').textContent].join('|');
+      const h = await sha256(claim);
+      await wait(260);
+      const ok = !broken && h === b.dataset.hash;
+      b.classList.add(ok ? 'ok' : 'bad');
+      b.querySelector('.seal').textContent = ok ? 'SEALED ✓' : 'BROKEN ✕';
+      if (!ok && !broken) broken = Number(b.dataset.n);
+      prev = b.dataset.hash;
+    }
+    if (broken) { msg.className = 'chain-msg bad'; msg.textContent = `Block ${broken} no longer matches its seal, so it and every block after it fail. That is how the apps catch an edited audit log.`; }
+    else { msg.className = 'chain-msg ok'; msg.textContent = 'All five blocks match their seals. Nothing on this chain has been edited since the build.'; }
+  }
+
+  function tamper() {
+    const b = blocks.find(x => x.dataset.status !== 'live') || blocks[blocks.length - 1];
+    const st = b.querySelector('.st');
+    if (!tampered) { st.dataset.orig = st.textContent; st.textContent = 'Live demo'; tamperBtn.textContent = 'Restore the true claim'; }
+    else { st.textContent = st.dataset.orig; tamperBtn.textContent = 'Overstate a result'; }
+    tampered = !tampered;
+    verify();
+  }
+
+  document.getElementById('verify').addEventListener('click', verify);
+  tamperBtn.addEventListener('click', tamper);
+})();
+</script>
