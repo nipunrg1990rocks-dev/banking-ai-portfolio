@@ -1,6 +1,6 @@
 # Portfolio Tracker
 
-Last updated: 2026-10-26. Evidence links point to files in this repository.
+Last updated: 2026-10-31. Evidence links point to files in this repository.
 
 | Project | Scope agreed | Code complete | Tests run | Bugs outstanding | Deployment ready | URL verified | Demo pack | Interview training | Cost to date | Next action | Owner |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -9,6 +9,7 @@ Last updated: 2026-10-26. Evidence links point to files in this repository.
 | 03 Agentic Ops | Yes (brief) | Yes: [projects/p3_exception_manager](projects/p3_exception_manager/) | 50/50 pytest (incl. Streamlit AppTest); 10/10 browser steps; eval: route accuracy 100%, 0 regulated auto-executions, 0 violations in 300 fuzzed cases | None known; limitations in docs/architecture.md | Yes (offline, $0; Claude case notes optional, not run live) | No (app not yet deployed) | Yes: [interview_pack.md](projects/p3_exception_manager/docs/interview_pack.md) + [PDF](projects/p3_exception_manager/docs/Ledgerline_Exception_Manager_Interview_Pack.pdf) | Not started | $0 | Nipun: deploy app on Streamlit Cloud and smoke-check it | Claude (build), Nipun (accounts, review) |
 | 04 Risk & DQ Dashboard | Yes (brief) | No | - | - | - | - | - | - | $0 | - | - |
 | 05 Reg Change Analyzer | Yes (brief) | No | - | - | - | - | - | - | $0 | - | - |
+| 06 Prompt-to-Presentation | Yes (brief + DB case-study replica, both datasets) | Yes: [projects/p6_prompt_to_presentation](projects/p6_prompt_to_presentation/) | 60/60 pytest (incl. Streamlit AppTest); 11/11 browser steps (acceptance A–G); 13/13 case-study figures reconciled locally | None known; limitations in docs/architecture.md | Yes (offline, $0; Claude parser optional, not run live) | No (app not yet deployed) | Yes: [interview_pack.md](projects/p6_prompt_to_presentation/docs/interview_pack.md) | Not started | $0 | Nipun: deploy app on Streamlit Cloud and smoke-check it | Claude (build), Nipun (accounts, review) |
 
 ## Accounts and connections
 
