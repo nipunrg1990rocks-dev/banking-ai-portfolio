@@ -34,7 +34,7 @@ One governed master dashboard replaces spreadsheet formula maintenance, chart co
 | Scripted acceptance demo (`run_demo.py`) | A–G complete in about 12 s with PDF export; output in [sample_output](sample_output/) |
 | Reconciliation with the original case-study roster (local only, file not committed) | **13/13** published figures reproduced (134 on contract, EUR 610,393.55 Q1 T&M India, ...) |
 | Live Claude parsing | Built and unit-tested with a fake client; **not run against the real API** (needs spend approval) |
-| Hosted URL | https://banking-ai-portfolio-bbh7cdwafuzerlfuafrmjr.streamlit.app (deployed by Nipun on 31 Oct 2026; not yet smoke-checked from the build environment) |
+| Hosted URL | https://banking-ai-portfolio-bbh7cdwafuzerlfuafrmjr.streamlit.app (deployed and smoke-checked by Nipun on 31 Oct 2026: generate, follow-up download, audit chain) |
 
 ## Acceptance demo
 
