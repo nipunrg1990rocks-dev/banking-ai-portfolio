@@ -34,7 +34,7 @@ One governed master dashboard replaces spreadsheet formula maintenance, chart co
 | Scripted acceptance demo (`run_demo.py`) | A–G complete in about 12 s with PDF export; output in [sample_output](sample_output/) |
 | Reconciliation with the original case-study roster (local only, file not committed) | **13/13** published figures reproduced (134 on contract, EUR 610,393.55 Q1 T&M India, ...) |
 | Live Claude parsing | Built and unit-tested with a fake client; **not run against the real API** (needs spend approval) |
-| Hosted URL | **Not yet deployed**: needs the one-time Streamlit Community Cloud step below |
+| Hosted URL | https://banking-ai-portfolio-bbh7cdwafuzerlfuafrmjr.streamlit.app (deployed and smoke-checked by Nipun on 31 Oct 2026: generate, follow-up download, audit chain) |
 
 ## Acceptance demo
 
@@ -71,3 +71,5 @@ python projects/p6_prompt_to_presentation/generate_data.py  # regenerate synthet
 - [Data dictionary and KPI definitions](docs/data_dictionary.md)
 - [Interview pack: demo scripts, 30 Q&As, resume bullets](docs/interview_pack.md)
 - [Test results](docs/test_results.md)
+- [Downloadable documentation (PDF)](docs/Ledgerline_Prompt_to_Presentation_Documentation.pdf), rebuilt with `python build_docs_pdf.py`
+- [LinkedIn post drafts](docs/linkedin_post.md)
