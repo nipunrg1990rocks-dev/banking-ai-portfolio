@@ -1,6 +1,6 @@
 # Banking AI & Databricks Portfolio
 
-Five independent, AI-assisted portfolio projects that apply GenAI and data engineering to banking risk, compliance and operations. **All data is synthetic.** These projects are not affiliated with any employer or real financial institution.
+Six independent, AI-assisted portfolio projects that apply GenAI and data engineering to banking risk, compliance and operations. **All data is synthetic.** These projects are not affiliated with any employer or real financial institution.
 
 | # | Project | Stack | Status |
 |---|---|---|---|
@@ -9,6 +9,7 @@ Five independent, AI-assisted portfolio projects that apply GenAI and data engin
 | 03 | [Agentic AI Operations Exception Manager](projects/p3_exception_manager/) | LangGraph (interrupt/resume), tool-calling agents, scikit-learn triage, maker-checker controls, Streamlit, hash-chained audit | Built and tested; not yet deployed |
 | 04 | AI-Powered Risk & Data Quality Dashboard | Databricks SQL, Streamlit | Planned |
 | 05 | GenAI Regulatory Change Impact Analyzer | Document intelligence, RAG, control mapping | Planned |
+| 06 | [Prompt-to-Presentation AI: Dynamic Executive Reporting Platform](projects/p6_prompt_to_presentation/) | Streamlit, python-pptx, DuckDB, Pydantic, Claude (optional), LibreOffice PDF, SQLite versions + audit chain | Built and tested; not yet deployed |
 
 ## Shared building blocks (`portfolio_core/`)
 

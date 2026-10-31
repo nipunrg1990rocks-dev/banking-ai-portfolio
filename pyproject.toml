@@ -16,7 +16,7 @@ line-length = 120
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["portfolio_core", "copilot", "lakehouse", "explorer", "opsagent"]
+known-first-party = ["portfolio_core", "copilot", "lakehouse", "explorer", "opsagent", "deckpilot"]
 
 [tool.ruff.lint.per-file-ignores]
 # Databricks notebooks: spark, dbutils and display are injected by the runtime.
