@@ -71,3 +71,5 @@ python projects/p6_prompt_to_presentation/generate_data.py  # regenerate synthet
 - [Data dictionary and KPI definitions](docs/data_dictionary.md)
 - [Interview pack: demo scripts, 30 Q&As, resume bullets](docs/interview_pack.md)
 - [Test results](docs/test_results.md)
+- [Downloadable documentation (PDF)](docs/Ledgerline_Prompt_to_Presentation_Documentation.pdf), rebuilt with `python build_docs_pdf.py`
+- [LinkedIn post drafts](docs/linkedin_post.md)

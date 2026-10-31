@@ -125,7 +125,8 @@ def section(path: Path, *, drop_title: bool = False) -> str:
         for m in mermaids[1:]:
             text = text.replace(m, "@@SEQUENCE@@", 1)
     html = md(text)
-    html = html.replace("<p>@@COMPONENT@@</p>", COMPONENT_DIAGRAM + '<p class="legend">Dark red boxes are controls.</p>')
+    legend = '<p class="legend">Dark red boxes are controls.</p>'
+    html = html.replace("<p>@@COMPONENT@@</p>", COMPONENT_DIAGRAM + legend)
     html = html.replace("<p>@@SEQUENCE@@</p>", SEQUENCE_DIAGRAM)
     return html
 
