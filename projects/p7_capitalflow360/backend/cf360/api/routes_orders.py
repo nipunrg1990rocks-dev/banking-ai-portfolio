@@ -82,7 +82,7 @@ def _fill(s: Session, o: m.Order, fills: list[FillIn], venue: str, cpty: str, as
         if filled + f.qty > dec(o.order_qty):
             raise ApiError(422, "E_OVERFILL", f"Fill {f.qty} would exceed order quantity {o.order_qty}")
         if o.order_type == "LIMIT" and o.limit_price is not None:
-            worse = f.price > o.limit_price if o.side in ("BUY", "BORROW") else f.price < o.limit_price
+            worse = f.price > o.limit_price if o.side in ("BUY", "SEC_BORROW") else f.price < o.limit_price
             if worse:
                 raise ApiError(422, "E_LIMIT_VIOLATION", f"Fill price {f.price} breaches limit {o.limit_price}")
         s.add(m.Execution(exec_id="EX-" + uuid.uuid4().hex[:10].upper(), order_id=o.order_id, execution_venue=f.venue or venue,

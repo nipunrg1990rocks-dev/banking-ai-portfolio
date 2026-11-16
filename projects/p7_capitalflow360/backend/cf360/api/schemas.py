@@ -12,7 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 ProductType = Literal["EQUITY", "ETF", "GOVT_BOND", "CORP_BOND", "FX_SPOT", "FX_FORWARD", "FUTURE", "OPTION", "IRS",
                       "REPO", "REVERSE_REPO", "SEC_LOAN", "SEC_BORROW"]
-Side = Literal["BUY", "SELL", "PAY_FIXED", "RECEIVE_FIXED", "REPO", "REVERSE_REPO", "LEND", "BORROW"]
+Side = Literal["BUY", "SELL", "PAY_FIXED", "RECEIVE_FIXED", "REPO", "REVERSE_REPO", "SEC_LOAN", "SEC_BORROW"]
 
 
 class Strict(BaseModel):
