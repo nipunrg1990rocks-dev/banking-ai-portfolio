@@ -284,7 +284,8 @@ def roles() -> str:
 <section>
   <h2>6. Role workspaces and controls</h2>
   {table(["Role", "Demo users", "Works on"], rows)}
-  <p>Passwords for the demo users are set by an environment variable, not stored in the repository. Permissions are enforced by the API,
+  <p>The demo users share one password, set by <code>CF360_DEMO_PASSWORD</code>; the repository's default is a published demo value, so any
+  public host must override it. Permissions are enforced by the API,
   so hiding a button is a convenience, not the control; the 264-case role matrix calls each protected endpoint as every role.</p>
   <h3>Maker-checker</h3>
   <div class="flow">{''.join(f'<span>{s}</span>' for s in ['Maker requests', 'Version check (If-Match)', 'Checker approves', 'New trade version', 'Allocations re-cut'])}</div>

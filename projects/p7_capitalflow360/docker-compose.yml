@@ -1,0 +1,33 @@
+# CapitalFlow 360 local stack: PostgreSQL 16 and the app (API + UI) on http://localhost:8000
+#   cp .env.example .env   # then set CF360_JWT_SECRET
+#   docker compose up --build
+services:
+  db:
+    image: postgres:16.11-alpine
+    environment:
+      POSTGRES_USER: cf360
+      POSTGRES_PASSWORD: ${CF360_DB_PASSWORD:-cf360}
+      POSTGRES_DB: cf360
+    volumes:
+      - cf360-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cf360 -d cf360"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      CF360_DATABASE_URL: postgresql+psycopg://cf360:${CF360_DB_PASSWORD:-cf360}@db:5432/cf360
+      CF360_JWT_SECRET: ${CF360_JWT_SECRET:?Set CF360_JWT_SECRET in .env (at least 32 characters)}
+      CF360_DEMO_PASSWORD: ${CF360_DEMO_PASSWORD:-Demo!2026}
+      CF360_DEFECTS: ${CF360_DEFECTS:-}
+    ports:
+      - "${CF360_PORT:-8000}:8000"
+
+volumes:
+  cf360-db:

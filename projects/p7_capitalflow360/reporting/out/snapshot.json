@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T06:15:52Z",
+ "generated_at": "2026-11-16T06:23:40Z",
  "dashboards": {
   "executive": {
    "dashboard": "executive",
@@ -13,7 +13,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -706,7 +706,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -989,7 +989,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1342,7 +1342,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1642,7 +1642,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2118,7 +2118,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "test_run": "CLEAN-001",
@@ -2360,7 +2360,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:15:53Z",
+   "refreshed_at": "2026-11-16T06:23:41Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2415,7 +2415,7 @@
     {
      "id": "api_p95",
      "label": "API p95 latency (ms)",
-     "value": 105.0,
+     "value": 83.9,
      "unit": "ms",
      "definition": "p95 over the last 1 API requests since start",
      "numerator": null,
@@ -2720,7 +2720,7 @@
      "data": [
       {
        "name": "POST /api/auth/login",
-       "value": 105.0
+       "value": 83.9
       }
      ]
     }
@@ -3424,7 +3424,7 @@
  },
  "platform": {
   "ledger_rows": 5100,
-  "audit_events": 3698,
+  "audit_events": 3699,
   "lifecycle_events": 948,
   "instructions": 525,
   "confirmations": 427,

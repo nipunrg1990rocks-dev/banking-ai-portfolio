@@ -1,0 +1,206 @@
+<title>CapitalFlow 360</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: same reading column and type as the other portfolio project pages; motif is the trade lifecycle spine and a test ledger */
+  :root {
+    --bg: #f4f6f6;
+    --surface: #ffffff;
+    --ink: #13201f;
+    --muted: #55625f;
+    --rule: #d6dfdd;
+    --accent: #0f6b63;
+    --accent-soft: #dcefec;
+    --amber: #9a5b05; --amber-soft: #f7e9d2;
+    --ok: #2f6b12; --ok-soft: #e2f0d6;
+    --bad: #a3302a; --bad-soft: #f7e0de;
+    --tag-bg: #e6eceb;
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1514; --surface: #142120; --ink: #e3ecea; --muted: #98aaa6; --rule: #263735;
+      --accent: #6fd0c4; --accent-soft: #15302d; --amber: #f0b45c; --amber-soft: #3a2a12;
+      --ok: #a3d67b; --ok-soft: #1d3313; --bad: #f08f86; --bad-soft: #3d1d1a; --tag-bg: #1d2c2a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1514; --surface: #142120; --ink: #e3ecea; --muted: #98aaa6; --rule: #263735;
+    --accent: #6fd0c4; --accent-soft: #15302d; --amber: #f0b45c; --amber-soft: #3a2a12;
+    --ok: #a3d67b; --ok-soft: #1d3313; --bad: #f08f86; --bad-soft: #3d1d1a; --tag-bg: #1d2c2a; color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .wrap { max-width: 920px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 56px; display: grid; gap: 44px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 1.55rem; font-weight: 600; }
+  h3 { font-size: 1.1rem; font-weight: 600; }
+  p { margin: 0; max-width: 65ch; }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .tag { font-family: var(--mono); font-size: .8rem; background: var(--tag-bg); color: var(--ink); padding: .1rem .45rem; border-radius: 4px; white-space: nowrap; }
+  section { display: grid; gap: 16px; }
+  .hero { display: grid; gap: 18px; border-bottom: 1px solid var(--rule); padding-bottom: 36px; }
+  .lede { font-size: 1.15rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; padding: .7rem 1.1rem; border-radius: 8px; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.secondary { color: var(--accent); background: transparent; }
+  .disclose { font-size: .9rem; color: var(--muted); }
+
+  .spine { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .st { font-size: .82rem; padding: .35rem .65rem; border-radius: 8px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .arrow { color: var(--muted); font-size: .8rem; }
+  .products { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .products th, .products td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .products th { font-weight: 600; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+  .table-wrap { overflow-x: auto; }
+  .num { font-variant-numeric: tabular-nums; font-family: var(--mono); }
+
+  .sample { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 12px; }
+  .calc { font-family: var(--mono); font-size: .9rem; display: grid; gap: 4px; font-variant-numeric: tabular-nums; overflow-x: auto; }
+  .calc .res { color: var(--ok); font-weight: 500; }
+  .note { font-size: .88rem; color: var(--muted); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 4px; align-content: start; }
+  .stat b { font-family: var(--display); font-size: 1.9rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat span { font-size: .85rem; color: var(--muted); }
+
+  .defects { display: grid; gap: 8px; }
+  .def { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 9rem; gap: 12px; align-items: center; font-size: .92rem; }
+  .def .id { font-family: var(--mono); font-weight: 500; }
+  .bar { height: 10px; border-radius: 5px; background: var(--amber); }
+  .barcell { display: flex; align-items: center; gap: 8px; }
+  .barcell span { font-family: var(--mono); font-size: .85rem; font-variant-numeric: tabular-nums; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cols > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .list li { padding-left: 18px; position: relative; }
+  .list li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; background: var(--accent); border-radius: 2px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack .tag { font-size: .85rem; padding: .25rem .6rem; }
+  .pill { font-size: .78rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px; white-space: nowrap; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.wait { background: var(--amber-soft); color: var(--amber); }
+  .role { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 10px; }
+  footer { border-top: 1px solid var(--rule); padding-top: 20px; font-size: .88rem; color: var(--muted); display: grid; gap: 6px; }
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols { grid-template-columns: 1fr; }
+    .def { grid-template-columns: 2.4rem minmax(0, 1fr); }
+    .def .barcell { grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: no-preference) { .btn { transition: transform .15s ease; } .btn:hover { transform: translateY(-1px); } }
+</style>
+<main class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Portfolio project 07 · Capital markets operations · Test engineering</span>
+    <h1>CapitalFlow 360</h1>
+    <p class="lede">A simulated back office that takes 500 trades across six asset classes from order to settled cash and reconciled books, with a test system that never trusts the code it is testing.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/tree/main/projects/p7_capitalflow360">Code on GitHub</a>
+      <a class="btn secondary" href="https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/blob/main/projects/p7_capitalflow360/reporting/out/CapitalFlow360_Interview_and_Demonstration_Handbook.pdf">Handbook (PDF)</a>
+    </div>
+    <p class="disclose">Independent portfolio project, built with AI assistance on synthetic data. Venues, clearing houses and custodians are simulated; no real market connectivity, production pricing or regulatory claim. Not publicly hosted yet.</p>
+  </header>
+
+  <section>
+    <h2>The operations problem</h2>
+    <p>Trades rarely fail at the trading desk. They fail afterwards: an allocation a cent short, a settlement date on a holiday in one currency, an expired standing instruction, a self-approved amendment. Each is small, and each becomes a fail, a break or an audit finding. CapitalFlow 360 models those paths and proves which ones the platform catches.</p>
+    <div class="spine" aria-label="Lifecycle stages">
+      <span class="st">Order and fills</span><span class="arrow">→</span><span class="st">Booked</span><span class="arrow">→</span><span class="st">Allocated</span><span class="arrow">→</span>
+      <span class="st">Confirmed</span><span class="arrow">→</span><span class="st">Cleared</span><span class="arrow">→</span><span class="st">Instructed</span><span class="arrow">→</span><span class="st">Settled</span><span class="arrow">→</span><span class="st">Reconciled</span>
+    </div>
+    <div class="table-wrap">
+      <table class="products">
+        <thead><tr><th>Asset class</th><th>Trades</th><th>Where its lifecycle differs</th></tr></thead>
+        <tbody>
+          <tr><td>Equities and ETFs</td><td class="num">140</td><td>Central clearing, delivery versus payment on the market calendar</td></tr>
+          <tr><td>Government and corporate bonds</td><td class="num">120</td><td>Bilateral; accrued interest by day count, gilt ex-dividend periods</td></tr>
+          <tr><td>FX spot and forwards</td><td class="num">80</td><td>Value date must be a business day in both currencies</td></tr>
+          <tr><td>Futures and options</td><td class="num">70</td><td>Daily variation margin; premium, exercise and expiry</td></tr>
+          <tr><td>Interest-rate swaps</td><td class="num">50</td><td>Open until maturity, scheduled net payments</td></tr>
+          <tr><td>Repo and securities lending</td><td class="num">40</td><td>Opening and closing legs, haircuts, margin calls, fees</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>One worked example the tests check</h2>
+    <div class="sample">
+      <span class="eyebrow">WE07 · Residual goes to the first of the tied largest allocations · rules R024, R025</span>
+      <div class="calc">
+        <div>Block amount        USD 1,000.00  over three equal allocations</div>
+        <div>1,000.00 / 3            = 333.333…  rounds to 333.33 each</div>
+        <div>333.33 × 3              = 999.99    residual 0.01</div>
+        <div class="res">Result                  333.34 · 333.33 · 333.33   sums to 1,000.00</div>
+      </div>
+      <p class="note">Calculated by hand, then matched by the platform and by an independent calculator that shares no code with it. When defect D1 dropped the residual cent, 25 test cases failed.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Measured results</h2>
+    <div class="stats">
+      <div class="stat"><b>2,370</b><span>generated test cases in 137 scenarios, all executed</span></div>
+      <div class="stat"><b>0</b><span>failures in the clean run (2,410 executions including browser runs)</span></div>
+      <div class="stat"><b>6 of 6</b><span>injected defects caught, each by the cases designed for it</span></div>
+      <div class="stat"><b>14 of 14</b><span>lakehouse checks passed on local Spark and Delta Lake</span></div>
+    </div>
+    <p class="note">Expected answers come from an independent calculator, documented rule boundaries, hand-written specifications and 28 hand-worked examples. Browser runs so far are Chromium only (95); Firefox and WebKit run in the CI workflow. The Databricks notebook has not been run on Databricks yet.</p>
+    <div class="defects" aria-label="Failed cases per injected defect">
+      <div class="def"><span class="id">D1</span><span>Allocation residual cent dropped</span><span class="barcell"><span class="bar" style="width:calc(25 / 52 * 6rem)"></span><span>25</span></span></div>
+      <div class="def"><span class="id">D2</span><span>30/360 bonds accrue on ACT/360</span><span class="barcell"><span class="bar" style="width:6rem"></span><span>52</span></span></div>
+      <div class="def"><span class="id">D3</span><span>FX spot date ignores the quote-currency calendar</span><span class="barcell"><span class="bar" style="width:calc(46 / 52 * 6rem)"></span><span>46</span></span></div>
+      <div class="def"><span class="id">D4</span><span>Maker can approve their own request</span><span class="barcell"><span class="bar" style="width:calc(2 / 52 * 6rem)"></span><span>2</span></span></div>
+      <div class="def"><span class="id">D5</span><span>Ledger idempotency key bypassed</span><span class="barcell"><span class="bar" style="width:calc(1 / 52 * 6rem)"></span><span>1</span></span></div>
+      <div class="def"><span class="id">D6</span><span>Blotter ignores the currency filter</span><span class="barcell"><span class="bar" style="width:calc(8 / 52 * 6rem)"></span><span>8</span></span></div>
+    </div>
+    <p class="note">The suite also found five genuine bugs before any defect was planted, including a 600-share allocation of a 500-share block that was accepted because three checks had been built as warnings.</p>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h2>Controls</h2>
+      <ul class="list">
+        <li>Maker-checker on every economic change; a maker can never approve their own request</li>
+        <li>Idempotency keys on bookings and ledger postings, so a replay posts nothing twice</li>
+        <li>Version checks on amendments, so two users cannot overwrite each other</li>
+        <li>Append-only audit trail with a correlation id on every request</li>
+        <li>Lakehouse quality gate: a batch with more than 5% bad rows is held back</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Built with</h2>
+      <div class="stack">
+        <span class="tag">React + TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL 16</span><span class="tag">Alembic</span>
+        <span class="tag">PySpark + Delta Lake</span><span class="tag">Databricks (notebook)</span><span class="tag">Playwright</span><span class="tag">pytest + Hypothesis</span>
+        <span class="tag">Docker Compose</span><span class="tag">GitHub Actions</span>
+      </div>
+      <h3>Status</h3>
+      <div class="stack">
+        <span class="pill ok">Built and tested locally</span><span class="pill ok">Docker stack verified</span>
+        <span class="pill wait">Cross-browser CI pending</span><span class="pill wait">Databricks run pending</span><span class="pill wait">Not hosted yet</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="role">
+    <h2>My role</h2>
+    <p>I designed the product scope, the lifecycle for each asset class, the 69 business rules and their boundaries, the roles and controls, the test scenarios, the labelled bad data and the defect plan, drawing on twelve years in banking operations. I built it with an AI coding assistant and checked every result against answers worked out independently.</p>
+  </section>
+
+  <footer>
+    <span>Nipun Gupta · CapitalFlow 360 · independent portfolio project</span>
+    <span>Synthetic data only. Simulated venues, clearing and custody. Not production software.</span>
+  </footer>
+</main>
