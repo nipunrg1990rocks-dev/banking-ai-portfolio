@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T06:45:04Z",
+ "generated_at": "2026-11-16T09:12:08Z",
  "dashboards": {
   "executive": {
    "dashboard": "executive",
@@ -13,7 +13,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:05Z",
+   "refreshed_at": "2026-11-16T09:12:09Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -706,7 +706,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:05Z",
+   "refreshed_at": "2026-11-16T09:12:09Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -989,7 +989,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:05Z",
+   "refreshed_at": "2026-11-16T09:12:09Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1342,7 +1342,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:05Z",
+   "refreshed_at": "2026-11-16T09:12:09Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1642,7 +1642,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:05Z",
+   "refreshed_at": "2026-11-16T09:12:09Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2118,7 +2118,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:06Z",
+   "refreshed_at": "2026-11-16T09:12:10Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "test_run": "CLEAN-001",
@@ -2360,7 +2360,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:45:06Z",
+   "refreshed_at": "2026-11-16T09:12:10Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2415,7 +2415,7 @@
     {
      "id": "api_p95",
      "label": "API p95 latency (ms)",
-     "value": 524.0,
+     "value": 288.9,
      "unit": "ms",
      "definition": "p95 over the last 1 API requests since start",
      "numerator": null,
@@ -2720,7 +2720,7 @@
      "data": [
       {
        "name": "POST /api/auth/login",
-       "value": 524.0
+       "value": 288.9
       }
      ]
     }
@@ -3422,6 +3422,24 @@
    ]
   }
  },
+ "deployment": {
+  "url": "https://bankingaiportfolio2-nwxac8xu.back4.app",
+  "host": "Back4app Containers free tier (0.25 CPU, 256 MB) with a Neon Free PostgreSQL database",
+  "card_required": false,
+  "deployed_on": "2026-11-16",
+  "verified": {
+   "at": "2026-11-16T09:09:33Z",
+   "by": "GitHub Actions workflow p7-live-smoke.yml, run https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43835610967",
+   "results": {
+    "/api/health": "HTTP 200, status ok, business_date 2026-11-06",
+    "/": "HTTP 200, React UI shell",
+    "/docs": "HTTP 200, OpenAPI docs",
+    "/api/meta/rules": "HTTP 200, rule catalogue JSON"
+   },
+   "not_checked": "Signing in and browsing trades needs the demo password, which is not stored in the repository"
+  },
+  "notes": "The first start loads the synthetic baseline into Neon over the internet (about 27,000 database round trips). The check saw the loading placeholder from 08:50 to 09:08 UTC and a healthy app at 09:09, so it took more than 20 minutes; later starts skip the load."
+ },
  "ci": {
   "CI-3": {
    "run_id": "CI-3",
@@ -3453,7 +3471,7 @@
  },
  "platform": {
   "ledger_rows": 5100,
-  "audit_events": 3700,
+  "audit_events": 3701,
   "lifecycle_events": 948,
   "instructions": 525,
   "confirmations": 427,

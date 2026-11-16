@@ -1,0 +1,18 @@
+{
+  "url": "https://bankingaiportfolio2-nwxac8xu.back4.app",
+  "host": "Back4app Containers free tier (0.25 CPU, 256 MB) with a Neon Free PostgreSQL database",
+  "card_required": false,
+  "deployed_on": "2026-11-16",
+  "verified": {
+    "at": "2026-11-16T09:09:33Z",
+    "by": "GitHub Actions workflow p7-live-smoke.yml, run https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43835610967",
+    "results": {
+      "/api/health": "HTTP 200, status ok, business_date 2026-11-06",
+      "/": "HTTP 200, React UI shell",
+      "/docs": "HTTP 200, OpenAPI docs",
+      "/api/meta/rules": "HTTP 200, rule catalogue JSON"
+    },
+    "not_checked": "Signing in and browsing trades needs the demo password, which is not stored in the repository"
+  },
+  "notes": "The first start loads the synthetic baseline into Neon over the internet (about 27,000 database round trips). The check saw the loading placeholder from 08:50 to 09:08 UTC and a healthy app at 09:09, so it took more than 20 minutes; later starts skip the load."
+}
