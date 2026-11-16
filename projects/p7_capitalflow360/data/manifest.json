@@ -1211,10 +1211,10 @@
     },
     "Business_Calendars.xlsx": {
       "path": "data/excel/Business_Calendars.xlsx",
-      "sha256": "1f35889b0d279130f8e10425650a40ce8d6eb1ace0de5fb22ac0c5e968998fdc",
+      "sha256": "0da9de3e740538f992271857206807e91cf06f0370b76aeb55ff60829c958dbf",
       "rows": {
         "Calendars": 14,
-        "Holidays": 1932,
+        "Holidays": 1926,
         "Markets": 13,
         "Settlement_Conventions": 17
       },

@@ -64,7 +64,7 @@ def _dec(v):
     return Decimal(repr(v)) if isinstance(v, float) else Decimal(str(v))
 
 
-TABLES_IN_ORDER = ["test_results", "test_runs", "job_runs", "dq_results", "processing_runs", "booking_rejections",
+TABLES_IN_ORDER = ["processing_runs", "booking_rejections",
                    "idempotency_keys", "interface_messages", "controlled_outcomes", "external_statements", "recon_breaks",
                    "recon_runs", "approvals", "exceptions", "lifecycle_events", "ledger_entries", "settlement_instructions",
                    "clearing_records", "confirmations", "allocations", "trade_versions", "trades", "executions", "orders",

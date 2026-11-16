@@ -120,8 +120,11 @@ def rules(code: str, y: int) -> list[tuple[str, date]]:
                 ("Labour Thanksgiving Day", date(y, 11, 23)), ("Bank holiday", date(y, 12, 31))]
         out = list(base)
         days = {d for _, d in base}
-        for name, d in base:  # substitute holiday: Sunday holiday -> next non-holiday weekday
-            if d.weekday() == 6:
+        # Substitute holiday: a national holiday on a Sunday moves to the next non-holiday day. 2-3 Jan and
+        # 31 Dec are bank closing days, not national holidays, so they never create a substitute.
+        bank_days = {date(y, 1, 2), date(y, 1, 3), date(y, 12, 31)}
+        for name, d in base:
+            if d.weekday() == 6 and d not in bank_days:
                 s = d + timedelta(days=1)
                 while s in days:
                     s += timedelta(days=1)

@@ -69,9 +69,9 @@ def post(s: Session, source_event_id: str, ledger: str, legs: list[tuple[str, st
         # injected defect D5: a unique suffix bypasses the idempotency key
         for r in rows:
             r["source_event_id"] = r["source_event_id"] + "#" + uuid.uuid4().hex[:6]
-    stmt = pg_insert(m.LedgerEntry).values(rows).on_conflict_do_nothing(constraint="uq_ledger_event_leg")
-    res = s.execute(stmt)
-    return res.rowcount > 0
+    stmt = (pg_insert(m.LedgerEntry).values(rows).on_conflict_do_nothing(constraint="uq_ledger_event_leg")
+            .returning(m.LedgerEntry.entry_id))
+    return len(s.execute(stmt).all()) > 0
 
 
 def raise_exception(s: Session, etype: str, severity: str, owner_role: str, message: str, trade_id: str | None = None,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, time
 from decimal import Decimal
 
 from sqlalchemy import func, select
@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from cf360 import lifecycle
 from cf360 import models as m
+from cf360.clock import utcnow
 from cf360.rules import calc, engine
 from cf360.rules.calc import dec
 from cf360.services import refcache
@@ -75,7 +76,7 @@ def book(s: Session, payload: dict, actor: tuple[str, str], sandbox_id: str | No
     ref = refcache.get(s)
     t = normalise(payload)
     if not t.get("source_trade_ref"):
-        t["source_trade_ref"] = f"AUTO-{datetime.utcnow():%Y%m%d%H%M%S%f}"
+        t["source_trade_ref"] = f"AUTO-{utcnow():%Y%m%d%H%M%S%f}"
     issues, ctx = engine.validate(s, ref, t, sandbox_id)
     # R026 fills consistency
     if t.get("order_id") and not [i for i in issues if i.severity == "ERROR"]:
@@ -118,7 +119,7 @@ def book(s: Session, payload: dict, actor: tuple[str, str], sandbox_id: str | No
                     account_id=t["account_id"], book=t.get("book") or "UNASSIGNED", trader_id=t.get("trader_id") or actor[0],
                     counterparty_id=t["counterparty_id"], side=t["side"], quantity=dec(t["quantity"]), price=dec(t["price"]),
                     trade_ccy=t.get("trade_ccy") or t["settle_ccy"], settle_ccy=t["settle_ccy"], trade_date=t["trade_date"],
-                    trade_time_utc=t.get("trade_time_utc") or datetime.utcnow(), market=inst.market,
+                    trade_time_utc=t.get("trade_time_utc") or datetime.combine(t["trade_date"], time(12, 0)), market=inst.market,
                     settlement_date=ctx["settlement_date"], end_date=t.get("end_date"), terms=t["terms"], economics={},
                     flags=flags, ingest_batch=t.get("ingest_batch"), sandbox_id=sandbox_id,
                     usd_equivalent=ctx.get("usd_notional", Decimal(0)) * engine.EXPOSURE_WEIGHT[ctx["group"]])

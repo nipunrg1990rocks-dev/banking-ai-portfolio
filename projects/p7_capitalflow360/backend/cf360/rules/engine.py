@@ -244,7 +244,7 @@ def validate(s: Session, ref, t: dict, sandbox_id: str | None = None) -> tuple[l
     # R050 initial margin
     if ptype == "FUTURE":
         im = qty * dec(inst.attrs["initial_margin_per_contract"])
-        avail = cash_balance(s, acct.account_id, inst.currency) + dec(acct.credit_line_usd) / ref.usd_per(inst.currency, td)
+        avail = cash_balance(s, acct.account_id, inst.currency, None, sandbox_id) + dec(acct.credit_line_usd) / ref.usd_per(inst.currency, td)
         ctx["initial_margin"] = q_ccy(im, inst.currency)
         if im > avail:
             err("R050", "E_INSUFFICIENT_MARGIN", f"Initial margin {im} exceeds available {avail:.2f}", "quantity")
@@ -265,19 +265,25 @@ def usd_notional(ref, inst, t, ptype) -> Decimal:
     return q_ccy(local * ref.usd_per(ccy, td), "USD")
 
 
-def cash_balance(s: Session, account_id: str, ccy: str, as_of: date | None = None) -> Decimal:
+def cash_balance(s: Session, account_id: str, ccy: str, as_of: date | None = None, sandbox_id: str | None = None) -> Decimal:
+    """Main book sees only baseline postings; a sandbox sees baseline plus its own postings."""
     q = select(func.coalesce(func.sum(m.LedgerEntry.amount), 0)).where(
         m.LedgerEntry.ledger == "CASH", m.LedgerEntry.ledger_account == account_id, m.LedgerEntry.key == ccy)
     if as_of:
         q = q.where(m.LedgerEntry.value_date <= as_of)
+    sb = m.LedgerEntry.sandbox_id
+    q = q.where(sb.is_(None) | (sb == sandbox_id)) if sandbox_id else q.where(sb.is_(None))
     return dec(s.scalar(q) or 0)
 
 
-def sec_balance(s: Session, account_id: str, iid: str, as_of: date | None = None) -> Decimal:
+def sec_balance(s: Session, account_id: str, iid: str, as_of: date | None = None, sandbox_id: str | None = None) -> Decimal:
+    """Main book sees only baseline postings; a sandbox sees baseline plus its own postings."""
     q = select(func.coalesce(func.sum(m.LedgerEntry.amount), 0)).where(
         m.LedgerEntry.ledger == "SEC", m.LedgerEntry.ledger_account == account_id, m.LedgerEntry.key == iid)
     if as_of:
         q = q.where(m.LedgerEntry.value_date <= as_of)
+    sb = m.LedgerEntry.sandbox_id
+    q = q.where(sb.is_(None) | (sb == sandbox_id)) if sandbox_id else q.where(sb.is_(None))
     return dec(s.scalar(q) or 0)
 
 

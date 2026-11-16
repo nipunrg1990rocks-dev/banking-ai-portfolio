@@ -65,6 +65,9 @@ def graph(product_type: str) -> dict[str, set[str]]:
         g["OPEN"] |= {"EXERCISED"}
     if product_type == "FUTURE":
         g["OPEN"] |= {"CLOSED"}
+    for targets in list(g.values()):  # every reachable state is a node (terminal states have no exits)
+        for t in targets:
+            g.setdefault(t, set())
     # amendments send a confirmed trade back for re-matching
     for st in ("CONFIRMED", "CLEARED", "INSTRUCTED", "SETTLEMENT_FAILED"):
         if st in g:

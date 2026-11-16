@@ -14,6 +14,7 @@ from sqlalchemy import and_, func, or_, select
 from sqlalchemy.orm import Session
 
 from cf360 import models as m
+from cf360.clock import utcnow
 from cf360.rules import calc, engine
 from cf360.rules.calc import CCY_CALENDAR, dec, q_ccy
 from cf360.services import booking, refcache
@@ -260,7 +261,7 @@ def step_settlement(s: Session, d: date, sandbox_id=None) -> dict:
         acct = s.get(m.Account, ins.account_id)
         if ins.leg == "FX":
             legs = [(c, dec(a)) for c, a in ins.fx_legs]
-            short = _cash_short(s, ref, acct, legs, d)
+            short = _cash_short(s, ref, acct, legs, d, ins.sandbox_id)
             if short:
                 _fail(s, ins, t, d, "INSUFFICIENT_CASH", short)
                 stats["failed"] += 1
@@ -275,13 +276,13 @@ def step_settlement(s: Session, d: date, sandbox_id=None) -> dict:
         cash_remaining = dec(ins.cash_amount) - dec(ins.settled_cash)
         inst = ref.instruments.get(ins.instrument_id) if ins.instrument_id else None
         if cash_remaining < 0:
-            short = _cash_short(s, ref, acct, [(ins.currency, cash_remaining)], d)
+            short = _cash_short(s, ref, acct, [(ins.currency, cash_remaining)], d, ins.sandbox_id)
             if short:
                 _fail(s, ins, t, d, "INSUFFICIENT_CASH", short)
                 stats["failed"] += 1
                 continue
         if remaining < 0 and ins.instrument_id:
-            have = engine.sec_balance(s, ins.account_id, ins.instrument_id, d)
+            have = engine.sec_balance(s, ins.account_id, ins.instrument_id, d, ins.sandbox_id)
             if have < -remaining:
                 lot = _lot(inst)
                 part = (have // lot) * lot if have > 0 else Decimal(0)
@@ -312,11 +313,11 @@ def step_settlement(s: Session, d: date, sandbox_id=None) -> dict:
     return stats
 
 
-def _cash_short(s, ref, acct: m.Account, legs, d) -> str | None:
+def _cash_short(s, ref, acct: m.Account, legs, d, sandbox_id=None) -> str | None:
     for ccy, amt in legs:
         if amt >= 0:
             continue
-        bal = engine.cash_balance(s, acct.account_id, ccy, d)
+        bal = engine.cash_balance(s, acct.account_id, ccy, d, sandbox_id)
         credit = dec(acct.credit_line_usd) / ref.usd_per(ccy, d)
         if bal + credit < -amt:
             return f"cash {bal:.2f} + credit {credit:.2f} < {-amt:.2f} {ccy}"
@@ -560,7 +561,7 @@ def step_repo_margin(s: Session, d: date, sandbox_id=None):
 
 # ------------------------------------------------------------------------------------- orchestration
 def process_day(s: Session, d: date, sandbox_id=None) -> dict:
-    started = datetime.utcnow()
+    started = utcnow()
     token = processing_date.set(d)
     try:
         stats = {"matched": step_matching(s, d, sandbox_id)}
@@ -582,7 +583,7 @@ def process_day(s: Session, d: date, sandbox_id=None) -> dict:
         pr = m.ProcessingRun(run_id=run_id, run_type="EOD", business_date=d, started_at=started, status="RUNNING",
                              sandbox_id=sandbox_id)
         s.add(pr)
-    pr.finished_at = datetime.utcnow()
+    pr.finished_at = utcnow()
     pr.status = "COMPLETED"
     pr.stats = {k: int(v) for k, v in stats.items()}
     s.flush()
