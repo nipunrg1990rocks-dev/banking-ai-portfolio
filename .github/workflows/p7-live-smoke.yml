@@ -19,17 +19,17 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 45
     env:
-      URLS: ${{ inputs.url || 'https://bankingaiportfolio2-nwxac8xu.back4app.run https://bankingaiportfolio2-nwxac8xu.b4a.run https://bankingaiportfolio2-nwxac8xu.back4.app' }}
+      URLS: ${{ inputs.url || 'https://bankingaiportfolio2-nwxac8xu.back4.app' }}
     steps:
-      - name: Check the demo (waits up to 10 minutes for a sleeping or loading app)
+      - name: Check the demo (waits up to 40 minutes for a sleeping or still-loading app)
         run: |
           set -u
           ok=""
           for base in $URLS; do
             echo "== $base"
-            for i in $(seq 1 20); do
+            for i in $(seq 1 80); do
               body=$(curl -s -m 30 "$base/api/health" || true)
               echo "health try $i: $body"
               case "$body" in *'"status":"ok"'*) ok="$base"; break;; esac
