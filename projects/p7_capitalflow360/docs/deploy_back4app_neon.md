@@ -1,5 +1,10 @@
 # Public demo on Back4app Containers (free) with a Neon (free) database
 
+> Not used any more: the free plan only gives a temporary URL. The demo went live here on 2026-11-16 and was checked
+> from GitHub Actions (run 43835610967), but about two hours later Back4app showed "Your App temporary URL has expired.
+> Please upgrade to a paid plan to continue developing, or redeploy your app". The demo now uses
+> [Vercel + Neon](deploy_vercel_neon.md). The Neon database it loaded is reused.
+
 Render's dashboard asked for a card when this was tried on 2026-11-16, both through the Blueprint and through a
 manual web service, so the demo uses Back4app Containers instead. Its pricing page says the free tier needs no credit card.
 The database stays on Neon Free (no card, never billed).

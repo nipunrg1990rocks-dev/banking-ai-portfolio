@@ -23,6 +23,7 @@ OUT = ROOT / "reporting" / "out"
 S = json.loads((OUT / "snapshot.json").read_text())
 D = {k: v for k, v in S["dashboards"].items()}
 CLEAN = S["runs"]["CLEAN-001"]
+DEP = S.get("deployment")
 CI = max((r for r in S.get("ci", {}).values() if not r["failed"] and r.get("browser_runs")), key=lambda r: r["browser_runs"], default=None)
 CAT = S["catalogue"]
 LAKE = S["lakehouse"]
@@ -142,7 +143,7 @@ def scope() -> str:
     <li>All data is <b>synthetic</b>, generated from a fixed seed. No client, trade or price is real.</li>
     <li>Calculations follow standard market conventions (day counts, spot dates, VWAP, accrued interest) but it is <b>not production-grade
     pricing</b>, and it makes <b>no claim of regulatory compliance</b>.</li>
-    <li>It has <b>not been deployed publicly</b> at the time of writing, and the Databricks notebook has <b>not yet been executed on Databricks</b>.
+    <li>{f"A public demo runs on free tiers ({DEP['host_short']}) at <b>{DEP['url']}</b>, checked from GitHub Actions on {DEP['deployed_on']}" if DEP else "It has <b>not been deployed publicly</b> at the time of writing"}, and the Databricks notebook has <b>not yet been executed on Databricks</b>.
     The lakehouse ran on local Spark and Delta Lake.</li>
   </ul>
   <h3>Who did what</h3>
@@ -501,7 +502,7 @@ def demo10() -> str:
              ("6:15", "Reconciliation", "The 8 breaks: cash and position, with the 0.50 tolerance (R096)."),
              ("7:00", "Lakehouse", "Bronze, Silver, Gold; the negative batch held back by the quality gate; replay changes nothing."),
              ("8:00", "Tests and defects", "Test runs page: CLEAN-001 and the six defect runs; the D6 screenshot."),
-             ("9:15", "Close", "What you would do next: Databricks run, the public demo on Render and Neon.")]
+             ("9:15", "Close", "What you would do next: the Databricks run, cases for the uncovered rules, and a small assistant over the audit trail.")]
     return f"""
 <section>
   <h2>16. Ten-minute demo script</h2>
@@ -519,7 +520,7 @@ QA = [
         ("What did you do and what did the AI do?", "I set the scope, lifecycle, rules and their boundaries, the roles and controls, the scenarios, negative data types and the defect plan, and I reviewed results. The code was written with an AI coding assistant, and every result was run and checked."),
         ("Why six asset classes?", "They have genuinely different lifecycles: cash products settle DVP, FX needs two calendars, futures settle margin, options exercise, swaps pay schedules and financing has two legs. Fewer would hide the hard parts."),
         ("Why exactly 500 trades?", "Enough to exercise every path and planted exception, small enough to reason about every one. The split is fixed: 140 equities and ETFs, 120 bonds, 80 FX, 70 listed derivatives, 50 swaps, 40 financing."),
-        ("Is it deployed?", "Not publicly yet. It runs with Docker Compose, and a Render free tier plus Neon free database setup is ready (render.yaml); nothing that can charge is switched on without approval."),
+        ("Is it deployed?", (f"Yes, as a demo on free tiers ({DEP['host_short']}) at {DEP['url']}. The API runs as a serverless function against a Neon Postgres that was loaded once with the synthetic baseline. Nothing that can charge is switched on." if DEP else "Not publicly yet. It runs with Docker Compose, and a free Vercel plus Neon setup is documented; nothing that can charge is switched on without approval.")),
     ]),
     ("Business process", [
         ("Walk me through a trade's life.", "Order and fills, booking at the volume-weighted price, allocation to accounts, confirmation matching, clearing where a CCP applies, settlement instruction from the SSI, settlement, ledger posting, reconciliation."),
@@ -587,7 +588,7 @@ QA = [
         ("What would you do differently?", "Write the negative data labels first. They found the most serious bug, and earlier labels would have found it sooner."),
         ("How did you use AI responsibly?", "I specified the behaviour and the expected results; the AI wrote code; nothing was accepted until it passed cases whose answers came from elsewhere. Failures were reported, not hidden."),
         ("How does your banking background show in this?", "The planted exceptions, the SSI and calendar rules, maker-checker, and reconciliation tolerances are what operations teams deal with daily. I chose them because they break in real life."),
-        ("What would you build next?", "A Databricks run of the same checks, the public demo on Render and Neon, and a small assistant that explains an exception using its audit trail."),
+        ("What would you build next?", "A Databricks run of the same checks, cases for the uncovered rules, and a small assistant that explains an exception using its audit trail."),
         ("How would you explain this to a non-technical stakeholder?", "It is a practice trading floor's back office on fake data, plus an automatic checker that knows the right answers and proves the system gets them."),
     ]),
 ]
@@ -647,11 +648,11 @@ def limits() -> str:
     <li>{"Firefox and WebKit ran in GitHub Actions only; the build sandbox could install Chromium alone." if CI else "Firefox and WebKit results depend on the CI run; only Chromium ran in the build sandbox."}</li>
     <li>The Databricks notebook has not been executed on Databricks.</li>
     <li>Performance figures are single-machine timings, not load tests.</li>
-    <li>Not publicly deployed at the time of writing.</li>
+    <li>{"The public demo runs on free tiers, so it can be slow to wake and is not a performance reference." if DEP else "Not publicly deployed at the time of writing."}</li>
   </ul>
   <h3>Next steps</h3>
   <ol><li>Run the CI workflow and import its cross-browser results.</li><li>Run the notebook in a Databricks Free Edition workspace and compare with the local evidence.</li>
-  <li>Put the demo live on Render and Neon (free tiers).</li><li>Add cases for the uncovered rules.</li></ol>
+  <li>Keep the free demo live and check it after each change.</li><li>Add cases for the uncovered rules.</li></ol>
   <h3>Glossary</h3>
   {table(["Term", "Meaning"], gl, "small")}
   <p class="note">CapitalFlow 360 · independent portfolio project · synthetic data · simulated venues · metrics generated {e(S['generated_at'])}</p>

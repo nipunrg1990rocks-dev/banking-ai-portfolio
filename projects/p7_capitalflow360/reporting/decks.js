@@ -23,6 +23,8 @@ const chart = (dash, id) => (D[dash].charts.find((c) => c.id === id) || { data: 
 const run = (id) => S.runs[id];
 const clean = run("CLEAN-001");
 const ci = Object.values(S.ci || {}).filter((r) => !r.failed && r.browser_runs).sort((a, b) => b.browser_runs - a.browser_runs)[0];
+const dep = S.deployment;
+const hostText = dep ? `Live on ${dep.host_short}: ${dep.url.replace("https://", "")}` : "Vercel + Neon free tiers (no card); not live yet";
 const ciBrowsers = ci ? `${ci.browser_runs} runs in GitHub Actions run ${ci.run_id} on Chromium, Firefox and WebKit, 0 failed` : "Firefox and WebKit set up for CI, results pending";
 const fmt = (n, dp = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
 const DEFECTS = [
@@ -245,7 +247,7 @@ async function executive() {
     ["Lakehouse Bronze/Silver/Gold", `Ran on local Spark ${S.lakehouse.spark} + Delta ${S.lakehouse.delta}: ${S.lakehouse.passed}/${S.lakehouse.passed + S.lakehouse.failed} checks pass`],
     ["Databricks notebook and job", "Written for serverless; not yet run on Databricks"],
     ["Browser tests", ciBrowsers],
-    ["Public hosting", "Render free tier + Neon free database chosen; not live yet"],
+    ["Public hosting", hostText],
   ], { colW: [4.6, 7.5], size: 14 });
   cards(d, s, [
     { h: "Domain and design (Nipun Gupta)", t: "Business flows, product scope, the rule set and its boundaries, scenarios, the defect plan and acceptance criteria." },
@@ -253,11 +255,11 @@ async function executive() {
   ], { y: 4.55, cols: 2, h: 1.55, size: 13 });
 
   s = content(d, "Close", "Next steps", "Close on actions.");
-  flow(d, s, ["Merge the pull request", "Run the Databricks notebook", "Go live on Render + Neon", "Share the showcase"], { y: 1.7, h: 1.2, size: 16 });
+  flow(d, s, ["Run the Databricks notebook", "Cover the 5 untested rules", "Keep the demo live", "Share the showcase"], { y: 1.7, h: 1.2, size: 16 });
   cards(d, s, [
     { h: "Review and merge", t: "CI already runs the tests and the browser suite on Chromium, Firefox and WebKit on every push." },
     { h: "Databricks", t: "Import the notebook to a Free Edition workspace and run the same 14 checks." },
-    { h: "Hosting", t: "Render free tier with a Neon free database: no card, sleeps when idle." },
+    { h: "Hosting", t: "Vercel Hobby for the app and Neon Free for the database: free tiers, no card." },
     { h: "Showcase", t: "Portfolio page, PDF handbook and decks for interviews." },
   ], { y: 3.3, cols: 4, h: 2.3, size: 13 });
   note(d, s, "Domain design, rules and scenarios: Nipun Gupta. Implementation: AI-assisted, reviewed and tested as described.", { y: 6.0, h: 0.6 });
@@ -554,7 +556,7 @@ async function architecture() {
     ["Alembic migrations", `${migs} revisions, used to build every database`],
     ["Docker Compose", has("docker-compose.yml") ? "docker-compose.yml: database, API with built UI, one command" : "Not yet added"],
     ["Continuous integration", has("../../.github/workflows/p7-capitalflow360.yml") ? "GitHub Actions: pytest, executor and Playwright on three engines" : "Not yet added"],
-    ["Public hosting", "Render free tier + Neon free database chosen (render.yaml); not live yet"],
+    ["Public hosting", hostText],
     ["Databricks run", "Owner runs the notebook in their workspace"]], { colW: [4, 8.1], size: 15 });
   cards(d, s, [
     { h: "Domain and design", t: "Nipun Gupta: product scope, lifecycle, rules, scenarios, defect plan and acceptance criteria." },

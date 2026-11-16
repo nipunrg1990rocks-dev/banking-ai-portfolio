@@ -74,6 +74,7 @@ def main() -> None:
         "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dashboards": dashboards()["dashboards"],
         "runs": runs(),
+        "deployment": json.loads((ROOT / "docs" / "deployment.json").read_text()) if (ROOT / "docs" / "deployment.json").exists() else None,
         "ci": {p.stem: json.loads(p.read_text()) for p in sorted((ROOT / "testkit" / "out" / "ci").glob("*.json"))},
         "platform": platform_facts(),
         "catalogue": {"cases": len(cases), "scenarios": len({c["scenario_id"] for c in cases}),

@@ -1,0 +1,7 @@
+lakehouse
+testkit
+tests
+datagen
+.hypothesis
+reporting/node_modules
+frontend/test-results

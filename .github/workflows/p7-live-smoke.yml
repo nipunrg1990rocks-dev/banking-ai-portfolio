@@ -1,0 +1,56 @@
+name: CapitalFlow 360 live demo check
+
+# Checks the public demo from GitHub's runners: health, the UI page and the API docs.
+# Runs on pull requests that change this file or the deployment record, and on demand with any URL.
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Base URL of the demo"
+        required: true
+  pull_request:
+    paths:
+      - ".github/workflows/p7-live-smoke.yml"
+      - "projects/p7_capitalflow360/docs/deployment.json"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      INPUT_URL: ${{ inputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick the URL (input, else docs/deployment.json)
+        run: |
+          f=projects/p7_capitalflow360/docs/deployment.json
+          url="${INPUT_URL:-$( [ -f "$f" ] && jq -r .url "$f" || true )}"
+          if [ -z "$url" ]; then echo "No URL given and no deployment recorded: nothing to check." | tee -a "$GITHUB_STEP_SUMMARY"; fi
+          echo "URLS=$url" >> "$GITHUB_ENV"
+      - name: Check the demo (waits up to 40 minutes for a sleeping or still-loading app)
+        if: env.URLS != ''
+        run: |
+          set -u
+          ok=""
+          for base in $URLS; do
+            echo "== $base"
+            for i in $(seq 1 80); do
+              body=$(curl -s -m 30 "$base/api/health" || true)
+              echo "health try $i: $body"
+              case "$body" in *'"status":"ok"'*) ok="$base"; break;; esac
+              case "$body" in "") [ "$i" -ge 2 ] && break;; esac
+              sleep 30
+            done
+            [ -n "$ok" ] && break
+          done
+          if [ -z "$ok" ]; then echo "No URL returned a healthy status"; exit 1; fi
+          {
+            echo "## Live demo check: $ok"
+            for p in /api/health / /docs /api/meta/rules; do
+              code=$(curl -s -m 30 -o /tmp/out -w '%{http_code}' "$ok$p")
+              echo "- \`$p\`: HTTP $code, $(wc -c < /tmp/out) bytes, starts: \`$(head -c 120 /tmp/out | tr -d '\n\`|')\`"
+            done
+          } | tee -a "$GITHUB_STEP_SUMMARY"
