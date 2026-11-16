@@ -1,6 +1,6 @@
 # Banking AI & Databricks Portfolio
 
-Five independent, AI-assisted portfolio projects that apply GenAI and data engineering to banking risk, compliance and operations. **All data is synthetic.** These projects are not affiliated with any employer or real financial institution.
+Six independent, AI-assisted portfolio projects that apply GenAI and data engineering to banking risk, compliance and operations. **All data is synthetic.** These projects are not affiliated with any employer or real financial institution.
 
 **Portfolio website:** https://nipunrg1990rocks-dev.github.io/banking-ai-portfolio/ (built from [`site/`](site/); every link and status lives in [`site/portfolio.json`](site/portfolio.json)).
 
@@ -8,9 +8,10 @@ Five independent, AI-assisted portfolio projects that apply GenAI and data engin
 |---|---|---|---|
 | 01 | [Enterprise Banking Risk & Compliance AI Copilot](projects/p1_compliance_copilot/) | Python, RAG (BM25 + vectors), Claude (optional), Streamlit, SQLite audit chain, MLflow | Built, tested, [live demo](https://abv2xygrggmaucidx5hjbg.streamlit.app) |
 | 02 | [Banking Data Engineering Lakehouse](projects/p2_lakehouse/) | PySpark, Spark SQL, Delta Lake (MERGE, SCD2, CDF, time travel), Databricks Unity Catalog and Jobs, Streamlit, DuckDB | Built and tested locally, in CI and on Databricks Free Edition; app deploy pending |
-| 03 | Agentic AI Operations Exception Manager | LangGraph, human-in-the-loop, audit trail | Planned |
+| 03 | [Agentic AI Operations Exception Manager](projects/p3_exception_manager/) | LangGraph (interrupt/resume), tool-calling agents, scikit-learn triage, maker-checker controls, Streamlit, hash-chained audit | Built and tested; not yet deployed |
 | 04 | AI-Powered Risk & Data Quality Dashboard | Databricks SQL, Streamlit | Planned |
 | 05 | GenAI Regulatory Change Impact Analyzer | Document intelligence, RAG, control mapping | Planned |
+| 06 | [Prompt-to-Presentation AI: Dynamic Executive Reporting Platform](projects/p6_prompt_to_presentation/) | Streamlit, python-pptx, DuckDB, Pydantic, Claude (optional), LibreOffice PDF, SQLite versions + audit chain | Built and tested; not yet deployed |
 
 ## Shared building blocks (`portfolio_core/`)
 
@@ -29,4 +30,4 @@ pip install -r requirements-dev.txt
 ruff check . && pytest
 ```
 
-CI (GitHub Actions) runs lint, tests, the Project 01 evaluation and the Project 02 Spark pipeline on every push. Project 02's pipeline needs Java 17+ locally. See [PORTFOLIO_TRACKER.md](PORTFOLIO_TRACKER.md) for live status and [docs/deployment.md](docs/deployment.md) for hosting.
+CI (GitHub Actions) runs lint, tests, the Project 01 and 03 evaluations and the Project 02 Spark pipeline on every push. Project 02's pipeline needs Java 17+ locally. See [PORTFOLIO_TRACKER.md](PORTFOLIO_TRACKER.md) for live status and [docs/deployment.md](docs/deployment.md) for hosting.

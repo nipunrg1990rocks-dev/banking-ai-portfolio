@@ -23,6 +23,8 @@ jobs:
       - run: pytest
       - name: Evaluation report
         run: python projects/p1_compliance_copilot/evaluate.py >> "$GITHUB_STEP_SUMMARY"
+      - name: Exception manager evaluation (Project 03)
+        run: python projects/p3_exception_manager/evaluate.py >> "$GITHUB_STEP_SUMMARY"
       - name: Lakehouse pipeline run (Project 02)
         run: |
           echo '## Project 02 lakehouse pipeline run' >> "$GITHUB_STEP_SUMMARY"
@@ -30,3 +32,5 @@ jobs:
           python projects/p2_lakehouse/run_pipeline.py --workdir /tmp/lakehouse --no-snapshot 2>/dev/null \
             | tee -a "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Prompt-to-Presentation acceptance demo (Project 06)
+        run: python projects/p6_prompt_to_presentation/run_demo.py >> "$GITHUB_STEP_SUMMARY"
