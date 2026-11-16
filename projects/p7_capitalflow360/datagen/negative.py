@@ -34,7 +34,7 @@ TYPES = [
     ("N19", "Exposure limit breach", "R006", "E_LIMIT_BREACH", "API_REJECT", 5),
     ("N20", "Swap maturity not after effective date", "R063", "E_SWAP_DATES", "API_REJECT", 4),
     ("N21", "Late-arriving valid trade", "R095", None, "ACCEPT_LATE", 8),
-    ("N22", "Settlement currency without a matching SSI", "R081", "E_SSI_MISSING", "API_REJECT", 5),
+    ("N22", "Settlement currency without a matching SSI", "R081", "E_SSI_MISSING", "ENRICHMENT_EXCEPTION", 5),
     ("N23", "Trade date stated in UTC instead of market local date", "R014", "E_TRADE_DATE_TZ", "API_REJECT", 4),
 ]
 

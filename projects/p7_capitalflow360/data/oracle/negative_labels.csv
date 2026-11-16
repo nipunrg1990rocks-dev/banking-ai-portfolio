@@ -123,11 +123,11 @@ N21-0121,NEG00121,TRD00385,N21,Late-arriving valid trade,R095,,ACCEPT_LATE,"vali
 N21-0122,NEG00122,TRD00339,N21,Late-arriving valid trade,R095,,ACCEPT_LATE,"valid economics, arrives in a later batch"
 N21-0123,NEG00123,TRD00080,N21,Late-arriving valid trade,R095,,ACCEPT_LATE,"valid economics, arrives in a later batch"
 N21-0124,NEG00124,TRD00435,N21,Late-arriving valid trade,R095,,ACCEPT_LATE,"valid economics, arrives in a later batch"
-N22-0125,NEG00125,TRD00066,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,API_REJECT,
-N22-0126,NEG00126,TRD00051,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,API_REJECT,
-N22-0127,NEG00127,TRD00095,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,API_REJECT,
-N22-0128,NEG00128,TRD00085,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,API_REJECT,
-N22-0129,NEG00129,TRD00034,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,API_REJECT,
+N22-0125,NEG00125,TRD00066,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,ENRICHMENT_EXCEPTION,
+N22-0126,NEG00126,TRD00051,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,ENRICHMENT_EXCEPTION,
+N22-0127,NEG00127,TRD00095,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,ENRICHMENT_EXCEPTION,
+N22-0128,NEG00128,TRD00085,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,ENRICHMENT_EXCEPTION,
+N22-0129,NEG00129,TRD00034,N22,Settlement currency without a matching SSI,R081,E_SSI_MISSING,ENRICHMENT_EXCEPTION,
 N23-0130,NEG00130,TRD00173,N23,Trade date stated in UTC instead of market local date,R014,E_TRADE_DATE_TZ,API_REJECT,
 N23-0131,NEG00131,TRD00155,N23,Trade date stated in UTC instead of market local date,R014,E_TRADE_DATE_TZ,API_REJECT,
 N23-0132,NEG00132,TRD00174,N23,Trade date stated in UTC instead of market local date,R014,E_TRADE_DATE_TZ,API_REJECT,

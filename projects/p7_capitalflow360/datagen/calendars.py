@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 
-YEARS = range(2024, 2033)
+YEARS = range(2024, 2038)
 
 
 def easter(y: int) -> date:
@@ -73,7 +73,9 @@ JP_EQUINOX = {2024: (date(2024, 3, 20), date(2024, 9, 22)), 2025: (date(2025, 3,
               2026: (date(2026, 3, 20), date(2026, 9, 23)), 2027: (date(2027, 3, 21), date(2027, 9, 23)),
               2028: (date(2028, 3, 20), date(2028, 9, 22)), 2029: (date(2029, 3, 20), date(2029, 9, 23)),
               2030: (date(2030, 3, 20), date(2030, 9, 23)), 2031: (date(2031, 3, 21), date(2031, 9, 23)),
-              2032: (date(2032, 3, 20), date(2032, 9, 22))}
+              2032: (date(2032, 3, 20), date(2032, 9, 22)), 2033: (date(2033, 3, 20), date(2033, 9, 23)),
+              2034: (date(2034, 3, 20), date(2034, 9, 23)), 2035: (date(2035, 3, 21), date(2035, 9, 23)),
+              2036: (date(2036, 3, 20), date(2036, 9, 22)), 2037: (date(2037, 3, 20), date(2037, 9, 22))}
 
 
 def rules(code: str, y: int) -> list[tuple[str, date]]:

@@ -420,7 +420,8 @@ def gen_financing(ctx: Ctx, n: int):
         c = rng.choice(ctx.eligible_clients("FINANCING", td))
         block = [a for a in ctx.acc_by_client[c["client_id"]] if "FINANCING" in a["permitted_products"]][0]
         tz = MARKET[market][2]
-        ts = _utc(td, rng.randint(8, 12), rng.randint(0, 59), tz)
+        # same-day repo starts are traded early so instructions beat the London cut-off (R013)
+        ts = _utc(td, rng.randint(8, 9) if extra["settlement_date"] == td else rng.randint(8, 12), rng.randint(0, 59), tz)
         trader = rng.choice(TRADERS["FINANCING"])
         order = _new_order(ctx, c, block, iid, kind, kind, extra["quantity"], None, ts - timedelta(minutes=2), trader, ccy)
         _fills(ctx, order, extra["quantity"], extra["quantity"], extra["price"], market, cpty, ts, 6, max_fills=1)

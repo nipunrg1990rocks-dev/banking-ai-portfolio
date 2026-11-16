@@ -17,7 +17,7 @@
   "files": {
     "Trades.xlsx": {
       "path": "data/excel/Trades.xlsx",
-      "sha256": "843e42773587f1ab5dc763ca09ad95bf0efd5fb48c27c795603968a6806593e4",
+      "sha256": "893e5c3bd292c30189d68d9209f70b77da1af297b68ea319f3b5501582773706",
       "rows": {
         "Trades": 500
       },
@@ -797,7 +797,7 @@
     },
     "Orders.xlsx": {
       "path": "data/excel/Orders.xlsx",
-      "sha256": "79a3316d4966d37d10ba4aa1104c82ec2b58a8fc309e8212de878f2361b0aa11",
+      "sha256": "c0706bb4f3347c88c59a348c8bfd1662998c82f51dddbdeea11d816fbfb2b422",
       "rows": {
         "Orders": 538
       },
@@ -888,7 +888,7 @@
     },
     "Executions.xlsx": {
       "path": "data/excel/Executions.xlsx",
-      "sha256": "d797977d0d6ccf894a90629f3ee315d4bba5bfc35410e2222fbe51e75ad4e9dc",
+      "sha256": "b3fab5ff6015c2bfb87544ca33e8cc59185bf2cedd5740aa8d77299dafe167c6",
       "rows": {
         "Executions": 729
       },
@@ -949,7 +949,7 @@
     },
     "Allocations.xlsx": {
       "path": "data/excel/Allocations.xlsx",
-      "sha256": "93b1bcd996bd1adde747a9669b877747a8f7af3cb9ebb2b51bec0cfeee35a2d9",
+      "sha256": "4f4bda666307b8aa117c3e5694673189566a708e6a0abe6e0acb898d75767c8f",
       "rows": {
         "Allocations": 587
       },
@@ -1211,10 +1211,10 @@
     },
     "Business_Calendars.xlsx": {
       "path": "data/excel/Business_Calendars.xlsx",
-      "sha256": "c3e292a73eff824eeedaa345205d1a6e7d0ae632d6b34b4ea954e5cb0f7e50bc",
+      "sha256": "1f35889b0d279130f8e10425650a40ce8d6eb1ace0de5fb22ac0c5e968998fdc",
       "rows": {
         "Calendars": 14,
-        "Holidays": 1251,
+        "Holidays": 1932,
         "Markets": 13,
         "Settlement_Conventions": 17
       },
@@ -1351,9 +1351,9 @@
     },
     "Positions_Cash.xlsx": {
       "path": "data/excel/Positions_Cash.xlsx",
-      "sha256": "b4a9502b0a6bd8a1b2c8b0a9abfb048bd6bd7a1824ae20ed0bec5e9e0268bef3",
+      "sha256": "d079216b347f7d56b3f7f230289c8f6aca985c2ca72b8440581588d71b612c09",
       "rows": {
-        "Opening_Positions": 194,
+        "Opening_Positions": 195,
         "Opening_Cash": 490
       },
       "schema": {
@@ -1559,11 +1559,11 @@
     },
     "External_Reconciliation.xlsx": {
       "path": "data/excel/External_Reconciliation.xlsx",
-      "sha256": "fdb30428bae88aee6820912365fbffbbf61f15e8076cdf793ba39a09ef4a5920",
+      "sha256": "9e1e3bae0d3705d49d17327c8c7067e9f87790375456eb2487ff9ac99481b1e1",
       "rows": {
         "Confirmations": 427,
         "Settlement_Status": 12,
-        "Custody_Positions": 324,
+        "Custody_Positions": 327,
         "Custody_Cash": 490
       },
       "schema": {
@@ -1751,7 +1751,7 @@
   "negative_files": {
     "Trades_negative.xlsx": {
       "path": "data/negative/Trades_negative.xlsx",
-      "sha256": "04ea00a8e31101b679cd1953dacf951701c1047486cb0523574696155b3571fb",
+      "sha256": "49516f694acd984268ff4e88da40bdc53b684ecbf6620164b13a2054be944e57",
       "rows": {
         "Trades": 133
       }
