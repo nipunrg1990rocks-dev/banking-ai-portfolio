@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T10:50:36Z",
+ "generated_at": "2026-11-16T11:18:25Z",
  "dashboards": {
   "executive": {
    "dashboard": "executive",
@@ -13,7 +13,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -706,7 +706,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -989,7 +989,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1342,7 +1342,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1642,7 +1642,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2118,7 +2118,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "test_run": "CLEAN-001",
@@ -2360,7 +2360,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T10:50:37Z",
+   "refreshed_at": "2026-11-16T11:18:26Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2415,7 +2415,7 @@
     {
      "id": "api_p95",
      "label": "API p95 latency (ms)",
-     "value": 187.3,
+     "value": 132.9,
      "unit": "ms",
      "definition": "p95 over the last 1 API requests since start",
      "numerator": null,
@@ -2720,7 +2720,7 @@
      "data": [
       {
        "name": "POST /api/auth/login",
-       "value": 187.3
+       "value": 132.9
       }
      ]
     }
@@ -3422,7 +3422,26 @@
    ]
   }
  },
- "deployment": null,
+ "deployment": {
+  "url": "https://banking-ai-portfolio.vercel.app",
+  "host": "Vercel Hobby (free) serverless FastAPI function with a Neon Free PostgreSQL database",
+  "host_short": "Vercel + Neon free tiers",
+  "card_required": false,
+  "deployed_on": "2026-11-16",
+  "verified": {
+   "at": "2026-11-16T11:08:36Z",
+   "by": "GitHub Actions workflow p7-live-smoke.yml, run https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43855082906",
+   "results": {
+    "/api/health": "HTTP 200, status ok, business_date 2026-11-06",
+    "/": "HTTP 200, React UI shell",
+    "/queues/matching": "HTTP 200, UI deep link served",
+    "/docs": "HTTP 200, OpenAPI docs",
+    "/api/meta/rules": "HTTP 200, rule catalogue JSON"
+   },
+   "not_checked": "Signing in and browsing trades needs the demo password, which is not stored in the repository"
+  },
+  "history": "Back4app Containers (free) was live and checked on 2026-11-16 (run 43835610967), but its free plan only gives a temporary URL, which expired about two hours later."
+ },
  "ci": {
   "CI-3": {
    "run_id": "CI-3",
@@ -3454,7 +3473,7 @@
  },
  "platform": {
   "ledger_rows": 5100,
-  "audit_events": 3702,
+  "audit_events": 3703,
   "lifecycle_events": 948,
   "instructions": 525,
   "confirmations": 427,
