@@ -1,0 +1,221 @@
+{
+  "config": {
+    "argv": [
+      "/opt/node22/bin/node",
+      "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/node_modules/.bin/playwright",
+      "test",
+      "-g",
+      "BLOTTER-FILTER|BLOTTER-SEARCH",
+      "--project",
+      "chromium"
+    ],
+    "configFile": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/playwright.config.ts",
+    "rootDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium-mobile",
+        "name": "chromium-mobile",
+        "testDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../testkit/out/playwright-D6.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 2,
+    "webServer": {
+      "command": "python -m uvicorn cf360.main:app --port 8011 --app-dir ../backend",
+      "url": "http://127.0.0.1:8011/api/health",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "CF360_DATABASE_URL": "postgresql+psycopg://cf360:cf360@localhost:5432/cf360_test",
+        "CF360_STATIC_DIR": "../frontend/dist",
+        "CF360_TEST_SUPPORT": "true",
+        "CF360_JWT_SECRET": "e2e-only-secret-at-least-32-bytes-long!!",
+        "CF360_DEMO_PASSWORD": "Demo!2026",
+        "CF360_DEFECTS": "D6"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "ui.spec.ts",
+      "file": "ui.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-UI-BLOTTER-FILTER-CCY blotter currency filter narrows the grid",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1084,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Set {\u001b[22m\n\u001b[32m-   \"JPY\",\u001b[39m\n\u001b[31m+   \"EUR\",\u001b[39m\n\u001b[31m+   \"GBP\",\u001b[39m\n\u001b[31m+   \"USD\",\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Set {\u001b[22m\n\u001b[32m-   \"JPY\",\u001b[39m\n\u001b[31m+   \"EUR\",\u001b[39m\n\u001b[31m+   \"GBP\",\u001b[39m\n\u001b[31m+   \"USD\",\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e/ui.spec.ts:91:27",
+                    "location": {
+                      "file": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e/ui.spec.ts",
+                      "column": 27,
+                      "line": 91
+                    },
+                    "snippet": "  89 |   const values = await cells.allInnerTexts();\n  90 |   expect(values.length).toBeGreaterThan(0);\n> 91 |   expect(new Set(values)).toEqual(new Set([\"JPY\"]));\n     |                           ^\n  92 | });\n  93 |\n  94 | test(\"TC-UI-BLOTTER-SEARCH blotter search finds a trade by id\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e/ui.spec.ts",
+                        "column": 27,
+                        "line": 91
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Set {\u001b[22m\n\u001b[32m-   \"JPY\",\u001b[39m\n\u001b[31m+   \"EUR\",\u001b[39m\n\u001b[31m+   \"GBP\",\u001b[39m\n\u001b[31m+   \"USD\",\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  89 |   const values = await cells.allInnerTexts();\n  90 |   expect(values.length).toBeGreaterThan(0);\n> 91 |   expect(new Set(values)).toEqual(new Set([\"JPY\"]));\n     |                           ^\n  92 | });\n  93 |\n  94 | test(\"TC-UI-BLOTTER-SEARCH blotter search finds a trade by id\", async ({ page }) => {\n    at /home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e/ui.spec.ts:91:27"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:18:01.824Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results/ui-TC-UI-BLOTTER-FILTER-CC-e14af-ncy-filter-narrows-the-grid-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results/ui-TC-UI-BLOTTER-FILTER-CC-e14af-ncy-filter-narrows-the-grid-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e/ui.spec.ts",
+                    "column": 27,
+                    "line": 91
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ea7ffb1e81ce51e92a92",
+          "file": "ui.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BLOTTER-SEARCH blotter search finds a trade by id",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 889,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:18:03.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-e2676e37a82ce4aa3086",
+          "file": "ui.spec.ts",
+          "line": 94,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T03:18:00.499Z",
+    "duration": 3983.558,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

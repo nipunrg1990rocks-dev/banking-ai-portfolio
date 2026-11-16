@@ -7,7 +7,9 @@ and is never part of the input file.
 
 from __future__ import annotations
 
+import math
 from datetime import date, timedelta
+from decimal import Decimal
 
 from testkit.oracle import reference as ref
 
@@ -37,6 +39,10 @@ TYPES = [
     ("N22", "Settlement currency without a matching SSI", "R081", "E_SSI_MISSING", "ENRICHMENT_EXCEPTION", 5),
     ("N23", "Trade date stated in UTC instead of market local date", "R014", "E_TRADE_DATE_TZ", "API_REJECT", 4),
 ]
+
+
+USD_PER_UNIT_FLOOR = {"USD": Decimal("1"), "EUR": Decimal("1.05"), "GBP": Decimal("1.25"), "JPY": Decimal("0.006"),
+                      "CAD": Decimal("0.68"), "AUD": Decimal("0.60"), "CHF": Decimal("1.10")}
 
 
 def build(rng, tables, clients, accounts, inst, hol, ctx) -> dict:
@@ -124,7 +130,7 @@ def build(rng, tables, clients, accounts, inst, hol, ctx) -> dict:
             elif code == "N15":
                 b = rng.choice(by_group["EQUITY"])
                 td = date(2026, 10, 29)
-                emit(code, b, {"instrument_id": "EQ011", "market": "XLON", "trade_ccy": "GBP", "settle_ccy": "GBP",
+                emit(code, b, {"instrument_id": "EQ011", "product_type": "EQUITY", "market": "XLON", "trade_ccy": "GBP", "settle_ccy": "GBP",
                                "trade_date": td, "settlement_date": ref.add_business_days(td, 2, [hol["XLON"], hol["GBLO"]])},
                      note="EQ011 price feed stops 2026-10-23")
             elif code == "N16":
@@ -138,7 +144,10 @@ def build(rng, tables, clients, accounts, inst, hol, ctx) -> dict:
                 emit(code, b, {"quantity": b["quantity"] + 500})
             elif code == "N19":
                 b = rng.choice(by_group["EQUITY"])
-                emit(code, b, {"quantity": b["quantity"] * 4000})
+                limit = next(c["exposure_limit_usd"] for c in clients if c["client_id"] == b["client_id"])
+                floor = USD_PER_UNIT_FLOOR[b["trade_ccy"]]  # below every simulated rate, so the breach holds on any date
+                qty = math.ceil(Decimal(limit) * Decimal("1.1") / (Decimal(str(b["price"])) * floor) / 100) * 100
+                emit(code, b, {"quantity": max(b["quantity"] * 4000, qty)})
             elif code == "N20":
                 b = rng.choice(by_group["IRS"])
                 emit(code, b, {"end_date": b["settlement_date"], "irs_tenor_years": 0})

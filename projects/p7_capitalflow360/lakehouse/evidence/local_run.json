@@ -2,7 +2,7 @@
  "environment": "local-spark",
  "spark": "4.1.3",
  "delta_spark": "4.4.1",
- "elapsed_seconds": 622.2,
+ "elapsed_seconds": 641.2,
  "checks": [
   {
    "check": "baseline landing: every sheet matches the contract",
@@ -331,7 +331,7 @@
  "landing_manifests": [
   {
    "batch_id": "BASELINE-001",
-   "converted_at": "2026-11-16T02:35:07Z",
+   "converted_at": "2026-11-16T02:50:26Z",
    "files": [
     {
      "file": "Accounts.xlsx",
@@ -547,7 +547,7 @@
   },
   {
    "batch_id": "NEGATIVE-001",
-   "converted_at": "2026-11-16T02:41:02Z",
+   "converted_at": "2026-11-16T02:56:30Z",
    "files": [
     {
      "file": "Allocations_negative.xlsx",
@@ -555,7 +555,7 @@
     },
     {
      "file": "Trades_negative.xlsx",
-     "sha256": "49516f694acd984268ff4e88da40bdc53b684ecbf6620164b13a2054be944e57"
+     "sha256": "9157965ff89d8e220aea3280b29a85fd36140c66d50fad2228b5e9718c0818d4"
     },
     {
      "file": "Trades_schema_drift.xlsx",

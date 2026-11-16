@@ -1,2 +1,4 @@
 lakehouse/.work/
 spark-warehouse/
+frontend/test-results/
+frontend/playwright-report/

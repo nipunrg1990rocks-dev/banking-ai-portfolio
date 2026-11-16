@@ -85,20 +85,20 @@ def book(s: Session, payload: dict, actor: tuple[str, str], sandbox_id: str | No
             fq = sum(dec(f[0]) for f in fills)
             vw = calc.q_dp(sum(dec(f[0]) * dec(f[1]) for f in fills) / fq, 6)
             if fq != dec(t["quantity"]):
-                issues.append(engine.Issue("R026", "E_FILL_QTY_MISMATCH", f"Fills {fq} != quantity {t['quantity']}", "quantity"))
+                issues.append(engine.Issue("R026", "E_FILL_QTY_MISMATCH", f"Fills {fq} != quantity {t['quantity']}", field="quantity"))
             elif vw != calc.q_dp(dec(t["price"]), 6) and t["product_type"] in ("EQUITY", "ETF", "FUTURE", "OPTION"):
-                issues.append(engine.Issue("R026", "E_AVG_PRICE_MISMATCH", f"VWAP {vw} != price {t['price']}", "price"))
+                issues.append(engine.Issue("R026", "E_AVG_PRICE_MISMATCH", f"VWAP {vw} != price {t['price']}", field="price"))
     allocs = t["allocations"] or [{"account_id": t["account_id"], "alloc_qty": t["quantity"]}]
     if not [i for i in issues if i.severity == "ERROR"]:
         total = sum(dec(a["alloc_qty"]) for a in allocs)
         if total != dec(t["quantity"]):
-            issues.append(engine.Issue("R024", "E_ALLOC_QTY_MISMATCH", f"Allocations {total} != quantity {t['quantity']}", "allocations"))
+            issues.append(engine.Issue("R024", "E_ALLOC_QTY_MISMATCH", f"Allocations {total} != quantity {t['quantity']}", field="allocations"))
         for a in allocs:
             acct = s.get(m.Account, a["account_id"])
             if acct is None or acct.client_id != t["client_id"]:
-                issues.append(engine.Issue("R003", "E_ALLOC_ACCOUNT", f"Allocation account {a['account_id']} invalid", "allocations"))
+                issues.append(engine.Issue("R003", "E_ALLOC_ACCOUNT", f"Allocation account {a['account_id']} invalid", field="allocations"))
             elif ctx.get("group") not in acct.permitted_products.split(","):
-                issues.append(engine.Issue("R003", "E_PRODUCT_NOT_PERMITTED", f"{ctx.get('group')} not permitted for {acct.account_id}", "allocations"))
+                issues.append(engine.Issue("R003", "E_PRODUCT_NOT_PERMITTED", f"{ctx.get('group')} not permitted for {acct.account_id}", field="allocations"))
     errors = [i.as_dict() for i in issues if i.severity == "ERROR"]
     warnings = [i.as_dict() for i in issues if i.severity == "WARNING"]
     if errors:

@@ -31,6 +31,10 @@ class Issue:
     severity: str = "ERROR"
     field: str | None = None
 
+    def __post_init__(self):
+        if self.severity not in ("ERROR", "WARNING"):  # guards against a field name passed positionally as the severity
+            raise ValueError(f"Issue severity must be ERROR or WARNING, not {self.severity!r}")
+
     def as_dict(self):
         return {"rule_id": self.rule_id, "code": self.code, "message": self.message, "severity": self.severity,
                 "field": self.field}

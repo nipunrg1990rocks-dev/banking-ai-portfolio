@@ -11,7 +11,7 @@ from sqlalchemy import String, func, select
 from sqlalchemy.orm import Session
 
 from cf360 import models as m
-from cf360.api.deps import ApiError, as_of_date, current_user, require
+from cf360.api.deps import PERMISSIONS, ApiError, as_of_date, current_user, require
 from cf360.api.schemas import ClientChangeIn, DecisionIn, ExceptionActionIn, InterfaceMessageIn, SSIIn, WriteOffIn
 from cf360.api.util import page, row, rows, translate
 from cf360.db import get_session
@@ -336,8 +336,19 @@ def approvals(status: str | None = "PENDING", s: Session = Depends(get_session),
     return {"items": rows(s.scalars(stmt.order_by(m.Approval.created_at.desc())))}
 
 
+def _may_decide(approval_id: str, s: Session = Depends(get_session), user: m.User = Depends(current_user)) -> m.User:
+    """Checkers may decide. The maker is let through so that a self-approval attempt is refused and audited by the
+    workflow (R092). Everyone else is refused before the request body is even read."""
+    if user.role in PERMISSIONS["approval.decide"]:
+        return user
+    a = s.get(m.Approval, approval_id)
+    if a is not None and a.maker == user.username:
+        return user
+    raise ApiError(403, "E_FORBIDDEN", f"Role {user.role} lacks permission approval.decide")
+
+
 @router.post("/approvals/{approval_id}/decision", tags=["approvals"], summary="Approve or reject (checker; never the maker, R092)")
-def decide(approval_id: str, body: DecisionIn, s: Session = Depends(get_session), user: m.User = Depends(current_user)):
+def decide(approval_id: str, body: DecisionIn, s: Session = Depends(get_session), user: m.User = Depends(_may_decide)):
     try:
         out = workflow.decide(s, approval_id, body.approve, body.note, user)
         s.commit()

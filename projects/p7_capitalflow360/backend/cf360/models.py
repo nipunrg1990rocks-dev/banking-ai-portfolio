@@ -580,7 +580,7 @@ class TestRun(Base):
     run_id: Mapped[str] = mapped_column(String(80), primary_key=True)
     label: Mapped[str] = mapped_column(String(120))
     started_at: Mapped[datetime | None] = mapped_column(DateTime)
-    environment: Mapped[str] = mapped_column(String(60))
+    environment: Mapped[str] = mapped_column(String(200))
     defects_enabled: Mapped[str] = mapped_column(String(60), default="")
     summary: Mapped[dict] = mapped_column(JSON, default=dict)
     imported_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
@@ -591,9 +591,9 @@ class TestResult(Base):
     __test__ = False
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     run_id: Mapped[str] = mapped_column(String(80), index=True)
-    project: Mapped[str] = mapped_column(String(30), index=True)  # api / chromium / firefox / webkit
-    scenario_id: Mapped[str | None] = mapped_column(String(20), index=True)
-    case_id: Mapped[str | None] = mapped_column(String(40), index=True)
+    project: Mapped[str] = mapped_column(String(40), index=True)  # api / chromium / firefox / webkit
+    scenario_id: Mapped[str | None] = mapped_column(String(60), index=True)
+    case_id: Mapped[str | None] = mapped_column(String(80), index=True)
     title: Mapped[str] = mapped_column(String(300))
     rule_ids: Mapped[list] = mapped_column(JSON, default=list)
     status: Mapped[str] = mapped_column(String(20), index=True)  # passed/failed/skipped/flaky

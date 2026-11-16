@@ -1751,7 +1751,7 @@
   "negative_files": {
     "Trades_negative.xlsx": {
       "path": "data/negative/Trades_negative.xlsx",
-      "sha256": "49516f694acd984268ff4e88da40bdc53b684ecbf6620164b13a2054be944e57",
+      "sha256": "9157965ff89d8e220aea3280b29a85fd36140c66d50fad2228b5e9718c0818d4",
       "rows": {
         "Trades": 133
       }
