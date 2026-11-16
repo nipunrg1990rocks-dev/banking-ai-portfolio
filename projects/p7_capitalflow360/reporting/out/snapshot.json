@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T06:02:37Z",
+ "generated_at": "2026-11-16T06:08:26Z",
  "dashboards": {
   "executive": {
    "dashboard": "executive",
@@ -13,7 +13,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -706,7 +706,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -989,7 +989,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1342,7 +1342,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -1642,7 +1642,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2118,7 +2118,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "test_run": "CLEAN-001",
@@ -2360,7 +2360,7 @@
     "trade_date_from": null
    },
    "as_of": "2026-11-06",
-   "refreshed_at": "2026-11-16T06:02:38Z",
+   "refreshed_at": "2026-11-16T06:08:27Z",
    "data_last_processed_at": "2026-11-16T06:02:12Z",
    "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
    "kpis": [
@@ -2415,7 +2415,7 @@
     {
      "id": "api_p95",
      "label": "API p95 latency (ms)",
-     "value": 78.3,
+     "value": 83.7,
      "unit": "ms",
      "definition": "p95 over the last 1 API requests since start",
      "numerator": null,
@@ -2720,7 +2720,7 @@
      "data": [
       {
        "name": "POST /api/auth/login",
-       "value": 78.3
+       "value": 83.7
       }
      ]
     }
@@ -3424,26 +3424,26 @@
  },
  "platform": {
   "ledger_rows": 5100,
-  "audit_events": 3696,
+  "audit_events": 3697,
   "lifecycle_events": 948,
   "instructions": 525,
   "confirmations": 427,
   "instruction_status": {
+   "SETTLED": 455,
    "FAILED": 4,
    "PARTIAL": 3,
-   "PENDING": 63,
-   "SETTLED": 455
+   "PENDING": 63
   },
   "trade_status": {
-   "ALLOCATED": 11,
-   "CLOSED": 14,
+   "SETTLED": 296,
+   "OPEN": 118,
    "EXERCISED": 10,
+   "SETTLEMENT_FAILED": 2,
+   "CLOSED": 14,
    "EXPIRED": 17,
    "INSTRUCTED": 27,
-   "OPEN": 118,
-   "PARTIALLY_SETTLED": 5,
-   "SETTLED": 296,
-   "SETTLEMENT_FAILED": 2
+   "ALLOCATED": 11,
+   "PARTIALLY_SETTLED": 5
   },
   "breaks": [
    {
@@ -4515,6 +4515,22 @@
    "gold_trade_lifecycle": 500,
    "gold_cash_position_projection": 293,
    "gold_dq_summary": 0
+  },
+  "quarantine": {
+   "labelled": 23,
+   "caught": 23,
+   "missed": [],
+   "wrong_rule_or_error": []
+  },
+  "negative_gate": {
+   "table": "trades",
+   "batch_id": "NEGATIVE-001",
+   "rows_in": 133,
+   "rows_out": 110,
+   "rows_quarantined": 23,
+   "duplicates_removed": 0,
+   "quarantine_ratio": 0.1729,
+   "gate": "FAIL"
   }
  },
  "data": {
