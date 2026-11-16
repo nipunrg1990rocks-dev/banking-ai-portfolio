@@ -1,5 +1,8 @@
 # Public demo on Render (free) with a Neon (free) database
 
+> Not used: on 2026-11-16 Render's dashboard asked for a card for this service. The demo uses
+> [Back4app Containers](deploy_back4app_neon.md) instead. This file and `render.yaml` are kept for anyone with a Render account.
+
 The blueprint is `render.yaml` at the repository root. It deploys this folder's Dockerfile as one free web service.
 The database is a Neon Free Postgres. Nothing in this setup needs a payment method. Do not add one: without it, going
 over a free limit suspends the service until next month instead of billing.
