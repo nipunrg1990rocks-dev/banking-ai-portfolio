@@ -24,7 +24,7 @@ const run = (id) => S.runs[id];
 const clean = run("CLEAN-001");
 const ci = Object.values(S.ci || {}).filter((r) => !r.failed && r.browser_runs).sort((a, b) => b.browser_runs - a.browser_runs)[0];
 const dep = S.deployment;
-const hostText = dep ? `Live on Back4app free tier + Neon free database: ${dep.url.replace("https://", "")}` : "Back4app free tier + Neon free database; not live yet";
+const hostText = dep ? `Live on ${dep.host_short}: ${dep.url.replace("https://", "")}` : "Vercel + Neon free tiers (no card); not live yet";
 const ciBrowsers = ci ? `${ci.browser_runs} runs in GitHub Actions run ${ci.run_id} on Chromium, Firefox and WebKit, 0 failed` : "Firefox and WebKit set up for CI, results pending";
 const fmt = (n, dp = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
 const DEFECTS = [
@@ -259,7 +259,7 @@ async function executive() {
   cards(d, s, [
     { h: "Review and merge", t: "CI already runs the tests and the browser suite on Chromium, Firefox and WebKit on every push." },
     { h: "Databricks", t: "Import the notebook to a Free Edition workspace and run the same 14 checks." },
-    { h: "Hosting", t: "Back4app free tier with a Neon free database: no card; the first start took more than 20 minutes." },
+    { h: "Hosting", t: "Vercel Hobby for the app and Neon Free for the database: free tiers, no card." },
     { h: "Showcase", t: "Portfolio page, PDF handbook and decks for interviews." },
   ], { y: 3.3, cols: 4, h: 2.3, size: 13 });
   note(d, s, "Domain design, rules and scenarios: Nipun Gupta. Implementation: AI-assisted, reviewed and tested as described.", { y: 6.0, h: 0.6 });
