@@ -26,5 +26,5 @@ COPY --from=ui /ui/dist frontend/dist
 RUN useradd --create-home --uid 10001 cf360 && chown -R cf360 /app
 USER cf360
 EXPOSE 8000
-HEALTHCHECK --interval=15s --timeout=5s --start-period=60s CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"
+HEALTHCHECK --interval=15s --timeout=5s --start-period=60s CMD python -c "import urllib.request; import os; urllib.request.urlopen('http://localhost:%s/api/health' % os.environ.get('PORT', '8000'))"
 CMD ["sh", "backend/docker-entrypoint.sh"]

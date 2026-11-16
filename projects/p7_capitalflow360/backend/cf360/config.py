@@ -18,10 +18,18 @@ KNOWN_DEFECTS = {
 }
 
 
+def _db_url(url: str) -> str:
+    """Accept the plain postgres:// URLs that hosted databases hand out; SQLAlchemy needs the psycopg driver named."""
+    for prefix in ("postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            return "postgresql+psycopg://" + url[len(prefix):]
+    return url
+
+
 @dataclass
 class Settings:
-    database_url: str = field(default_factory=lambda: os.getenv(
-        "CF360_DATABASE_URL", "postgresql+psycopg://cf360:cf360@localhost:5432/cf360"))
+    database_url: str = field(default_factory=lambda: _db_url(os.getenv(
+        "CF360_DATABASE_URL", "postgresql+psycopg://cf360:cf360@localhost:5432/cf360")))
     jwt_secret: str = field(default_factory=lambda: os.getenv("CF360_JWT_SECRET", "dev-only-change-me"))
     jwt_ttl_minutes: int = field(default_factory=lambda: int(os.getenv("CF360_JWT_TTL_MINUTES", "480")))
     demo_password: str = field(default_factory=lambda: os.getenv("CF360_DEMO_PASSWORD", "Demo!2026"))
