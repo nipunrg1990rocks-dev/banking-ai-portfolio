@@ -12,3 +12,4 @@ mlartifacts/
 spark-warehouse/
 metastore_db/
 derby.log
+_site/
