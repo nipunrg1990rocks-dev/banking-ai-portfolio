@@ -3,6 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "description": "Builds the four CapitalFlow 360 PowerPoint decks from reporting/out/snapshot.json",
-  "scripts": { "decks": "node decks.js" },
-  "dependencies": { "pptxgenjs": "3.12.0" }
+  "scripts": {
+    "decks": "node decks.js"
+  },
+  "dependencies": {
+    "playwright": "1.63.0",
+    "pptxgenjs": "3.12.0"
+  }
 }
