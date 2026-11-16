@@ -61,6 +61,8 @@ def main() -> int:
     check("A7", "Distinct scenarios", ">= 100", len(scen), len(scen) >= 100)
 
     runs = {p.stem: json.loads(p.read_text())["summary"] for p in sorted((ROOT / "testkit" / "out" / "runs").glob("*.json"))}
+    # CI runs: summaries copied from the GitHub Actions log of the CapitalFlow 360 workflow, with the run's URL (testkit/out/ci)
+    runs |= {p.stem: json.loads(p.read_text()) for p in sorted((ROOT / "testkit" / "out" / "ci").glob("*.json"))}
     clean = {k: v for k, v in runs.items() if not v.get("defects_enabled")}
     best = max(clean.values(), key=lambda s: (s.get("browser_runs", 0), s["executed"])) if clean else None
     check("A8", "Executed cases, clean run", ">= 1,500 executed, 0 failed",

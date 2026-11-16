@@ -710,8 +710,8 @@ def _(ctx):
 
 @api_check("AUDIT-APPEND-ONLY")
 def _(ctx):
-    for sql in ("update audit_events set action = 'X' where id = (select min(id) from audit_events)",
-                "delete from audit_events where id = (select min(id) from audit_events)"):
+    for sql in ("update audit_events set action = 'X' where audit_id = (select min(audit_id) from audit_events)",
+                "delete from audit_events where audit_id = (select min(audit_id) from audit_events)"):
         with ctx.Session() as s:
             try:
                 s.execute(text(sql))
@@ -719,8 +719,9 @@ def _(ctx):
                 raise Fail(f"allowed: {sql}")
             except Fail:
                 raise
-            except Exception:
+            except Exception as e:  # only the trigger's refusal counts; any other error means the check proved nothing
                 s.rollback()
+                expect("append-only" in str(e), f"refused for another reason: {str(e).splitlines()[0][:120]}")
     return ["UPDATE and DELETE blocked by trigger"]
 
 

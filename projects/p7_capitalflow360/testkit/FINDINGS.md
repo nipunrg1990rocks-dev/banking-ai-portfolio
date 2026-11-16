@@ -13,7 +13,7 @@ Each was fixed, and the case that found it now passes in run CLEAN-001.
 
 Test-design mistakes corrected on the way (the product was right): the R009 boundary used the wrong last price date,
 the R034 "below minimum" case produced a zero quantity when minimum = increment, the R052 case used a future outside
-the priced window, and one dashboard slug was misspelt.
+the priced window, and one dashboard slug was misspelt. The CI database log later showed that TC-API-AUDIT-APPEND-ONLY used a column name that does not exist, so it passed on an SQL error instead of the trigger; it now uses `audit_id` and only accepts the trigger's refusal (the pytest version was already correct).
 
 # Injected defects (D1 to D6)
 
