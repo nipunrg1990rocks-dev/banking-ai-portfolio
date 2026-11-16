@@ -252,8 +252,8 @@
       "full_name": "Simulated multi-asset trade lifecycle platform",
       "kind": "Capital markets ops · test engineering",
       "lifecycle": "From order to reconciled books",
-      "status": "built",
-      "status_label": "Built and tested",
+      "status": "live",
+      "status_label": "Live demo",
       "summary": "A simulated back office that takes 500 synthetic trades across six asset classes from order to settled cash and reconciled books, with 69 rules, seven role workspaces and a Bronze/Silver/Gold lakehouse.",
       "problem": "Trade problems start after the desk: a cent short on an allocation, a holiday in the second currency, a self-approved amendment.",
       "ai": "Built with an AI coding assistant. The tests never trust the code: expected answers come from an independent calculator and 28 hand-worked examples.",
@@ -270,7 +270,7 @@
         "Append-only audit trail with correlation ids"
       ],
       "stack": ["React", "TypeScript", "FastAPI", "PostgreSQL", "PySpark", "Delta Lake", "Playwright", "Docker"],
-      "live_url": "",
+      "live_url": "https://banking-ai-portfolio.vercel.app",
       "code_path": "projects/p7_capitalflow360",
       "showcase": "docs/showcase/p7_capitalflow360.html",
       "pdf": "projects/p7_capitalflow360/reporting/out/CapitalFlow360_Interview_and_Demonstration_Handbook.pdf",
@@ -280,7 +280,7 @@
         "browser": {"state": "pending", "text": "Chromium only so far"},
         "databricks": {"state": "pending", "text": "Ran on local Spark only"},
         "llm": {"state": "na", "text": "No LLM feature"},
-        "hosted": {"state": "pending", "text": "Not yet deployed"}
+        "hosted": {"state": "verified", "text": "Live on Vercel + Neon free tiers"}
       }
     }
   ]
