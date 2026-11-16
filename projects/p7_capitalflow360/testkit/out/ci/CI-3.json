@@ -1,0 +1,21 @@
+{
+  "run_id": "CI-3",
+  "source": "Copied from the 'Merge executor and browser results' step log of GitHub Actions job 133134022158 (CapitalFlow 360 workflow, commit 2ba2b59)",
+  "run_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43817863937",
+  "artifact_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43817863937/artifacts/14202809415",
+  "defects_enabled": [],
+  "executed": 2560,
+  "passed": 2560,
+  "failed": 0,
+  "scenarios": 137,
+  "elapsed_seconds": 28.0,
+  "started_at": "2026-11-16T06:37:30.617526+00:00",
+  "flaky": 0,
+  "unique_cases_executed": 2370,
+  "catalogue_cases": 2370,
+  "browser_runs": 245,
+  "browser_runs_by_project": {"chromium": 55, "chromium-mobile": 40, "firefox": 55, "webkit": 55, "webkit-mobile": 40},
+  "browser_failed": 0,
+  "ui_cases_not_executed": [],
+  "unmapped_browser_tests": []
+}

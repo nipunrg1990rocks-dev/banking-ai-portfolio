@@ -1,0 +1,1852 @@
+{
+  "dataset": "CapitalFlow 360 synthetic baseline",
+  "config_version": "1.0.0",
+  "generator_seed": 20261116,
+  "generator": "datagen/generate.py",
+  "statement_date": "2026-11-06",
+  "opening_date": "2026-09-11",
+  "baseline_trade_count": 500,
+  "trade_counts_by_group": {
+    "Equities/ETFs": 140,
+    "Corporate/government bonds": 120,
+    "FX spot/forwards": 80,
+    "Futures/options": 70,
+    "Interest-rate swaps": 50,
+    "Repo/securities lending": 40
+  },
+  "files": {
+    "Trades.xlsx": {
+      "path": "data/excel/Trades.xlsx",
+      "sha256": "893e5c3bd292c30189d68d9209f70b77da1af297b68ea319f3b5501582773706",
+      "rows": {
+        "Trades": 500
+      },
+      "schema": {
+        "Trades": [
+          {
+            "column": "trade_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_trade_ref",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "order_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_group",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "client_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "book",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trader_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "counterparty_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "side",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "quantity",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "price",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "price_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trade_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "settle_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trade_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "trade_time_utc",
+            "type": "TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "column": "market",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "market_timezone",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "settlement_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "end_date",
+            "type": "DATE",
+            "nullable": true
+          },
+          {
+            "column": "fx_counter_ccy",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "fx_counter_amount",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "fx_spot_rate",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "fx_forward_points",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "fx_tenor_months",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "column": "repo_rate_pct",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "haircut_pct",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "collateral_ccy",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "sl_fee_bps",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "column": "irs_fixed_rate_pct",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "irs_float_index",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "irs_spread_bps",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "column": "irs_tenor_years",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "column": "execution_venue",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "ingest_batch",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Clients.xlsx": {
+      "path": "data/excel/Clients.xlsx",
+      "sha256": "09cd4e71efc4c4740bca5ac93a01f403696f538d54e493e89276cb6549cb2cd3",
+      "rows": {
+        "Clients": 24,
+        "Counterparties": 16
+      },
+      "schema": {
+        "Clients": [
+          {
+            "column": "client_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "legal_name",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "short_name",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "lei",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "client_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "client_category",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "country",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "base_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "kyc_review_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "kyc_expiry_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "risk_rating",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "exposure_limit_usd",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "netting_agreement",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Counterparties": [
+          {
+            "column": "counterparty_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "legal_name",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "counterparty_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "country",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "lei",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "netting_agreement",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Accounts.xlsx": {
+      "path": "data/excel/Accounts.xlsx",
+      "sha256": "1b9408e724ea6f07f423244ffb6d63f68234fe361e214109edb6516252c6a8d0",
+      "rows": {
+        "Accounts": 70,
+        "Commission_Schedules": 383
+      },
+      "schema": {
+        "Accounts": [
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "client_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "account_name",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "account_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "base_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "permitted_products",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "custodian_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "securities_account_ref",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "cash_account_ref",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "partial_settlement_allowed",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "credit_line_usd",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "opened_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Commission_Schedules": [
+          {
+            "column": "schedule_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_group",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "commission_bps",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "min_commission_usd",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "effective_from",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "effective_to",
+            "type": "DATE",
+            "nullable": true
+          }
+        ]
+      }
+    },
+    "Instruments.xlsx": {
+      "path": "data/excel/Instruments.xlsx",
+      "sha256": "fb328cb3dda91dfa2d6e2dbc1e74ef3d0d7135f5280e209cbef6d145bd7c8920",
+      "rows": {
+        "Instruments": 75,
+        "Equity_Details": 36,
+        "Bond_Details": 15,
+        "FX_Details": 8,
+        "Derivative_Details": 12,
+        "Swap_Templates": 4
+      },
+      "schema": {
+        "Instruments": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_group",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "name",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "synthetic_isin",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "market",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "maturity_date",
+            "type": "DATE",
+            "nullable": true
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Equity_Details": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "ticker",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "lot_size",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "sector",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "stamp_duty_exempt",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "dividend_frequency",
+            "type": "INTEGER",
+            "nullable": false
+          }
+        ],
+        "Bond_Details": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "issuer",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "coupon_rate_pct",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "coupon_frequency",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "day_count",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "issue_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "maturity_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "min_denomination",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "min_increment",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "ex_dividend_bdays",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "credit_rating",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "FX_Details": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "base_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "quote_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "spot_lag_bdays",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "pip_factor",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "rate_precision_dp",
+            "type": "INTEGER",
+            "nullable": false
+          }
+        ],
+        "Derivative_Details": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "derivative_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "contract_multiplier",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "tick_size",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "last_trading_day",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "ccp_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "initial_margin_per_contract",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "underlying_id",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "option_type",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "strike",
+            "type": "DECIMAL",
+            "nullable": true
+          },
+          {
+            "column": "exercise_style",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "settlement_type",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Swap_Templates": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "float_index",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "fixed_freq_months",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "float_freq_months",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "fixed_day_count",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "float_day_count",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "payment_calendar",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "business_day_convention",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "ccp_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Orders.xlsx": {
+      "path": "data/excel/Orders.xlsx",
+      "sha256": "c0706bb4f3347c88c59a348c8bfd1662998c82f51dddbdeea11d816fbfb2b422",
+      "rows": {
+        "Orders": 538
+      },
+      "schema": {
+        "Orders": [
+          {
+            "column": "order_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "client_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "side",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "order_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "limit_price",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "order_qty",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "order_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trader_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "order_ts_utc",
+            "type": "TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "channel",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Executions.xlsx": {
+      "path": "data/excel/Executions.xlsx",
+      "sha256": "b3fab5ff6015c2bfb87544ca33e8cc59185bf2cedd5740aa8d77299dafe167c6",
+      "rows": {
+        "Executions": 729
+      },
+      "schema": {
+        "Executions": [
+          {
+            "column": "exec_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "order_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "execution_venue",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "counterparty_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "exec_qty",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "exec_price",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "exec_ts_utc",
+            "type": "TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "column": "liquidity_flag",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Allocations.xlsx": {
+      "path": "data/excel/Allocations.xlsx",
+      "sha256": "4f4bda666307b8aa117c3e5694673189566a708e6a0abe6e0acb898d75767c8f",
+      "rows": {
+        "Allocations": 587
+      },
+      "schema": {
+        "Allocations": [
+          {
+            "column": "allocation_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trade_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "alloc_seq",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "alloc_qty",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Settlement_Instructions.xlsx": {
+      "path": "data/excel/Settlement_Instructions.xlsx",
+      "sha256": "2af8f0982310d166fbfd5ee096679a47f1f4ccea23b726a2bdd2549526953d60",
+      "rows": {
+        "SSIs": 915
+      },
+      "schema": {
+        "SSIs": [
+          {
+            "column": "ssi_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "owner_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "owner_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "settlement_location",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "agent_code",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "safekeeping_account",
+            "type": "STRING",
+            "nullable": true
+          },
+          {
+            "column": "cash_account",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "effective_from",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "effective_to",
+            "type": "DATE",
+            "nullable": true
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "version",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Prices_FX_Rates.xlsx": {
+      "path": "data/excel/Prices_FX_Rates.xlsx",
+      "sha256": "18783bf2a0e6a5bb30edf4b91530faadf1f7667f0d90acc9ebd8a5117f1d4b34",
+      "rows": {
+        "Prices": 4596,
+        "FX_Rates": 525,
+        "Rate_Fixings": 290,
+        "FX_Forward_Points": 2400
+      },
+      "schema": {
+        "Prices": [
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "price_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "close_price",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "price_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "FX_Rates": [
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "rate_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "usd_per_unit",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "source",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Rate_Fixings": [
+          {
+            "column": "rate_index",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "fixing_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "rate_pct",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "source",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "FX_Forward_Points": [
+          {
+            "column": "pair",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "rate_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "tenor_months",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "forward_points",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "source",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Business_Calendars.xlsx": {
+      "path": "data/excel/Business_Calendars.xlsx",
+      "sha256": "0da9de3e740538f992271857206807e91cf06f0370b76aeb55ff60829c958dbf",
+      "rows": {
+        "Calendars": 14,
+        "Holidays": 1926,
+        "Markets": 13,
+        "Settlement_Conventions": 17
+      },
+      "schema": {
+        "Calendars": [
+          {
+            "column": "calendar_code",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "description",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "timezone",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Holidays": [
+          {
+            "column": "calendar_code",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "holiday_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "holiday_name",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Markets": [
+          {
+            "column": "market",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "calendar_code",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "timezone",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "settlement_location",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "exchange_fee_bps",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "stamp_duty_bps",
+            "type": "DECIMAL",
+            "nullable": false
+          }
+        ],
+        "Settlement_Conventions": [
+          {
+            "column": "convention_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "product_types",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "market",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "offset_bdays",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "calendar_basis",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "cutoff_local_time",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "timezone",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "effective_from",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "effective_to",
+            "type": "DATE",
+            "nullable": true
+          },
+          {
+            "column": "source_reference",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "simplification_note",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Positions_Cash.xlsx": {
+      "path": "data/excel/Positions_Cash.xlsx",
+      "sha256": "d079216b347f7d56b3f7f230289c8f6aca985c2ca72b8440581588d71b612c09",
+      "rows": {
+        "Opening_Positions": 195,
+        "Opening_Cash": 490
+      },
+      "schema": {
+        "Opening_Positions": [
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "quantity",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "as_of_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "position_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Opening_Cash": [
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "balance",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "as_of_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "Corporate_Actions.xlsx": {
+      "path": "data/excel/Corporate_Actions.xlsx",
+      "sha256": "a802efc4b6122ce666b699cf43debfbfee0c8394efdc0c455294cf701b13474b",
+      "rows": {
+        "Dividends": 12,
+        "Coupons": 6
+      },
+      "schema": {
+        "Dividends": [
+          {
+            "column": "ca_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "event_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "ex_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "record_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "pay_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "gross_rate_per_share",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Coupons": [
+          {
+            "column": "ca_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "event_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "coupon_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "record_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "pay_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "coupon_rate_pct",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "amount_per_100",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    },
+    "External_Reconciliation.xlsx": {
+      "path": "data/excel/External_Reconciliation.xlsx",
+      "sha256": "9e1e3bae0d3705d49d17327c8c7067e9f87790375456eb2487ff9ac99481b1e1",
+      "rows": {
+        "Confirmations": 427,
+        "Settlement_Status": 12,
+        "Custody_Positions": 327,
+        "Custody_Cash": 490
+      },
+      "schema": {
+        "Confirmations": [
+          {
+            "column": "confirmation_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trade_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "counterparty_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "cp_trade_ref",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "quantity",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "price",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "settle_amount",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "settle_ccy",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "settle_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "received_ts_utc",
+            "type": "TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "column": "message_type",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Settlement_Status": [
+          {
+            "column": "status_msg_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "allocation_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "trade_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "reason_code",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "status_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "resolved_date",
+            "type": "DATE",
+            "nullable": true
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Custody_Positions": [
+          {
+            "column": "statement_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "instrument_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "quantity",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ],
+        "Custody_Cash": [
+          {
+            "column": "statement_date",
+            "type": "DATE",
+            "nullable": false
+          },
+          {
+            "column": "account_id",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "currency",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "balance",
+            "type": "DECIMAL",
+            "nullable": false
+          },
+          {
+            "column": "source_system",
+            "type": "STRING",
+            "nullable": false
+          },
+          {
+            "column": "source_record_id",
+            "type": "STRING",
+            "nullable": false
+          }
+        ]
+      }
+    }
+  },
+  "negative_files": {
+    "Trades_negative.xlsx": {
+      "path": "data/negative/Trades_negative.xlsx",
+      "sha256": "9157965ff89d8e220aea3280b29a85fd36140c66d50fad2228b5e9718c0818d4",
+      "rows": {
+        "Trades": 133
+      }
+    },
+    "Allocations_negative.xlsx": {
+      "path": "data/negative/Allocations_negative.xlsx",
+      "sha256": "bf94bb6071730423b8f808d456a8be067669d8a2e6adddf34c4b409fe982b134",
+      "rows": {
+        "Allocations": 14
+      }
+    },
+    "Trades_schema_drift.xlsx": {
+      "path": "data/negative/Trades_schema_drift.xlsx",
+      "sha256": "c813f8f10d024db5e6606dcf84f92e9bda1cabe3c1382627837019017f18e1ce",
+      "rows": {
+        "Trades": 20
+      }
+    }
+  },
+  "relationships": [
+    {
+      "from": "Trades.instrument_id",
+      "to": "Instruments.instrument_id"
+    },
+    {
+      "from": "Trades.client_id",
+      "to": "Clients.client_id"
+    },
+    {
+      "from": "Trades.account_id",
+      "to": "Accounts.account_id"
+    },
+    {
+      "from": "Trades.order_id",
+      "to": "Orders.order_id"
+    },
+    {
+      "from": "Trades.counterparty_id",
+      "to": "Clients.xlsx:Counterparties.counterparty_id"
+    },
+    {
+      "from": "Executions.order_id",
+      "to": "Orders.order_id"
+    },
+    {
+      "from": "Allocations.trade_id",
+      "to": "Trades.trade_id"
+    },
+    {
+      "from": "Allocations.account_id",
+      "to": "Accounts.account_id"
+    },
+    {
+      "from": "Accounts.client_id",
+      "to": "Clients.client_id"
+    },
+    {
+      "from": "Settlement_Instructions.owner_id",
+      "to": "Accounts.account_id | Counterparties.counterparty_id"
+    },
+    {
+      "from": "Prices.instrument_id",
+      "to": "Instruments.instrument_id"
+    },
+    {
+      "from": "Opening_Positions.account_id",
+      "to": "Accounts.account_id"
+    },
+    {
+      "from": "Dividends.instrument_id",
+      "to": "Instruments.instrument_id"
+    },
+    {
+      "from": "Confirmations.trade_id",
+      "to": "Trades.trade_id"
+    },
+    {
+      "from": "Settlement_Status.allocation_id",
+      "to": "Allocations.allocation_id (+ -E end leg, -F fee)"
+    },
+    {
+      "from": "Custody_Positions.account_id",
+      "to": "Accounts.account_id"
+    }
+  ],
+  "oracle_artifacts": [
+    "defect_labels.csv",
+    "expected_allocations.csv",
+    "expected_cash.csv",
+    "expected_lifecycle_events.csv",
+    "expected_matching.csv",
+    "expected_positions.csv",
+    "expected_settlements.csv",
+    "expected_trades.csv",
+    "negative_labels.csv"
+  ],
+  "oracle_note": "Expected outcomes and defect labels are kept in data/oracle and are never loaded by the platform."
+}

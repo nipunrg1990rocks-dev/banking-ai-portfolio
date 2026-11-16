@@ -1,0 +1,6336 @@
+{
+ "generated_at": "2026-11-16T06:45:04Z",
+ "dashboards": {
+  "executive": {
+   "dashboard": "executive",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:05Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "trades",
+     "label": "Trades booked",
+     "value": 500,
+     "unit": "",
+     "definition": "Count of non-sandbox trades with trade date <= as-of, after filters",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {}
+     },
+     "format": null
+    },
+    {
+     "id": "notional",
+     "label": "Gross notional (USD)",
+     "value": 5952700492.56,
+     "unit": "USD",
+     "definition": "Sum of |quantity x price x multiplier| (bonds and repos /100) converted to USD",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": "money"
+    },
+    {
+     "id": "settle_rate",
+     "label": "Settlement success (eligible)",
+     "value": 98.48,
+     "unit": "%",
+     "definition": "Settled instructions / instructions due on or before the as-of date (pending instructions excluded)",
+     "numerator": 455,
+     "denominator": 462,
+     "population": "eligible (due)",
+     "drill": {
+      "kind": "settlements",
+      "filters": {
+       "status": "FAILED"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "on_time",
+     "label": "Settled on contractual date",
+     "value": 98.02,
+     "unit": "%",
+     "definition": "Instructions settled on or before their settlement date / all settled instructions",
+     "numerator": 446,
+     "denominator": 455,
+     "population": "completed",
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "auto_match",
+     "label": "Auto-matched confirmations",
+     "value": 97.44,
+     "unit": "%",
+     "definition": "Trades matched automatically (exact or within tolerance) / trades that require a counterparty confirmation",
+     "numerator": 419,
+     "denominator": 430,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "status": "ALLOCATED"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "open_exceptions",
+     "label": "Open exceptions",
+     "value": 39,
+     "unit": "",
+     "definition": "Exceptions with status OPEN",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "exceptions",
+      "filters": {
+       "status": "OPEN"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "pending_settlement",
+     "label": "Not yet due",
+     "value": 63,
+     "unit": "",
+     "definition": "Instructions with settlement date after the as-of date",
+     "numerator": null,
+     "denominator": null,
+     "population": "pending",
+     "drill": {
+      "kind": "settlements",
+      "filters": {
+       "status": "PENDING"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "approvals",
+     "label": "Approvals awaiting checker",
+     "value": 0,
+     "unit": "",
+     "definition": "Maker-checker requests with status PENDING",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "approvals",
+      "filters": {
+       "status": "PENDING"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "breaks",
+     "label": "Open reconciliation breaks",
+     "value": 8,
+     "unit": "",
+     "definition": "Breaks against custodian statements not yet resolved or written off",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "recon",
+      "filters": {}
+     },
+     "format": null
+    }
+   ],
+   "charts": [
+    {
+     "id": "by_group",
+     "type": "bar",
+     "title": "Trades by product group",
+     "data": [
+      {
+       "name": "BOND",
+       "value": 120
+      },
+      {
+       "name": "EQUITY",
+       "value": 140
+      },
+      {
+       "name": "FINANCING",
+       "value": 40
+      },
+      {
+       "name": "FX",
+       "value": 80
+      },
+      {
+       "name": "IRS",
+       "value": 50
+      },
+      {
+       "name": "LISTED_DERIV",
+       "value": 70
+      }
+     ],
+     "drill": {
+      "kind": "trades",
+      "param": "product_group"
+     }
+    },
+    {
+     "id": "by_day",
+     "type": "line",
+     "title": "Trades by trade date",
+     "data": [
+      {
+       "name": "2026-09-14",
+       "value": 17
+      },
+      {
+       "name": "2026-09-15",
+       "value": 22
+      },
+      {
+       "name": "2026-09-16",
+       "value": 16
+      },
+      {
+       "name": "2026-09-17",
+       "value": 22
+      },
+      {
+       "name": "2026-09-18",
+       "value": 14
+      },
+      {
+       "name": "2026-09-21",
+       "value": 9
+      },
+      {
+       "name": "2026-09-22",
+       "value": 20
+      },
+      {
+       "name": "2026-09-23",
+       "value": 14
+      },
+      {
+       "name": "2026-09-24",
+       "value": 21
+      },
+      {
+       "name": "2026-09-25",
+       "value": 11
+      },
+      {
+       "name": "2026-09-28",
+       "value": 12
+      },
+      {
+       "name": "2026-09-29",
+       "value": 18
+      },
+      {
+       "name": "2026-09-30",
+       "value": 14
+      },
+      {
+       "name": "2026-10-01",
+       "value": 16
+      },
+      {
+       "name": "2026-10-02",
+       "value": 11
+      },
+      {
+       "name": "2026-10-05",
+       "value": 14
+      },
+      {
+       "name": "2026-10-06",
+       "value": 13
+      },
+      {
+       "name": "2026-10-07",
+       "value": 17
+      },
+      {
+       "name": "2026-10-08",
+       "value": 15
+      },
+      {
+       "name": "2026-10-09",
+       "value": 11
+      },
+      {
+       "name": "2026-10-12",
+       "value": 5
+      },
+      {
+       "name": "2026-10-13",
+       "value": 10
+      },
+      {
+       "name": "2026-10-14",
+       "value": 19
+      },
+      {
+       "name": "2026-10-15",
+       "value": 14
+      },
+      {
+       "name": "2026-10-16",
+       "value": 9
+      },
+      {
+       "name": "2026-10-19",
+       "value": 17
+      },
+      {
+       "name": "2026-10-20",
+       "value": 11
+      },
+      {
+       "name": "2026-10-21",
+       "value": 16
+      },
+      {
+       "name": "2026-10-22",
+       "value": 12
+      },
+      {
+       "name": "2026-10-23",
+       "value": 15
+      },
+      {
+       "name": "2026-10-26",
+       "value": 21
+      },
+      {
+       "name": "2026-10-27",
+       "value": 15
+      },
+      {
+       "name": "2026-10-28",
+       "value": 12
+      },
+      {
+       "name": "2026-10-29",
+       "value": 9
+      },
+      {
+       "name": "2026-10-30",
+       "value": 8
+      }
+     ]
+    },
+    {
+     "id": "daily_settlement",
+     "type": "stacked",
+     "title": "Daily settlement outcomes (processing runs)",
+     "data": [
+      {
+       "date": "2026-09-15",
+       "settled": 7,
+       "failed": 0,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-16",
+       "settled": 22,
+       "failed": 1,
+       "partial": 1
+      },
+      {
+       "date": "2026-09-17",
+       "settled": 13,
+       "failed": 1,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-18",
+       "settled": 12,
+       "failed": 0,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-21",
+       "settled": 11,
+       "failed": 0,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-22",
+       "settled": 6,
+       "failed": 0,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-23",
+       "settled": 13,
+       "failed": 1,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-24",
+       "settled": 22,
+       "failed": 2,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-25",
+       "settled": 17,
+       "failed": 2,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-26",
+       "settled": 0,
+       "failed": 2,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-27",
+       "settled": 0,
+       "failed": 2,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-28",
+       "settled": 10,
+       "failed": 3,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-29",
+       "settled": 10,
+       "failed": 3,
+       "partial": 0
+      },
+      {
+       "date": "2026-09-30",
+       "settled": 16,
+       "failed": 3,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-01",
+       "settled": 16,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-02",
+       "settled": 11,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-03",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-04",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-05",
+       "settled": 10,
+       "failed": 4,
+       "partial": 1
+      },
+      {
+       "date": "2026-10-06",
+       "settled": 11,
+       "failed": 5,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-07",
+       "settled": 17,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-08",
+       "settled": 12,
+       "failed": 3,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-09",
+       "settled": 14,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-10",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-11",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-12",
+       "settled": 4,
+       "failed": 5,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-13",
+       "settled": 14,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-14",
+       "settled": 6,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-15",
+       "settled": 16,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-16",
+       "settled": 15,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-17",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-18",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-19",
+       "settled": 11,
+       "failed": 5,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-20",
+       "settled": 11,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-21",
+       "settled": 15,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-22",
+       "settled": 9,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-23",
+       "settled": 17,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-24",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-25",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-26",
+       "settled": 17,
+       "failed": 5,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-27",
+       "settled": 11,
+       "failed": 5,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-28",
+       "settled": 17,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-29",
+       "settled": 16,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-10-30",
+       "settled": 15,
+       "failed": 4,
+       "partial": 1
+      },
+      {
+       "date": "2026-10-31",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-01",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-02",
+       "settled": 4,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-03",
+       "settled": 3,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-04",
+       "settled": 1,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-05",
+       "settled": 3,
+       "failed": 4,
+       "partial": 0
+      },
+      {
+       "date": "2026-11-06",
+       "settled": 0,
+       "failed": 4,
+       "partial": 0
+      }
+     ]
+    },
+    {
+     "id": "exceptions_by_type",
+     "type": "bar",
+     "title": "Open exceptions by type",
+     "data": [
+      {
+       "name": "MARGIN_CALL",
+       "value": 11
+      },
+      {
+       "name": "MATCH_BREAK",
+       "value": 8
+      },
+      {
+       "name": "MISSING_CONFIRMATION",
+       "value": 3
+      },
+      {
+       "name": "PARTIAL_SETTLEMENT",
+       "value": 3
+      },
+      {
+       "name": "POTENTIAL_DUPLICATE",
+       "value": 2
+      },
+      {
+       "name": "RECON_BREAK",
+       "value": 8
+      },
+      {
+       "name": "SETTLEMENT_FAIL",
+       "value": 4
+      }
+     ],
+     "drill": {
+      "kind": "exceptions",
+      "param": "exception_type"
+     }
+    }
+   ]
+  },
+  "operations": {
+   "dashboard": "operations",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:05Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "unmatched",
+     "label": "Matching queue",
+     "value": 11,
+     "unit": "",
+     "definition": "Trades allocated but not yet confirmed (missing or mismatched confirmations)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "status": "ALLOCATED"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "to_clear",
+     "label": "Clearing queue",
+     "value": 0,
+     "unit": "",
+     "definition": "Trades confirmed or cleared awaiting the next step",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "status": "CLEARED"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "failing",
+     "label": "Failing instructions",
+     "value": 4,
+     "unit": "",
+     "definition": "Eligible instructions in FAILED status",
+     "numerator": 4,
+     "denominator": 462,
+     "population": null,
+     "drill": {
+      "kind": "settlements",
+      "filters": {
+       "status": "FAILED"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "partial",
+     "label": "Partially settled",
+     "value": 3,
+     "unit": "",
+     "definition": "Eligible instructions with residual quantity",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "settlements",
+      "filters": {
+       "status": "PARTIAL"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "exc_open",
+     "label": "Open exceptions",
+     "value": 39,
+     "unit": "",
+     "definition": "All open exceptions",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "exceptions",
+      "filters": {
+       "status": "OPEN"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "exc_resolved",
+     "label": "Resolved exceptions",
+     "value": 9,
+     "unit": "",
+     "definition": "Exceptions resolved (incl. auto-resolved on settlement)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    }
+   ],
+   "charts": [
+    {
+     "id": "funnel",
+     "type": "funnel",
+     "title": "Lifecycle status (current)",
+     "data": [
+      {
+       "name": "ALLOCATED",
+       "value": 11
+      },
+      {
+       "name": "INSTRUCTED",
+       "value": 27
+      },
+      {
+       "name": "PARTIALLY_SETTLED",
+       "value": 5
+      },
+      {
+       "name": "SETTLEMENT_FAILED",
+       "value": 2
+      },
+      {
+       "name": "SETTLED",
+       "value": 296
+      },
+      {
+       "name": "OPEN",
+       "value": 118
+      },
+      {
+       "name": "CLOSED",
+       "value": 14
+      },
+      {
+       "name": "EXPIRED",
+       "value": 17
+      },
+      {
+       "name": "EXERCISED",
+       "value": 10
+      }
+     ],
+     "drill": {
+      "kind": "trades",
+      "param": "status"
+     }
+    },
+    {
+     "id": "matching",
+     "type": "pie",
+     "title": "Matching outcomes",
+     "data": [
+      {
+       "name": "AWAITING",
+       "value": 3
+      },
+      {
+       "name": "MATCHED",
+       "value": 413
+      },
+      {
+       "name": "MATCHED_WITHIN_TOLERANCE",
+       "value": 6
+      },
+      {
+       "name": "MISMATCH_AMOUNT",
+       "value": 5
+      },
+      {
+       "name": "MISMATCH_PRICE",
+       "value": 1
+      },
+      {
+       "name": "MISMATCH_SETTLE_DATE",
+       "value": 2
+      }
+     ]
+    },
+    {
+     "id": "fail_ageing",
+     "type": "bar",
+     "title": "Settlement fail ageing (business days, R086)",
+     "data": [
+      {
+       "name": "0-1",
+       "value": 0
+      },
+      {
+       "name": "2-5",
+       "value": 1
+      },
+      {
+       "name": "6-10",
+       "value": 0
+      },
+      {
+       "name": ">10",
+       "value": 6
+      }
+     ]
+    },
+    {
+     "id": "exc_ageing",
+     "type": "bar",
+     "title": "Open exception ageing (business days)",
+     "data": [
+      {
+       "name": "0-1",
+       "value": 8
+      },
+      {
+       "name": "2-5",
+       "value": 3
+      },
+      {
+       "name": "6-10",
+       "value": 2
+      },
+      {
+       "name": ">10",
+       "value": 26
+      }
+     ]
+    },
+    {
+     "id": "fail_reasons",
+     "type": "bar",
+     "title": "Fail and partial reasons",
+     "data": [
+      {
+       "name": "INSUFFICIENT_SECURITIES",
+       "value": 4
+      },
+      {
+       "name": "CPTY_SECURITIES_SHORTAGE",
+       "value": 3
+      }
+     ]
+    },
+    {
+     "id": "exc_owner",
+     "type": "bar",
+     "title": "Open exceptions by owner",
+     "data": [
+      {
+       "name": "MIDDLE_OFFICE",
+       "value": 13
+      },
+      {
+       "name": "RECONCILIATION",
+       "value": 8
+      },
+      {
+       "name": "RISK",
+       "value": 11
+      },
+      {
+       "name": "SETTLEMENTS",
+       "value": 7
+      }
+     ],
+     "drill": {
+      "kind": "exceptions",
+      "param": "owner_role"
+     }
+    }
+   ]
+  },
+  "product": {
+   "dashboard": "product",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:05Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "eq_comm",
+     "label": "Equity commission (USD)",
+     "value": 52601.9910343814,
+     "unit": "USD",
+     "definition": "Sum of commissions converted at as-of FX",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "product_group": "EQUITY"
+      }
+     },
+     "format": "money"
+    },
+    {
+     "id": "bond_ai",
+     "label": "Bond accrued interest traded (USD)",
+     "value": 2813619.7574207243,
+     "unit": "USD",
+     "definition": "Sum of accrued interest amounts on bond trades",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "product_group": "BOND"
+      }
+     },
+     "format": "money"
+    },
+    {
+     "id": "vm",
+     "label": "Futures variation margin (net, USD)",
+     "value": -565716.634419352,
+     "unit": "USD",
+     "definition": "Net daily variation margin paid(-)/received(+) by client accounts",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "events",
+      "filters": {
+       "event_type": "VARIATION_MARGIN"
+      }
+     },
+     "format": "money"
+    },
+    {
+     "id": "live_swaps",
+     "label": "Live swaps",
+     "value": 50,
+     "unit": "",
+     "definition": "Swaps in OPEN status",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "product_group": "IRS"
+      }
+     },
+     "format": null
+    }
+   ],
+   "table": [
+    {
+     "product_group": "BOND",
+     "trades": 120,
+     "notional_usd": 275104764.93,
+     "eligible": 142,
+     "settled": 141,
+     "settle_rate": 99.3,
+     "pending": 0,
+     "open_or_live": 0
+    },
+    {
+     "product_group": "EQUITY",
+     "trades": 140,
+     "notional_usd": 68806446.41,
+     "eligible": 176,
+     "settled": 170,
+     "settle_rate": 96.59,
+     "pending": 0,
+     "open_or_live": 0
+    },
+    {
+     "product_group": "FINANCING",
+     "trades": 40,
+     "notional_usd": 581015281.36,
+     "eligible": 56,
+     "settled": 56,
+     "settle_rate": 100.0,
+     "pending": 36,
+     "open_or_live": 25
+    },
+    {
+     "product_group": "FX",
+     "trades": 80,
+     "notional_usd": 662443986.24,
+     "eligible": 50,
+     "settled": 50,
+     "settle_rate": 100.0,
+     "pending": 27,
+     "open_or_live": 0
+    },
+    {
+     "product_group": "IRS",
+     "trades": 50,
+     "notional_usd": 4250294052.25,
+     "eligible": 0,
+     "settled": 0,
+     "settle_rate": null,
+     "pending": 0,
+     "open_or_live": 50
+    },
+    {
+     "product_group": "LISTED_DERIV",
+     "trades": 70,
+     "notional_usd": 115035961.37,
+     "eligible": 38,
+     "settled": 38,
+     "settle_rate": 100.0,
+     "pending": 0,
+     "open_or_live": 43
+    }
+   ],
+   "charts": [
+    {
+     "id": "eq_comm",
+     "type": "bar",
+     "title": "Equity commission by market (USD)",
+     "data": [
+      {
+       "name": "XETR",
+       "value": 16705.7381700664
+      },
+      {
+       "name": "XLON",
+       "value": 2076.808791915
+      },
+      {
+       "name": "XNYS",
+       "value": 31807.93
+      },
+      {
+       "name": "XTKS",
+       "value": 2011.5140724
+      }
+     ]
+    },
+    {
+     "id": "fx_pairs",
+     "type": "bar",
+     "title": "FX volume by pair (USD)",
+     "data": [
+      {
+       "name": "AUDUSD",
+       "value": 49473545.93999998
+      },
+      {
+       "name": "EURGBP",
+       "value": 115198026.32
+      },
+      {
+       "name": "EURJPY",
+       "value": 185658955.03999996
+      },
+      {
+       "name": "EURUSD",
+       "value": 55921372.0
+      },
+      {
+       "name": "GBPUSD",
+       "value": 78192086.94000001
+      },
+      {
+       "name": "USDCAD",
+       "value": 90000000.0
+      },
+      {
+       "name": "USDCHF",
+       "value": 40000000.0
+      },
+      {
+       "name": "USDJPY",
+       "value": 48000000.0
+      }
+     ]
+    },
+    {
+     "id": "irs",
+     "type": "bar",
+     "title": "Swap notional by currency and tenor (USD)",
+     "data": [
+      {
+       "name": "EUR 10Y",
+       "value": 475331662.0
+      },
+      {
+       "name": "EUR 2Y",
+       "value": 162171978.8
+      },
+      {
+       "name": "EUR 3Y",
+       "value": 279606860.0
+      },
+      {
+       "name": "EUR 5Y",
+       "value": 234869762.4
+      },
+      {
+       "name": "EUR 7Y",
+       "value": 391449604.0
+      },
+      {
+       "name": "GBP 10Y",
+       "value": 471848800.5
+      },
+      {
+       "name": "GBP 2Y",
+       "value": 13481394.3
+      },
+      {
+       "name": "GBP 3Y",
+       "value": 404441829.0
+      },
+      {
+       "name": "GBP 5Y",
+       "value": 235924400.25
+      },
+      {
+       "name": "GBP 7Y",
+       "value": 269627886.0
+      },
+      {
+       "name": "JPY 2Y",
+       "value": 16769325.0
+      },
+      {
+       "name": "JPY 3Y",
+       "value": 16769325.0
+      },
+      {
+       "name": "JPY 5Y",
+       "value": 100615950.0
+      },
+      {
+       "name": "JPY 7Y",
+       "value": 117385275.0
+      },
+      {
+       "name": "USD 10Y",
+       "value": 135000000.0
+      },
+      {
+       "name": "USD 2Y",
+       "value": 275000000.0
+      },
+      {
+       "name": "USD 3Y",
+       "value": 325000000.0
+      },
+      {
+       "name": "USD 5Y",
+       "value": 225000000.0
+      },
+      {
+       "name": "USD 7Y",
+       "value": 100000000.0
+      }
+     ]
+    },
+    {
+     "id": "financing",
+     "type": "bar",
+     "title": "Financing cash/collateral by type (USD)",
+     "data": [
+      {
+       "name": "REPO",
+       "value": 342765951.68561697
+      },
+      {
+       "name": "REVERSE_REPO",
+       "value": 160917922.13302913
+      },
+      {
+       "name": "SEC_BORROW",
+       "value": 20241337.81907572
+      },
+      {
+       "name": "SEC_LOAN",
+       "value": 49727595.2178973
+      }
+     ]
+    },
+    {
+     "id": "by_group_rate",
+     "type": "bar",
+     "title": "Settlement success by product group (%)",
+     "data": [
+      {
+       "name": "BOND",
+       "value": 99.3
+      },
+      {
+       "name": "EQUITY",
+       "value": 96.59
+      },
+      {
+       "name": "FINANCING",
+       "value": 100.0
+      },
+      {
+       "name": "FX",
+       "value": 100.0
+      },
+      {
+       "name": "IRS",
+       "value": 0
+      },
+      {
+       "name": "LISTED_DERIV",
+       "value": 100.0
+      }
+     ],
+     "drill": {
+      "kind": "trades",
+      "param": "product_group"
+     }
+    }
+   ]
+  },
+  "risk": {
+   "dashboard": "risk",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:05Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "max_util",
+     "label": "Highest limit utilisation",
+     "value": 26.72,
+     "unit": "%",
+     "definition": "Max over clients of weighted USD exposure / limit (R006 exposure proxy, not a risk model)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "trades",
+      "filters": {
+       "client_id": "CL003"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "breaches",
+     "label": "Limit breaches blocked",
+     "value": 0,
+     "unit": "",
+     "definition": "Bookings rejected with E_LIMIT_BREACH",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "rejections",
+      "filters": {
+       "code": "E_LIMIT_BREACH"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "warnings",
+     "label": "Limit warnings (>=90%)",
+     "value": 0,
+     "unit": "",
+     "definition": "Bookings accepted with W_LIMIT_WARNING",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "exceptions",
+      "filters": {
+       "exception_type": "LIMIT_WARNING"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "margin_calls",
+     "label": "Repo margin calls",
+     "value": 11,
+     "unit": "",
+     "definition": "Daily repo revaluations where deficit exceeded the MTA (R072)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "exceptions",
+      "filters": {
+       "exception_type": "MARGIN_CALL"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "approvals_pending",
+     "label": "Approvals pending",
+     "value": 0,
+     "unit": "",
+     "definition": "Maker-checker requests awaiting a checker",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "approvals",
+      "filters": {
+       "status": "PENDING"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "self_blocked",
+     "label": "Self-approvals blocked",
+     "value": 0,
+     "unit": "",
+     "definition": "Attempts by a maker to approve their own request (R092)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    }
+   ],
+   "table": [
+    {
+     "client_id": "CL003",
+     "name": "SILVERBIRC",
+     "used_usd": 66791233.987,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 26.72
+    },
+    {
+     "client_id": "CL018",
+     "name": "ORION",
+     "used_usd": 32451465.47,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 12.98
+    },
+    {
+     "client_id": "CL017",
+     "name": "SOUTHERN",
+     "used_usd": 51500955.9485,
+     "limit_usd": 400000000.0,
+     "utilisation_pct": 12.88
+    },
+    {
+     "client_id": "CL023",
+     "name": "ARCADIA",
+     "used_usd": 24093637.852,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 9.64
+    },
+    {
+     "client_id": "CL010",
+     "name": "LEDGERLINE",
+     "used_usd": 22694385.175,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 9.08
+    },
+    {
+     "client_id": "CL007",
+     "name": "GRANITE",
+     "used_usd": 33450207.013,
+     "limit_usd": 400000000.0,
+     "utilisation_pct": 8.36
+    },
+    {
+     "client_id": "CL019",
+     "name": "VANTAGE",
+     "used_usd": 13105912.284,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 5.24
+    },
+    {
+     "client_id": "CL015",
+     "name": "SAKURA",
+     "used_usd": 44571997.124,
+     "limit_usd": 900000000.0,
+     "utilisation_pct": 4.95
+    },
+    {
+     "client_id": "CL008",
+     "name": "RIVERSTONE",
+     "used_usd": 11520264.13,
+     "limit_usd": 250000000.0,
+     "utilisation_pct": 4.61
+    },
+    {
+     "client_id": "CL012",
+     "name": "EMBERFIELD",
+     "used_usd": 18396416.158,
+     "limit_usd": 400000000.0,
+     "utilisation_pct": 4.6
+    },
+    {
+     "client_id": "CL001",
+     "name": "HARBOURLIN",
+     "used_usd": 36820381.0995,
+     "limit_usd": 900000000.0,
+     "utilisation_pct": 4.09
+    },
+    {
+     "client_id": "CL016",
+     "name": "MAPLE",
+     "used_usd": 51124845.985,
+     "limit_usd": 1500000000.0,
+     "utilisation_pct": 3.41
+    },
+    {
+     "client_id": "CL013",
+     "name": "TIDEWATER",
+     "used_usd": 29768818.771,
+     "limit_usd": 900000000.0,
+     "utilisation_pct": 3.31
+    },
+    {
+     "client_id": "CL014",
+     "name": "LARCHMONT",
+     "used_usd": 27498403.1235,
+     "limit_usd": 900000000.0,
+     "utilisation_pct": 3.06
+    },
+    {
+     "client_id": "CL004",
+     "name": "MERIDIAN",
+     "used_usd": 38097049.51,
+     "limit_usd": 1500000000.0,
+     "utilisation_pct": 2.54
+    }
+   ],
+   "charts": [
+    {
+     "id": "util",
+     "type": "bar",
+     "title": "Exposure utilisation by client (%)",
+     "data": [
+      {
+       "name": "SILVERBIRC",
+       "value": 26.72
+      },
+      {
+       "name": "ORION",
+       "value": 12.98
+      },
+      {
+       "name": "SOUTHERN",
+       "value": 12.88
+      },
+      {
+       "name": "ARCADIA",
+       "value": 9.64
+      },
+      {
+       "name": "LEDGERLINE",
+       "value": 9.08
+      },
+      {
+       "name": "GRANITE",
+       "value": 8.36
+      },
+      {
+       "name": "VANTAGE",
+       "value": 5.24
+      },
+      {
+       "name": "SAKURA",
+       "value": 4.95
+      },
+      {
+       "name": "RIVERSTONE",
+       "value": 4.61
+      },
+      {
+       "name": "EMBERFIELD",
+       "value": 4.6
+      },
+      {
+       "name": "HARBOURLIN",
+       "value": 4.09
+      },
+      {
+       "name": "MAPLE",
+       "value": 3.41
+      }
+     ]
+    },
+    {
+     "id": "approvals",
+     "type": "pie",
+     "title": "Approval decisions",
+     "data": []
+    },
+    {
+     "id": "futures_open",
+     "type": "bar",
+     "title": "Open futures trades by currency",
+     "data": [
+      {
+       "name": "EUR",
+       "value": 15
+      },
+      {
+       "name": "USD",
+       "value": 12
+      }
+     ]
+    }
+   ]
+  },
+  "data-quality": {
+   "dashboard": "data_quality",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:05Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "completeness",
+     "label": "Platform completeness",
+     "value": 100.0,
+     "unit": "%",
+     "definition": "Trades with computed economics / trades",
+     "numerator": 500,
+     "denominator": 500,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "dups",
+     "label": "Potential duplicates flagged",
+     "value": 2,
+     "unit": "",
+     "definition": "Trades with W_POTENTIAL_DUPLICATE (R029 soft check)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "exceptions",
+      "filters": {
+       "exception_type": "POTENTIAL_DUPLICATE"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "rejections",
+     "label": "Booking rejections",
+     "value": 0,
+     "unit": "",
+     "definition": "API/loader bookings rejected by validation rules",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "rejections",
+      "filters": {}
+     },
+     "format": null
+    },
+    {
+     "id": "lake_quarantine",
+     "label": "Lakehouse quarantined rows",
+     "value": 43,
+     "unit": "",
+     "definition": "Rows quarantined by Silver data-quality rules across imported lakehouse batches (local Spark run unless stated)",
+     "numerator": null,
+     "denominator": null,
+     "population": "BASELINE-001, NEGATIVE-001",
+     "drill": null,
+     "format": null
+    }
+   ],
+   "charts": [
+    {
+     "id": "dims",
+     "type": "bar",
+     "title": "Lakehouse checks by dimension (pass %)",
+     "data": [
+      {
+       "name": "completeness",
+       "value": 95.49,
+       "checked": 133,
+       "failed": 6
+      },
+      {
+       "name": "integrity",
+       "value": 90.98,
+       "checked": 133,
+       "failed": 12
+      },
+      {
+       "name": "schema",
+       "value": 0,
+       "checked": 20,
+       "failed": 20
+      },
+      {
+       "name": "uniqueness",
+       "value": 100.0,
+       "checked": 21142,
+       "failed": 0
+      },
+      {
+       "name": "validity",
+       "value": 96.24,
+       "checked": 133,
+       "failed": 5
+      }
+     ]
+    },
+    {
+     "id": "rej_codes",
+     "type": "bar",
+     "title": "Rejections by error code",
+     "data": [],
+     "drill": {
+      "kind": "rejections",
+      "param": "code"
+     }
+    }
+   ],
+   "table": [
+    {
+     "batch_id": "BASELINE-001",
+     "table": "clients",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 24,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "counterparties",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 16,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "accounts",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 70,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "instruments",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 75,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "ssis",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 915,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "orders",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 538,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "executions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 729,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "trades",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 500,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "allocations",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 587,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "confirmations",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 427,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "settlement_status",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 12,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "custody_positions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 327,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "custody_cash",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 490,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "opening_positions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 195,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "opening_cash",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 490,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "prices",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 4596,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "fx_rates",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 525,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "clients",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 24,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "counterparties",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 16,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "accounts",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 70,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "instruments",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 75,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "ssis",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 915,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "orders",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 538,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "executions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 729,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "trades",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 500,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "allocations",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 587,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "confirmations",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 427,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "settlement_status",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 12,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "custody_positions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 327,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "custody_cash",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 490,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "opening_positions",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 195,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "opening_cash",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 490,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "prices",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 4596,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "BASELINE-001",
+     "table": "fx_rates",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 525,
+     "failed": 0,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "NEGATIVE-001",
+     "table": "trades",
+     "rule_id": "DQ05",
+     "dimension": "schema",
+     "checked": 20,
+     "failed": 20,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "NEGATIVE-001",
+     "table": "trades",
+     "rule_id": "DQ01",
+     "dimension": "completeness",
+     "checked": 133,
+     "failed": 6,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "NEGATIVE-001",
+     "table": "trades",
+     "rule_id": "DQ02",
+     "dimension": "integrity",
+     "checked": 133,
+     "failed": 12,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "NEGATIVE-001",
+     "table": "trades",
+     "rule_id": "R007",
+     "dimension": "validity",
+     "checked": 133,
+     "failed": 5,
+     "environment": "local-spark"
+    },
+    {
+     "batch_id": "NEGATIVE-001",
+     "table": "trades",
+     "rule_id": "DQ03",
+     "dimension": "uniqueness",
+     "checked": 110,
+     "failed": 0,
+     "environment": "local-spark"
+    }
+   ]
+  },
+  "testing": {
+   "dashboard": "testing",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:06Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "test_run": "CLEAN-001",
+   "runs": [
+    {
+     "run_id": "DEFECT-D1",
+     "label": "Defect D1 injected (expected failures)",
+     "defects": "D1"
+    },
+    {
+     "run_id": "DEFECT-D2",
+     "label": "Defect D2 injected (expected failures)",
+     "defects": "D2"
+    },
+    {
+     "run_id": "DEFECT-D3",
+     "label": "Defect D3 injected (expected failures)",
+     "defects": "D3"
+    },
+    {
+     "run_id": "DEFECT-D4",
+     "label": "Defect D4 injected (expected failures)",
+     "defects": "D4"
+    },
+    {
+     "run_id": "DEFECT-D5",
+     "label": "Defect D5 injected (expected failures)",
+     "defects": "D5"
+    },
+    {
+     "run_id": "DEFECT-D6",
+     "label": "Defect D6 injected (expected failures)",
+     "defects": "D6"
+    },
+    {
+     "run_id": "CLEAN-001",
+     "label": "Clean rerun after defects removed",
+     "defects": ""
+    }
+   ],
+   "kpis": [
+    {
+     "id": "executed",
+     "label": "Executed cases",
+     "value": 2410,
+     "unit": "",
+     "definition": "Test results with status passed/failed/flaky in the selected run",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "tests",
+      "filters": {
+       "run_id": "CLEAN-001"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "pass_rate",
+     "label": "Pass rate",
+     "value": 100.0,
+     "unit": "%",
+     "definition": "(passed + flaky) / executed",
+     "numerator": 2410,
+     "denominator": 2410,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "failed",
+     "label": "Failed",
+     "value": 0,
+     "unit": "",
+     "definition": "Failed results (each linked to evidence)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": {
+      "kind": "tests",
+      "filters": {
+       "run_id": "CLEAN-001",
+       "status": "failed"
+      }
+     },
+     "format": null
+    },
+    {
+     "id": "flaky",
+     "label": "Flaky",
+     "value": 0,
+     "unit": "",
+     "definition": "Passed only after a retry",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "skipped",
+     "label": "Skipped",
+     "value": 0,
+     "unit": "",
+     "definition": "Skipped results, listed with reason",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "rule_cov",
+     "label": "Rule coverage",
+     "value": 92.75,
+     "unit": "%",
+     "definition": "Catalogue rules with at least one passing executed case / catalogue rules",
+     "numerator": 64,
+     "denominator": 69,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "scenarios",
+     "label": "Distinct scenarios executed",
+     "value": 137,
+     "unit": "",
+     "definition": "Unique scenario ids among results",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    }
+   ],
+   "charts": [
+    {
+     "id": "by_project",
+     "type": "stacked",
+     "title": "Results by project / browser",
+     "data": [
+      {
+       "name": "api",
+       "passed": 359
+      },
+      {
+       "name": "chromium",
+       "passed": 55
+      },
+      {
+       "name": "chromium-mobile",
+       "passed": 40
+      },
+      {
+       "name": "lakehouse",
+       "passed": 14
+      },
+      {
+       "name": "service",
+       "passed": 1942
+      }
+     ]
+    },
+    {
+     "id": "trend",
+     "type": "stacked",
+     "title": "Run history",
+     "data": [
+      {
+       "name": "Defect D1 injected (expected failures)",
+       "passed": 2290,
+       "failed": 25,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Defect D2 injected (expected failures)",
+       "passed": 2263,
+       "failed": 52,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Defect D3 injected (expected failures)",
+       "passed": 2269,
+       "failed": 46,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Defect D4 injected (expected failures)",
+       "passed": 2313,
+       "failed": 2,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Defect D5 injected (expected failures)",
+       "passed": 2314,
+       "failed": 1,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Defect D6 injected (expected failures)",
+       "passed": 2309,
+       "failed": 8,
+       "flaky": 0,
+       "skipped": 0
+      },
+      {
+       "name": "Clean rerun after defects removed",
+       "passed": 2410,
+       "failed": 0,
+       "flaky": 0,
+       "skipped": 0
+      }
+     ]
+    },
+    {
+     "id": "defects",
+     "type": "bar",
+     "title": "Failures by injected defect",
+     "data": []
+    }
+   ]
+  },
+  "engineering": {
+   "dashboard": "engineering",
+   "filters": {
+    "as_of": "2026-11-06",
+    "product_group": null,
+    "book": null,
+    "currency": null,
+    "counterparty_id": null,
+    "status": null,
+    "trade_date_from": null
+   },
+   "as_of": "2026-11-06",
+   "refreshed_at": "2026-11-16T06:45:06Z",
+   "data_last_processed_at": "2026-11-16T06:02:12Z",
+   "currency_basis": "USD equivalents use synthetic FX rates on 2026-11-06 (latest available on or before)",
+   "kpis": [
+    {
+     "id": "eod_runs",
+     "label": "EOD processing runs",
+     "value": 56,
+     "unit": "",
+     "definition": "Completed daily processing runs (main book)",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "eod_p95",
+     "label": "EOD run p95 (ms)",
+     "value": 310.5,
+     "unit": "ms",
+     "definition": "95th percentile wall time of daily processing runs",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "jobs",
+     "label": "Lakehouse task runs imported",
+     "value": 7,
+     "unit": "",
+     "definition": "Job task runs imported from lakehouse evidence",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "freshness",
+     "label": "Lakehouse freshness",
+     "value": "2026-11-16T02:56:55Z",
+     "unit": "",
+     "definition": "Finish time of the latest imported lakehouse task",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    },
+    {
+     "id": "api_p95",
+     "label": "API p95 latency (ms)",
+     "value": 524.0,
+     "unit": "ms",
+     "definition": "p95 over the last 1 API requests since start",
+     "numerator": null,
+     "denominator": null,
+     "population": null,
+     "drill": null,
+     "format": null
+    }
+   ],
+   "charts": [
+    {
+     "id": "eod",
+     "type": "line",
+     "title": "EOD run duration (ms)",
+     "data": [
+      {
+       "name": "2026-09-12",
+       "value": 57.3
+      },
+      {
+       "name": "2026-09-13",
+       "value": 7.1
+      },
+      {
+       "name": "2026-09-14",
+       "value": 109.3
+      },
+      {
+       "name": "2026-09-15",
+       "value": 215.4
+      },
+      {
+       "name": "2026-09-16",
+       "value": 250.2
+      },
+      {
+       "name": "2026-09-17",
+       "value": 231.5
+      },
+      {
+       "name": "2026-09-18",
+       "value": 207.6
+      },
+      {
+       "name": "2026-09-19",
+       "value": 13.4
+      },
+      {
+       "name": "2026-09-20",
+       "value": 11.6
+      },
+      {
+       "name": "2026-09-21",
+       "value": 148.9
+      },
+      {
+       "name": "2026-09-22",
+       "value": 197.3
+      },
+      {
+       "name": "2026-09-23",
+       "value": 227.6
+      },
+      {
+       "name": "2026-09-24",
+       "value": 300.0
+      },
+      {
+       "name": "2026-09-25",
+       "value": 208.3
+      },
+      {
+       "name": "2026-09-26",
+       "value": 16.4
+      },
+      {
+       "name": "2026-09-27",
+       "value": 17.1
+      },
+      {
+       "name": "2026-09-28",
+       "value": 191.8
+      },
+      {
+       "name": "2026-09-29",
+       "value": 206.3
+      },
+      {
+       "name": "2026-09-30",
+       "value": 263.1
+      },
+      {
+       "name": "2026-10-01",
+       "value": 289.6
+      },
+      {
+       "name": "2026-10-02",
+       "value": 176.6
+      },
+      {
+       "name": "2026-10-03",
+       "value": 28.7
+      },
+      {
+       "name": "2026-10-04",
+       "value": 20.3
+      },
+      {
+       "name": "2026-10-05",
+       "value": 203.3
+      },
+      {
+       "name": "2026-10-06",
+       "value": 209.9
+      },
+      {
+       "name": "2026-10-07",
+       "value": 284.6
+      },
+      {
+       "name": "2026-10-08",
+       "value": 246.3
+      },
+      {
+       "name": "2026-10-09",
+       "value": 225.6
+      },
+      {
+       "name": "2026-10-10",
+       "value": 31.7
+      },
+      {
+       "name": "2026-10-11",
+       "value": 30.0
+      },
+      {
+       "name": "2026-10-12",
+       "value": 134.2
+      },
+      {
+       "name": "2026-10-13",
+       "value": 203.0
+      },
+      {
+       "name": "2026-10-14",
+       "value": 180.3
+      },
+      {
+       "name": "2026-10-15",
+       "value": 226.7
+      },
+      {
+       "name": "2026-10-16",
+       "value": 272.2
+      },
+      {
+       "name": "2026-10-17",
+       "value": 29.2
+      },
+      {
+       "name": "2026-10-18",
+       "value": 28.1
+      },
+      {
+       "name": "2026-10-19",
+       "value": 212.1
+      },
+      {
+       "name": "2026-10-20",
+       "value": 187.2
+      },
+      {
+       "name": "2026-10-21",
+       "value": 234.3
+      },
+      {
+       "name": "2026-10-22",
+       "value": 301.6
+      },
+      {
+       "name": "2026-10-23",
+       "value": 474.1
+      },
+      {
+       "name": "2026-10-24",
+       "value": 67.3
+      },
+      {
+       "name": "2026-10-25",
+       "value": 63.5
+      },
+      {
+       "name": "2026-10-26",
+       "value": 524.0
+      },
+      {
+       "name": "2026-10-27",
+       "value": 390.0
+      },
+      {
+       "name": "2026-10-28",
+       "value": 310.5
+      },
+      {
+       "name": "2026-10-29",
+       "value": 259.0
+      },
+      {
+       "name": "2026-10-30",
+       "value": 228.6
+      },
+      {
+       "name": "2026-10-31",
+       "value": 31.4
+      },
+      {
+       "name": "2026-11-01",
+       "value": 30.4
+      },
+      {
+       "name": "2026-11-02",
+       "value": 151.5
+      },
+      {
+       "name": "2026-11-03",
+       "value": 114.6
+      },
+      {
+       "name": "2026-11-04",
+       "value": 99.4
+      },
+      {
+       "name": "2026-11-05",
+       "value": 113.9
+      },
+      {
+       "name": "2026-11-06",
+       "value": 120.8
+      }
+     ]
+    },
+    {
+     "id": "jobs",
+     "type": "bar",
+     "title": "Lakehouse tasks: rows out",
+     "data": [
+      {
+       "name": "bronze",
+       "value": 15652,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "silver",
+       "value": 10516,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "gold",
+       "value": 793,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "bronze",
+       "value": 0,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "silver",
+       "value": 10516,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "bronze",
+       "value": 147,
+       "quarantined": 0,
+       "status": "SUCCEEDED",
+       "env": "local-spark"
+      },
+      {
+       "name": "silver",
+       "value": 0,
+       "quarantined": 23,
+       "status": "GATE_FAILED",
+       "env": "local-spark"
+      }
+     ]
+    },
+    {
+     "id": "api",
+     "type": "bar",
+     "title": "API p95 by endpoint (ms)",
+     "data": [
+      {
+       "name": "POST /api/auth/login",
+       "value": 524.0
+      }
+     ]
+    }
+   ],
+   "lineage": [
+    {
+     "from": "Excel workbooks (data/excel)",
+     "to": "Parquet landing (validated conversion)"
+    },
+    {
+     "from": "Parquet landing (validated conversion)",
+     "to": "bronze_* (Delta, immutable snapshots)"
+    },
+    {
+     "from": "bronze_* (Delta, immutable snapshots)",
+     "to": "silver_trades / silver_reference (typed, deduped)"
+    },
+    {
+     "from": "bronze_* (Delta, immutable snapshots)",
+     "to": "silver_quarantine"
+    },
+    {
+     "from": "silver_trades / silver_reference (typed, deduped)",
+     "to": "gold_trade_lifecycle"
+    },
+    {
+     "from": "silver_trades / silver_reference (typed, deduped)",
+     "to": "gold_cash_position_projection"
+    },
+    {
+     "from": "gold_trade_lifecycle",
+     "to": "gold_test_cases (1,500+ cases)"
+    },
+    {
+     "from": "gold_test_cases (1,500+ cases)",
+     "to": "Playwright API/UI suites"
+    },
+    {
+     "from": "Excel workbooks (data/excel)",
+     "to": "Platform loader (PostgreSQL)"
+    },
+    {
+     "from": "Platform loader (PostgreSQL)",
+     "to": "Dashboards and reports"
+    },
+    {
+     "from": "Playwright API/UI suites",
+     "to": "Testing dashboard"
+    }
+   ],
+   "table": [
+    {
+     "job_run_id": "local-spark-bronze-BASELINE-001-1794797453096",
+     "environment": "local-spark",
+     "task": "bronze",
+     "batch": "BASELINE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 15652,
+     "rows_out": 15652,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-silver-BASELINE-001-1794797587163",
+     "environment": "local-spark",
+     "task": "silver",
+     "batch": "BASELINE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 10516,
+     "rows_out": 10516,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-gold-BASELINE-001-1794797604258",
+     "environment": "local-spark",
+     "task": "gold",
+     "batch": "BASELINE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 500,
+     "rows_out": 793,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-bronze-BASELINE-001-1794797641045",
+     "environment": "local-spark",
+     "task": "bronze",
+     "batch": "BASELINE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 0,
+     "rows_out": 0,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-silver-BASELINE-001-1794797746739",
+     "environment": "local-spark",
+     "task": "silver",
+     "batch": "BASELINE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 10516,
+     "rows_out": 10516,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-bronze-NEGATIVE-001-1794797792679",
+     "environment": "local-spark",
+     "task": "bronze",
+     "batch": "NEGATIVE-001",
+     "status": "SUCCEEDED",
+     "rows_in": 147,
+     "rows_out": 147,
+     "quarantined": 0
+    },
+    {
+     "job_run_id": "local-spark-silver-NEGATIVE-001-1794797815350",
+     "environment": "local-spark",
+     "task": "silver",
+     "batch": "NEGATIVE-001",
+     "status": "GATE_FAILED",
+     "rows_in": 133,
+     "rows_out": 0,
+     "quarantined": 23
+    }
+   ]
+  }
+ },
+ "runs": {
+  "CLEAN-001": {
+   "run_id": "CLEAN-001",
+   "defects_enabled": [],
+   "executed": 2410,
+   "passed": 2410,
+   "failed": 0,
+   "scenarios": 137,
+   "elapsed_seconds": 37.9,
+   "by_suite": {
+    "booking": {
+     "passed": 500,
+     "failed": 0
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 238,
+     "failed": 0
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 51,
+     "failed": 0
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    },
+    "ui": {
+     "passed": 95,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:19:36.809432+00:00",
+   "flaky": 0,
+   "unique_cases_executed": 2370,
+   "catalogue_cases": 2370,
+   "browser_runs": 95,
+   "browser_runs_by_project": {
+    "chromium": 55,
+    "chromium-mobile": 40
+   },
+   "browser_failed": 0,
+   "ui_cases_not_executed": [],
+   "unmapped_browser_tests": [],
+   "failed_by_prefix": {},
+   "failed_examples": []
+  },
+  "DEFECT-D1": {
+   "run_id": "DEFECT-D1",
+   "defects_enabled": [
+    "D1"
+   ],
+   "executed": 2315,
+   "passed": 2290,
+   "failed": 25,
+   "scenarios": 128,
+   "elapsed_seconds": 40.7,
+   "by_suite": {
+    "booking": {
+     "passed": 495,
+     "failed": 5
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 218,
+     "failed": 20
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 51,
+     "failed": 0
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:13:50.300557+00:00",
+   "failed_by_prefix": {
+    "BOOK": 5,
+    "SPLIT": 19,
+    "WE": 1
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-BOOK-TRD00015",
+     "error": "allocation amounts: got [Decimal('57058.60'), Decimal('28529.30'), Decimal('57058.60')] want [Decimal('57058.61'), Decimal('28529.30'), Decimal('57058.60')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00039",
+     "error": "allocation amounts: got [Decimal('208653.16'), Decimal('134134.17'), Decimal('29807.59')] want [Decimal('208653.17'), Decimal('134134.17'), Decimal('29807.59')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00093",
+     "error": "allocation amounts: got [Decimal('15548.87'), Decimal('1771.39'), Decimal('2361.85')] want [Decimal('15548.88'), Decimal('1771.39'), Decimal('2361.85')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00134",
+     "error": "allocation amounts: got [Decimal('59687.81'), Decimal('44765.86'), Decimal('44765.86')] want [Decimal('59687.80'), Decimal('44765.86'), Decimal('44765.86')]"
+    }
+   ]
+  },
+  "DEFECT-D2": {
+   "run_id": "DEFECT-D2",
+   "defects_enabled": [
+    "D2"
+   ],
+   "executed": 2315,
+   "passed": 2263,
+   "failed": 52,
+   "scenarios": 128,
+   "elapsed_seconds": 39.3,
+   "by_suite": {
+    "booking": {
+     "passed": 479,
+     "failed": 21
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 207,
+     "failed": 31
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 51,
+     "failed": 0
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:14:31.782460+00:00",
+   "failed_by_prefix": {
+    "BOOK": 21,
+    "ACR": 29,
+    "WE": 2
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-BOOK-TRD00201",
+     "error": "gross: got 4988780.56 want 4987086.11; net: got 4988780.56 want 4987086.11; accrued: got 112680.56 want 110986.11; accrued_per_100: got 2.25361111 want 2.219722"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00202",
+     "error": "gross: got 499950.00 want 499780.56; net: got 499950.00 want 499780.56; accrued: got 11437.50 want 11268.06; accrued_per_100: got 2.28750000 want 2.25361111"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00203",
+     "error": "gross: got 510790.39 want 510720.94; net: got 510790.39 want 510720.94; accrued: got 3263.89 want 3194.44; accrued_per_100: got 0.65277778 want 0.63888889"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00206",
+     "error": "gross: got 256169.00 want 256134.28; net: got 256169.00 want 256134.28; accrued: got 1875.00 want 1840.28; accrued_per_100: got 0.75000000 want 0.73611111"
+    }
+   ]
+  },
+  "DEFECT-D3": {
+   "run_id": "DEFECT-D3",
+   "defects_enabled": [
+    "D3"
+   ],
+   "executed": 2315,
+   "passed": 2269,
+   "failed": 46,
+   "scenarios": 128,
+   "elapsed_seconds": 40.4,
+   "by_suite": {
+    "booking": {
+     "passed": 495,
+     "failed": 5
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 432,
+     "failed": 40
+    },
+    "calculation": {
+     "passed": 237,
+     "failed": 1
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 51,
+     "failed": 0
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:15:11.931422+00:00",
+   "failed_by_prefix": {
+    "BOOK": 5,
+    "FXD": 26,
+    "FXF": 14,
+    "WE": 1
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-BOOK-TRD00271",
+     "error": "booking rejected: [('R011', 'E_SETTLE_DATE_MISMATCH')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00272",
+     "error": "booking rejected: [('R011', 'E_SETTLE_DATE_MISMATCH')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00290",
+     "error": "booking rejected: [('R011', 'E_SETTLE_DATE_MISMATCH')]"
+    },
+    {
+     "case_id": "TC-BOOK-TRD00292",
+     "error": "booking rejected: [('R011', 'E_SETTLE_DATE_MISMATCH')]"
+    }
+   ]
+  },
+  "DEFECT-D4": {
+   "run_id": "DEFECT-D4",
+   "defects_enabled": [
+    "D4"
+   ],
+   "executed": 2315,
+   "passed": 2313,
+   "failed": 2,
+   "scenarios": 128,
+   "elapsed_seconds": 39.3,
+   "by_suite": {
+    "booking": {
+     "passed": 500,
+     "failed": 0
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 238,
+     "failed": 0
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 49,
+     "failed": 2
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:15:52.956509+00:00",
+   "failed_by_prefix": {
+    "API": 2
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-API-SELF-APPROVAL",
+     "error": "maker approved own request: 200 {\"approval_id\":\"APR-8283E437C9\",\"status\":\"APPROVED\",\"result\":{\"version\":2,\"status\":\"ALLOCATED\"}}"
+    },
+    {
+     "case_id": "TC-API-MAKER-NOT-CHECKER",
+     "error": "trader approved own amendment: 200 {\"approval_id\":\"APR-313CFDF5DD\",\"status\":\"APPROVED\",\"result\":{\"version\":2,\"status\":\"ALLOCATED\"}}"
+    }
+   ]
+  },
+  "DEFECT-D5": {
+   "run_id": "DEFECT-D5",
+   "defects_enabled": [
+    "D5"
+   ],
+   "executed": 2315,
+   "passed": 2314,
+   "failed": 1,
+   "scenarios": 128,
+   "elapsed_seconds": 39.3,
+   "by_suite": {
+    "booking": {
+     "passed": 500,
+     "failed": 0
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 238,
+     "failed": 0
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 50,
+     "failed": 1
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    }
+   },
+   "started_at": "2026-11-16T03:16:33.192888+00:00",
+   "failed_by_prefix": {
+    "API": 1
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-API-LEDGER-IDEMPOTENT",
+     "error": "first=True second=True rows=4"
+    }
+   ]
+  },
+  "DEFECT-D6": {
+   "run_id": "DEFECT-D6",
+   "defects_enabled": [
+    "D6"
+   ],
+   "executed": 2317,
+   "passed": 2309,
+   "failed": 8,
+   "scenarios": 129,
+   "elapsed_seconds": 39.3,
+   "by_suite": {
+    "booking": {
+     "passed": 500,
+     "failed": 0
+    },
+    "negative": {
+     "passed": 144,
+     "failed": 0
+    },
+    "calendar": {
+     "passed": 472,
+     "failed": 0
+    },
+    "calculation": {
+     "passed": 238,
+     "failed": 0
+    },
+    "rules": {
+     "passed": 82,
+     "failed": 0
+    },
+    "lifecycle": {
+     "passed": 506,
+     "failed": 0
+    },
+    "outcomes": {
+     "passed": 44,
+     "failed": 0
+    },
+    "api": {
+     "passed": 44,
+     "failed": 7
+    },
+    "access": {
+     "passed": 264,
+     "failed": 0
+    },
+    "lakehouse": {
+     "passed": 14,
+     "failed": 0
+    },
+    "ui": {
+     "passed": 1,
+     "failed": 1
+    }
+   },
+   "started_at": "2026-11-16T03:17:13.380453+00:00",
+   "flaky": 0,
+   "unique_cases_executed": 2317,
+   "catalogue_cases": 2370,
+   "browser_runs": 2,
+   "browser_runs_by_project": {
+    "chromium": 2
+   },
+   "browser_failed": 1,
+   "ui_cases_not_executed": [
+    "TC-UI-APPROVE-SELF",
+    "TC-UI-BAD-LOGIN",
+    "TC-UI-BLOTTER-OPEN",
+    "TC-UI-BOOK-REJECT",
+    "TC-UI-BOOK-VALIDATE",
+    "TC-UI-DASH-DATA-QUALITY",
+    "TC-UI-DASH-ENGINEERING",
+    "TC-UI-DASH-EXECUTIVE",
+    "TC-UI-DASH-OPERATIONS",
+    "TC-UI-DASH-PRODUCT",
+    "TC-UI-DASH-RISK",
+    "TC-UI-DASH-TESTING",
+    "TC-UI-DETAIL-CORP_BOND",
+    "TC-UI-DETAIL-EQUITY",
+    "TC-UI-DETAIL-ETF",
+    "TC-UI-DETAIL-FUTURE",
+    "TC-UI-DETAIL-FX_FORWARD",
+    "TC-UI-DETAIL-FX_SPOT",
+    "TC-UI-DETAIL-GOVT_BOND",
+    "TC-UI-DETAIL-IRS",
+    "TC-UI-DETAIL-OPTION",
+    "TC-UI-DETAIL-REPO",
+    "TC-UI-DETAIL-REVERSE_REPO",
+    "TC-UI-DETAIL-SEC_BORROW",
+    "TC-UI-DETAIL-SEC_LOAN",
+    "TC-UI-LOGIN-ADMIN",
+    "TC-UI-LOGIN-CHECKER",
+    "TC-UI-LOGIN-MIDDLE_OFFICE",
+    "TC-UI-LOGIN-RECONCILIATION",
+    "TC-UI-LOGIN-RISK",
+    "TC-UI-LOGIN-SETTLEMENTS",
+    "TC-UI-LOGIN-TRADER",
+    "TC-UI-LOGOUT",
+    "TC-UI-MOBILE-BLOTTER",
+    "TC-UI-MOBILE-DASH",
+    "TC-UI-NAV-ROLE-CHECKER",
+    "TC-UI-NAV-ROLE-TRADER",
+    "TC-UI-PAGE-ADMIN",
+    "TC-UI-PAGE-APPROVALS",
+    "TC-UI-PAGE-AUDIT",
+    "TC-UI-PAGE-BLOTTER",
+    "TC-UI-PAGE-BOOK",
+    "TC-UI-PAGE-DASHBOARDS",
+    "TC-UI-PAGE-EVENTS",
+    "TC-UI-PAGE-EXCEPTIONS",
+    "TC-UI-PAGE-ORDERS",
+    "TC-UI-PAGE-POSITIONS",
+    "TC-UI-PAGE-QUEUES",
+    "TC-UI-PAGE-RECON",
+    "TC-UI-PAGE-REFDATA",
+    "TC-UI-PAGE-REPORTS",
+    "TC-UI-PAGE-TEST-RUNS",
+    "TC-UI-PAGE-TRADE-DETAIL"
+   ],
+   "unmapped_browser_tests": [],
+   "failed_by_prefix": {
+    "API": 7,
+    "UI": 1
+   },
+   "failed_examples": [
+    {
+     "case_id": "TC-API-FILTER-CCY-USD",
+     "error": "290 rows in other currencies; total 512 vs 214"
+    },
+    {
+     "case_id": "TC-API-FILTER-CCY-EUR",
+     "error": "342 rows in other currencies; total 512 vs 163"
+    },
+    {
+     "case_id": "TC-API-FILTER-CCY-GBP",
+     "error": "429 rows in other currencies; total 512 vs 72"
+    },
+    {
+     "case_id": "TC-API-FILTER-CCY-JPY",
+     "error": "449 rows in other currencies; total 512 vs 52"
+    }
+   ]
+  }
+ },
+ "ci": {
+  "CI-3": {
+   "run_id": "CI-3",
+   "source": "Copied from the 'Merge executor and browser results' step log of GitHub Actions job 133134022158 (CapitalFlow 360 workflow, commit 2ba2b59)",
+   "run_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43817863937",
+   "artifact_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43817863937/artifacts/14202809415",
+   "defects_enabled": [],
+   "executed": 2560,
+   "passed": 2560,
+   "failed": 0,
+   "scenarios": 137,
+   "elapsed_seconds": 28.0,
+   "started_at": "2026-11-16T06:37:30.617526+00:00",
+   "flaky": 0,
+   "unique_cases_executed": 2370,
+   "catalogue_cases": 2370,
+   "browser_runs": 245,
+   "browser_runs_by_project": {
+    "chromium": 55,
+    "chromium-mobile": 40,
+    "firefox": 55,
+    "webkit": 55,
+    "webkit-mobile": 40
+   },
+   "browser_failed": 0,
+   "ui_cases_not_executed": [],
+   "unmapped_browser_tests": []
+  }
+ },
+ "platform": {
+  "ledger_rows": 5100,
+  "audit_events": 3700,
+  "lifecycle_events": 948,
+  "instructions": 525,
+  "confirmations": 427,
+  "instruction_status": {
+   "SETTLED": 455,
+   "FAILED": 4,
+   "PARTIAL": 3,
+   "PENDING": 63
+  },
+  "trade_status": {
+   "SETTLED": 296,
+   "OPEN": 118,
+   "EXERCISED": 10,
+   "SETTLEMENT_FAILED": 2,
+   "CLOSED": 14,
+   "EXPIRED": 17,
+   "INSTRUCTED": 27,
+   "ALLOCATED": 11,
+   "PARTIALLY_SETTLED": 5
+  },
+  "breaks": [
+   {
+    "recon_type": "CASH",
+    "account_id": "AC0018",
+    "key": "CAD",
+    "break_type": "AMOUNT_DIFF",
+    "difference": -250.75
+   },
+   {
+    "recon_type": "CASH",
+    "account_id": "AC0039",
+    "key": "EUR",
+    "break_type": "AMOUNT_DIFF",
+    "difference": -1.01
+   },
+   {
+    "recon_type": "CASH",
+    "account_id": "AC0065",
+    "key": "JPY",
+    "break_type": "AMOUNT_DIFF",
+    "difference": 150000.0
+   },
+   {
+    "recon_type": "POSITION",
+    "account_id": "AC0001",
+    "key": "EQ003",
+    "break_type": "MISSING_INTERNAL",
+    "difference": 2500.0
+   },
+   {
+    "recon_type": "POSITION",
+    "account_id": "AC0021",
+    "key": "BD051",
+    "break_type": "MISSING_EXTERNAL",
+    "difference": -331000.0
+   },
+   {
+    "recon_type": "POSITION",
+    "account_id": "AC0040",
+    "key": "EQ004",
+    "break_type": "QTY_DIFF",
+    "difference": -500.0
+   },
+   {
+    "recon_type": "POSITION",
+    "account_id": "AC0051",
+    "key": "EF030",
+    "break_type": "QTY_DIFF",
+    "difference": 100.0
+   },
+   {
+    "recon_type": "POSITION",
+    "account_id": "AC0052",
+    "key": "BD051",
+    "break_type": "QTY_DIFF",
+    "difference": 1000.0
+   }
+  ]
+ },
+ "catalogue": {
+  "cases": 2370,
+  "scenarios": 137,
+  "by_suite": {
+   "booking": 500,
+   "negative": 144,
+   "calendar": 472,
+   "calculation": 238,
+   "rules": 82,
+   "lifecycle": 506,
+   "access": 264,
+   "outcomes": 44,
+   "api": 51,
+   "lakehouse": 14,
+   "ui": 55
+  },
+  "by_layer": {
+   "service": 1942,
+   "api": 359,
+   "lakehouse": 14,
+   "ui": 55
+  },
+  "rules_total": 69,
+  "rules_covered": 64,
+  "rules_uncovered": [
+   "R013",
+   "R015",
+   "R027",
+   "R032",
+   "R080"
+  ],
+  "rule_families": {
+   "Eligibility": 6,
+   "Pre-trade": 3,
+   "Calendar": 6,
+   "Economics": 6,
+   "Allocation": 2,
+   "Execution": 1,
+   "Control": 4,
+   "Bonds": 5,
+   "FX": 4,
+   "Derivatives": 5,
+   "Swaps": 4,
+   "Financing": 4,
+   "Settlement": 6,
+   "Matching": 1,
+   "Lifecycle": 4,
+   "Recovery": 2,
+   "Reconciliation": 1,
+   "Data quality": 5
+  }
+ },
+ "rules": [
+  {
+   "id": "R001",
+   "family": "Eligibility",
+   "name": "Client must be active",
+   "error_code": "E_CLIENT_INACTIVE",
+   "boundaries": "SUSPENDED, CLOSED",
+   "cases": 8
+  },
+  {
+   "id": "R002",
+   "family": "Eligibility",
+   "name": "KYC valid on trade date",
+   "error_code": "E_KYC_EXPIRED",
+   "boundaries": "trade_date == expiry is valid; expiry+1 rejected",
+   "cases": 7
+  },
+  {
+   "id": "R003",
+   "family": "Eligibility",
+   "name": "Account permitted for product group",
+   "error_code": "E_PRODUCT_NOT_PERMITTED",
+   "boundaries": "empty permission list",
+   "cases": 9
+  },
+  {
+   "id": "R004",
+   "family": "Eligibility",
+   "name": "Client category for complex products",
+   "error_code": "E_CLIENT_CATEGORY",
+   "boundaries": "RETAIL rejected",
+   "cases": 10
+  },
+  {
+   "id": "R005",
+   "family": "Eligibility",
+   "name": "Instrument active and not expired",
+   "error_code": "E_INSTRUMENT_EXPIRED",
+   "boundaries": "trade on maturity date rejected",
+   "cases": 2
+  },
+  {
+   "id": "R006",
+   "family": "Eligibility",
+   "name": "Client exposure limit",
+   "error_code": "E_LIMIT_BREACH",
+   "boundaries": "exactly 100% accepted; 90% warns",
+   "cases": 9
+  },
+  {
+   "id": "R007",
+   "family": "Pre-trade",
+   "name": "Quantity positive and lot multiple",
+   "error_code": "E_QTY_INVALID / E_LOT_SIZE",
+   "boundaries": "0 and negative rejected; 100 valid for lot 100, 137 rejected",
+   "cases": 19
+  },
+  {
+   "id": "R008",
+   "family": "Pre-trade",
+   "name": "Price collar (fat-finger check)",
+   "error_code": "E_PRICE_COLLAR",
+   "boundaries": "exactly 10.00% accepted; 10.01% rejected",
+   "cases": 18
+  },
+  {
+   "id": "R009",
+   "family": "Pre-trade",
+   "name": "Stale reference price",
+   "error_code": "E_STALE_PRICE",
+   "boundaries": "3 days accepted; 4 rejected",
+   "cases": 7
+  },
+  {
+   "id": "R010",
+   "family": "Calendar",
+   "name": "Trade date is a business day",
+   "error_code": "E_TRADE_DATE_HOLIDAY",
+   "boundaries": "holiday rejected",
+   "cases": 12
+  },
+  {
+   "id": "R011",
+   "family": "Calendar",
+   "name": "Settlement date per effective-dated convention",
+   "error_code": "E_SETTLE_DATE_MISMATCH",
+   "boundaries": "US equity trade 2024-05-24 => T+2, 2024-05-28 => T+1",
+   "cases": 513
+  },
+  {
+   "id": "R012",
+   "family": "Calendar",
+   "name": "Settlement date is a settlement business day",
+   "error_code": "E_SETTLE_DATE_HOLIDAY",
+   "boundaries": "holiday rejected",
+   "cases": 1
+  },
+  {
+   "id": "R013",
+   "family": "Calendar",
+   "name": "Instruction cut-off",
+   "error_code": "W_CUTOFF_MISSED",
+   "boundaries": "15:00:00 on cut-off accepted; 15:00:01 rolls",
+   "cases": 0
+  },
+  {
+   "id": "R014",
+   "family": "Calendar",
+   "name": "Trade date from market local time",
+   "error_code": "E_TRADE_DATE_TZ",
+   "boundaries": "08:30 Tokyo = 23:30 UTC previous day",
+   "cases": 6
+  },
+  {
+   "id": "R015",
+   "family": "Calendar",
+   "name": "Convention selected by effective date",
+   "error_code": "E_NO_CONVENTION",
+   "boundaries": "change-over day uses the new row",
+   "cases": 0
+  },
+  {
+   "id": "R020",
+   "family": "Economics",
+   "name": "Gross consideration",
+   "error_code": "-",
+   "boundaries": "JPY rounds to 0 dp",
+   "cases": 141
+  },
+  {
+   "id": "R021",
+   "family": "Economics",
+   "name": "Commission with minimum (effective-dated schedule)",
+   "error_code": "-",
+   "boundaries": "schedule change on 2026-10-01",
+   "cases": 143
+  },
+  {
+   "id": "R022",
+   "family": "Economics",
+   "name": "Exchange fee and UK stamp duty",
+   "error_code": "-",
+   "boundaries": "SELL pays no stamp duty",
+   "cases": 142
+  },
+  {
+   "id": "R023",
+   "family": "Economics",
+   "name": "Net amount by side",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 143
+  },
+  {
+   "id": "R024",
+   "family": "Allocation",
+   "name": "Allocation quantity conservation",
+   "error_code": "E_ALLOC_QTY_MISMATCH",
+   "boundaries": "off by one share rejected",
+   "cases": 514
+  },
+  {
+   "id": "R025",
+   "family": "Allocation",
+   "name": "Allocation amount residual",
+   "error_code": "E_ALLOC_AMOUNT_MISMATCH",
+   "boundaries": "three equal allocations of an odd cent amount",
+   "cases": 561
+  },
+  {
+   "id": "R026",
+   "family": "Execution",
+   "name": "Average price from partial fills",
+   "error_code": "E_FILL_QTY_MISMATCH",
+   "boundaries": "single fill",
+   "cases": 2
+  },
+  {
+   "id": "R027",
+   "family": "Economics",
+   "name": "FX conversion to reporting currency",
+   "error_code": "E_FX_RATE_MISSING",
+   "boundaries": "weekend/holiday falls back",
+   "cases": 0
+  },
+  {
+   "id": "R028",
+   "family": "Economics",
+   "name": "Currency precision",
+   "error_code": "E_CCY_PRECISION",
+   "boundaries": "JPY 100.5 rejected",
+   "cases": 7
+  },
+  {
+   "id": "R029",
+   "family": "Control",
+   "name": "Duplicate detection",
+   "error_code": "E_DUPLICATE",
+   "boundaries": "different ref same economics => W_POTENTIAL_DUPLICATE",
+   "cases": 12
+  },
+  {
+   "id": "R030",
+   "family": "Bonds",
+   "name": "Accrued interest day count",
+   "error_code": "-",
+   "boundaries": "settlement on coupon date => 0; 31st of month in 30/360",
+   "cases": 272
+  },
+  {
+   "id": "R031",
+   "family": "Bonds",
+   "name": "Dirty price and consideration",
+   "error_code": "-",
+   "boundaries": "price above/below par",
+   "cases": 122
+  },
+  {
+   "id": "R032",
+   "family": "Bonds",
+   "name": "Coupon schedule",
+   "error_code": "-",
+   "boundaries": "first coupon period",
+   "cases": 0
+  },
+  {
+   "id": "R033",
+   "family": "Bonds",
+   "name": "Ex-dividend (negative) accrued for gilts",
+   "error_code": "-",
+   "boundaries": "settle on ex-date negative; one day before positive",
+   "cases": 151
+  },
+  {
+   "id": "R034",
+   "family": "Bonds",
+   "name": "Minimum denomination and increment",
+   "error_code": "E_DENOMINATION",
+   "boundaries": "100,500 for 1,000 increment rejected",
+   "cases": 10
+  },
+  {
+   "id": "R040",
+   "family": "FX",
+   "name": "FX spot value date",
+   "error_code": "E_SETTLE_DATE_MISMATCH",
+   "boundaries": "holiday in either currency skipped",
+   "cases": 404
+  },
+  {
+   "id": "R041",
+   "family": "FX",
+   "name": "FX forward value date",
+   "error_code": "E_SETTLE_DATE_MISMATCH",
+   "boundaries": "spot on last business day of month",
+   "cases": 150
+  },
+  {
+   "id": "R042",
+   "family": "FX",
+   "name": "Counter amount consistency",
+   "error_code": "E_FX_COUNTER_MISMATCH",
+   "boundaries": "1 minor unit accepted",
+   "cases": 90
+  },
+  {
+   "id": "R043",
+   "family": "FX",
+   "name": "Forward rate = spot + points",
+   "error_code": "E_FX_POINTS_MISMATCH",
+   "boundaries": "-",
+   "cases": 33
+  },
+  {
+   "id": "R050",
+   "family": "Derivatives",
+   "name": "Futures notional and initial-margin check",
+   "error_code": "E_INSUFFICIENT_MARGIN",
+   "boundaries": "exact cover accepted",
+   "cases": 40
+  },
+  {
+   "id": "R051",
+   "family": "Derivatives",
+   "name": "Daily variation margin",
+   "error_code": "-",
+   "boundaries": "no price => no VM that day",
+   "cases": 1
+  },
+  {
+   "id": "R052",
+   "family": "Derivatives",
+   "name": "No trading after last trading day",
+   "error_code": "E_CONTRACT_EXPIRED",
+   "boundaries": "LTD accepted; LTD+1 rejected",
+   "cases": 7
+  },
+  {
+   "id": "R053",
+   "family": "Derivatives",
+   "name": "Option expiry and automatic exercise",
+   "error_code": "-",
+   "boundaries": "intrinsic exactly 0.01 exercised; 0.009 lapses",
+   "cases": 2
+  },
+  {
+   "id": "R054",
+   "family": "Derivatives",
+   "name": "Option premium",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 31
+  },
+  {
+   "id": "R060",
+   "family": "Swaps",
+   "name": "Fixed leg schedule and amounts",
+   "error_code": "-",
+   "boundaries": "short final period",
+   "cases": 51
+  },
+  {
+   "id": "R061",
+   "family": "Swaps",
+   "name": "Floating rate reset",
+   "error_code": "E_FIXING_MISSING",
+   "boundaries": "missing fixing => exception",
+   "cases": 1
+  },
+  {
+   "id": "R062",
+   "family": "Swaps",
+   "name": "Net payment per date",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 50
+  },
+  {
+   "id": "R063",
+   "family": "Swaps",
+   "name": "Swap dates",
+   "error_code": "E_SWAP_DATES",
+   "boundaries": "maturity == effective rejected",
+   "cases": 6
+  },
+  {
+   "id": "R070",
+   "family": "Financing",
+   "name": "Repo cash amount with haircut",
+   "error_code": "-",
+   "boundaries": "haircut 0%",
+   "cases": 26
+  },
+  {
+   "id": "R071",
+   "family": "Financing",
+   "name": "Repo interest",
+   "error_code": "-",
+   "boundaries": "overnight over weekend = 3 days",
+   "cases": 27
+  },
+  {
+   "id": "R072",
+   "family": "Financing",
+   "name": "Margin call threshold",
+   "error_code": "-",
+   "boundaries": "deficit == MTA => no call",
+   "cases": 2
+  },
+  {
+   "id": "R073",
+   "family": "Financing",
+   "name": "Securities lending collateral and fee",
+   "error_code": "-",
+   "boundaries": "cross-currency converts at trade-date FX",
+   "cases": 17
+  },
+  {
+   "id": "R080",
+   "family": "Settlement",
+   "name": "SSI exists and is effective",
+   "error_code": "E_SSI_MISSING",
+   "boundaries": "SSI ending the day before settlement => missing",
+   "cases": 0
+  },
+  {
+   "id": "R081",
+   "family": "Settlement",
+   "name": "SSI currency and location match",
+   "error_code": "E_SSI_MISSING",
+   "boundaries": "-",
+   "cases": 5
+  },
+  {
+   "id": "R082",
+   "family": "Matching",
+   "name": "Confirmation matching tolerance",
+   "error_code": "E_MATCH_MISMATCH",
+   "boundaries": "1.00 matches, 1.01 breaks",
+   "cases": 17
+  },
+  {
+   "id": "R083",
+   "family": "Settlement",
+   "name": "Available securities for delivery",
+   "error_code": "E_INSUFFICIENT_SECURITIES",
+   "boundaries": "exact cover settles",
+   "cases": 1
+  },
+  {
+   "id": "R084",
+   "family": "Settlement",
+   "name": "Available cash for payment",
+   "error_code": "E_INSUFFICIENT_CASH",
+   "boundaries": "exact cover settles",
+   "cases": 1
+  },
+  {
+   "id": "R085",
+   "family": "Settlement",
+   "name": "Partial settlement",
+   "error_code": "-",
+   "boundaries": "available < 1 lot => fail",
+   "cases": 4
+  },
+  {
+   "id": "R086",
+   "family": "Settlement",
+   "name": "Fail ageing",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 12
+  },
+  {
+   "id": "R090",
+   "family": "Lifecycle",
+   "name": "No economic amendment after settlement",
+   "error_code": "E_AMEND_AFTER_SETTLEMENT",
+   "boundaries": "-",
+   "cases": 1
+  },
+  {
+   "id": "R091",
+   "family": "Lifecycle",
+   "name": "Economic amendment needs approval and a new version",
+   "error_code": "-",
+   "boundaries": "non-economic changes apply directly",
+   "cases": 3
+  },
+  {
+   "id": "R092",
+   "family": "Control",
+   "name": "Maker-checker separation",
+   "error_code": "E_SELF_APPROVAL",
+   "boundaries": "-",
+   "cases": 11
+  },
+  {
+   "id": "R093",
+   "family": "Control",
+   "name": "Idempotency keys",
+   "error_code": "E_IDEMPOTENCY_CONFLICT",
+   "boundaries": "-",
+   "cases": 5
+  },
+  {
+   "id": "R094",
+   "family": "Recovery",
+   "name": "Duplicate and out-of-order messages",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 2
+  },
+  {
+   "id": "R095",
+   "family": "Recovery",
+   "name": "Late-arriving data",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 8
+  },
+  {
+   "id": "R096",
+   "family": "Reconciliation",
+   "name": "Position and cash reconciliation",
+   "error_code": "-",
+   "boundaries": "0.50 inside tolerance",
+   "cases": 10
+  },
+  {
+   "id": "R097",
+   "family": "Lifecycle",
+   "name": "Cancellation reversal",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 2
+  },
+  {
+   "id": "R098",
+   "family": "Control",
+   "name": "Optimistic concurrency",
+   "error_code": "E_STALE_VERSION",
+   "boundaries": "-",
+   "cases": 2
+  },
+  {
+   "id": "R099",
+   "family": "Lifecycle",
+   "name": "Valid status transitions",
+   "error_code": "E_INVALID_TRANSITION",
+   "boundaries": "-",
+   "cases": 520
+  },
+  {
+   "id": "DQ01",
+   "family": "Data quality",
+   "name": "Required fields",
+   "error_code": "E_REQUIRED_FIELD",
+   "boundaries": "-",
+   "cases": 18
+  },
+  {
+   "id": "DQ02",
+   "family": "Data quality",
+   "name": "Referential integrity",
+   "error_code": "E_UNKNOWN_INSTRUMENT / E_UNKNOWN_ACCOUNT",
+   "boundaries": "-",
+   "cases": 18
+  },
+  {
+   "id": "DQ03",
+   "family": "Data quality",
+   "name": "Deterministic de-duplication",
+   "error_code": "-",
+   "boundaries": "-",
+   "cases": 3
+  },
+  {
+   "id": "DQ04",
+   "family": "Data quality",
+   "name": "Domain validity",
+   "error_code": "E_DOMAIN",
+   "boundaries": "-",
+   "cases": 2
+  },
+  {
+   "id": "DQ05",
+   "family": "Data quality",
+   "name": "Schema drift",
+   "error_code": "E_SCHEMA_DRIFT",
+   "boundaries": "-",
+   "cases": 2
+  }
+ ],
+ "worked_examples": [
+  {
+   "id": "WE01",
+   "title": "Equity gross consideration",
+   "rules": [
+    "R020"
+   ],
+   "inputs": "BUY 1,000 shares at USD 25.50",
+   "working": "1,000 x 25.50 = 25,500.00",
+   "expected": "25500.00",
+   "pass": true
+  },
+  {
+   "id": "WE02",
+   "title": "Minimum commission applies",
+   "rules": [
+    "R021",
+    "R023"
+   ],
+   "inputs": "BUY 100 at USD 10.00; 5 bps; minimum USD 25",
+   "working": "Gross 1,000.00. 5 bps = 0.50, below the USD 25 minimum, so commission = 25.00. Net = 1,000.00 + 25.00 = 1,025.00",
+   "expected": "1025.00",
+   "pass": true
+  },
+  {
+   "id": "WE03",
+   "title": "UK purchase with stamp duty, fee and minimum commission",
+   "rules": [
+    "R021",
+    "R022",
+    "R023"
+   ],
+   "inputs": "BUY 2,000 at GBP 4.25; 10 bps commission; minimum USD 25 at 1.25 USD/GBP; exchange fee 1 bp; stamp 50 bps",
+   "working": "Gross 8,500.00. Commission max(8.50, 25/1.25 = 20.00) = 20.00. Fee 0.85. Stamp 42.50. Net 8,500 + 20 + 0.85 + 42.50 = 8,563.35",
+   "expected": "8563.35",
+   "pass": true
+  },
+  {
+   "id": "WE04",
+   "title": "UK sale: no stamp duty, charges reduce proceeds",
+   "rules": [
+    "R022",
+    "R023"
+   ],
+   "inputs": "SELL 2,000 at GBP 4.25, same charges",
+   "working": "Net 8,500.00 - 20.00 - 0.85 = 8,479.15 (stamp duty applies to purchases only)",
+   "expected": "8479.15",
+   "pass": true
+  },
+  {
+   "id": "WE05",
+   "title": "JPY has no minor unit",
+   "rules": [
+    "R021",
+    "R028"
+   ],
+   "inputs": "BUY 300 at JPY 1,234.5; 8 bps; minimum USD 25 at 0.00625 USD/JPY",
+   "working": "Gross 370,350. 8 bps = 296.28 < 25/0.00625 = 4,000, so commission 4,000. Net 374,350 (whole yen)",
+   "expected": "374350",
+   "pass": true
+  },
+  {
+   "id": "WE06",
+   "title": "Average price from partial fills",
+   "rules": [
+    "R026"
+   ],
+   "inputs": "Fills 600 @ 10.00 and 400 @ 10.05",
+   "working": "(600 x 10.00 + 400 x 10.05) / 1,000 = (6,000 + 4,020) / 1,000 = 10.02",
+   "expected": "10.020000",
+   "pass": true
+  },
+  {
+   "id": "WE07",
+   "title": "Allocation residual goes to the largest allocation",
+   "rules": [
+    "R024",
+    "R025"
+   ],
+   "inputs": "USD 1,000.00 over three equal allocations",
+   "working": "1,000 / 3 = 333.33 each, total 999.99. Residual 0.01 goes to the first of the tied largest: 333.34, 333.33, 333.33",
+   "expected": "['333.34', '333.33', '333.33']",
+   "pass": true
+  },
+  {
+   "id": "WE08",
+   "title": "US corporate bond accrued interest, 30/360",
+   "rules": [
+    "R030",
+    "R031"
+   ],
+   "inputs": "6% semi-annual, coupons 15 Mar/15 Sep, settle 20 May 2026, nominal 1,000,000",
+   "working": "30/360 days 15 Mar -> 20 May = 2 x 30 + 5 = 65. Accrued per 100 = 6 x 65 / 360 = 1.083333. Amount = 10,833.33",
+   "expected": "10833.33",
+   "pass": true
+  },
+  {
+   "id": "WE09",
+   "title": "Bond gross consideration (clean + accrued)",
+   "rules": [
+    "R031"
+   ],
+   "inputs": "Same bond, clean 99.50",
+   "working": "Principal 1,000,000 x 99.50 / 100 = 995,000.00; plus accrued 10,833.33 = 1,005,833.33",
+   "expected": "1005833.33",
+   "pass": true
+  },
+  {
+   "id": "WE10",
+   "title": "US Treasury accrued interest, ACT/ACT (ICMA)",
+   "rules": [
+    "R030"
+   ],
+   "inputs": "4% semi-annual, coupons 15 Feb/15 Aug, settle 1 May 2026, nominal 100,000",
+   "working": "Actual days 15 Feb -> 1 May = 75; period 15 Feb -> 15 Aug = 181. Accrued per 100 = 4/2 x 75/181 = 0.828729. Amount = 828.73",
+   "expected": "828.73",
+   "pass": true
+  },
+  {
+   "id": "WE11",
+   "title": "Gilt in the ex-dividend period: negative accrued",
+   "rules": [
+    "R033"
+   ],
+   "inputs": "4% gilt, coupons 7 Jun/7 Dec, 7 business-day ex period, settle Mon 30 Nov 2026, nominal 100,000",
+   "working": "Ex-date = 7 London business days before 7 Dec = 26 Nov. Settlement is after it, so accrued = -(4/2) x 7/183 = -0.076503 per 100 = -76.50",
+   "expected": "-76.50",
+   "pass": true
+  },
+  {
+   "id": "WE12",
+   "title": "FX spot skips a quote-currency holiday",
+   "rules": [
+    "R040"
+   ],
+   "inputs": "USD/JPY traded Tue 29 Dec 2026",
+   "working": "T+2 on both calendars: 30 Dec (open), 31 Dec (Tokyo closed), 1 Jan (both closed), 2-3 Jan weekend, 4 Jan (open) -> 4 Jan 2027",
+   "expected": "2027-01-04",
+   "pass": true
+  },
+  {
+   "id": "WE13",
+   "title": "USD/CAD spot is T+1",
+   "rules": [
+    "R040"
+   ],
+   "inputs": "USD/CAD traded Fri 9 Oct 2026",
+   "working": "T+1: Mon 12 Oct is a holiday in New York (Columbus Day) and Toronto (Thanksgiving) -> Tue 13 Oct",
+   "expected": "2026-10-13",
+   "pass": true
+  },
+  {
+   "id": "WE14",
+   "title": "FX counter amount in USD",
+   "rules": [
+    "R042"
+   ],
+   "inputs": "Buy EUR 1,000,000 at 1.08475",
+   "working": "1,000,000 x 1.08475 = 1,084,750.00 USD",
+   "expected": "1084750.00",
+   "pass": true
+  },
+  {
+   "id": "WE15",
+   "title": "FX forward outright with JPY pips",
+   "rules": [
+    "R043"
+   ],
+   "inputs": "USD/JPY spot 150.20, forward points -85.0",
+   "working": "JPY pip = 0.01, so 150.20 + (-85.0 / 100) = 149.35",
+   "expected": "149.35",
+   "pass": true
+  },
+  {
+   "id": "WE16",
+   "title": "Futures variation margin (long)",
+   "rules": [
+    "R051"
+   ],
+   "inputs": "Long 10 contracts, settle 4,500.25 -> 4,512.75, multiplier 50",
+   "working": "+1 x 10 x (4,512.75 - 4,500.25) x 50 = 10 x 12.50 x 50 = 6,250.00",
+   "expected": "6250.00",
+   "pass": true
+  },
+  {
+   "id": "WE17",
+   "title": "Option premium",
+   "rules": [
+    "R054"
+   ],
+   "inputs": "Buy 5 contracts at 3.45, multiplier 100",
+   "working": "5 x 3.45 x 100 = 1,725.00",
+   "expected": "1725.00",
+   "pass": true
+  },
+  {
+   "id": "WE18",
+   "title": "Option not exercised below the 0.01 threshold",
+   "rules": [
+    "R053"
+   ],
+   "inputs": "Call strike 100.00, underlying 100.005",
+   "working": "Intrinsic 0.005 < 0.01, so no automatic exercise",
+   "expected": "False",
+   "pass": true
+  },
+  {
+   "id": "WE19",
+   "title": "Option cash settlement on exercise",
+   "rules": [
+    "R053"
+   ],
+   "inputs": "5 calls, strike 100.00, underlying 101.50, multiplier 100",
+   "working": "(101.50 - 100.00) x 5 x 100 = 750.00",
+   "expected": "750.00",
+   "pass": true
+  },
+  {
+   "id": "WE20",
+   "title": "Swap fixed leg, 30/360",
+   "rules": [
+    "R060"
+   ],
+   "inputs": "USD 10,000,000 at 3.50%, 16 Mar 2026 -> 16 Sep 2026",
+   "working": "30/360: 180/360 = 0.5. 10,000,000 x 3.5% x 0.5 = 175,000.00",
+   "expected": "175000.00",
+   "pass": true
+  },
+  {
+   "id": "WE21",
+   "title": "Swap floating leg, ACT/360 with spread",
+   "rules": [
+    "R061"
+   ],
+   "inputs": "USD 10,000,000, fixing 4.30% + 10 bp, 16 Mar -> 16 Jun 2026",
+   "working": "92 actual days. 10,000,000 x 4.40% x 92/360 = 112,444.444 -> 112,444.44",
+   "expected": "112444.44",
+   "pass": true
+  },
+  {
+   "id": "WE22",
+   "title": "Repo cash amount after haircut",
+   "rules": [
+    "R070"
+   ],
+   "inputs": "Nominal 10,000,000, dirty price 101.25, haircut 2%",
+   "working": "10,000,000 x 101.25/100 = 10,125,000; x (1 - 0.02) = 9,922,500.00",
+   "expected": "9922500.00",
+   "pass": true
+  },
+  {
+   "id": "WE23",
+   "title": "Repo interest, USD ACT/360",
+   "rules": [
+    "R071"
+   ],
+   "inputs": "Cash 9,922,500.00 at 5.30% for 7 days",
+   "working": "9,922,500 x 5.30% = 525,892.50 a year; x 7/360 = 10,225.6875 -> 10,225.69",
+   "expected": "10225.69",
+   "pass": true
+  },
+  {
+   "id": "WE24",
+   "title": "Repo interest, GBP ACT/365",
+   "rules": [
+    "R071"
+   ],
+   "inputs": "Cash GBP 5,000,000 at 4.75% for 30 days",
+   "working": "5,000,000 x 4.75% = 237,500 a year; x 30/365 = 19,520.548 -> 19,520.55",
+   "expected": "19520.55",
+   "pass": true
+  },
+  {
+   "id": "WE25",
+   "title": "Repo margin call above the minimum transfer amount",
+   "rules": [
+    "R072"
+   ],
+   "inputs": "Cash 9,800,000, haircut 2%, collateral now 9,900,000, MTA 50,000",
+   "working": "Required collateral 9,800,000 / 0.98 = 10,000,000. Deficit 100,000 > 50,000, so call 100,000.00",
+   "expected": "100000.00",
+   "pass": true
+  },
+  {
+   "id": "WE26",
+   "title": "No margin call at exactly the MTA",
+   "rules": [
+    "R072"
+   ],
+   "inputs": "Same repo, collateral 9,950,000",
+   "working": "Deficit 10,000,000 - 9,950,000 = 50,000, not above the 50,000 MTA, so no call",
+   "expected": "0.00",
+   "pass": true
+  },
+  {
+   "id": "WE27",
+   "title": "Securities-loan collateral, cross-currency",
+   "rules": [
+    "R073"
+   ],
+   "inputs": "Lend 10,000 shares worth 40.50 each in the collateral currency",
+   "working": "10,000 x 40.50 = 405,000; x 105% (cross-currency) = 425,250.00",
+   "expected": "425250.00",
+   "pass": true
+  },
+  {
+   "id": "WE28",
+   "title": "Securities-loan fee",
+   "rules": [
+    "R073"
+   ],
+   "inputs": "10,000 shares at 45.00, 25 bps a year, 30 days",
+   "working": "10,000 x 45 = 450,000; x 0.25% = 1,125 a year; x 30/360 = 93.75",
+   "expected": "93.75",
+   "pass": true
+  }
+ ],
+ "lakehouse": {
+  "environment": "local-spark",
+  "spark": "4.1.3",
+  "delta": "4.4.1",
+  "elapsed_seconds": 641.2,
+  "passed": 14,
+  "failed": 0,
+  "checks": [
+   {
+    "check": "baseline landing: every sheet matches the contract",
+    "result": "PASS"
+   },
+   {
+    "check": "baseline batch passes the quality gate",
+    "result": "PASS"
+   },
+   {
+    "check": "silver_trades holds 500 trades split 140/120/80/70/50/40",
+    "result": "PASS"
+   },
+   {
+    "check": "gold: allocated quantity equals block quantity for every allocated trade",
+    "result": "PASS"
+   },
+   {
+    "check": "silver trades match the oracle (ids, settlement date, settlement currency)",
+    "result": "PASS"
+   },
+   {
+    "check": "silver trades match the platform database (ids, quantity, price)",
+    "result": "PASS"
+   },
+   {
+    "check": "re-running the same batch ingests 0 new bronze rows",
+    "result": "PASS"
+   },
+   {
+    "check": "re-running the same batch changes no silver row (MERGE is idempotent)",
+    "result": "PASS"
+   },
+   {
+    "check": "schema drift is refused whole at landing (DQ05)",
+    "result": "PASS"
+   },
+   {
+    "check": "quarantine catches every case labelled DQ_QUARANTINE, with the labelled rule and error",
+    "result": "PASS"
+   },
+   {
+    "check": "quarantine catches no case the labels leave to the API layer",
+    "result": "PASS"
+   },
+   {
+    "check": "negative batch fails the quality gate and is held back",
+    "result": "PASS"
+   },
+   {
+    "check": "silver is unchanged after the held negative batch",
+    "result": "PASS"
+   },
+   {
+    "check": "full rebuild from the landing zone reproduces silver exactly",
+    "result": "PASS"
+   }
+  ],
+  "silver_counts": {
+   "clients": 24,
+   "counterparties": 16,
+   "accounts": 70,
+   "instruments": 75,
+   "ssis": 915,
+   "orders": 538,
+   "executions": 729,
+   "trades": 500,
+   "allocations": 587,
+   "confirmations": 427,
+   "settlement_status": 12,
+   "custody_positions": 327,
+   "custody_cash": 490,
+   "opening_positions": 195,
+   "opening_cash": 490,
+   "prices": 4596,
+   "fx_rates": 525
+  },
+  "gold": {
+   "gold_trade_lifecycle": 500,
+   "gold_cash_position_projection": 293,
+   "gold_dq_summary": 0
+  },
+  "quarantine": {
+   "labelled": 23,
+   "caught": 23,
+   "missed": [],
+   "wrong_rule_or_error": []
+  },
+  "negative_gate": {
+   "table": "trades",
+   "batch_id": "NEGATIVE-001",
+   "rows_in": 133,
+   "rows_out": 110,
+   "rows_quarantined": 23,
+   "duplicates_removed": 0,
+   "quarantine_ratio": 0.1729,
+   "gate": "FAIL"
+  }
+ },
+ "data": {
+  "trades": 500,
+  "by_group": {
+   "Equities/ETFs": 140,
+   "Corporate/government bonds": 120,
+   "FX spot/forwards": 80,
+   "Futures/options": 70,
+   "Interest-rate swaps": 50,
+   "Repo/securities lending": 40
+  },
+  "files": {
+   "Trades.xlsx": {
+    "path": "data/excel/Trades.xlsx",
+    "sha256": "893e5c3bd292c30189d68d9209f70b77da1af297b68ea319f3b5501582773706",
+    "rows": {
+     "Trades": 500
+    },
+    "schema": {
+     "Trades": [
+      {
+       "column": "trade_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_trade_ref",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "order_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_group",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "client_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "book",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trader_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "counterparty_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "side",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "quantity",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "price",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "price_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trade_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "settle_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trade_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "trade_time_utc",
+       "type": "TIMESTAMP",
+       "nullable": false
+      },
+      {
+       "column": "market",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "market_timezone",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "settlement_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "end_date",
+       "type": "DATE",
+       "nullable": true
+      },
+      {
+       "column": "fx_counter_ccy",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "fx_counter_amount",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "fx_spot_rate",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "fx_forward_points",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "fx_tenor_months",
+       "type": "INTEGER",
+       "nullable": true
+      },
+      {
+       "column": "repo_rate_pct",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "haircut_pct",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "collateral_ccy",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "sl_fee_bps",
+       "type": "INTEGER",
+       "nullable": true
+      },
+      {
+       "column": "irs_fixed_rate_pct",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "irs_float_index",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "irs_spread_bps",
+       "type": "INTEGER",
+       "nullable": true
+      },
+      {
+       "column": "irs_tenor_years",
+       "type": "INTEGER",
+       "nullable": true
+      },
+      {
+       "column": "execution_venue",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "ingest_batch",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Clients.xlsx": {
+    "path": "data/excel/Clients.xlsx",
+    "sha256": "09cd4e71efc4c4740bca5ac93a01f403696f538d54e493e89276cb6549cb2cd3",
+    "rows": {
+     "Clients": 24,
+     "Counterparties": 16
+    },
+    "schema": {
+     "Clients": [
+      {
+       "column": "client_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "legal_name",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "short_name",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "lei",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "client_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "client_category",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "country",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "base_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "kyc_review_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "kyc_expiry_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "risk_rating",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "exposure_limit_usd",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "netting_agreement",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Counterparties": [
+      {
+       "column": "counterparty_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "legal_name",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "counterparty_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "country",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "lei",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "netting_agreement",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Accounts.xlsx": {
+    "path": "data/excel/Accounts.xlsx",
+    "sha256": "1b9408e724ea6f07f423244ffb6d63f68234fe361e214109edb6516252c6a8d0",
+    "rows": {
+     "Accounts": 70,
+     "Commission_Schedules": 383
+    },
+    "schema": {
+     "Accounts": [
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "client_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "account_name",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "account_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "base_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "permitted_products",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "custodian_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "securities_account_ref",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "cash_account_ref",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "partial_settlement_allowed",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "credit_line_usd",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "opened_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Commission_Schedules": [
+      {
+       "column": "schedule_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_group",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "commission_bps",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "min_commission_usd",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "effective_from",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "effective_to",
+       "type": "DATE",
+       "nullable": true
+      }
+     ]
+    }
+   },
+   "Instruments.xlsx": {
+    "path": "data/excel/Instruments.xlsx",
+    "sha256": "fb328cb3dda91dfa2d6e2dbc1e74ef3d0d7135f5280e209cbef6d145bd7c8920",
+    "rows": {
+     "Instruments": 75,
+     "Equity_Details": 36,
+     "Bond_Details": 15,
+     "FX_Details": 8,
+     "Derivative_Details": 12,
+     "Swap_Templates": 4
+    },
+    "schema": {
+     "Instruments": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_group",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "name",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "synthetic_isin",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "market",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "maturity_date",
+       "type": "DATE",
+       "nullable": true
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Equity_Details": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "ticker",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "lot_size",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "sector",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "stamp_duty_exempt",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "dividend_frequency",
+       "type": "INTEGER",
+       "nullable": false
+      }
+     ],
+     "Bond_Details": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "issuer",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "coupon_rate_pct",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "coupon_frequency",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "day_count",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "issue_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "maturity_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "min_denomination",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "min_increment",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "ex_dividend_bdays",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "credit_rating",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "FX_Details": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "base_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "quote_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "spot_lag_bdays",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "pip_factor",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "rate_precision_dp",
+       "type": "INTEGER",
+       "nullable": false
+      }
+     ],
+     "Derivative_Details": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "derivative_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "contract_multiplier",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "tick_size",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "last_trading_day",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "ccp_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "initial_margin_per_contract",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "underlying_id",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "option_type",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "strike",
+       "type": "DECIMAL",
+       "nullable": true
+      },
+      {
+       "column": "exercise_style",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "settlement_type",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Swap_Templates": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "float_index",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "fixed_freq_months",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "float_freq_months",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "fixed_day_count",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "float_day_count",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "payment_calendar",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "business_day_convention",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "ccp_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Orders.xlsx": {
+    "path": "data/excel/Orders.xlsx",
+    "sha256": "c0706bb4f3347c88c59a348c8bfd1662998c82f51dddbdeea11d816fbfb2b422",
+    "rows": {
+     "Orders": 538
+    },
+    "schema": {
+     "Orders": [
+      {
+       "column": "order_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "client_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "side",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "order_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "limit_price",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "order_qty",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "order_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trader_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "order_ts_utc",
+       "type": "TIMESTAMP",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "channel",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Executions.xlsx": {
+    "path": "data/excel/Executions.xlsx",
+    "sha256": "b3fab5ff6015c2bfb87544ca33e8cc59185bf2cedd5740aa8d77299dafe167c6",
+    "rows": {
+     "Executions": 729
+    },
+    "schema": {
+     "Executions": [
+      {
+       "column": "exec_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "order_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "execution_venue",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "counterparty_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "exec_qty",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "exec_price",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "exec_ts_utc",
+       "type": "TIMESTAMP",
+       "nullable": false
+      },
+      {
+       "column": "liquidity_flag",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Allocations.xlsx": {
+    "path": "data/excel/Allocations.xlsx",
+    "sha256": "4f4bda666307b8aa117c3e5694673189566a708e6a0abe6e0acb898d75767c8f",
+    "rows": {
+     "Allocations": 587
+    },
+    "schema": {
+     "Allocations": [
+      {
+       "column": "allocation_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trade_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "alloc_seq",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "alloc_qty",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Settlement_Instructions.xlsx": {
+    "path": "data/excel/Settlement_Instructions.xlsx",
+    "sha256": "2af8f0982310d166fbfd5ee096679a47f1f4ccea23b726a2bdd2549526953d60",
+    "rows": {
+     "SSIs": 915
+    },
+    "schema": {
+     "SSIs": [
+      {
+       "column": "ssi_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "owner_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "owner_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "settlement_location",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "agent_code",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "safekeeping_account",
+       "type": "STRING",
+       "nullable": true
+      },
+      {
+       "column": "cash_account",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "effective_from",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "effective_to",
+       "type": "DATE",
+       "nullable": true
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "version",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Prices_FX_Rates.xlsx": {
+    "path": "data/excel/Prices_FX_Rates.xlsx",
+    "sha256": "18783bf2a0e6a5bb30edf4b91530faadf1f7667f0d90acc9ebd8a5117f1d4b34",
+    "rows": {
+     "Prices": 4596,
+     "FX_Rates": 525,
+     "Rate_Fixings": 290,
+     "FX_Forward_Points": 2400
+    },
+    "schema": {
+     "Prices": [
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "price_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "close_price",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "price_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "FX_Rates": [
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "rate_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "usd_per_unit",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "source",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Rate_Fixings": [
+      {
+       "column": "rate_index",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "fixing_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "rate_pct",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "source",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "FX_Forward_Points": [
+      {
+       "column": "pair",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "rate_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "tenor_months",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "forward_points",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "source",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Business_Calendars.xlsx": {
+    "path": "data/excel/Business_Calendars.xlsx",
+    "sha256": "0da9de3e740538f992271857206807e91cf06f0370b76aeb55ff60829c958dbf",
+    "rows": {
+     "Calendars": 14,
+     "Holidays": 1926,
+     "Markets": 13,
+     "Settlement_Conventions": 17
+    },
+    "schema": {
+     "Calendars": [
+      {
+       "column": "calendar_code",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "description",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "timezone",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Holidays": [
+      {
+       "column": "calendar_code",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "holiday_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "holiday_name",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Markets": [
+      {
+       "column": "market",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "calendar_code",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "timezone",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "settlement_location",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "exchange_fee_bps",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "stamp_duty_bps",
+       "type": "DECIMAL",
+       "nullable": false
+      }
+     ],
+     "Settlement_Conventions": [
+      {
+       "column": "convention_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "product_types",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "market",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "offset_bdays",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "calendar_basis",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "cutoff_local_time",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "timezone",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "effective_from",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "effective_to",
+       "type": "DATE",
+       "nullable": true
+      },
+      {
+       "column": "source_reference",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "simplification_note",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Positions_Cash.xlsx": {
+    "path": "data/excel/Positions_Cash.xlsx",
+    "sha256": "d079216b347f7d56b3f7f230289c8f6aca985c2ca72b8440581588d71b612c09",
+    "rows": {
+     "Opening_Positions": 195,
+     "Opening_Cash": 490
+    },
+    "schema": {
+     "Opening_Positions": [
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "quantity",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "as_of_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "position_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Opening_Cash": [
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "balance",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "as_of_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "Corporate_Actions.xlsx": {
+    "path": "data/excel/Corporate_Actions.xlsx",
+    "sha256": "a802efc4b6122ce666b699cf43debfbfee0c8394efdc0c455294cf701b13474b",
+    "rows": {
+     "Dividends": 12,
+     "Coupons": 6
+    },
+    "schema": {
+     "Dividends": [
+      {
+       "column": "ca_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "event_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "ex_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "record_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "pay_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "gross_rate_per_share",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Coupons": [
+      {
+       "column": "ca_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "event_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "coupon_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "record_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "pay_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "coupon_rate_pct",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "amount_per_100",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   },
+   "External_Reconciliation.xlsx": {
+    "path": "data/excel/External_Reconciliation.xlsx",
+    "sha256": "9e1e3bae0d3705d49d17327c8c7067e9f87790375456eb2487ff9ac99481b1e1",
+    "rows": {
+     "Confirmations": 427,
+     "Settlement_Status": 12,
+     "Custody_Positions": 327,
+     "Custody_Cash": 490
+    },
+    "schema": {
+     "Confirmations": [
+      {
+       "column": "confirmation_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trade_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "counterparty_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "cp_trade_ref",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "quantity",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "price",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "settle_amount",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "settle_ccy",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "settle_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "received_ts_utc",
+       "type": "TIMESTAMP",
+       "nullable": false
+      },
+      {
+       "column": "message_type",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Settlement_Status": [
+      {
+       "column": "status_msg_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "allocation_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "trade_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "reason_code",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "status_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "resolved_date",
+       "type": "DATE",
+       "nullable": true
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Custody_Positions": [
+      {
+       "column": "statement_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "instrument_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "quantity",
+       "type": "INTEGER",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ],
+     "Custody_Cash": [
+      {
+       "column": "statement_date",
+       "type": "DATE",
+       "nullable": false
+      },
+      {
+       "column": "account_id",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "currency",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "balance",
+       "type": "DECIMAL",
+       "nullable": false
+      },
+      {
+       "column": "source_system",
+       "type": "STRING",
+       "nullable": false
+      },
+      {
+       "column": "source_record_id",
+       "type": "STRING",
+       "nullable": false
+      }
+     ]
+    }
+   }
+  },
+  "negative_files": {
+   "Trades_negative.xlsx": {
+    "path": "data/negative/Trades_negative.xlsx",
+    "sha256": "9157965ff89d8e220aea3280b29a85fd36140c66d50fad2228b5e9718c0818d4",
+    "rows": {
+     "Trades": 133
+    }
+   },
+   "Allocations_negative.xlsx": {
+    "path": "data/negative/Allocations_negative.xlsx",
+    "sha256": "bf94bb6071730423b8f808d456a8be067669d8a2e6adddf34c4b409fe982b134",
+    "rows": {
+     "Allocations": 14
+    }
+   },
+   "Trades_schema_drift.xlsx": {
+    "path": "data/negative/Trades_schema_drift.xlsx",
+    "sha256": "c813f8f10d024db5e6606dcf84f92e9bda1cabe3c1382627837019017f18e1ce",
+    "rows": {
+     "Trades": 20
+    }
+   }
+  },
+  "seed": 20261116,
+  "opening_date": "2026-09-11",
+  "statement_date": "2026-11-06"
+ }
+}

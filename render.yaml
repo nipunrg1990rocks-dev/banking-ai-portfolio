@@ -1,0 +1,21 @@
+# Render Blueprint for the CapitalFlow 360 public demo (Project 07). Free instance; the database is an external
+# Neon Postgres whose connection string is entered in the Render dashboard (never committed).
+services:
+  - type: web
+    name: capitalflow360
+    runtime: docker
+    plan: free
+    rootDir: projects/p7_capitalflow360
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true
+    buildFilter:
+      paths: ["projects/p7_capitalflow360/**"]
+    envVars:
+      - key: CF360_DATABASE_URL       # Neon connection string, e.g. postgresql://user:pass@host/db?sslmode=require
+        sync: false
+      - key: CF360_DEMO_PASSWORD      # the password demo visitors use; choose your own
+        sync: false
+      - key: CF360_JWT_SECRET
+        generateValue: true

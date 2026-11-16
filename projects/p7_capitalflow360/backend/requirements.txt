@@ -1,0 +1,10 @@
+# CapitalFlow 360 backend (pinned; verified in this repository's environment on 2026-11-16)
+fastapi==0.163.1
+uvicorn==0.54.0
+SQLAlchemy==2.0.44
+alembic==1.20.1
+psycopg[binary]==3.2.12
+PyJWT==2.15.1
+pydantic==2.13.5
+openpyxl==3.1.5
+tzdata==2025.2

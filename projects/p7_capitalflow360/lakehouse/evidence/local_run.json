@@ -1,0 +1,600 @@
+{
+ "environment": "local-spark",
+ "spark": "4.1.3",
+ "delta_spark": "4.4.1",
+ "elapsed_seconds": 641.2,
+ "checks": [
+  {
+   "check": "baseline landing: every sheet matches the contract",
+   "result": "PASS",
+   "detail": {
+    "tables": 31,
+    "rejected": []
+   }
+  },
+  {
+   "check": "baseline batch passes the quality gate",
+   "result": "PASS",
+   "detail": {
+    "clients": [
+     24,
+     24,
+     0
+    ],
+    "counterparties": [
+     16,
+     16,
+     0
+    ],
+    "accounts": [
+     70,
+     70,
+     0
+    ],
+    "instruments": [
+     75,
+     75,
+     0
+    ],
+    "ssis": [
+     915,
+     915,
+     0
+    ],
+    "orders": [
+     538,
+     538,
+     0
+    ],
+    "executions": [
+     729,
+     729,
+     0
+    ],
+    "trades": [
+     500,
+     500,
+     0
+    ],
+    "allocations": [
+     587,
+     587,
+     0
+    ],
+    "confirmations": [
+     427,
+     427,
+     0
+    ],
+    "settlement_status": [
+     12,
+     12,
+     0
+    ],
+    "custody_positions": [
+     327,
+     327,
+     0
+    ],
+    "custody_cash": [
+     490,
+     490,
+     0
+    ],
+    "opening_positions": [
+     195,
+     195,
+     0
+    ],
+    "opening_cash": [
+     490,
+     490,
+     0
+    ],
+    "prices": [
+     4596,
+     4596,
+     0
+    ],
+    "fx_rates": [
+     525,
+     525,
+     0
+    ]
+   }
+  },
+  {
+   "check": "silver_trades holds 500 trades split 140/120/80/70/50/40",
+   "result": "PASS",
+   "detail": {
+    "EQUITY": 140,
+    "FX": 80,
+    "IRS": 50,
+    "BOND": 120,
+    "FINANCING": 40,
+    "LISTED_DERIV": 70
+   }
+  },
+  {
+   "check": "gold: allocated quantity equals block quantity for every allocated trade",
+   "result": "PASS",
+   "detail": {
+    "trades_with_allocations": 500,
+    "not_conserved": 0
+   }
+  },
+  {
+   "check": "silver trades match the oracle (ids, settlement date, settlement currency)",
+   "result": "PASS",
+   "detail": {
+    "oracle": 500,
+    "silver": 500,
+    "mismatches": []
+   }
+  },
+  {
+   "check": "silver trades match the platform database (ids, quantity, price)",
+   "result": "PASS",
+   "detail": {
+    "platform": 500,
+    "silver": 500,
+    "differences": []
+   }
+  },
+  {
+   "check": "re-running the same batch ingests 0 new bronze rows",
+   "result": "PASS",
+   "detail": {
+    "bronze_rows_ingested": 0
+   }
+  },
+  {
+   "check": "re-running the same batch changes no silver row (MERGE is idempotent)",
+   "result": "PASS",
+   "detail": {
+    "trades": {
+     "operation": "MERGE",
+     "numTargetRowsInserted": 0,
+     "numTargetRowsUpdated": 0,
+     "numTargetRowsDeleted": 0
+    },
+    "allocations": {
+     "operation": "MERGE",
+     "numTargetRowsInserted": 0,
+     "numTargetRowsUpdated": 0,
+     "numTargetRowsDeleted": 0
+    },
+    "clients": {
+     "operation": "MERGE",
+     "numTargetRowsInserted": 0,
+     "numTargetRowsUpdated": 0,
+     "numTargetRowsDeleted": 0
+    }
+   }
+  },
+  {
+   "check": "schema drift is refused whole at landing (DQ05)",
+   "result": "PASS",
+   "detail": [
+    {
+     "file": "Trades_schema_drift.xlsx",
+     "sheet": "Trades",
+     "rule_id": "DQ05",
+     "error": "E_SCHEMA_DRIFT",
+     "missing": [
+      "quantity"
+     ],
+     "unexpected": [
+      "qty",
+      "desk_comment"
+     ],
+     "rows": 20
+    }
+   ]
+  },
+  {
+   "check": "quarantine catches every case labelled DQ_QUARANTINE, with the labelled rule and error",
+   "result": "PASS",
+   "detail": {
+    "labelled": 23,
+    "caught": 23,
+    "missed": [],
+    "wrong_rule_or_error": []
+   }
+  },
+  {
+   "check": "quarantine catches no case the labels leave to the API layer",
+   "result": "PASS",
+   "detail": {
+    "unexpected": []
+   }
+  },
+  {
+   "check": "negative batch fails the quality gate and is held back",
+   "result": "PASS",
+   "detail": [
+    {
+     "table": "trades",
+     "batch_id": "NEGATIVE-001",
+     "rows_in": 133,
+     "rows_out": 110,
+     "rows_quarantined": 23,
+     "duplicates_removed": 0,
+     "quarantine_ratio": 0.1729,
+     "gate": "FAIL"
+    }
+   ]
+  },
+  {
+   "check": "silver is unchanged after the held negative batch",
+   "result": "PASS",
+   "detail": {
+    "silver_trades": 500
+   }
+  },
+  {
+   "check": "full rebuild from the landing zone reproduces silver exactly",
+   "result": "PASS",
+   "detail": {
+    "clients": 24,
+    "counterparties": 16,
+    "accounts": 70,
+    "instruments": 75,
+    "ssis": 915,
+    "orders": 538,
+    "executions": 729,
+    "trades": 500,
+    "allocations": 587,
+    "confirmations": 427,
+    "settlement_status": 12,
+    "custody_positions": 327,
+    "custody_cash": 490,
+    "opening_positions": 195,
+    "opening_cash": 490,
+    "prices": 4596,
+    "fx_rates": 525
+   }
+  }
+ ],
+ "passed": 14,
+ "failed": 0,
+ "silver_hash": {
+  "clients": {
+   "h": "a51c014c44e771fa82aea91ff953988a7bd2e1abcb7f38052a8ff7c96093ab72",
+   "n": 24
+  },
+  "counterparties": {
+   "h": "6382f0d60f88b13509fccb373e5b13931eb6c008cbfd8f22aa98d2aa6ce3ef57",
+   "n": 16
+  },
+  "accounts": {
+   "h": "e862958c3560f1b043b00f16e50989f9a642aa7927941ce75a48eaefd2fe2b68",
+   "n": 70
+  },
+  "instruments": {
+   "h": "0fce174317226eee763b4cf1c457eba6e35fdf780e6d5e96f14962e34dae886e",
+   "n": 75
+  },
+  "ssis": {
+   "h": "6c79e14459169b0861d188050a7f734535bd80821c06d7a08db8778ad46b380d",
+   "n": 915
+  },
+  "orders": {
+   "h": "1ecd0812e64bed7567158a48cdc148651247e7b55c887a2cf33558da810ca9b4",
+   "n": 538
+  },
+  "executions": {
+   "h": "6ee98e5a3b90721da51f1d49ca97bcde00aa4d5a706ab6ab8a5ecdc105166cae",
+   "n": 729
+  },
+  "trades": {
+   "h": "80838b126ea60885f5b65be293c3cc060d0af77cf0dd2ead2aaebffaef3a8b15",
+   "n": 500
+  },
+  "allocations": {
+   "h": "a0966ca30022fb4f15ad94ec88debca4cf669d42530f5c1a8b1d80f2f94ebf4e",
+   "n": 587
+  },
+  "confirmations": {
+   "h": "24a4352bf7a34c9fe008c729a9ddbb94fc9dadb56eb2374d7d8465559d20307b",
+   "n": 427
+  },
+  "settlement_status": {
+   "h": "caafebbcc3e62b1c7f00d20e5172bff51ed830d4d21b4024f63a886a4aa138d6",
+   "n": 12
+  },
+  "custody_positions": {
+   "h": "2d78d76e99ff31646df7eb7a869bcc99929e54d23984a4c9c9eae8739ff46795",
+   "n": 327
+  },
+  "custody_cash": {
+   "h": "baee1371de8daf936abf5592b84412d835d743ded71679622341b27503fcaf6b",
+   "n": 490
+  },
+  "opening_positions": {
+   "h": "4fe96f574b3babd7330ac2e015727a105437ed6ec637ed29862ec2d0dfb07e1f",
+   "n": 195
+  },
+  "opening_cash": {
+   "h": "462624cd3a8edf93f881d69c843f159db1088b03ed98d3ad5e6f5879fbd1640d",
+   "n": 490
+  },
+  "prices": {
+   "h": "cada62afe7bdedf95476e9f28338ec48a76fc51f05b16788504605420c20c197",
+   "n": 4596
+  },
+  "fx_rates": {
+   "h": "fe7fdc4cc79558095a749d75995c8bee02fd34ebac9ed1c0f8e2864e4ab11ae4",
+   "n": 525
+  }
+ },
+ "landing_manifests": [
+  {
+   "batch_id": "BASELINE-001",
+   "converted_at": "2026-11-16T02:50:26Z",
+   "files": [
+    {
+     "file": "Accounts.xlsx",
+     "sha256": "1b9408e724ea6f07f423244ffb6d63f68234fe361e214109edb6516252c6a8d0"
+    },
+    {
+     "file": "Allocations.xlsx",
+     "sha256": "4f4bda666307b8aa117c3e5694673189566a708e6a0abe6e0acb898d75767c8f"
+    },
+    {
+     "file": "Business_Calendars.xlsx",
+     "sha256": "0da9de3e740538f992271857206807e91cf06f0370b76aeb55ff60829c958dbf"
+    },
+    {
+     "file": "Clients.xlsx",
+     "sha256": "09cd4e71efc4c4740bca5ac93a01f403696f538d54e493e89276cb6549cb2cd3"
+    },
+    {
+     "file": "Corporate_Actions.xlsx",
+     "sha256": "a802efc4b6122ce666b699cf43debfbfee0c8394efdc0c455294cf701b13474b"
+    },
+    {
+     "file": "Executions.xlsx",
+     "sha256": "b3fab5ff6015c2bfb87544ca33e8cc59185bf2cedd5740aa8d77299dafe167c6"
+    },
+    {
+     "file": "External_Reconciliation.xlsx",
+     "sha256": "9e1e3bae0d3705d49d17327c8c7067e9f87790375456eb2487ff9ac99481b1e1"
+    },
+    {
+     "file": "Instruments.xlsx",
+     "sha256": "fb328cb3dda91dfa2d6e2dbc1e74ef3d0d7135f5280e209cbef6d145bd7c8920"
+    },
+    {
+     "file": "Orders.xlsx",
+     "sha256": "c0706bb4f3347c88c59a348c8bfd1662998c82f51dddbdeea11d816fbfb2b422"
+    },
+    {
+     "file": "Positions_Cash.xlsx",
+     "sha256": "d079216b347f7d56b3f7f230289c8f6aca985c2ca72b8440581588d71b612c09"
+    },
+    {
+     "file": "Prices_FX_Rates.xlsx",
+     "sha256": "18783bf2a0e6a5bb30edf4b91530faadf1f7667f0d90acc9ebd8a5117f1d4b34"
+    },
+    {
+     "file": "Settlement_Instructions.xlsx",
+     "sha256": "2af8f0982310d166fbfd5ee096679a47f1f4ccea23b726a2bdd2549526953d60"
+    },
+    {
+     "file": "Trades.xlsx",
+     "sha256": "893e5c3bd292c30189d68d9209f70b77da1af297b68ea319f3b5501582773706"
+    }
+   ],
+   "tables": {
+    "accounts": {
+     "rows": 70,
+     "file": "Accounts.xlsx",
+     "sheet": "Accounts"
+    },
+    "commission_schedules": {
+     "rows": 383,
+     "file": "Accounts.xlsx",
+     "sheet": "Commission_Schedules"
+    },
+    "allocations": {
+     "rows": 587,
+     "file": "Allocations.xlsx",
+     "sheet": "Allocations"
+    },
+    "calendars": {
+     "rows": 14,
+     "file": "Business_Calendars.xlsx",
+     "sheet": "Calendars"
+    },
+    "holidays": {
+     "rows": 1926,
+     "file": "Business_Calendars.xlsx",
+     "sheet": "Holidays"
+    },
+    "markets": {
+     "rows": 13,
+     "file": "Business_Calendars.xlsx",
+     "sheet": "Markets"
+    },
+    "settlement_conventions": {
+     "rows": 17,
+     "file": "Business_Calendars.xlsx",
+     "sheet": "Settlement_Conventions"
+    },
+    "clients": {
+     "rows": 24,
+     "file": "Clients.xlsx",
+     "sheet": "Clients"
+    },
+    "counterparties": {
+     "rows": 16,
+     "file": "Clients.xlsx",
+     "sheet": "Counterparties"
+    },
+    "dividends": {
+     "rows": 12,
+     "file": "Corporate_Actions.xlsx",
+     "sheet": "Dividends"
+    },
+    "coupons": {
+     "rows": 6,
+     "file": "Corporate_Actions.xlsx",
+     "sheet": "Coupons"
+    },
+    "executions": {
+     "rows": 729,
+     "file": "Executions.xlsx",
+     "sheet": "Executions"
+    },
+    "confirmations": {
+     "rows": 427,
+     "file": "External_Reconciliation.xlsx",
+     "sheet": "Confirmations"
+    },
+    "settlement_status": {
+     "rows": 12,
+     "file": "External_Reconciliation.xlsx",
+     "sheet": "Settlement_Status"
+    },
+    "custody_positions": {
+     "rows": 327,
+     "file": "External_Reconciliation.xlsx",
+     "sheet": "Custody_Positions"
+    },
+    "custody_cash": {
+     "rows": 490,
+     "file": "External_Reconciliation.xlsx",
+     "sheet": "Custody_Cash"
+    },
+    "instruments": {
+     "rows": 75,
+     "file": "Instruments.xlsx",
+     "sheet": "Instruments"
+    },
+    "equity_details": {
+     "rows": 36,
+     "file": "Instruments.xlsx",
+     "sheet": "Equity_Details"
+    },
+    "bond_details": {
+     "rows": 15,
+     "file": "Instruments.xlsx",
+     "sheet": "Bond_Details"
+    },
+    "fx_details": {
+     "rows": 8,
+     "file": "Instruments.xlsx",
+     "sheet": "FX_Details"
+    },
+    "derivative_details": {
+     "rows": 12,
+     "file": "Instruments.xlsx",
+     "sheet": "Derivative_Details"
+    },
+    "swap_templates": {
+     "rows": 4,
+     "file": "Instruments.xlsx",
+     "sheet": "Swap_Templates"
+    },
+    "orders": {
+     "rows": 538,
+     "file": "Orders.xlsx",
+     "sheet": "Orders"
+    },
+    "opening_positions": {
+     "rows": 195,
+     "file": "Positions_Cash.xlsx",
+     "sheet": "Opening_Positions"
+    },
+    "opening_cash": {
+     "rows": 490,
+     "file": "Positions_Cash.xlsx",
+     "sheet": "Opening_Cash"
+    },
+    "prices": {
+     "rows": 4596,
+     "file": "Prices_FX_Rates.xlsx",
+     "sheet": "Prices"
+    },
+    "fx_rates": {
+     "rows": 525,
+     "file": "Prices_FX_Rates.xlsx",
+     "sheet": "FX_Rates"
+    },
+    "rate_fixings": {
+     "rows": 290,
+     "file": "Prices_FX_Rates.xlsx",
+     "sheet": "Rate_Fixings"
+    },
+    "fx_forward_points": {
+     "rows": 2400,
+     "file": "Prices_FX_Rates.xlsx",
+     "sheet": "FX_Forward_Points"
+    },
+    "ssis": {
+     "rows": 915,
+     "file": "Settlement_Instructions.xlsx",
+     "sheet": "SSIs"
+    },
+    "trades": {
+     "rows": 500,
+     "file": "Trades.xlsx",
+     "sheet": "Trades"
+    }
+   },
+   "rejected": []
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "converted_at": "2026-11-16T02:56:30Z",
+   "files": [
+    {
+     "file": "Allocations_negative.xlsx",
+     "sha256": "bf94bb6071730423b8f808d456a8be067669d8a2e6adddf34c4b409fe982b134"
+    },
+    {
+     "file": "Trades_negative.xlsx",
+     "sha256": "9157965ff89d8e220aea3280b29a85fd36140c66d50fad2228b5e9718c0818d4"
+    },
+    {
+     "file": "Trades_schema_drift.xlsx",
+     "sha256": "c813f8f10d024db5e6606dcf84f92e9bda1cabe3c1382627837019017f18e1ce"
+    }
+   ],
+   "tables": {
+    "allocations": {
+     "rows": 14,
+     "file": "Allocations_negative.xlsx",
+     "sheet": "Allocations"
+    },
+    "trades": {
+     "rows": 133,
+     "file": "Trades_negative.xlsx",
+     "sheet": "Trades"
+    }
+   },
+   "rejected": [
+    {
+     "file": "Trades_schema_drift.xlsx",
+     "sheet": "Trades",
+     "rule_id": "DQ05",
+     "error": "E_SCHEMA_DRIFT",
+     "missing": [
+      "quantity"
+     ],
+     "unexpected": [
+      "qty",
+      "desk_comment"
+     ],
+     "rows": 20
+    }
+   ]
+  }
+ ],
+ "gold": {
+  "gold_trade_lifecycle": 500,
+  "gold_cash_position_projection": 293,
+  "gold_dq_summary": 0
+ }
+}

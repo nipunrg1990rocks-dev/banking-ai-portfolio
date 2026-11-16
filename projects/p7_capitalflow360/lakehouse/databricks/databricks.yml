@@ -1,0 +1,36 @@
+# Databricks Asset Bundle for the CapitalFlow 360 lakehouse job (serverless).
+# Status: written, validated only as YAML here; NOT deployed or run on Databricks (no workspace access
+# from the build environment). Deploy with:  databricks bundle deploy -t dev && databricks bundle run cf360_lakehouse -t dev
+bundle:
+  name: cf360-lakehouse
+
+include: []
+
+variables:
+  catalog:
+    default: workspace
+  schema:
+    default: cf360
+
+resources:
+  jobs:
+    cf360_lakehouse:
+      name: cf360-lakehouse-${bundle.target}
+      max_concurrent_runs: 1
+      tasks:
+        - task_key: run_lakehouse
+          notebook_task:
+            notebook_path: ./00_run_lakehouse.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              reset: "no"
+          # no cluster spec: runs on serverless compute
+      tags:
+        project: capitalflow360
+        data: synthetic
+
+targets:
+  dev:
+    mode: development
+    default: true

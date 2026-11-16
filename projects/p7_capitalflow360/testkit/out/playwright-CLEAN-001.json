@@ -1,0 +1,3504 @@
+{
+  "config": {
+    "argv": [
+      "/opt/node22/bin/node",
+      "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/playwright.config.ts",
+    "rootDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "chromium-mobile",
+        "name": "chromium-mobile",
+        "testDir": "/home/user/banking-ai-portfolio/projects/p7_capitalflow360/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../testkit/out/playwright-CLEAN-001.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 2,
+    "webServer": {
+      "command": "python -m uvicorn cf360.main:app --port 8010 --app-dir ../backend",
+      "url": "http://127.0.0.1:8010/api/health",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "CF360_DATABASE_URL": "postgresql+psycopg://cf360:cf360@localhost:5432/cf360_test",
+        "CF360_STATIC_DIR": "../frontend/dist",
+        "CF360_TEST_SUPPORT": "true",
+        "CF360_JWT_SECRET": "e2e-only-secret-at-least-32-bytes-long!!",
+        "CF360_DEMO_PASSWORD": "Demo!2026",
+        "CF360_DEFECTS": ""
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "ui.spec.ts",
+      "file": "ui.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-UI-LOGIN-TRADER TRADER signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:17.997Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-41b4fcd4135ab283fff4",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-MIDDLE_OFFICE MIDDLE_OFFICE signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 765,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:18.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-70a2dcadb06c6f5ba8d8",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-SETTLEMENTS SETTLEMENTS signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 682,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:19.668Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-3a49e63006f3c799594f",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-RECONCILIATION RECONCILIATION signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:20.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-4894f80b3fe1f4dacaf8",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-RISK RISK signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:21.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-9740abb5c29396f7dc05",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-CHECKER CHECKER signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:21.681Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-73c21e05aaedf083aa82",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-LOGIN-ADMIN ADMIN signs in and lands on their workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:22.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-0c68393d89f16d3178e4",
+          "file": "ui.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-BLOTTER /blotter renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 909,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:22.919Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-21c8796a238f319650f0",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-TRADE-DETAIL /trades/TRD00001 renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:23.839Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-cb960d5486668dc4d200",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-BOOK /book renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:24.610Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-51131011883757231282",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-ORDERS /orders renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:25.344Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-5fd35828b20cf5e3a186",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-QUEUES /queues/matching renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:26.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-6710ccf2b08a5d51cbc5",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-APPROVALS /approvals renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 688,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:27.158Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-910488307f2bc7734f1c",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-EXCEPTIONS /exceptions renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1007,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:27.856Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-213e2f80cd183497c5c6",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-POSITIONS /positions renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 899,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:28.869Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-a7568e31b89d5cb1813c",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-RECON /recon renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:29.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-155997151a73e8f24a23",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-EVENTS /events renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:30.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-e6fde612e61d7071c50d",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-REFDATA /refdata renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:31.564Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-8206a6f44180dc06a2f0",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-DASHBOARDS /dashboards/executive renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 736,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:32.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b9a8cbbe01180c52b7bc",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-TEST-RUNS /test-runs renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:33.269Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-037d35998d5019d851ab",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-REPORTS /reports renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:34.045Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-c1218bbcb11979e07a40",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-AUDIT /audit renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 859,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:34.880Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f5d281c36d8dd7ec27da",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-ADMIN /admin renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:35.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-17dcf27020373a7882fa",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-EXECUTIVE executive dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:36.564Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-717dca132861e6abc490",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-OPERATIONS operations dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:37.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f3cd7bedb3214502ad15",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-PRODUCT product dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1005,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:38.520Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-d2f0f95799d6aa01d25f",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-RISK risk dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 950,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:39.533Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-7034b343d2c8776160cc",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-DATA-QUALITY data-quality dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 787,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:40.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-030c7198893db678ab98",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-TESTING testing dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:41.289Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-bb04f0bec9b4856172cd",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-ENGINEERING engineering dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 866,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:41.995Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-7c657c474aed92fb9a86",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-EQUITY EQUITY trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:42.878Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b2de3d28285d301ae563",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-ETF ETF trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:43.710Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-d71f663a5e5b16b7abf0",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-GOVT_BOND GOVT_BOND trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 852,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:44.569Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-4c93fb70c36ed4c1a484",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-CORP_BOND CORP_BOND trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 824,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:45.433Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-8844a466a426d1f49171",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FX_SPOT FX_SPOT trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:46.265Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-991c458dcf9f56b0fc70",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FX_FORWARD FX_FORWARD trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:47.128Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-0537600db83f46126992",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FUTURE FUTURE trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 858,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:47.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-08b3d2bd73eee5c3fd42",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-OPTION OPTION trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 852,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:48.845Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-feb7c1b30120b76e3f80",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-IRS IRS trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 829,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:49.708Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-d058dead784d2b40976b",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-REPO REPO trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1008,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:50.547Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-aeb5aa4c71607c1592b3",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-REVERSE_REPO REVERSE_REPO trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:51.567Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f1e24b89d02eb02bb13e",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-SEC_LOAN SEC_LOAN trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 856,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:52.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-4d3dbd6012aa4f0feb10",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-SEC_BORROW SEC_BORROW trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 807,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:53.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-c47c431a5137aa07203d",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-BLOTTER-FILTER-CCY blotter currency filter narrows the grid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 857,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:54.049Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ea7ffb1e81ce51e92a92",
+          "file": "ui.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BLOTTER-SEARCH blotter search finds a trade by id",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:54.913Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-e2676e37a82ce4aa3086",
+          "file": "ui.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BLOTTER-OPEN clicking a blotter row opens the trade",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 855,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:55.637Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-1cf491b2979e3ba1efef",
+          "file": "ui.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BOOK-REJECT booking on a holiday shows the R010 error from the server",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:56.502Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-caa3e679d680c0db39de",
+          "file": "ui.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BOOK-VALIDATE validate (dry run) shows the derived settlement date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3600,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:00.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-bbdf2e76c0e782568a1c",
+          "file": "ui.spec.ts",
+          "line": 131,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-APPROVE-SELF approvals page lists a pending request for a checker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:04.014Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-01f5b82895659e874c46",
+          "file": "ui.spec.ts",
+          "line": 137,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-NAV-ROLE-TRADER trader navigation offers Book a trade",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 647,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:04.806Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-61718993110f261f541f",
+          "file": "ui.spec.ts",
+          "line": 154,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-NAV-ROLE-CHECKER checker navigation does not offer Book a trade",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 552,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:05.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-7ad037bb2bf76f6da86a",
+          "file": "ui.spec.ts",
+          "line": 159,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-MOBILE-BLOTTER blotter is usable at phone width without horizontal page scroll @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 856,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:06.025Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-1b86d9e9d097b3e8065a",
+          "file": "ui.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-MOBILE-DASH executive dashboard fits a phone screen @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:06.889Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-9c646e26979eb4396fbe",
+          "file": "ui.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-LOGOUT sign out returns to the login page @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 647,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:07.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-6d552fc528e73ca8743d",
+          "file": "ui.spec.ts",
+          "line": 179,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BAD-LOGIN wrong password shows an error and stays on login @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:21:08.426Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-18853a515a97978419e1",
+          "file": "ui.spec.ts",
+          "line": 185,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-PAGE-BLOTTER /blotter renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1269,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:18.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-01adb4edd8f7de61639d",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-TRADE-DETAIL /trades/TRD00001 renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 856,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:19.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-20442d5d36b171102d3c",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-BOOK /book renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 881,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:20.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-b2281cdbddf1d53b45c2",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-ORDERS /orders renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:21.136Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-cffb656761cd8f1ca50c",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-QUEUES /queues/matching renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:21.995Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-f24688fb419e472233be",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-APPROVALS /approvals renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 901,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:22.876Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-8415b993ad26225266f6",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-EXCEPTIONS /exceptions renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 875,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:23.788Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-dde9021d75a1813a4365",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-POSITIONS /positions renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 849,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:24.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-065ac02e77427a57b276",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-RECON /recon renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:25.532Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-32a65b0df09e472b6ad7",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-EVENTS /events renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:26.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ec536fa58af767038e20",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-REFDATA /refdata renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:27.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-1b69a3920736881e4ac0",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-DASHBOARDS /dashboards/executive renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:28.378Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-6b60f729f95b43b3bf14",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-TEST-RUNS /test-runs renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:29.153Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-d2e123881494657aa1e3",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-REPORTS /reports renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 768,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:29.859Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-db6effef5768cf5b9363",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-AUDIT /audit renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 964,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:30.634Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-5d5d0f6caa294242181c",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-PAGE-ADMIN /admin renders without errors @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1044,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:31.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-4e20b1c0daf76c49a4b5",
+          "file": "ui.spec.ts",
+          "line": 55,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-EXECUTIVE executive dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:32.667Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-db78b92dc55e2ef4134b",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-OPERATIONS operations dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:33.738Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-0065a5753cb6dddbab18",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-PRODUCT product dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1099,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:34.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-17c56194976d3ed07513",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-RISK risk dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 991,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:36.097Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-447d921b9379d6374276",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-DATA-QUALITY data-quality dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 852,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:37.100Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-d25c3ab36daf9c52a4a7",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-TESTING testing dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:37.965Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-773d6e49dd381a39a87b",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DASH-ENGINEERING engineering dashboard shows KPIs and a chart @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:38.787Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-4d4634ea31da67af9f68",
+          "file": "ui.spec.ts",
+          "line": 65,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-EQUITY EQUITY trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 877,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:39.694Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-5e38352fcf0e2c2757bb",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-ETF ETF trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:40.582Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-bd3ded9adbcfc5056cd7",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-GOVT_BOND GOVT_BOND trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:41.472Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-69274d6f138701ac1908",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-CORP_BOND CORP_BOND trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 810,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:42.333Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-c860c1cdcb5612213c17",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FX_SPOT FX_SPOT trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:43.152Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-10b9e0addaf05fb2e702",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FX_FORWARD FX_FORWARD trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:44.120Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-6cd408bf58e43818c0fc",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-FUTURE FUTURE trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:45.018Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-038ca492d415f0aa15f8",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-OPTION OPTION trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:45.877Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-88a38fb3ab8792ada144",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-IRS IRS trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:46.753Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ec3e99e7e908b552845b",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-REPO REPO trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 926,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:47.647Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-3804a4bb165ad6da5ce7",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-REVERSE_REPO REVERSE_REPO trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:48.582Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-ae5ffe1e783b88c4cb82",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-SEC_LOAN SEC_LOAN trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:49.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-1a3e9b002c77934d10c1",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-DETAIL-SEC_BORROW SEC_BORROW trade detail shows its lifecycle path @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:50.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-0c6f9d7c0d693a139f12",
+          "file": "ui.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "TC-UI-MOBILE-BLOTTER blotter is usable at phone width without horizontal page scroll @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 937,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:51.253Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-07714452f6268e3e91ef",
+          "file": "ui.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-MOBILE-DASH executive dashboard fits a phone screen @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:52.203Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-a4daf617bc69b06cbffa",
+          "file": "ui.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-LOGOUT sign out returns to the login page @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 773,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:53.356Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-39288132e1ea649cb023",
+          "file": "ui.spec.ts",
+          "line": 179,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-BAD-LOGIN wrong password shows an error and stays on login @mobile",
+          "ok": true,
+          "tags": [
+            "mobile"
+          ],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-mobile",
+              "projectName": "chromium-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T03:20:54.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d425444c687fa36b5882-1f1b14c13effad4a3b39",
+          "file": "ui.spec.ts",
+          "line": 185,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T03:20:15.643Z",
+    "duration": 53378.183000000005,
+    "expected": 95,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

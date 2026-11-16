@@ -1,0 +1,889 @@
+{
+ "job_runs": [
+  {
+   "job_run_id": "local-spark-bronze-BASELINE-001-1794797453096",
+   "environment": "local-spark",
+   "task": "bronze",
+   "batch_id": "BASELINE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:50:27.326347",
+   "finished_at": "2026-11-16T02:50:53.096172",
+   "rows_in": 15652,
+   "rows_out": 15652,
+   "rows_quarantined": 0,
+   "details": {
+    "tables": {
+     "accounts": 70,
+     "allocations": 587,
+     "bond_details": 15,
+     "calendars": 14,
+     "clients": 24,
+     "commission_schedules": 383,
+     "confirmations": 427,
+     "counterparties": 16,
+     "coupons": 6,
+     "custody_cash": 490,
+     "custody_positions": 327,
+     "derivative_details": 12,
+     "dividends": 12,
+     "equity_details": 36,
+     "executions": 729,
+     "fx_details": 8,
+     "fx_forward_points": 2400,
+     "fx_rates": 525,
+     "holidays": 1926,
+     "instruments": 75,
+     "markets": 13,
+     "opening_cash": 490,
+     "opening_positions": 195,
+     "orders": 538,
+     "prices": 4596,
+     "rate_fixings": 290,
+     "settlement_conventions": 17,
+     "settlement_status": 12,
+     "ssis": 915,
+     "swap_templates": 4,
+     "trades": 500
+    }
+   }
+  },
+  {
+   "job_run_id": "local-spark-silver-BASELINE-001-1794797587163",
+   "environment": "local-spark",
+   "task": "silver",
+   "batch_id": "BASELINE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:50:53.096199",
+   "finished_at": "2026-11-16T02:53:07.163428",
+   "rows_in": 10516,
+   "rows_out": 10516,
+   "rows_quarantined": 0,
+   "details": {
+    "tables": [
+     {
+      "table": "clients",
+      "batch_id": "BASELINE-001",
+      "rows_in": 24,
+      "rows_out": 24,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "counterparties",
+      "batch_id": "BASELINE-001",
+      "rows_in": 16,
+      "rows_out": 16,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "accounts",
+      "batch_id": "BASELINE-001",
+      "rows_in": 70,
+      "rows_out": 70,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "instruments",
+      "batch_id": "BASELINE-001",
+      "rows_in": 75,
+      "rows_out": 75,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "ssis",
+      "batch_id": "BASELINE-001",
+      "rows_in": 915,
+      "rows_out": 915,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "orders",
+      "batch_id": "BASELINE-001",
+      "rows_in": 538,
+      "rows_out": 538,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "executions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 729,
+      "rows_out": 729,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "trades",
+      "batch_id": "BASELINE-001",
+      "rows_in": 500,
+      "rows_out": 500,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "allocations",
+      "batch_id": "BASELINE-001",
+      "rows_in": 587,
+      "rows_out": 587,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "confirmations",
+      "batch_id": "BASELINE-001",
+      "rows_in": 427,
+      "rows_out": 427,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "settlement_status",
+      "batch_id": "BASELINE-001",
+      "rows_in": 12,
+      "rows_out": 12,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "custody_positions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 327,
+      "rows_out": 327,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "custody_cash",
+      "batch_id": "BASELINE-001",
+      "rows_in": 490,
+      "rows_out": 490,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "opening_positions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 195,
+      "rows_out": 195,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "opening_cash",
+      "batch_id": "BASELINE-001",
+      "rows_in": 490,
+      "rows_out": 490,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "prices",
+      "batch_id": "BASELINE-001",
+      "rows_in": 4596,
+      "rows_out": 4596,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "fx_rates",
+      "batch_id": "BASELINE-001",
+      "rows_in": 525,
+      "rows_out": 525,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     }
+    ],
+    "held_tables": []
+   }
+  },
+  {
+   "job_run_id": "local-spark-gold-BASELINE-001-1794797604258",
+   "environment": "local-spark",
+   "task": "gold",
+   "batch_id": "BASELINE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:53:07.163678",
+   "finished_at": "2026-11-16T02:53:24.258087",
+   "rows_in": 500,
+   "rows_out": 793,
+   "rows_quarantined": 0,
+   "details": {
+    "gold_trade_lifecycle": 500,
+    "gold_cash_position_projection": 293,
+    "gold_dq_summary": 0
+   }
+  },
+  {
+   "job_run_id": "local-spark-bronze-BASELINE-001-1794797641045",
+   "environment": "local-spark",
+   "task": "bronze",
+   "batch_id": "BASELINE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:53:59.360924",
+   "finished_at": "2026-11-16T02:54:01.045782",
+   "rows_in": 0,
+   "rows_out": 0,
+   "rows_quarantined": 0,
+   "details": {
+    "tables": {
+     "accounts": 0,
+     "allocations": 0,
+     "bond_details": 0,
+     "calendars": 0,
+     "clients": 0,
+     "commission_schedules": 0,
+     "confirmations": 0,
+     "counterparties": 0,
+     "coupons": 0,
+     "custody_cash": 0,
+     "custody_positions": 0,
+     "derivative_details": 0,
+     "dividends": 0,
+     "equity_details": 0,
+     "executions": 0,
+     "fx_details": 0,
+     "fx_forward_points": 0,
+     "fx_rates": 0,
+     "holidays": 0,
+     "instruments": 0,
+     "markets": 0,
+     "opening_cash": 0,
+     "opening_positions": 0,
+     "orders": 0,
+     "prices": 0,
+     "rate_fixings": 0,
+     "settlement_conventions": 0,
+     "settlement_status": 0,
+     "ssis": 0,
+     "swap_templates": 0,
+     "trades": 0
+    }
+   }
+  },
+  {
+   "job_run_id": "local-spark-silver-BASELINE-001-1794797746739",
+   "environment": "local-spark",
+   "task": "silver",
+   "batch_id": "BASELINE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:54:01.045800",
+   "finished_at": "2026-11-16T02:55:46.739747",
+   "rows_in": 10516,
+   "rows_out": 10516,
+   "rows_quarantined": 0,
+   "details": {
+    "tables": [
+     {
+      "table": "clients",
+      "batch_id": "BASELINE-001",
+      "rows_in": 24,
+      "rows_out": 24,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "counterparties",
+      "batch_id": "BASELINE-001",
+      "rows_in": 16,
+      "rows_out": 16,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "accounts",
+      "batch_id": "BASELINE-001",
+      "rows_in": 70,
+      "rows_out": 70,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "instruments",
+      "batch_id": "BASELINE-001",
+      "rows_in": 75,
+      "rows_out": 75,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "ssis",
+      "batch_id": "BASELINE-001",
+      "rows_in": 915,
+      "rows_out": 915,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "orders",
+      "batch_id": "BASELINE-001",
+      "rows_in": 538,
+      "rows_out": 538,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "executions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 729,
+      "rows_out": 729,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "trades",
+      "batch_id": "BASELINE-001",
+      "rows_in": 500,
+      "rows_out": 500,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "allocations",
+      "batch_id": "BASELINE-001",
+      "rows_in": 587,
+      "rows_out": 587,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "confirmations",
+      "batch_id": "BASELINE-001",
+      "rows_in": 427,
+      "rows_out": 427,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "settlement_status",
+      "batch_id": "BASELINE-001",
+      "rows_in": 12,
+      "rows_out": 12,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "custody_positions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 327,
+      "rows_out": 327,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "custody_cash",
+      "batch_id": "BASELINE-001",
+      "rows_in": 490,
+      "rows_out": 490,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "opening_positions",
+      "batch_id": "BASELINE-001",
+      "rows_in": 195,
+      "rows_out": 195,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "opening_cash",
+      "batch_id": "BASELINE-001",
+      "rows_in": 490,
+      "rows_out": 490,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "prices",
+      "batch_id": "BASELINE-001",
+      "rows_in": 4596,
+      "rows_out": 4596,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     },
+     {
+      "table": "fx_rates",
+      "batch_id": "BASELINE-001",
+      "rows_in": 525,
+      "rows_out": 525,
+      "rows_quarantined": 0,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.0,
+      "gate": "PASS"
+     }
+    ],
+    "held_tables": []
+   }
+  },
+  {
+   "job_run_id": "local-spark-bronze-NEGATIVE-001-1794797792679",
+   "environment": "local-spark",
+   "task": "bronze",
+   "batch_id": "NEGATIVE-001",
+   "status": "SUCCEEDED",
+   "started_at": "2026-11-16T02:56:30.147089",
+   "finished_at": "2026-11-16T02:56:32.679071",
+   "rows_in": 147,
+   "rows_out": 147,
+   "rows_quarantined": 0,
+   "details": {
+    "tables": {
+     "allocations": 14,
+     "trades": 133
+    }
+   }
+  },
+  {
+   "job_run_id": "local-spark-silver-NEGATIVE-001-1794797815350",
+   "environment": "local-spark",
+   "task": "silver",
+   "batch_id": "NEGATIVE-001",
+   "status": "GATE_FAILED",
+   "started_at": "2026-11-16T02:56:32.679092",
+   "finished_at": "2026-11-16T02:56:55.350357",
+   "rows_in": 133,
+   "rows_out": 0,
+   "rows_quarantined": 23,
+   "details": {
+    "tables": [
+     {
+      "table": "trades",
+      "batch_id": "NEGATIVE-001",
+      "rows_in": 133,
+      "rows_out": 110,
+      "rows_quarantined": 23,
+      "duplicates_removed": 0,
+      "quarantine_ratio": 0.1729,
+      "gate": "FAIL"
+     }
+    ],
+    "held_tables": [
+     "trades"
+    ]
+   }
+  }
+ ],
+ "dq_results": [
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "clients",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 24,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "counterparties",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 16,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "accounts",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 70,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "instruments",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 75,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "ssis",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 915,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "orders",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 538,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "executions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 729,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "trades",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 500,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "allocations",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 587,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "confirmations",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 427,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "settlement_status",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 12,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "custody_positions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 327,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "custody_cash",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 490,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "opening_positions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 195,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "opening_cash",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 490,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "prices",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 4596,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "fx_rates",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 525,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "clients",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 24,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "counterparties",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 16,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "accounts",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 70,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "instruments",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 75,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "ssis",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 915,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "orders",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 538,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "executions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 729,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "trades",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 500,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "allocations",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 587,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "confirmations",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 427,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "settlement_status",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 12,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "custody_positions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 327,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "custody_cash",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 490,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "opening_positions",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 195,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "opening_cash",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 490,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "prices",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 4596,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "BASELINE-001",
+   "table_name": "fx_rates",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 525,
+   "failed": 0,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "table_name": "trades",
+   "rule_id": "DQ05",
+   "dimension": "schema",
+   "checked": 20,
+   "failed": 20,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "table_name": "trades",
+   "rule_id": "DQ01",
+   "dimension": "completeness",
+   "checked": 133,
+   "failed": 6,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "table_name": "trades",
+   "rule_id": "DQ02",
+   "dimension": "integrity",
+   "checked": 133,
+   "failed": 12,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "table_name": "trades",
+   "rule_id": "R007",
+   "dimension": "validity",
+   "checked": 133,
+   "failed": 5,
+   "environment": "local-spark"
+  },
+  {
+   "batch_id": "NEGATIVE-001",
+   "table_name": "trades",
+   "rule_id": "DQ03",
+   "dimension": "uniqueness",
+   "checked": 110,
+   "failed": 0,
+   "environment": "local-spark"
+  }
+ ]
+}
