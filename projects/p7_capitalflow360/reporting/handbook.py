@@ -23,6 +23,7 @@ OUT = ROOT / "reporting" / "out"
 S = json.loads((OUT / "snapshot.json").read_text())
 D = {k: v for k, v in S["dashboards"].items()}
 CLEAN = S["runs"]["CLEAN-001"]
+CI = max((r for r in S.get("ci", {}).values() if not r["failed"] and r.get("browser_runs")), key=lambda r: r["browser_runs"], default=None)
 CAT = S["catalogue"]
 LAKE = S["lakehouse"]
 PLAT = S["platform"]
@@ -409,6 +410,11 @@ def strategy() -> str:
 def results() -> str:
     by = [[k, fmt(v["passed"]), v["failed"]] for k, v in CLEAN["by_suite"].items()]
     drows = [[i, t, S["runs"][f"DEFECT-{i}"]["failed"], ", ".join(f"{k} {v}" for k, v in S["runs"][f"DEFECT-{i}"]["failed_by_prefix"].items())] for i, t in DEFECTS]
+    browser_note = (f"Browsers: GitHub Actions run {CI['run_id']} ran the browser suite on Chromium, Firefox and WebKit, desktop and phone-sized: "
+                    f"{CI['browser_runs']} runs, {CI['browser_failed']} failed ({', '.join(f'{k} {v}' for k, v in CI['browser_runs_by_project'].items())}); "
+                    f"the same run executed {fmt(CI['executed'])} cases with {CI['failed']} failures. Only Chromium could be installed in the build sandbox."
+                    if CI else "Browsers: only Chromium could be installed in the build sandbox (its network policy blocks the Firefox and WebKit downloads). "
+                    "The CI workflow installs all three engines and runs the same specs; those results are reported only once CI has run.")
     return f"""
 <section>
   <h2>12. Test results and injected defects</h2>
@@ -424,8 +430,7 @@ def results() -> str:
   <p>Each defect was switched on alone, against a freshly seeded database, and the full catalogue was run. Every defect was caught, then the clean run
   CLEAN-001 reran everything with all defects off.</p>
   {table(["Defect", "What it breaks", "Failed", "Caught by (case prefix and count)"], drows)}
-  <p class="note">Browsers: only Chromium could be installed in the build sandbox (its network policy blocks the Firefox and WebKit downloads). The CI
-  workflow installs all three engines and runs the same specs; those results are reported only once CI has run.</p>
+  <p class="note">{browser_note}</p>
 </section>"""
 
 
@@ -496,7 +501,7 @@ def demo10() -> str:
              ("6:15", "Reconciliation", "The 8 breaks: cash and position, with the 0.50 tolerance (R096)."),
              ("7:00", "Lakehouse", "Bronze, Silver, Gold; the negative batch held back by the quality gate; replay changes nothing."),
              ("8:00", "Tests and defects", "Test runs page: CLEAN-001 and the six defect runs; the D6 screenshot."),
-             ("9:15", "Close", "What you would do next: cross-browser CI results, Databricks run, a public demo host.")]
+             ("9:15", "Close", "What you would do next: Databricks run, the public demo on Render and Neon.")]
     return f"""
 <section>
   <h2>16. Ten-minute demo script</h2>
@@ -514,7 +519,7 @@ QA = [
         ("What did you do and what did the AI do?", "I set the scope, lifecycle, rules and their boundaries, the roles and controls, the scenarios, negative data types and the defect plan, and I reviewed results. The code was written with an AI coding assistant, and every result was run and checked."),
         ("Why six asset classes?", "They have genuinely different lifecycles: cash products settle DVP, FX needs two calendars, futures settle margin, options exercise, swaps pay schedules and financing has two legs. Fewer would hide the hard parts."),
         ("Why exactly 500 trades?", "Enough to exercise every path and planted exception, small enough to reason about every one. The split is fixed: 140 equities and ETFs, 120 bonds, 80 FX, 70 listed derivatives, 50 swaps, 40 financing."),
-        ("Is it deployed?", "Not publicly yet. It runs locally with Docker Compose. A free host is proposed and nothing that can charge is switched on without approval."),
+        ("Is it deployed?", "Not publicly yet. It runs with Docker Compose, and a Render free tier plus Neon free database setup is ready (render.yaml); nothing that can charge is switched on without approval."),
     ]),
     ("Business process", [
         ("Walk me through a trade's life.", "Order and fills, booking at the volume-weighted price, allocation to accounts, confirmation matching, clearing where a CCP applies, settlement instruction from the SSI, settlement, ledger posting, reconciliation."),
@@ -572,7 +577,7 @@ QA = [
         ("What did the tests find that you did not plant?", "Five real issues, including allocation checks built as warnings (a 600-share allocation of 500 was accepted) and authorisation running after validation."),
         ("What is the role matrix?", "Every protected endpoint called as every role, with an expected allow or 403. 264 cases."),
         ("How do browser tests map to cases?", "Each Playwright title starts with its catalogue id, so results merge back to the case, scenario and rules."),
-        ("Which browsers?", "Chromium desktop and a phone-sized Chromium ran here. Firefox and WebKit run in the CI workflow because the build sandbox could not download them."),
+        ("Which browsers?", (f"Chromium, Firefox and WebKit, desktop plus phone-sized Chromium and WebKit: {CI['browser_runs']} runs in GitHub Actions run {CI['run_id']}, {CI['browser_failed']} failed. Locally only Chromium could be installed." if CI else "Chromium desktop and a phone-sized Chromium ran here. Firefox and WebKit run in the CI workflow because the build sandbox could not download them.")),
         ("What is your rule coverage?", f"{CAT['rules_covered']} of {CAT['rules_total']} rules have executed cases. The remaining ones are listed openly as gaps."),
         ("How do you avoid flaky tests?", "Fresh seeds per run, a fixed business clock, server-side waits on visible state rather than sleeps, and sandboxes for anything that writes."),
         ("How is traceability recorded?", "Every case names its rules, scenario and source row or spec; a traceability workbook links rules to cases and results."),
@@ -582,7 +587,7 @@ QA = [
         ("What would you do differently?", "Write the negative data labels first. They found the most serious bug, and earlier labels would have found it sooner."),
         ("How did you use AI responsibly?", "I specified the behaviour and the expected results; the AI wrote code; nothing was accepted until it passed cases whose answers came from elsewhere. Failures were reported, not hidden."),
         ("How does your banking background show in this?", "The planted exceptions, the SSI and calendar rules, maker-checker, and reconciliation tolerances are what operations teams deal with daily. I chose them because they break in real life."),
-        ("What would you build next?", "Cross-browser CI results, a Databricks run of the same checks, a public demo host, and a small assistant that explains an exception using its audit trail."),
+        ("What would you build next?", "A Databricks run of the same checks, the public demo on Render and Neon, and a small assistant that explains an exception using its audit trail."),
         ("How would you explain this to a non-technical stakeholder?", "It is a practice trading floor's back office on fake data, plus an automatic checker that knows the right answers and proves the system gets them."),
     ]),
 ]
@@ -639,14 +644,14 @@ def limits() -> str:
   <h3>Limits, stated plainly</h3>
   <ul>
     <li>{len(CAT['rules_uncovered'])} rules ({', '.join(CAT['rules_uncovered'])}) have no dedicated generated case yet.</li>
-    <li>Firefox and WebKit results depend on the CI run; only Chromium ran in the build sandbox.</li>
+    <li>{"Firefox and WebKit ran in GitHub Actions only; the build sandbox could install Chromium alone." if CI else "Firefox and WebKit results depend on the CI run; only Chromium ran in the build sandbox."}</li>
     <li>The Databricks notebook has not been executed on Databricks.</li>
     <li>Performance figures are single-machine timings, not load tests.</li>
     <li>Not publicly deployed at the time of writing.</li>
   </ul>
   <h3>Next steps</h3>
   <ol><li>Run the CI workflow and import its cross-browser results.</li><li>Run the notebook in a Databricks Free Edition workspace and compare with the local evidence.</li>
-  <li>Choose a free host for a read-only demo.</li><li>Add cases for the uncovered rules.</li></ol>
+  <li>Put the demo live on Render and Neon (free tiers).</li><li>Add cases for the uncovered rules.</li></ol>
   <h3>Glossary</h3>
   {table(["Term", "Meaning"], gl, "small")}
   <p class="note">CapitalFlow 360 · independent portfolio project · synthetic data · simulated venues · metrics generated {e(S['generated_at'])}</p>

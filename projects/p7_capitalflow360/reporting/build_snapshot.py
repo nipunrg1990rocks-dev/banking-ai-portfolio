@@ -74,6 +74,7 @@ def main() -> None:
         "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dashboards": dashboards()["dashboards"],
         "runs": runs(),
+        "ci": {p.stem: json.loads(p.read_text()) for p in sorted((ROOT / "testkit" / "out" / "ci").glob("*.json"))},
         "platform": platform_facts(),
         "catalogue": {"cases": len(cases), "scenarios": len({c["scenario_id"] for c in cases}),
                       "by_suite": dict(Counter(c["suite"] for c in cases)), "by_layer": dict(Counter(c["layer"] for c in cases)),

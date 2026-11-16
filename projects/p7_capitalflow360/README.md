@@ -64,7 +64,8 @@ CI runs the tests, the catalogue, the executor and the browser suite on Chromium
 
 ## Limits
 
-- Firefox and WebKit could not be installed in the build environment; their results come from the CI workflow only.
+- Firefox and WebKit could not be installed in the build environment; their results (245 browser runs on three engines, 0 failed, run CI-3) come from
+  [GitHub Actions](https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43817863937) and are recorded in `testkit/out/ci/`.
 - The Databricks notebook (`lakehouse/databricks/`) has not yet been executed on Databricks. Lakehouse evidence is from local Spark.
 - Five rules have no dedicated generated case yet (listed in the acceptance status and the rule catalogue).
 - Performance figures are single-machine timings, not load tests.

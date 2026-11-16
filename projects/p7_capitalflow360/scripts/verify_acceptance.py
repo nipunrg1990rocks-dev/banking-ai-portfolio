@@ -102,7 +102,7 @@ def main() -> int:
     check("A16", "Delivery files", "Compose, Dockerfile, .env.example, README, migrations, docs, CI", "all present" if not missing else "missing: " + ", ".join(missing),
           not missing)
     dep = ROOT / "docs" / "deployment.json"
-    check("A17", "Public deployment", "recorded only once deployed and checked", "recorded" if dep.exists() else "not deployed (free host awaiting approval)",
+    check("A17", "Public deployment", "recorded only once deployed and checked", "recorded" if dep.exists() else "not deployed yet (Render + Neon free tiers chosen; owner sets them up)",
           dep.exists(), pending=True)
 
     lines = ["# CapitalFlow 360: acceptance status", "",

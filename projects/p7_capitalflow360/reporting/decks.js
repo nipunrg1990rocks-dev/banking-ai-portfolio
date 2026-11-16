@@ -22,6 +22,8 @@ const kpi = (dash, id) => (D[dash].kpis.find((k) => k.id === id) || {}).value;
 const chart = (dash, id) => (D[dash].charts.find((c) => c.id === id) || { data: [] }).data;
 const run = (id) => S.runs[id];
 const clean = run("CLEAN-001");
+const ci = Object.values(S.ci || {}).filter((r) => !r.failed && r.browser_runs).sort((a, b) => b.browser_runs - a.browser_runs)[0];
+const ciBrowsers = ci ? `${ci.browser_runs} runs in GitHub Actions run ${ci.run_id} on Chromium, Firefox and WebKit, 0 failed` : "Firefox and WebKit set up for CI, results pending";
 const fmt = (n, dp = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
 const DEFECTS = [
   ["D1", "Allocation residual cent dropped"], ["D2", "30/360 bonds accrue on ACT/360"], ["D3", "FX spot ignores quote-currency calendar"],
@@ -242,8 +244,8 @@ async function executive() {
     ["Platform, rules, ledger, 7 dashboards", "Built and running locally (FastAPI + PostgreSQL + React)"],
     ["Lakehouse Bronze/Silver/Gold", `Ran on local Spark ${S.lakehouse.spark} + Delta ${S.lakehouse.delta}: ${S.lakehouse.passed}/${S.lakehouse.passed + S.lakehouse.failed} checks pass`],
     ["Databricks notebook and job", "Written for serverless; not yet run on Databricks"],
-    ["Browser tests", `${clean.browser_runs} Chromium runs here; Firefox and WebKit set up for CI, results pending`],
-    ["Public hosting", "Not deployed yet; free-host option to be approved"],
+    ["Browser tests", ciBrowsers],
+    ["Public hosting", "Render free tier + Neon free database chosen; not live yet"],
   ], { colW: [4.6, 7.5], size: 14 });
   cards(d, s, [
     { h: "Domain and design (Nipun Gupta)", t: "Business flows, product scope, the rule set and its boundaries, scenarios, the defect plan and acceptance criteria." },
@@ -251,11 +253,11 @@ async function executive() {
   ], { y: 4.55, cols: 2, h: 1.55, size: 13 });
 
   s = content(d, "Close", "Next steps", "Close on actions.");
-  flow(d, s, ["Run cross-browser CI", "Run the Databricks notebook", "Approve a free host", "Share the showcase"], { y: 1.7, h: 1.2, size: 16 });
+  flow(d, s, ["Merge the pull request", "Run the Databricks notebook", "Go live on Render + Neon", "Share the showcase"], { y: 1.7, h: 1.2, size: 16 });
   cards(d, s, [
-    { h: "Firefox and WebKit", t: "The CI workflow runs the browser suite on all three engines and keeps the report." },
+    { h: "Review and merge", t: "CI already runs the tests and the browser suite on Chromium, Firefox and WebKit on every push." },
     { h: "Databricks", t: "Import the notebook to a Free Edition workspace and run the same 14 checks." },
-    { h: "Hosting", t: "A free host is proposed; nothing that can charge is switched on without approval." },
+    { h: "Hosting", t: "Render free tier with a Neon free database: no card, sleeps when idle." },
     { h: "Showcase", t: "Portfolio page, PDF handbook and decks for interviews." },
   ], { y: 3.3, cols: 4, h: 2.3, size: 13 });
   note(d, s, "Domain design, rules and scenarios: Nipun Gupta. Implementation: AI-assisted, reviewed and tested as described.", { y: 6.0, h: 0.6 });
@@ -409,9 +411,12 @@ async function testing() {
   table(d, s, ["Suite", "Passed", "Failed"], suites.slice(0, half), { y: 3.35, w: 5.9, colW: [3.1, 1.4, 1.4], size: 13 });
   table(d, s, ["Suite", "Passed", "Failed"], suites.slice(half), { x: 6.8, y: 3.35, w: 5.9, colW: [3.1, 1.4, 1.4], size: 13 });
 
-  s = content(d, "Results", "Browser coverage: what ran here and what CI runs");
-  bar(d, s, "Browser runs in CLEAN-001", Object.entries(clean.browser_runs_by_project), { w: 6.2, chartColors: [HEX.dk2] });
-  bullets(d, s, [`${clean.browser_runs} Playwright runs here: Chromium desktop and a Pixel-sized phone`, "Firefox and WebKit could not be downloaded in the build sandbox (network policy)",
+  s = content(d, "Results", ci ? "Browser coverage: three engines in CI, zero failures" : "Browser coverage: what ran here and what CI runs");
+  const br = ci || clean;
+  bar(d, s, `Browser runs in ${br.run_id}`, Object.entries(br.browser_runs_by_project), { w: 6.2, chartColors: [HEX.dk2] });
+  bullets(d, s, ci ? [`${ci.browser_runs} Playwright runs in GitHub Actions run ${ci.run_id}, ${ci.browser_failed} failed`, "Desktop Chromium, Firefox and WebKit, plus phone-sized Chromium and WebKit",
+    `Same run: ${fmt(ci.executed)} executions in total, ${ci.failed} failed`, `Locally only Chromium could be installed: ${clean.browser_runs} runs in CLEAN-001`] :
+    [`${clean.browser_runs} Playwright runs here: Chromium desktop and a Pixel-sized phone`, "Firefox and WebKit could not be downloaded in the build sandbox (network policy)",
     "The CI workflow installs all three engines and runs the same specs, plus iPhone-sized WebKit", "Results from CI are imported the same way; none are claimed until they run"], { x: 7.1, w: 5.6, size: 15 });
 
   s = content(d, "Defects", "Each injected defect was caught by the cases designed for it");
@@ -453,7 +458,7 @@ async function testing() {
   s = content(d, "Close", "Limits, stated plainly");
   cards(d, s, [
     { h: "Rule gaps", t: `${cat.rules_uncovered.length} rules (${cat.rules_uncovered.join(", ")}) have no dedicated generated case yet.`, dot: d.C.accent2 },
-    { h: "Browsers", t: "Firefox and WebKit results depend on the CI run; only Chromium ran in the build sandbox.", dot: d.C.accent2 },
+    { h: "Browsers", t: ci ? "Firefox and WebKit ran in GitHub Actions only; the build sandbox could install Chromium alone." : "Firefox and WebKit results depend on the CI run; only Chromium ran in the build sandbox.", dot: d.C.accent2 },
     { h: "Databricks", t: "The notebook and job are written but not yet executed on Databricks.", dot: d.C.accent2 },
     { h: "Performance", t: "Timings are local single-machine figures, not load tests.", dot: d.C.accent2 },
     { h: "Simulation", t: "Synthetic data and simulated venues; no production pricing or regulatory claim.", dot: d.C.accent2 },
@@ -549,7 +554,7 @@ async function architecture() {
     ["Alembic migrations", `${migs} revisions, used to build every database`],
     ["Docker Compose", has("docker-compose.yml") ? "docker-compose.yml: database, API with built UI, one command" : "Not yet added"],
     ["Continuous integration", has("../../.github/workflows/p7-capitalflow360.yml") ? "GitHub Actions: pytest, executor and Playwright on three engines" : "Not yet added"],
-    ["Public hosting", "Proposal pending approval; nothing that costs money without a yes"],
+    ["Public hosting", "Render free tier + Neon free database chosen (render.yaml); not live yet"],
     ["Databricks run", "Owner runs the notebook in their workspace"]], { colW: [4, 8.1], size: 15 });
   cards(d, s, [
     { h: "Domain and design", t: "Nipun Gupta: product scope, lifecycle, rules, scenarios, defect plan and acceptance criteria." },
