@@ -5,7 +5,7 @@
     "headline": "Banking risk and controls professional building governed AI",
     "roles": ["AI Transformation", "Risk & Controls", "Business Analysis", "PMO"],
     "years_banking": 12,
-    "summary": "I have spent about twelve years in banking risk, controls, operations and UAT. These five projects apply that experience to AI: each one is built around the controls a second line, model-risk or audit team would ask for before letting AI near a regulated process.",
+    "summary": "I have spent about twelve years in banking risk, controls, operations and UAT. These projects apply that experience to AI: each one is built around the controls a second line, model-risk or audit team would ask for before letting AI near a regulated process.",
     "github_url": "https://github.com/nipunrg1990rocks-dev",
     "linkedin_url": "",
     "email": ""
@@ -204,6 +204,82 @@
         "browser": {"state": "verified", "text": "11 steps"},
         "databricks": {"state": "pending", "text": "Ran on local Spark only"},
         "llm": {"state": "pending", "text": "Built, not run live"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    },
+    {
+      "id": "p6",
+      "number": 6,
+      "name": "Prompt-to-Presentation",
+      "full_name": "Prompt-to-Presentation AI: Dynamic Executive Reporting Platform",
+      "kind": "GenAI · Executive reporting",
+      "lifecycle": "The board gets its pack",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "A stakeholder types a request such as \"Create a six-slide APAC Q3 risk pack and compare Q2\" and gets a genuinely editable PowerPoint in seconds, then refines it with follow-ups. Every version is kept, every number traces to a governed query, and nothing is approved for distribution without a second person.",
+      "problem": "Monthly packs are rebuilt by hand: spreadsheet formulas maintained, charts copied into slides, and figures nobody can trace back to source.",
+      "ai": "A prompt becomes a validated deck spec, from an offline rules parser by default or Claude when approved. Queries run only from an allowlist, and every chart and sentence carries the metric, window and filters behind it.",
+      "stats": [
+        {"value": "60", "label": "automated tests, including injection resistance and PPTX integrity"},
+        {"value": "11 / 11", "label": "browser steps of the acceptance demo"},
+        {"value": "13 / 13", "label": "published case-study figures reproduced from the data"},
+        {"value": "~12 s", "label": "to run the full A to G acceptance demo with PDF export"}
+      ],
+      "stats_note": "The case-study reconciliation ran locally against a roster that is not committed.",
+      "controls": [
+        "Maker-checker approval before any pack is distributed",
+        "Allowlisted, parameterised SQL with a fingerprint per query",
+        "Hash-chained audit of every prompt, version, edit and decision"
+      ],
+      "stack": ["Python", "Streamlit", "DuckDB", "Pydantic", "python-pptx", "Plotly", "Claude (optional)", "pytest", "Playwright"],
+      "live_url": "",
+      "code_path": "projects/p6_prompt_to_presentation",
+      "showcase": "",
+      "pdf": "",
+      "pr_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/pull/11",
+      "checks": {
+        "tests": {"state": "verified", "text": "60 tests"},
+        "browser": {"state": "verified", "text": "11 steps"},
+        "databricks": {"state": "na", "text": "Not used"},
+        "llm": {"state": "pending", "text": "Optional, not run live"},
+        "hosted": {"state": "pending", "text": "Not yet deployed"}
+      }
+    },
+    {
+      "id": "p7",
+      "number": 7,
+      "name": "CapitalFlow 360",
+      "full_name": "Simulated multi-asset trade lifecycle platform",
+      "kind": "Capital markets ops · test engineering",
+      "lifecycle": "From order to reconciled books",
+      "status": "built",
+      "status_label": "Built and tested",
+      "summary": "A simulated back office that takes 500 synthetic trades across six asset classes from order to settled cash and reconciled books, with 69 rules, seven role workspaces and a Bronze/Silver/Gold lakehouse.",
+      "problem": "Trade problems start after the desk: a cent short on an allocation, a holiday in the second currency, a self-approved amendment.",
+      "ai": "Built with an AI coding assistant. The tests never trust the code: expected answers come from an independent calculator and 28 hand-worked examples.",
+      "stats": [
+        {"value": "2,370", "label": "generated test cases, all executed"},
+        {"value": "0", "label": "failures in the clean run (2,410 executions)"},
+        {"value": "6 of 6", "label": "injected defects caught"},
+        {"value": "14/14", "label": "lakehouse checks on local Spark"}
+      ],
+      "stats_note": "Browser runs so far are Chromium only; Firefox and WebKit run in CI.",
+      "controls": [
+        "Maker-checker; a maker cannot approve their own request",
+        "Idempotent bookings and ledger postings",
+        "Append-only audit trail with correlation ids"
+      ],
+      "stack": ["React", "TypeScript", "FastAPI", "PostgreSQL", "PySpark", "Delta Lake", "Playwright", "Docker"],
+      "live_url": "",
+      "code_path": "projects/p7_capitalflow360",
+      "showcase": "docs/showcase/p7_capitalflow360.html",
+      "pdf": "projects/p7_capitalflow360/reporting/out/CapitalFlow360_Interview_and_Demonstration_Handbook.pdf",
+      "pr_url": "https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/pull/13",
+      "checks": {
+        "tests": {"state": "verified", "text": "2,370 cases"},
+        "browser": {"state": "pending", "text": "Chromium only so far"},
+        "databricks": {"state": "pending", "text": "Ran on local Spark only"},
+        "llm": {"state": "na", "text": "No LLM feature"},
         "hosted": {"state": "pending", "text": "Not yet deployed"}
       }
     }

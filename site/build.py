@@ -35,7 +35,7 @@ HEAD = (
 BACK_LINK = (
     '<nav style="padding:10px max(16px, env(safe-area-inset-left, 0px));font:500 14px/1.4 \'IBM Plex Sans\','
     'system-ui,sans-serif;background:#0b1715"><a href="../index.html#{anchor}" style="color:#5fd0b3;'
-    'text-decoration:none">← All five projects</a></nav>\n'
+    'text-decoration:none">← All projects</a></nav>\n'
 )
 
 
@@ -96,16 +96,22 @@ def render_chain(projects: list[dict], seals: list[tuple[str, str]]) -> str:
 
 
 def render_lifecycle(projects: list[dict]) -> str:
-    order = ["Data arrives", "Risk is monitored", "Exceptions are worked", "Staff ask about policy", "The rules change"]
-    by_stage = {p["lifecycle"]: p for p in projects}
+    order = [
+        "From order to reconciled books",
+        "Data arrives",
+        "Risk is monitored",
+        "Exceptions are worked",
+        "Staff ask about policy",
+        "The rules change",
+        "The board gets its pack",
+    ]
+    known = [p for stage in order for p in projects if p["lifecycle"] == stage]
     rows = []
-    for stage in order:
-        p = by_stage.get(stage)
-        if p:
-            rows.append(
-                f'        <li><span>{escape(stage)}</span><a href="#{p["id"]}">{escape(p["name"])}</a>'
-                f'<span>Project {p["number"]} · {escape(p["kind"])}</span></li>'
-            )
+    for p in known + [p for p in projects if p not in known]:
+        rows.append(
+            f'        <li><span>{escape(p["lifecycle"])}</span><a href="#{p["id"]}">{escape(p["name"])}</a>'
+            f'<span>Project {p["number"]} · {escape(p["kind"])}</span></li>'
+        )
     return "\n".join(rows)
 
 
@@ -166,7 +172,16 @@ def render_register(projects: list[dict]) -> str:
 
 
 def total_tests(projects: list[dict]) -> int:
-    return sum(int(p["checks"]["tests"]["text"].split()[0]) for p in projects)
+    """Sum the projects whose count is in unit tests; generated scenario cases (e.g. "2,370 cases") are not added."""
+    counts = (p["checks"]["tests"]["text"].split() for p in projects)
+    return sum(int(n.replace(",", "")) for n, unit, *_ in counts if unit == "tests")
+
+
+NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
+def count_word(n: int) -> str:
+    return NUMBER_WORDS[n] if n < len(NUMBER_WORDS) else str(n)
 
 
 def render_page(data: dict, root: Path = ROOT, today: date | None = None) -> tuple[str, list[dict]]:
@@ -198,6 +213,9 @@ def render_page(data: dict, root: Path = ROOT, today: date | None = None) -> tup
         "REPO_URL": site["repo_url"],
         "REPO_SHORT": site["repo_url"].removeprefix("https://github.com/"),
         "TOTAL_TESTS": str(total_tests(projects)),
+        "COUNT": str(len(projects)),
+        "COUNT_WORD": count_word(len(projects)),
+        "COUNT_TITLE": count_word(len(projects)).capitalize(),
         "UPDATED": f"{(today or date.today()).day} {(today or date.today()):%B %Y}",
         "CHAIN": render_chain(projects, chain(projects)),
         "LIFECYCLE": render_lifecycle(projects),

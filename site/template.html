@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-  /* Layout: a dark vault band holding a live hash chain of the five projects, then a light reading column of project dossiers and a verification register */
+  /* Layout: a dark vault band holding a live hash chain of the projects, then a light reading column of project dossiers and a verification register */
   :root {
     --paper: #f3f6f5;
     --surface: #ffffff;
@@ -96,11 +96,12 @@
   .chain-head p { color: var(--vault-muted); font-size: .92rem; max-width: 60ch; }
   .chain-tools { display: flex; gap: 10px; flex-wrap: wrap; }
   .chain-tools .btn { font-size: .85rem; padding: .5rem .85rem; }
-  .chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; position: relative; }
+  .chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; position: relative; }
   .block { position: relative; background: var(--vault-2); border: 1px solid var(--vault-line); border-radius: 10px; padding: 14px; display: grid; gap: 8px; min-width: 0; text-decoration: none; color: var(--vault-ink); transition: border-color .3s ease, background .3s ease; }
   .block:hover { border-color: var(--vault-teal); }
   .block + .block::before { content: ""; position: absolute; left: -15px; top: 50%; width: 15px; height: 2px; background: var(--vault-line); }
-  .block .idx { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--vault-muted); display: flex; justify-content: space-between; gap: 8px; }
+  .block .idx { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--vault-muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 8px; }
+  .block .idx span { white-space: nowrap; }
   .block .nm { font-family: var(--display); font-size: 1.12rem; font-weight: 600; line-height: 1.2; }
   .block .st { font-size: .8rem; color: var(--vault-muted); display: flex; align-items: center; gap: 6px; }
   .block .st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--vault-brass); flex: none; }
@@ -128,7 +129,7 @@
   .section-head p { color: var(--muted); font-size: 1.05rem; }
 
   /* Lifecycle strip: a real sequence through one bank */
-  .life { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; counter-reset: stage; }
+  .life { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 16px 12px; counter-reset: stage; }
   .life li { border-top: 3px solid var(--teal); padding-top: 10px; display: grid; gap: 4px; min-width: 0; align-content: start; }
   .life li::before { counter-increment: stage; content: "Stage " counter(stage); font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   .life a { font-family: var(--display); font-weight: 600; font-size: 1.08rem; text-decoration: none; color: var(--ink); }
@@ -245,14 +246,14 @@
       <h1>AI a bank's <em>second line</em> could sign off.</h1>
       <p class="lede">{{SUMMARY}}</p>
       <div class="cta">
-        <a class="btn solid" href="#projects">See the five projects</a>
+        <a class="btn solid" href="#projects">See the {{COUNT_WORD}} projects</a>
         <a class="btn" href="{{REPO_URL}}">Code on GitHub ↗</a>
       </div>
     </div>
 
     <div class="facts" role="list">
-      <div class="fact" role="listitem"><b>5</b><span>working projects, one fictional bank</span></div>
-      <div class="fact" role="listitem"><b>{{TOTAL_TESTS}}</b><span>automated tests across the five</span></div>
+      <div class="fact" role="listitem"><b>{{COUNT}}</b><span>working projects, one fictional bank</span></div>
+      <div class="fact" role="listitem"><b>{{TOTAL_TESTS}}</b><span>automated unit and app tests across the projects</span></div>
       <div class="fact" role="listitem"><b>0</b><span>regulated decisions left to AI alone</span></div>
       <div class="fact" role="listitem"><b>$0</b><span>running cost: free tiers and offline modes</span></div>
     </div>
@@ -270,7 +271,7 @@
     <ol class="chain" id="chain">
 {{CHAIN}}
     </ol>
-    <p class="chain-msg" id="chain-msg" aria-live="polite">Genesis 0000…0000 · five blocks sealed when this page was built.</p>
+    <p class="chain-msg" id="chain-msg" aria-live="polite">Genesis 0000…0000 · {{COUNT_WORD}} blocks sealed when this page was built.</p>
   </div>
 </section>
 
@@ -278,9 +279,9 @@
   <section class="band">
     <div class="inner">
       <div class="section-head">
-        <p class="eyebrow">One bank, five systems</p>
+        <p class="eyebrow">One bank, {{COUNT_WORD}} systems</p>
         <h2>Follow a day at {{BANK}}</h2>
-        <p>The five projects share one fictional bank and its synthetic data, so together they cover the risk lifecycle from the first file landing to the next regulatory change.</p>
+        <p>The projects share one fictional bank and its synthetic data, so together they follow its work from a trade being booked to the pack the board reads.</p>
       </div>
       <ol class="life">
 {{LIFECYCLE}}
@@ -297,8 +298,8 @@
     <div class="inner">
       <div class="section-head">
         <p class="eyebrow">The projects</p>
-        <h2>Five working systems, each with its own controls</h2>
-        <p>Each project has a project page for a quick read, an interview pack (PDF) with architecture, diagrams and Q&amp;A, and its source code.</p>
+        <h2>{{COUNT_TITLE}} working systems, each with its own controls</h2>
+        <p>Each project links to its source code and, where published, a project page for a quick read and an interview pack (PDF) with architecture, diagrams and Q&amp;A.</p>
       </div>
       <div>
 {{PROJECTS}}
@@ -310,7 +311,7 @@
     <div class="inner">
       <div class="section-head">
         <p class="eyebrow">How every project is built</p>
-        <h2>Six rules I applied to all five</h2>
+        <h2>Six rules I applied to every project</h2>
       </div>
       <div class="principles">
         <div><p class="eyebrow">Decisions</p><h3>Rules decide, models assist</h3><p>Verdicts and routing come from explainable rules that give the same answer every time. The model drafts, explains and challenges.</p></div>
@@ -409,7 +410,7 @@
       prev = b.dataset.hash;
     }
     if (broken) { msg.className = 'chain-msg bad'; msg.textContent = `Block ${broken} no longer matches its seal, so it and every block after it fail. That is how the apps catch an edited audit log.`; }
-    else { msg.className = 'chain-msg ok'; msg.textContent = 'All five blocks match their seals. Nothing on this chain has been edited since the build.'; }
+    else { msg.className = 'chain-msg ok'; msg.textContent = 'All {{COUNT_WORD}} blocks match their seals. Nothing on this chain has been edited since the build.'; }
   }
 
   function tamper() {
