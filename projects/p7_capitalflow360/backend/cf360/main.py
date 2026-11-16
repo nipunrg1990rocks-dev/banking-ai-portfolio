@@ -16,7 +16,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from cf360 import __version__
 from cf360.api import routes_admin, routes_ops, routes_orders, routes_trades
-from cf360.config import settings
+from cf360.config import PROJECT_ROOT, settings
 from cf360.services.core import correlation_id, current_actor, jsonable, new_correlation
 from cf360.services.dashboards import API_TIMINGS
 
@@ -80,6 +80,10 @@ async def unhandled(request: Request, exc: Exception):
 for r in (routes_admin.router, routes_trades.router, routes_orders.router, routes_ops.router):
     app.include_router(r)
 
+
+REPORTS_DIR = PROJECT_ROOT / "reporting" / "out"
+if REPORTS_DIR.exists():  # decks, handbook and snapshot built by reporting/build_reports.py
+    app.mount("/reports", StaticFiles(directory=REPORTS_DIR), name="reports")
 
 if settings.static_dir and settings.static_dir.exists():
     static = settings.static_dir
