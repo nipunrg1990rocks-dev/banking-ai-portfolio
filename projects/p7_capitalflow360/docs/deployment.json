@@ -1,0 +1,20 @@
+{
+  "url": "https://banking-ai-portfolio.vercel.app",
+  "host": "Vercel Hobby (free) serverless FastAPI function with a Neon Free PostgreSQL database",
+  "host_short": "Vercel + Neon free tiers",
+  "card_required": false,
+  "deployed_on": "2026-11-16",
+  "verified": {
+    "at": "2026-11-16T11:08:36Z",
+    "by": "GitHub Actions workflow p7-live-smoke.yml, run https://github.com/nipunrg1990rocks-dev/banking-ai-portfolio/actions/runs/43855082906",
+    "results": {
+      "/api/health": "HTTP 200, status ok, business_date 2026-11-06",
+      "/": "HTTP 200, React UI shell",
+      "/queues/matching": "HTTP 200, UI deep link served",
+      "/docs": "HTTP 200, OpenAPI docs",
+      "/api/meta/rules": "HTTP 200, rule catalogue JSON"
+    },
+    "not_checked": "Signing in and browsing trades needs the demo password, which is not stored in the repository"
+  },
+  "history": "Back4app Containers (free) was live and checked on 2026-11-16 (run 43835610967), but its free plan only gives a temporary URL, which expired about two hours later."
+}

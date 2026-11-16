@@ -49,7 +49,7 @@ jobs:
           if [ -z "$ok" ]; then echo "No URL returned a healthy status"; exit 1; fi
           {
             echo "## Live demo check: $ok"
-            for p in /api/health / /docs /api/meta/rules; do
+            for p in /api/health / /queues/matching /docs /api/meta/rules; do
               code=$(curl -s -m 30 -o /tmp/out -w '%{http_code}' "$ok$p")
               echo "- \`$p\`: HTTP $code, $(wc -c < /tmp/out) bytes, starts: \`$(head -c 120 /tmp/out | tr -d '\n\`|')\`"
             done

@@ -69,6 +69,7 @@ CI runs the tests, the catalogue, the executor and the browser suite on Chromium
 - The Databricks notebook (`lakehouse/databricks/`) has not yet been executed on Databricks. Lakehouse evidence is from local Spark.
 - Five rules have no dedicated generated case yet (listed in the acceptance status and the rule catalogue).
 - Performance figures are single-machine timings, not load tests.
-- Not publicly deployed yet. Free hosting steps (no card): [docs/deploy_vercel_neon.md](docs/deploy_vercel_neon.md).
+- Public demo on free tiers (Vercel + Neon): https://banking-ai-portfolio.vercel.app . It can be slow to wake and is not a performance reference.
+  Setup: [docs/deploy_vercel_neon.md](docs/deploy_vercel_neon.md).
 
 `reporting/vendor/apply_theme.js` is vendored under the Apache License 2.0 (header in the file). All other code is part of this repository.
