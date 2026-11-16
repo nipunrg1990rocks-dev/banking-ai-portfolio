@@ -25,8 +25,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Pick the URL (input, else docs/deployment.json)
-        run: echo "URLS=${INPUT_URL:-$(jq -r .url projects/p7_capitalflow360/docs/deployment.json)}" >> "$GITHUB_ENV"
+        run: |
+          f=projects/p7_capitalflow360/docs/deployment.json
+          url="${INPUT_URL:-$( [ -f "$f" ] && jq -r .url "$f" || true )}"
+          if [ -z "$url" ]; then echo "No URL given and no deployment recorded: nothing to check." | tee -a "$GITHUB_STEP_SUMMARY"; fi
+          echo "URLS=$url" >> "$GITHUB_ENV"
       - name: Check the demo (waits up to 40 minutes for a sleeping or still-loading app)
+        if: env.URLS != ''
         run: |
           set -u
           ok=""
